@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+:root {
+  box-sizing: border-box;
+}
+body {
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+* {
+  --reddit_dark: #030303;
+  --offBlack: #1d201f;
+  --highLight: #f07167;
+  --reddit_grey: rgb(38, 34, 34);
+  --lowLight: #40798c;
+  --white: #fff;
+}
+.header {
+  display: flex;
+align-items: center;
+  background-color: var(--reddit_dark);
+  padding: 6px;
+}
+.sub-header {
+  margin: 0 12px;
+  border: 1px solid white;
+}
+.logo {
+  width: 2rem;
+  height: 2rem;
+}
+
+.search-box {
+  height: 2rem;
+  background-color: var(--reddit_grey);
+  outline: none;
+  border: none;
+}
