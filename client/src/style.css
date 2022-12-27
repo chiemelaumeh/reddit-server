@@ -13,30 +13,56 @@ body {
 }
 * {
   --reddit_dark: #030303;
-  --offBlack: #1d201f;
+  --offBlack: #272728;
   --highLight: #f07167;
+  --reddit_lightgrey: rgb(81, 79, 79);
   --reddit_grey: rgb(38, 34, 34);
   --lowLight: #40798c;
-  --white: #fff;
+  --white: #eee9e9;
 }
 .header {
   display: flex;
-align-items: center;
+  align-items: center;
   background-color: var(--reddit_dark);
-  padding: 6px;
+  padding: 4px;
 }
 .sub-header {
   margin: 0 12px;
-  border: 1px solid white;
 }
 .logo {
   width: 2rem;
   height: 2rem;
 }
-
+.form {
+  background-color: var(--offBlack);
+  display: flex;
+  align-items: center;
+  padding: 1px 16px;
+  border-radius:5px;
+  border: 1px solid var(--reddit_lightgrey)
+}
 .search-box {
   height: 2rem;
-  background-color: var(--reddit_grey);
+  background-color: inherit;
   outline: none;
   border: none;
+  padding: 0 6px;
+  display: block;
+  color: var(--white);
+}
+.search-icon {
+  color: var(--reddit_lightgrey);
+  width: 1.5rem;
+  height: 1.5rem;
+
+}
+
+::placeholder{
+  font-weight: 200;
+}
+.bell-icon {
+
+  color: var(--reddit_lightgrey);
+  width: 1.5rem;
+  height: 1.5rem;
 }
