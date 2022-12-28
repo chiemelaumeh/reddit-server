@@ -13,17 +13,38 @@ body {
   --reddit_lightgrey: rgb(81, 79, 79);
   --reddit_grey: rgb(38, 34, 34);
   --white: #fff;
-  --offwhite:#d6d6d6;
-  --reddit_border:343536;
+  --offwhite: #d6d6d6;
+  --reddit_border: 343536;
 }
 .below-header {
-
   height: 10rem;
   margin: auto;
   /* object-fit: contain; */
 
   background-image: url("https://styles.redditmedia.com/t5_2qs0q/styles/bannerBackgroundImage_7glcgg5ymxp21.png?width=4000&s=9684bc66e812b8730ad694c3f454da8c00a493d7");
-background-size: cover;
-  
+  background-size: cover;
+}
+.com-div {
+  height: 80px;
+  width: 80px;
+  margin: 0 16px;
+  border-radius: 50%;
+  /* border: 1px solid red; */
+  overflow: hidden;
+  position: relative;
 
+}
+.com-icon {
+  /* background-color: red; */
+  height: inherit;
+  width: inherit;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+ 
+
+}
+.sub-main {
+  background-color: var(--reddit_grey);
+  
 }
