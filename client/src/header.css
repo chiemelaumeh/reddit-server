@@ -18,7 +18,7 @@ body {
   --reddit_grey: rgb(38, 34, 34);
   --white: #fff;
   --offwhite:#d6d6d6;
-  --reddit_border:343536;
+  --reddit_border:#343536;
 }
 .header {
   background-color: var(--reddit_dark);

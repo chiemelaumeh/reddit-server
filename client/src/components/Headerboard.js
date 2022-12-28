@@ -1,4 +1,6 @@
+
 const Headerboard = () => {
+  
   return (
     <>
       <div className="below-header"></div>
@@ -6,13 +8,13 @@ const Headerboard = () => {
         <div className="com-div">
           <img
             className="com-icon"
-            src="https://styles.redditmedia.com/t5_2qs0q/styles/communityIcon_kxcmzy9bt1381.jpg?width=256&format=pjpg&s=0a2e472f6fae0712fee4a3b5d44920fe35dbcdaa"
+            src="https://i.etsystatic.com/20162739/r/il/f0f9f3/1936656917/il_1588xN.1936656917_cubv.jpg"
             alt=""
           />
         </div>
         <div className="header-texts">
-          <h1 className="header-title">FullStack: Building a reddit clone</h1>
-          <h5 className="header-board">r/fullstack</h5>
+          <h1 className="header-title">Learn to play chess</h1>
+          <h5 className="header-board">r/Checkmate</h5>
         </div>
       </div>
     </>
