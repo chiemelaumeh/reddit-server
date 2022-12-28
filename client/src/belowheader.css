@@ -29,22 +29,24 @@ body {
   width: 80px;
   margin: 0 16px;
   border-radius: 50%;
-  /* border: 1px solid red; */
   overflow: hidden;
   position: relative;
-
+  top: -12px;
 }
 .com-icon {
-  /* background-color: red; */
   height: inherit;
   width: inherit;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
- 
-
 }
 .sub-main {
   background-color: var(--reddit_grey);
-  
+  display: flex;
+}
+.header-title {
+color: var(--offwhite);
+font-weight: 400;
+font-size: 1.35rem;
+}
+.header-board {
+  color: var(--offwhite);
+  font-weight: 300;
 }
