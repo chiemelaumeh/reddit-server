@@ -2,6 +2,8 @@ import "./style.css";
 import logo from "./logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsBell } from "react-icons/bs";
+import { BsChatDots } from "react-icons/bs";
+import { HiOutlinePlus } from "react-icons/hi";
 
 function App() {
   return (
@@ -9,8 +11,7 @@ function App() {
       <header className="header">
         <div className="sub-header">
           <img className="logo" src={logo} alt="" />
-        </div>
-        <form className="form" action="">
+          <form className="form" action="">
           <CiSearch className="search-icon" />
 
           <input
@@ -19,7 +20,15 @@ function App() {
             placeholder="Search Reddit"
           />
         </form>
-        <BsBell className="bell-icon" />
+        
+        <button className="icon-btn"><BsBell className="icon" /></button>
+        <button className="icon-btn"><BsChatDots className="icon" /></button>
+        <button className="icon-btn"><HiOutlinePlus className="icon"/></button>
+        <button>
+          
+        </button>
+       
+        </div>
         
       </header>
     </div>

@@ -21,17 +21,20 @@ body {
   --white: #eee9e9;
 }
 .header {
-  display: flex;
-  align-items: center;
+
+  
   background-color: var(--reddit_dark);
   padding: 4px;
 }
 .sub-header {
   margin: 0 12px;
+  display: flex;
+  align-items: center;
 }
 .logo {
   width: 2rem;
   height: 2rem;
+  margin-right:12px ;
 }
 .form {
   background-color: var(--offBlack);
@@ -39,7 +42,9 @@ body {
   align-items: center;
   padding: 1px 16px;
   border-radius:5px;
-  border: 1px solid var(--reddit_lightgrey)
+  border: 1px solid var(--reddit_lightgrey);
+  flex-grow: 1;
+
 }
 .search-box {
   height: 2rem;
@@ -60,9 +65,18 @@ body {
 ::placeholder{
   font-weight: 200;
 }
-.bell-icon {
+.icon {
 
-  color: var(--reddit_lightgrey);
-  width: 1.5rem;
-  height: 1.5rem;
+  color: var(--white);
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0 8px;
+
+}
+
+.icon-btn{
+  background-color: inherit; 
+  border: none;
+  cursor: pointer;
+  padding: 0 8px ;
 }
