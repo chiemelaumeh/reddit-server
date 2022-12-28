@@ -1,0 +1,29 @@
+:root {
+  box-sizing: border-box;
+}
+body {
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+* {
+  --reddit_dark: #030303;
+  --offBlack: #272728;
+  --reddit_lightgrey: rgb(81, 79, 79);
+  --reddit_grey: rgb(38, 34, 34);
+  --white: #fff;
+  --offwhite:#d6d6d6;
+  --reddit_border:343536;
+}
+.below-header {
+
+  height: 10rem;
+  margin: auto;
+  /* object-fit: contain; */
+
+  background-image: url("https://styles.redditmedia.com/t5_2qs0q/styles/bannerBackgroundImage_7glcgg5ymxp21.png?width=4000&s=9684bc66e812b8730ad694c3f454da8c00a493d7");
+background-size: cover;
+  
+
+}
