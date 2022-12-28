@@ -10,7 +10,7 @@ body {
 * {
   --reddit_dark: #030303;
   --offBlack: #272728;
-  --reddit_lightgrey: rgb(81, 79, 79);
+  --reddit_lightgrey: rgb(128, 124, 124);
   --reddit_grey: rgb(38, 34, 34);
   --white: #fff;
   --offwhite: #d6d6d6;
@@ -42,11 +42,19 @@ body {
   display: flex;
 }
 .header-title {
-color: var(--offwhite);
-font-weight: 400;
-font-size: 1.35rem;
+  color: var(--offwhite);
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin-bottom: -5px;
+  letter-spacing: 1px;
+  
+
 }
 .header-board {
-  color: var(--offwhite);
-  font-weight: 300;
+  color: var(--reddit_lightgrey);
+  font-weight: 400;
+}
+.header-texts {
+  margin-top: -5px;
+  padding-left: 16px;
 }
