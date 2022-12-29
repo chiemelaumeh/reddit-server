@@ -1,8 +1,8 @@
 import React from "react";
 
-import logo from "../logo.png"
-import avatar from "../avatar.webp"
-// import avatar from "./avatar.webp";
+import logo from "../images/logo.png"
+import avatar from "../images/avatar.webp"
+
 import { CiSearch } from "react-icons/ci";
 import { BsBell } from "react-icons/bs";
 import { BsChatDots } from "react-icons/bs";

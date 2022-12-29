@@ -1,5 +1,5 @@
-import avatar from "../avatar.webp";
-import inputavatar from "../input-avatar.png";
+
+import inputavatar from "../images/input-avatar.png";
 const Postform = () => {
   return (
     <>
