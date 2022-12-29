@@ -29,9 +29,9 @@ p {
 .first-input {
   border: 1px solid var(--reddit_border);
   display: flex;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 8px;
-  background-color:var(--offBlack)
+  background-color: var(--offBlack);
 }
 
 .input-avatar {
@@ -40,7 +40,6 @@ p {
   height: 40px;
   border-radius: 20px;
   display: flex;
-
 }
 
 .input-avatar img {
@@ -59,7 +58,7 @@ p {
   background-color: var(--reddit_grey);
   outline: none;
   border: none;
- 
+
   padding: 1px 12px;
   border-radius: 5px;
   margin-left: 20px;
@@ -71,5 +70,4 @@ p {
 }
 ::placeholder {
   color: var(--reddit_border);
-
 }

@@ -1,10 +1,12 @@
 import "./styles/header.css";
 import "./styles/headerboard.css";
 import "./styles/postform.css";
+import "./styles/redditstory.css";
 
 import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
 import Postform from "./components/Postform";
+import Redditmain from "./components/Redditmain";
 
 function App() {
   return (
@@ -12,10 +14,7 @@ function App() {
       <Header />
       <Headerboard />
       <Postform />
-      <div>
-
-      </div>
-      
+      <Redditmain />
     </div>
   );
 }
