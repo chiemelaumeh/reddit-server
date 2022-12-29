@@ -8,13 +8,13 @@ body {
   font-family: "Roboto", sans-serif;
 }
 * {
+  --offBlack: #111;
   --reddit_dark: #030303;
-  --offBlack: #272728;
-  --reddit_lightgrey: rgb(128, 124, 124);
   --reddit_grey: rgb(38, 34, 34);
+  --reddit_midgrey: #222;
+  --reddit_lightgrey: rgb(128, 124, 124);
   --white: #fff;
   --offwhite: #d6d6d6;
-  --offwhite-darker: #d6d6d6;
   --reddit_border: #343536;
 }
 
@@ -29,7 +29,9 @@ p {
 .first-input {
   border: 1px solid var(--reddit_border);
   display: flex;
+  border-radius: 5px;
   padding: 8px;
+  background-color:var(--offBlack)
 }
 
 .input-avatar {
@@ -38,14 +40,13 @@ p {
   height: 40px;
   border-radius: 20px;
   display: flex;
+
 }
 
 .input-avatar img {
   width: 30px;
   height: 30px;
   filter: invert(100%);
-  justify-content: center;
-  align-items: center;
   padding-left: 5px;
   padding-top: 5px;
 }
@@ -55,18 +56,20 @@ p {
   flex-grow: 1;
 }
 .first-input input {
-  background-color: var(--reddit_lightgrey);
+  background-color: var(--reddit_grey);
   outline: none;
   border: none;
-  border: 1px solid var(--reddit_border);
-  padding: 11px;
+ 
+  padding: 1px 12px;
   border-radius: 5px;
   margin-left: 20px;
   color: var(--offwhite);
   display: flex;
   flex-grow: 1;
+
   /* width: 40rem; */
 }
 ::placeholder {
-  color: var(--offwhite);
+  color: var(--reddit_border);
+
 }
