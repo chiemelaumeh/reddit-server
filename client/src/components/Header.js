@@ -1,6 +1,9 @@
 import React from "react";
+import { useState } from "react";
 
 import Headerbuttons from "./Headerbuttons";
+
+import { CiUser } from "react-icons/ci";
 
 import logo from "../images/logo.png";
 import avatar from "../images/avatar.webp";
@@ -10,8 +13,19 @@ import { BsBell } from "react-icons/bs";
 import { BsChatDots } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
+import { SlLogin } from "react-icons/sl";
 
 const Header = () => {
+  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden")
+
+  const toggleDropDown = () => {
+    if (userDropDownVisibilityClass === "hidden") {
+      setUserDropDownVisibilityClass("show")
+    } else {
+      setUserDropDownVisibilityClass("hidden")
+    }
+  }
+
   return (
     <header className="header">
       <div className="sub-header">
@@ -35,13 +49,23 @@ const Header = () => {
         <button className="icon-btn">
           <HiOutlinePlus className="icon" />
         </button> */}
-      <Headerbuttons>Login </Headerbuttons>
-      <Headerbuttons>Sign Up </Headerbuttons>
 
-        <button className="avatar-btn">
-          <img src={avatar} alt="" className="avatar" />
+        <div>
+          <Headerbuttons>Log In </Headerbuttons>
+          <Headerbuttons>Sign Up </Headerbuttons>
+        </div>
+
+        <button className="avatar-btn" onClick={toggleDropDown}  >
+          {/* <img src={avatar} alt="" className="avatar" /> */}
+          <CiUser className="icon" />
           <BsChevronDown className="icon avatar-icon" />
         </button>
+        <div className={userDropDownVisibilityClass === "hidden" ? "hide-box" : " show-box"}>
+          <button href="" className="btn link-box">
+            <SlLogin className=" login-icon" />
+            Log In / Sign UP
+          </button>
+        </div>
       </div>
     </header>
   );

@@ -17,8 +17,8 @@ body {
   --reddit_lightgrey: rgb(81, 79, 79);
   --reddit_grey: rgb(38, 34, 34);
   --white: #fff;
-  --offwhite:#d6d6d6;
-  --reddit_border:#343536;
+  --offwhite: #d6d6d6;
+  --reddit_border: #343536;
 }
 .header {
   background-color: var(--reddit_dark);
@@ -28,6 +28,7 @@ body {
   margin: 0 12px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .logo {
   width: 2rem;
@@ -89,10 +90,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: var(--offBlack); */
-
+  /* background-color: var(--white); */
+  border: 1px solid var(--reddit_border);
+  padding: 6px 6px;
   background-color: inherit;
-  border: none;
+
+  border-radius: 4px;
+
   cursor: pointer;
 }
 .avatar-icon {

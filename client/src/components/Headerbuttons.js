@@ -1,13 +1,11 @@
-
-
 const Headerbuttons = (props) => {
+
+
   return (
     <>
-<button className=" header-buttons btn" {...props} />
- 
+      <button {...props} className=" btn header-buttons"  />
     </>
-
-  )
+  );
 };
 
 export default Headerbuttons;
