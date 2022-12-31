@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+
 
 import Headerbuttons from "./Headerbuttons";
 
@@ -17,6 +18,27 @@ import { SlLogin } from "react-icons/sl";
 
 const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden")
+
+  const useUserDropDown = (ref) => {
+    useEffect(() => {
+     
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          // alert("You clicked outside of me!");
+          setUserDropDownVisibilityClass("hidden")
+        }
+      }
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+  
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+
+  }
+  const userDropDownRef = useRef(null)
+  useUserDropDown(userDropDownRef)
 
   const toggleDropDown = () => {
     if (userDropDownVisibilityClass === "hidden") {
@@ -55,7 +77,7 @@ const Header = () => {
           <Headerbuttons>Sign Up </Headerbuttons>
         </div>
 
-        <button className="avatar-btn" onClick={toggleDropDown}  >
+        <button className="avatar-btn" onClick={toggleDropDown} ref={userDropDownRef}  >
           {/* <img src={avatar} alt="" className="avatar" /> */}
           <CiUser className="icon" />
           <BsChevronDown className="icon avatar-icon" />
