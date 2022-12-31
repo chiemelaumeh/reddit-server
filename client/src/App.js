@@ -2,6 +2,8 @@ import "./styles/header.css";
 import "./styles/headerboard.css";
 import "./styles/postform.css";
 import "./styles/redditstory.css";
+import "./styles/headerbuttons.css"
+
 
 import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
@@ -15,6 +17,8 @@ function App() {
       <Headerboard />
       <Postform />
       <Redditmain />
+    
+      
     </div>
   );
 }

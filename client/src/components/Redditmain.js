@@ -4,43 +4,39 @@ const Redditmain = () => {
       <div className="main-story">
         <div className="reddit-story">
           <h5> Posted by u/FranklynUmeh 13 hours ago </h5>
-          <h2>What does a mid-level fullstack portfolio look like?</h2>
+          <h2>How to Win a rook endgame</h2>
           <div>
             <p>
-              I'd really hope to never be on a team with most of the other
-              people commenting here. Hard truth: compassion and guidance are
-              more valuable in interacting with other developers, especially
-              newer developers than punching down - I'd hate to see how most of
-              you here must treat people under you I guess it's easy to forget
-              you were new at this once too. Anyway OP - there's truth to those
-              comments I'm as far as your there's more to job readiness than
-              your - however it would have been nice for some of them to answer
-              your questions as rather than try and shoot you down. It's
-              courageous of you to reach out when you are feeling unsure of
-              something regarding your skills and career, and to even ben taking
-              this on on your own - trust that these responses are NOT the only
-              measure or reflection of your progress. That being said - without
-              facing some of the curve balls and unknowns it would be really
-              hard to prove yourself as a mid-level now. I think you could shoot
-              for an entry level role now. First jobs are the hardest to land
-              though you might want to keep learning while applying. That being
-              said once you land something you show every sign up of growing to
-              mid and beyond quickly - self driven, willing to put yourself out
-              there, willing to ask questions on what you might be missing and
-              taking the initiative to fill in those blanks. In my experience
-              portfolios don't matter much - they help but not critical. Most
-              developers are working for companies building particular features
-              - being able to point to those things in the wild is cool, but
-              usually the company owns that code so you can't self host and show
-              that code anyway. But you do want to be able to speak on what you
-              know well and what your challenges have been. More places are
-              testing on some form of Data Structures and Algorithms even if the
-              role doesn't require a deep understanding of them. If you have
-              trouble landing a role an internship will prove that other people
-              have already shown faith in you and your work - that can go a long
-              way too. You may want to consider being open to frontend or
-              backend focused roles too. If you have more questions feel free to
-              dm me. I'd be happy to go into more specifics with you
+              chess, one of the oldest and most popular board games, played by
+              two opponents on a checkered board with specially designed pieces
+              of contrasting colours, commonly white and black. White moves
+              first, after which the players alternate turns in accordance with
+              fixed rules, each player attempting to force the opponent’s
+              principal piece, the King, into checkmate—a position where it is
+              unable to avoid capture. Chess first appeared in India about the
+              6th century AD and by the 10th century had spread from Asia to the
+              Middle East and Europe. Since at least the 15th century, chess has
+              been known as the “royal game” because of its popularity among the
+              nobility. Rules and set design slowly evolved until both reached
+              today’s standard in the early 19th century. Once an intellectual
+              diversion favoured by the upper classes, chess went through an
+              explosive growth in interest during the 20th century as
+              professional and state-sponsored players competed for an
+              officially recognized world championship title and increasingly
+              lucrative tournament prizes. Organized chess tournaments, postal
+              correspondence games, and Internet chess now attract men, women,
+              and children around the world. This article provides an in-depth
+              review of the history and the theory of the game by noted author
+              and international grandmaster Andrew Soltis. For a chronological
+              list of world champions since the mid-19th century, featuring
+              direct links to biographical articles, see the table of world
+              chess champions. Chess is played on a board of 64 squares arranged
+              in eight vertical rows called files and eight horizontal rows
+              called ranks. These squares alternate between two colours: one
+              light, such as white, beige, or yellow; and the other dark, such
+              as black or green. The board is set between the two opponents so
+              that each player has a light-coloured square at the right-hand
+              corner.
             </p>
           </div>
         </div>

@@ -1,7 +1,9 @@
 import React from "react";
 
-import logo from "../images/logo.png"
-import avatar from "../images/avatar.webp"
+import Headerbuttons from "./Headerbuttons";
+
+import logo from "../images/logo.png";
+import avatar from "../images/avatar.webp";
 
 import { CiSearch } from "react-icons/ci";
 import { BsBell } from "react-icons/bs";
@@ -24,7 +26,7 @@ const Header = () => {
           />
         </form>
 
-        <button className="icon-btn">
+        {/* <button className="icon-btn">
           <BsBell className="icon" />
         </button>
         <button className="icon-btn">
@@ -32,7 +34,10 @@ const Header = () => {
         </button>
         <button className="icon-btn">
           <HiOutlinePlus className="icon" />
-        </button>
+        </button> */}
+      <Headerbuttons>Login </Headerbuttons>
+      <Headerbuttons>Sign Up </Headerbuttons>
+
         <button className="avatar-btn">
           <img src={avatar} alt="" className="avatar" />
           <BsChevronDown className="icon avatar-icon" />
