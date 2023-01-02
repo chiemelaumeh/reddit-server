@@ -58,3 +58,16 @@ body {
   margin-top: -5px;
   padding-left: 16px;
 }
+
+.login-div {
+  margin: 0 8px;
+display: none;
+}
+
+@media screen and (min-width: 728px) {
+
+  .login-div {
+    display: block;
+  }
+}
+

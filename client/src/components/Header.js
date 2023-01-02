@@ -73,7 +73,7 @@ const Header = () => {
           <HiOutlinePlus className="icon" />
         </button> */}
 
-        <div>
+        <div className="login-div">
           <Headerbuttons>Log In </Headerbuttons>
           <Headerbuttons>Sign Up </Headerbuttons>
         </div>
