@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
 import Postform from "./components/Postform";
 import Redditmain from "./components/Redditmain";
+import Authmodal from "./components/Authmodal";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Header />
       <Headerboard />
       <Postform />
+      <Authmodal />
       <Redditmain />
     
       
