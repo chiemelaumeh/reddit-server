@@ -6,12 +6,18 @@ const Authmodal = () => {
     <div className="auth-page">
       <div className="auth-sub">
         <h1>Login</h1>
-
-        <div >
+        <label>
+          <span>Username: </span>
           <Input type="text" />
+        </label>
+        <label>
+        <span>Password: </span>
 
           <Input type="password" />
-        </div>
+
+        </label>
+
+      
 
         <Headerbuttons>Login</Headerbuttons>
       </div>

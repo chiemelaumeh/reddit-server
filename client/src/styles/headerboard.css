@@ -88,7 +88,7 @@ body {
 }
 .auth-sub h1 {
   margin: 0;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 .auth-sub input {
   margin-bottom: 8px;
@@ -100,8 +100,13 @@ body {
   border-radius: 4px;
   display: block;
 }
+.auth-sub span {
+  color: var(--reddit_lightgrey)
+}
 .auth-sub button {
-  width: 100%;
+  width: 105%;
+  border-radius: 4px;
+  margin:8px auto;
 }
 /* .auth-sub input:nth-child(2) {
   margin-bottom: 8px;
