@@ -1,15 +1,23 @@
-
+import Headerbuttons from "./Headerbuttons";
+import Input from "./Input";
 
 const Authmodal = () => {
   return (
     <div className="auth-page">
       <div className="auth-sub">
-       <h1>Login</h1>
-       <input type="text" />
-       <input type="password" />
+        <h1>Login</h1>
+
+        <div >
+          <Input type="text" />
+        </div>
+        <div>
+
+        <Input type="password" />
+        </div>
+        <Headerbuttons>Login</Headerbuttons>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Authmodal
+export default Authmodal;
