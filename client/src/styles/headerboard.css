@@ -62,12 +62,6 @@ body {
   display: none;
 }
 
-@media screen and (min-width: 499px) {
-  .login-div {
-    display: block;
-  }
-}
-
 .auth-page {
   height: 100vh;
   width: 100%;
@@ -105,11 +99,31 @@ body {
   border: var(--reddit_dark);
   border-radius: 4px;
   display: block;
-  
 }
 .auth-sub button {
-  width: 100%
+  width: 100%;
 }
 /* .auth-sub input:nth-child(2) {
   margin-bottom: 8px;
 } */
+
+@media screen and (min-width: 600px) {
+  .login-div {
+    display: block;
+  }
+}
+@media screen and (min-width: 600px) {
+  .auth-sub {
+    width: 35%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .auth-sub {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .auth-sub {
+    width: 20%;
+  }
+}
