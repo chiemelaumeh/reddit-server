@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 
 import Headerbuttons from "./Headerbuttons";
+import OutsideClickHandler from 'react-outside-click-handler';
 
 import { CiUser } from "react-icons/ci";
 
@@ -77,11 +78,15 @@ const Header = () => {
           <Headerbuttons>Sign Up </Headerbuttons>
         </div>
 
-        <button className="avatar-btn"  >
+       <OutsideClickHandler onOutsideClick={() => setUserDropDownVisibilityClass("hidden")} >
+
+        <button className="avatar-btn" onClick={toggleDropDown}  >
           {/* <img src={avatar} alt="" className="avatar" /> */}
           <CiUser className="icon" />
           <BsChevronDown className="icon avatar-icon" />
         </button>
+        </OutsideClickHandler> 
+          
         <div className={userDropDownVisibilityClass === "hidden" ? "hide-box" : " show-box"}>
           <button href="" className="btn link-box">
             <SlLogin className=" login-icon" />
