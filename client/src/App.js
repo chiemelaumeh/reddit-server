@@ -15,9 +15,9 @@ function App() {
   return (
     <div>
       <Header />
+      <Authmodal />
       <Headerboard />
       <Postform />
-      <Authmodal />
       <Redditmain />
     
       
