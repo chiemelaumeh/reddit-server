@@ -11,15 +11,14 @@ const Authmodal = () => {
           <Input type="text" />
         </label>
         <label>
-        <span>Password: </span>
+          <span>Password: </span>
 
           <Input type="password" />
-
         </label>
-
-      
-
         <Headerbuttons>Login</Headerbuttons>
+        <div>
+          New to Reddit? <button>SIGN UP</button>
+        </div>
       </div>
     </div>
   );
