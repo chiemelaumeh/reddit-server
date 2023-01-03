@@ -26,6 +26,7 @@ const db = mongoose.connection;
 db.on("error", console.log);
 
 const app = express();
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
@@ -39,8 +40,9 @@ app.get("/", (req, res) => {
   res.send("ok");
 });
 
-app.post("register", (req, res) => {
-  const {email, password, username} = req.body
+app.post("/register", (req, res) => {
+  const { email, username, password } = req.body;
+  res.send(email);
 });
 
 app.listen(4000, () => {
