@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import cors from "cors";
+import bcrypt from "bcrypt"
 
 // app.use(cors());
 // // allowing cors
@@ -42,7 +43,7 @@ app.get("/", (req, res) => {
 
 app.post("/register", (req, res) => {
   const { email, username, password } = req.body;
-  res.send(email);
+const hashedPassword = bcrypt.hashSync(password, 10)
 });
 
 app.listen(4000, () => {
