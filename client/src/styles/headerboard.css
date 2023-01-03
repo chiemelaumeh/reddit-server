@@ -99,6 +99,7 @@ body {
   border: var(--reddit_dark);
   border-radius: 4px;
   display: block;
+  color:var(--offwhite)
 }
 .auth-sub span {
   color: var(--reddit_lightgrey);

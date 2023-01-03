@@ -4,6 +4,9 @@ import { useState } from "react";
 
 const Authmodal = () => {
   const [modalType, setModalType] = useState("login");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div className="auth-page">
       <div className="auth-sub">
@@ -12,17 +15,26 @@ const Authmodal = () => {
         {modalType === "register" && (
           <label>
             <span>E-mail: </span>
-            <Input type="email" />
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </label>
         )}
         <label>
           <span>Username: </span>
-          <Input type="text" />
+          <Input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </label>
         <label>
           <span>Password: </span>
 
-          <Input type="password" />
+          <Input type="password"  value={password}
+              onChange={(e) => setPassword(e.target.value)}/>
         </label>
         <Headerbuttons>
           {modalType === "login" ? "Log in" : "Sign Up"}
