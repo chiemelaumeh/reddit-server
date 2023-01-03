@@ -1,12 +1,20 @@
 import Headerbuttons from "./Headerbuttons";
 import Input from "./Input";
 import { useState } from "react";
+import axios from 'axios'
 
 const Authmodal = () => {
   const [modalType, setModalType] = useState("login");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  function register(e) {
+    e.preventDefault()
+    //axios.post()
+
+  }
+
   return (
     <div className="auth-page">
       <div className="auth-sub">
@@ -33,12 +41,14 @@ const Authmodal = () => {
         <label>
           <span>Password: </span>
 
-          <Input type="password"  value={password}
-              onChange={(e) => setPassword(e.target.value)}/>
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
-        <Headerbuttons>
-          {modalType === "login" ? "Log in" : "Sign Up"}
-        </Headerbuttons>
+        {modalType === "login" && <Headerbuttons>Log In</Headerbuttons>}
+        {modalType === "register" && <Headerbuttons onClick={e => register(e)}>Sign Up</Headerbuttons>}
         {modalType === "login" && (
           <div className="login-state">
             <p className="login-p-1">New to Reddit?</p>
