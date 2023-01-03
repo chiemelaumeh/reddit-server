@@ -101,17 +101,34 @@ body {
   display: block;
 }
 .auth-sub span {
-  color: var(--reddit_lightgrey)
+  color: var(--reddit_lightgrey);
 }
 .auth-sub button {
   width: 105%;
   border-radius: 4px;
-  margin:8px auto;
+  margin: 8px auto;
+  border: none;
+}
+.login-p-1 {
+  margin-left: 2rem;
+}
+.login-p-2 {
+  margin-left: 2rem;
+}
+.auth-sub button:nth-child(2) {
+  background-color: var(--reddit_dark);
+  color: rgb(161, 37, 37);
+  width: 5rem;
 }
 /* .auth-sub input:nth-child(2) {
   margin-bottom: 8px;
 } */
-
+.login-state {
+  display: flex;
+  /* align-items:center; */
+  /* justify-content:center; */
+  width: 100%;
+}
 @media screen and (min-width: 600px) {
   .login-div {
     display: block;
