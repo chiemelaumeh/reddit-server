@@ -3,7 +3,9 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import cors from "cors";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
+import User from "./models/User.js";
 
 // app.use(cors());
 // // allowing cors
@@ -32,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "localhost:3000",
+    origin: 'http://localhost:3000',
     credentials: true,
   })
 );
@@ -41,9 +43,29 @@ app.get("/", (req, res) => {
   res.send("ok");
 });
 
-app.post("/register", (req, res) => {
-  const { email, username, password } = req.body;
-const hashedPassword = bcrypt.hashSync(password, 10)
+app.post("/register", async (req, res) => {
+  const { email, username } = req.body;
+  const password = bcrypt.hashSync(req.body.password, 10);
+  // const password = bcrypt.genSalt(10, function(err, salt) {
+  //   bcrypt.hash(req.body.password, salt, function(err, hash) {
+  //             // Store hash in database here
+  //    });
+  // });
+  const user = new User({
+    email,
+    username,
+    password,
+  });
+  try {
+  //  const info = await user.save()
+  //  console.log(info)
+  //   res.status(500)
+    res.send("hit")
+ 
+  } catch (error) {
+    console.error(error.message);
+    res.status(500);
+  }
 });
 
 app.listen(4000, () => {
