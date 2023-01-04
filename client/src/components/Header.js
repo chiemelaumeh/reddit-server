@@ -1,9 +1,10 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useContext } from "react";
 
 
 import Headerbuttons from "./Headerbuttons";
 import OutsideClickHandler from 'react-outside-click-handler';
+import AuthModalContext from "../context/AuthModalContext";
 
 import { CiUser } from "react-icons/ci";
 
@@ -19,6 +20,7 @@ import { SlLogin } from "react-icons/sl";
 
 const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden")
+  const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
 
   // const useUserDropDown = (ref) => {
   //   useEffect(() => {
@@ -42,6 +44,7 @@ const Header = () => {
   // useUserDropDown(userDropDownRef)
 
   const toggleDropDown = () => {
+    console.log("this")
     if (userDropDownVisibilityClass === "hidden") {
       setUserDropDownVisibilityClass("show")
     } else {
@@ -87,7 +90,7 @@ const Header = () => {
         </button>
         </OutsideClickHandler> 
           
-        <div className={userDropDownVisibilityClass === "hidden" ? "hide-box" : " show-box"}>
+        <div onClick={()=>setModalVisibility(true)}  className={userDropDownVisibilityClass === "hidden" ? "hide-box" : " show-box" }>
           <button href="" className="btn link-box">
             <SlLogin className=" login-icon" />
             Log In / Sign UP

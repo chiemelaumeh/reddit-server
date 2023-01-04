@@ -73,6 +73,9 @@ body {
   display: flex;
   position: fixed;
 }
+.hide-auth-page{
+  display: none;
+}
 .auth-sub {
   background-color: var(--reddit_dark);
   padding: 10px 20px;
