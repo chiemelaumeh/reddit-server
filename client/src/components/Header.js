@@ -1,40 +1,40 @@
 import React from "react";
 import { useState, useContext } from "react";
 
-
 import Headerbuttons from "./Headerbuttons";
-import OutsideClickHandler from 'react-outside-click-handler';
+import OutsideClickHandler from "react-outside-click-handler";
 import AuthModalContext from "../context/AuthModalContext";
 
 import { CiUser } from "react-icons/ci";
 
 import logo from "../images/logo.png";
-import avatar from "../images/avatar.webp";
+// import avatar from "../images/avatar.webp";
 
 import { CiSearch } from "react-icons/ci";
-import { BsBell } from "react-icons/bs";
-import { BsChatDots } from "react-icons/bs";
-import { HiOutlinePlus } from "react-icons/hi";
+// import { BsBell } from "react-icons/bs";
+// import { BsChatDots } from "react-icons/bs";
+// import { HiOutlinePlus } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 
 const Header = () => {
-  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden")
+  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
+    useState("hidden");
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
 
   // const useUserDropDown = (ref) => {
   //   useEffect(() => {
-     
+
   //     function handleClickOutside(event) {
   //       if (ref.current && !ref.current.contains(event.target)) {
   //         // alert("You clicked outside of me!");
   //         setUserDropDownVisibilityClass("hidden")
   //       }
   //     }
-  
+
   //     document.addEventListener("mousedown", handleClickOutside);
   //     return () => {
-  
+
   //       document.removeEventListener("mousedown", handleClickOutside);
   //     };
   //   }, [ref]);
@@ -44,13 +44,12 @@ const Header = () => {
   // useUserDropDown(userDropDownRef)
 
   const toggleDropDown = () => {
-    console.log("this")
     if (userDropDownVisibilityClass === "hidden") {
-      setUserDropDownVisibilityClass("show")
+      setUserDropDownVisibilityClass("show");
     } else {
-      setUserDropDownVisibilityClass("hidden")
+      setUserDropDownVisibilityClass("hidden");
     }
-  }
+  };
 
   return (
     <header className="header">
@@ -77,20 +76,38 @@ const Header = () => {
         </button> */}
 
         <div className="login-div">
-          <Headerbuttons>Log In </Headerbuttons>
-          <Headerbuttons>Sign Up </Headerbuttons>
+          <Headerbuttons
+            onClick={() => {
+              setModalVisibility(true);
+            }}
+          >
+            Log In{" "}
+          </Headerbuttons>
+          <Headerbuttons
+            onClick={() => {
+              setModalVisibility(true);
+            }}
+          >
+            Sign Up{" "}
+          </Headerbuttons>
         </div>
 
-       <OutsideClickHandler onOutsideClick={() => setUserDropDownVisibilityClass("hidden")} >
+        <OutsideClickHandler
+          onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
+        >
+          <button className="avatar-btn" onClick={toggleDropDown}>
+            {/* <img src={avatar} alt="" className="avatar" /> */}
+            <CiUser className="icon" />
+            <BsChevronDown className="icon avatar-icon" />
+          </button>
+        </OutsideClickHandler>
 
-        <button className="avatar-btn" onClick={toggleDropDown}  >
-          {/* <img src={avatar} alt="" className="avatar" /> */}
-          <CiUser className="icon" />
-          <BsChevronDown className="icon avatar-icon" />
-        </button>
-        </OutsideClickHandler> 
-          
-        <div onClick={()=>setModalVisibility(true)}  className={userDropDownVisibilityClass === "hidden" ? "hide-box" : " show-box" }>
+        <div
+          onClick={() => setModalVisibility(true)}
+          className={
+            userDropDownVisibilityClass === "hidden" ? "hide-box" : " show-box"
+          }
+        >
           <button href="" className="btn link-box">
             <SlLogin className=" login-icon" />
             Log In / Sign UP

@@ -16,7 +16,7 @@ const Authmodal = () => {
   // console.log(visibleClass)
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
-  console.log(modalVisibility);
+  // console.log(modalVisibility);
   async function register(e) {
     e.preventDefault();
     const data = { email, username, password };
@@ -24,10 +24,9 @@ const Authmodal = () => {
       const res = await axios.post("http://localhost:4000/register", data, {
         withCredentials: true,
       });
-      console.log(res);
-      console.log("hey");
-    } catch (error) {
-      console.log(error.error);
+      console.log(res)
+    } catch (err) {
+      console.error(err.message);
     }
   }
 

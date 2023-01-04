@@ -14,7 +14,6 @@ import { AuthModalProvider } from "./context/AuthModalContext";
 function App() {
   return (
     <AuthModalProvider>
-    
         <Header />
         <Authmodal />
         <Headerboard />
