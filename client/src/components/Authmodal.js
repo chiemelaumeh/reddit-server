@@ -33,7 +33,7 @@ const Authmodal = () => {
 
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
-      {/* <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}> */}
+      <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
         <div className="auth-sub">
           {modalType === "login" && <h1>Login</h1>}
           {modalType === "register" && <h1>Register</h1>}
@@ -85,7 +85,7 @@ const Authmodal = () => {
             </div>
           )}
         </div>
-      {/* </OutsideClickHandler> */}
+      </OutsideClickHandler>
     </div>
   );
 };
