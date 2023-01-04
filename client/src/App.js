@@ -10,16 +10,18 @@ import Postform from "./components/Postform";
 import Redditmain from "./components/Redditmain";
 import Authmodal from "./components/Authmodal";
 import { AuthModalProvider } from "./context/AuthModalContext";
+import { ModalProvider } from "./context/ModalContext";
 
 function App() {
   return (
     <AuthModalProvider>
+      <ModalProvider>
         <Header />
         <Authmodal />
         <Headerboard />
         <Postform />
         <Redditmain />
-  
+      </ModalProvider>
     </AuthModalProvider>
   );
 }

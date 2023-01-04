@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import Headerbuttons from "./Headerbuttons";
 import OutsideClickHandler from "react-outside-click-handler";
 import AuthModalContext from "../context/AuthModalContext";
+import ModalContext from "../context/ModalContext";
 
 import { CiUser } from "react-icons/ci";
 
@@ -21,6 +22,7 @@ const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
     useState("hidden");
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
+  const { modalType, setModalType } = useContext(ModalContext);
 
   // const useUserDropDown = (ref) => {
   //   useEffect(() => {
@@ -42,7 +44,16 @@ const Header = () => {
   // }
   // const userDropDownRef = useRef(null)
   // useUserDropDown(userDropDownRef)
+  const handleLogin = ()=> {
+    setModalVisibility(true);
+    setModalType("login");
+  }
 
+  const handleSignUp = () => {
+    setModalVisibility(true);
+    setModalType("register");
+  };
+  
   const toggleDropDown = () => {
     if (userDropDownVisibilityClass === "hidden") {
       setUserDropDownVisibilityClass("show");
@@ -77,19 +88,11 @@ const Header = () => {
 
         <div className="login-div">
           <Headerbuttons
-            onClick={() => {
-              setModalVisibility(true);
-            }}
+            onClick={handleLogin}
           >
             Log In{" "}
           </Headerbuttons>
-          <Headerbuttons
-            onClick={() => {
-              setModalVisibility(true);
-            }}
-          >
-            Sign Up{" "}
-          </Headerbuttons>
+          <Headerbuttons onClick={handleSignUp}>Sign Up </Headerbuttons>
         </div>
 
         <OutsideClickHandler

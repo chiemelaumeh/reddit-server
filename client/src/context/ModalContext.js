@@ -1,7 +1,7 @@
 import { useState, createContext } from "react";
 
 const ModalContext = createContext();
-export const ModalContextProvider = ({ children }) => {
+export const ModalProvider = ({ children }) => {
   const [modalType, setModalType] = useState("login");
 
   return (

@@ -4,9 +4,10 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import AuthModalContext from "../context/AuthModalContext";
 import OutsideClickHandler from "react-outside-click-handler";
+import ModalContext from "../context/ModalContext";
 
 const Authmodal = () => {
-  const [modalType, setModalType] = useState("login");
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +17,7 @@ const Authmodal = () => {
   // console.log(visibleClass)
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
+  const {modalType, setModalType} = useContext(ModalContext)
   // console.log(modalVisibility);
   async function register(e) {
     e.preventDefault();
