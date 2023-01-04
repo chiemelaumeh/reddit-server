@@ -42,31 +42,53 @@ app.post("/register", async (req, res) => {
   //             // Store hash in database here
   //    });
   // });
- 
-  const user = new User({
-    email,
-    username,
-    password,
-  });
- 
-  try {
-    const info = await user.save();
-    console.log(info)
-    res.status(201);
-    res.send("Connection sucessful");
-    jwt.sign({ id: user._id }, secret, (err, token) => {
-      if (err) {
-        console.log(err);
-        res.status(500);
-      } else {
-        res.status(201).cookie("token", token).send();
-      }
+  const createUser = async () => {
+    const user = new User({
+      email,
+      username,
+      password,
     });
-   
-  } catch (error) {
-    console.error(error.message);
-    res.status(500);
-  }
+
+    try {
+      const info = await user.save();
+      console.log(info);
+      res.status(201);
+      res.send("Connection sucessful");
+      jwt.sign({ id: user._id }, secret, (err, token) => {
+        if (err) {
+          console.log(err);
+          res.status(500);
+        } else {
+          res.status(201).cookie("token", token).send();
+          console.log(token);
+        }
+      });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500);
+    }
+  };
+  createUser();
+});
+
+app.get("/user", (req, res) => {
+  const token = req.cookies.token;
+
+  jwt.decode(token, secret, function (err, id) {
+    if(err) {
+      console.log(err)
+      res.status(500)
+    } else {
+
+      User.findById(id);
+      try {
+        res.json(user);
+      } catch (err) {
+        console.error(err.message);
+        res.sendStatus(500);
+      }
+    }
+  });
 });
 
 app.listen(4000, () => {
