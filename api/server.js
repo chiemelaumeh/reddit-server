@@ -43,52 +43,59 @@ app.post("/register", async (req, res) => {
   //    });
   // });
 
-  const user = new User({
-    email,
-    username,
-    password,
-  });
-
-  try {
-    const info = await user.save();
-    console.log(info);
-    res.status(201).send("Connection sucessful");
-
-    const token = jwt.sign({ id: user._id }, secret);
-    if (err) {
-      console.log(err);
-      res.status(500);
-    } else {
-      console.log(token);
-      res.setHeader("Set-Cookie", token);
-    }
-  } catch (error) {
-    console.error(error.message);
-    res.status(500);
-  }
-});
-
-app.get("/user", (req, res) => {
-  const token = req.cookies.token;
-  console.log({ token });
-
-  // return;
-
-  const id = jwt.verify(token, secret (err, decode));
-  if (err) {
-    console.log(err);
-    res.status(500);
-  } else {
-    User.findById(id);
+  const createUser = async () => {
+    const user = new User({
+      email,
+      username,
+      password,
+    });
     try {
-      res.json(user);
-    } catch (err) {
-      console.error(err.message);
-      res.sendStatus(500);
+      const info = await user.save();
+      console.log(info);
+      res.status(201);
+
+      jwt.sign({ id: user._id }, secret, (err, token) => {
+        if (err) {
+          console.log(err);
+          res.status(500);
+        } else {
+          console.log(token)
+          res.status(201).cookie("token", token).send();
+        }
+      });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500);
     }
-  }
+  };
+
+  createUser();
 });
 
+// app.get("/user", (req, res) => {
+//   const token = req.cookies.token;
+//   console.log({ token });
+
+//   // return;
+
+//   const id = jwt.verify(token, secret (err, decode));
+//   if (err) {
+//     console.log(err);
+//     res.status(500);
+//   } else {
+//     User.findById(id);
+//     try {
+//       res.json(user);
+//     } catch (err) {
+//       console.error(err.message);
+//       res.sendStatus(500);
+//     }
+//   }
+// });
+const removeUsers = async () => {
+  await User.deleteMany({});
+};
+//  removeUsers()
 app.listen(4000, () => {
   console.log("Listening on Port 4000");
 });
