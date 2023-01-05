@@ -9,34 +9,35 @@ import Headerboard from "./components/Headerboard";
 import Postform from "./components/Postform";
 import Redditmain from "./components/Redditmain";
 import Authmodal from "./components/Authmodal";
+import UserContext from "./context/UserContext";
+import AuthModalContext from "./context/AuthModalContext";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
+// import { UserProvider } from "./context/UserContext";
 import axios from "axios";
-import UserContext, { UserProvider } from "./context/UserContext";
 
 import { useState, useEffect, useContext } from "react";
-import { response } from "express";
 
 function App() {
-  const { user, setUser } = useContext(UserContext);
-
+  const [user, setUser] = useState({});
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/user", { withCredentials: true })
-      .then((response) => setUser(response.data));
+    axios.get("http://localhost:4000/user", { withCredentials: true })
+    .then((response) => setUser(response.data));
   }, []);
 
   return (
     <AuthModalProvider>
-      <UserProvider>
-        <ModalProvider>
-          <Header />
-          <Authmodal />
-          <Headerboard />
-          <Postform />
-          <Redditmain />
-        </ModalProvider>
-      </UserProvider>
+      {/* <UserProvider> */}
+        <UserContext.Provider value={user}>
+          <ModalProvider>
+            <Header />
+            <Authmodal />
+            <Headerboard />
+            <Postform />
+            <Redditmain />
+          </ModalProvider>
+        </UserContext.Provider>
+      {/* </UserProvider> */}
     </AuthModalProvider>
   );
 }

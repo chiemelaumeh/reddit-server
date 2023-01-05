@@ -1,59 +1,34 @@
 import React from "react";
 import { useState, useContext } from "react";
-
 import Headerbuttons from "./Headerbuttons";
 import OutsideClickHandler from "react-outside-click-handler";
 import AuthModalContext from "../context/AuthModalContext";
 import ModalContext from "../context/ModalContext";
-
 import { CiUser } from "react-icons/ci";
-
 import logo from "../images/logo.png";
-// import avatar from "../images/avatar.webp";
-
 import { CiSearch } from "react-icons/ci";
-// import { BsBell } from "react-icons/bs";
-// import { BsChatDots } from "react-icons/bs";
-// import { HiOutlinePlus } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
+import UserContext from "../context/UserContext";
+import avatar from "../images/avatar.jpg";
 
 const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
     useState("hidden");
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
+  const user = useContext(UserContext);
 
-  // const useUserDropDown = (ref) => {
-  //   useEffect(() => {
-
-  //     function handleClickOutside(event) {
-  //       if (ref.current && !ref.current.contains(event.target)) {
-  //         // alert("You clicked outside of me!");
-  //         setUserDropDownVisibilityClass("hidden")
-  //       }
-  //     }
-
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     return () => {
-
-  //       document.removeEventListener("mousedown", handleClickOutside);
-  //     };
-  //   }, [ref]);
-
-  // }
-  // const userDropDownRef = useRef(null)
-  // useUserDropDown(userDropDownRef)
-  const handleLogin = ()=> {
+  const handleLogin = () => {
     setModalVisibility(true);
     setModalType("login");
-  }
+  };
 
   const handleSignUp = () => {
     setModalVisibility(true);
     setModalType("register");
   };
-  
+
   const toggleDropDown = () => {
     if (userDropDownVisibilityClass === "hidden") {
       setUserDropDownVisibilityClass("show");
@@ -87,11 +62,7 @@ const Header = () => {
         </button> */}
 
         <div className="login-div">
-          <Headerbuttons
-            onClick={handleLogin}
-          >
-            Log In{" "}
-          </Headerbuttons>
+          <Headerbuttons onClick={handleLogin}>Log In </Headerbuttons>
           <Headerbuttons onClick={handleSignUp}>Sign Up </Headerbuttons>
         </div>
 
@@ -99,9 +70,18 @@ const Header = () => {
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
         >
           <button className="avatar-btn" onClick={toggleDropDown}>
-            {/* <img src={avatar} alt="" className="avatar" /> */}
-            <CiUser className="icon" />
-            <BsChevronDown className="icon avatar-icon" />
+            {!user.username && (
+
+              <CiUser className="icon" />
+            )}
+            
+
+            {user.username && (
+              <>
+                <img src={avatar} alt="" className="avatar" />
+                <BsChevronDown className="icon avatar-icon" />
+              </>
+            )}
           </button>
         </OutsideClickHandler>
 
@@ -122,3 +102,24 @@ const Header = () => {
 };
 
 export default Header;
+
+// const useUserDropDown = (ref) => {
+//   useEffect(() => {
+
+//     function handleClickOutside(event) {
+//       if (ref.current && !ref.current.contains(event.target)) {
+//         // alert("You clicked outside of me!");
+//         setUserDropDownVisibilityClass("hidden")
+//       }
+//     }
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [ref]);
+
+// }
+// const userDropDownRef = useRef(null)
+// useUserDropDown(userDropDownRef)
