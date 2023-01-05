@@ -60,6 +60,9 @@ body {
 .login-div {
   margin: 0 8px;
   display: none;
+  /* background-color: #fff;
+  display: flex;
+  flex-direction: row; */
 }
 
 .auth-page {
