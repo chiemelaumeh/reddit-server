@@ -16,10 +16,9 @@ import axios from "axios";
 import { useEffect } from "react";
 
 function App() {
-  useEffect(() => {
-    axios.get("http://localhost:4000/user", { withCredentials: true });
-    console.log("yo");
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:4000/user", { withCredentials: true });
+  // }, []);
 
   return (
     <AuthModalProvider>

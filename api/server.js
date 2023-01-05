@@ -43,69 +43,50 @@ app.post("/register", async (req, res) => {
   //    });
   // });
 
-    const user = new User({
-      email,
-      username,
-      password
-    });
+  const user = new User({
+    email,
+    username,
+    password,
+  });
 
-    try {
-      const info = await user.save();
-      console.log(info);
-      res.status(201).send("Connection sucessful");
-      
-      jwt.sign({ id: user._id }, secret, (err, token) => {
-        if (err) {
-          console.log(err);
-          res.status(500);
-        } else {
-          console.log(token)
-           res.status(201).cookie("token", token,).send();
-        }
-      });
-    } catch (error) {
-      console.error(error.message);
+  try {
+    const info = await user.save();
+    console.log(info);
+    res.status(201).send("Connection sucessful");
+
+    const token = jwt.sign({ id: user._id }, secret);
+    if (err) {
+      console.log(err);
       res.status(500);
-
+    } else {
+      console.log(token);
+      res.setHeader("Set-Cookie", token);
     }
- 
+  } catch (error) {
+    console.error(error.message);
+    res.status(500);
+  }
 });
 
 app.get("/user", (req, res) => {
-  const token = req.cookies["token"];
+  const token = req.cookies.token;
   console.log({ token });
 
   // return;
-   
-  res.send(token)
-  jwt.decode(token, secret, function (err, id) {
-    // if (err) {
-    //   console.log(err);
-    //   res.status(500);
-    // } else {
-    //   User.findById(id);
-    //   try {
-    //     res.json(user);
-    //   } catch (err) {
-    //     console.error(err.message);
-    //     res.sendStatus(500);
-    //   }
-    // }
-    if (err) {
-      console.log(err);
-      res.sendStatus(500);
-    } else {
-      User.findById(id)
-        .then(user => {
-          res.json(user);
-        })
-        .catch(err => {
-          console.log(err);
 
-          res.sendStatus(500);
-        });
+  const id = jwt.verify(token, secret (err, decode));
+  if (err) {
+    console.log(err);
+    res.status(500);
+  } else {
+    User.findById(id);
+    try {
+      res.json(user);
+    } catch (err) {
+      console.error(err.message);
+      res.sendStatus(500);
     }
-  });
+  }
 });
 
 app.listen(4000, () => {
