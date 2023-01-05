@@ -59,7 +59,7 @@ app.post("/register", async (req, res) => {
           console.log(err);
           res.status(500);
         } else {
-          console.log(token)
+          console.log(token);
           res.status(201).cookie("token", token).send();
         }
       });
@@ -72,26 +72,25 @@ app.post("/register", async (req, res) => {
   createUser();
 });
 
-// app.get("/user", (req, res) => {
-//   const token = req.cookies.token;
-//   console.log({ token });
+// }
+app.get("/user", (req, res) => {
+  const token = req.cookies.token;
+  console.log({ token });
 
-//   // return;
+  const getUser = async () => {
+    try {
+      const userInfo = jwt.verify(token, secret);
+      const user = await User.findById(userInfo.id);
+      res.json({username: user.username});
+    } catch (err) {
+      // console.log("error45")
+      console.error(err.message);
+      res.status(500);
+    }
+  };
 
-//   const id = jwt.verify(token, secret (err, decode));
-//   if (err) {
-//     console.log(err);
-//     res.status(500);
-//   } else {
-//     User.findById(id);
-//     try {
-//       res.json(user);
-//     } catch (err) {
-//       console.error(err.message);
-//       res.sendStatus(500);
-//     }
-//   }
-// });
+  getUser();
+});
 const removeUsers = async () => {
   await User.deleteMany({});
 };
