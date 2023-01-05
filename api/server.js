@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:3000",
-    // methods:["GET", "POST"],
+    methods: ["GET", "POST"],
     credentials: true,
   })
 );
@@ -42,51 +42,68 @@ app.post("/register", async (req, res) => {
   //             // Store hash in database here
   //    });
   // });
-  const createUser = async () => {
+
     const user = new User({
       email,
       username,
-      password,
+      password
     });
 
     try {
       const info = await user.save();
       console.log(info);
-      res.status(201);
-      res.send("Connection sucessful");
+      res.status(201).send("Connection sucessful");
+      
       jwt.sign({ id: user._id }, secret, (err, token) => {
         if (err) {
           console.log(err);
           res.status(500);
         } else {
-          res.status(201).cookie("token", token).send();
-          console.log(token);
+          console.log(token)
+           res.status(201).cookie("token", token,).send();
         }
       });
     } catch (error) {
       console.error(error.message);
       res.status(500);
+
     }
-  };
-  createUser();
+ 
 });
 
 app.get("/user", (req, res) => {
-  const token = req.cookies.token;
+  const token = req.cookies["token"];
+  console.log({ token });
 
+  // return;
+   
+  res.send(token)
   jwt.decode(token, secret, function (err, id) {
-    if(err) {
-      console.log(err)
-      res.status(500)
+    // if (err) {
+    //   console.log(err);
+    //   res.status(500);
+    // } else {
+    //   User.findById(id);
+    //   try {
+    //     res.json(user);
+    //   } catch (err) {
+    //     console.error(err.message);
+    //     res.sendStatus(500);
+    //   }
+    // }
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
     } else {
+      User.findById(id)
+        .then(user => {
+          res.json(user);
+        })
+        .catch(err => {
+          console.log(err);
 
-      User.findById(id);
-      try {
-        res.json(user);
-      } catch (err) {
-        console.error(err.message);
-        res.sendStatus(500);
-      }
+          res.sendStatus(500);
+        });
     }
   });
 });

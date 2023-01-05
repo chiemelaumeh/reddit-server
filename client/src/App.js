@@ -11,8 +11,16 @@ import Redditmain from "./components/Redditmain";
 import Authmodal from "./components/Authmodal";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
+import axios from "axios";
+
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    axios.get("http://localhost:4000/user", { withCredentials: true });
+    console.log("yo");
+  }, []);
+
   return (
     <AuthModalProvider>
       <ModalProvider>
