@@ -12,23 +12,31 @@ import Authmodal from "./components/Authmodal";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
 import axios from "axios";
+import UserContext, { UserProvider } from "./context/UserContext";
 
-import { useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { response } from "express";
 
 function App() {
-  // useEffect(() => {
-  //   axios.get("http://localhost:4000/user", { withCredentials: true });
-  // }, []);
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/user", { withCredentials: true })
+      .then((response) => setUser(response.data));
+  }, []);
 
   return (
     <AuthModalProvider>
-      <ModalProvider>
-        <Header />
-        <Authmodal />
-        <Headerboard />
-        <Postform />
-        <Redditmain />
-      </ModalProvider>
+      <UserProvider>
+        <ModalProvider>
+          <Header />
+          <Authmodal />
+          <Headerboard />
+          <Postform />
+          <Redditmain />
+        </ModalProvider>
+      </UserProvider>
     </AuthModalProvider>
   );
 }
