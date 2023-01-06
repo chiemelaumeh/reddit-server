@@ -91,6 +91,10 @@ app.get("/user", (req, res) => {
 
   getUser();
 });
+
+app.post("/logout", (req, res) => {
+  res.cookie("token", "").send()
+})
 const removeUsers = async () => {
   await User.deleteMany({});
 };
