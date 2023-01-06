@@ -94,24 +94,24 @@ const Header = () => {
         <OutsideClickHandler
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
         >
-          <button className="avatar-btn" onClick={toggleDropDown}>
             {!user.username&& 
+          <button className="avatar-btn" onClick={toggleDropDown}>
             <>
             <CiUser className="icon" />
             <BsChevronDown className="icon avatar-icon" />
             </>
+            </button>
             }
             
 
             {user.username && (
-              <>
+            <button className="avatar-btn" onClick={toggleDropDown}>
               
                 <img src={avatar} alt="" className="avatar" />
                 <BsChevronDown className="icon avatar-icon" />
              
-              </>
+                </button>
             )}
-          </button>
           {!user.username && (
             <div
               onClick={() => setModalVisibility(true)}
@@ -131,7 +131,7 @@ const Header = () => {
             <div
 
             
-            onClick={logout}
+            
             className={
               userDropDownVisibilityClass === "hidden"
               ? "hide-box"
@@ -143,7 +143,7 @@ const Header = () => {
 
 
             </p>
-              <button href="" className="btn link-box">
+              <button onClick={logout} href="" className="btn link-box">
                 <SlLogout className=" login-icon" />
                Logout
               </button>

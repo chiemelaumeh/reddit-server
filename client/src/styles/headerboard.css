@@ -140,7 +140,7 @@ body {
 }
 .auth-sub button:nth-child(2) {
   background-color: var(--reddit_dark);
-  color: rgb(161, 37, 37);
+  color:#FF4500;
   width: 5rem;
 }
 /* .auth-sub input:nth-child(2) {

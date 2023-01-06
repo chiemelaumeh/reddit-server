@@ -51,7 +51,7 @@ flex-direction: column;
   display: none;
 }
 .show-box p {
-  padding: 10px 14px;
+  padding: 10px 32px;
   background-color: var(--reddit_midgrey);
   border-radius: 4px;
   margin-top: 0;
@@ -63,9 +63,11 @@ flex-direction: column;
   color: var(--offBlack)
 }
 .link-box {
+
   display: flex;
   justify-content: space-evenly;
-  padding: 8px 14px;
+  padding: 8px 32px;
+
   /* justify-content: space-evenly; */
   color: var(--offwhite);
 border-radius: 4px;
