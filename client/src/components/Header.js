@@ -20,8 +20,24 @@ const Header = () => {
     useState("hidden");
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
-  const user = useContext(UserContext);
+  const userContext = useContext(UserContext);
+  const user = userContext.user
 
+
+
+
+  
+  // const setUser = userContext.setUser
+  // setUser("new")
+
+
+
+
+
+
+
+
+  
   const handleLogin = () => {
     setModalVisibility(true);
     setModalType("login");
@@ -53,7 +69,7 @@ const Header = () => {
             placeholder="Search Reddit"
           />
         </form>
-        {user && (
+        {user.username && (
           <>
             <button className="icon-btn">
               <BsBell className="icon" />
@@ -66,7 +82,7 @@ const Header = () => {
             </button>
           </>
         )}
-        {!user && (
+        {!user.username && (
           <div className="login-div">
             <Headerbuttons onClick={handleLogin}>Log In </Headerbuttons>
             <Headerbuttons onClick={handleSignUp}>Sign Up </Headerbuttons>
@@ -77,7 +93,13 @@ const Header = () => {
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
         >
           <button className="avatar-btn" onClick={toggleDropDown}>
-            {!user.username && <CiUser className="icon" />}
+            {!user.username&& 
+            <>
+            <CiUser className="icon" />
+            <BsChevronDown className="icon avatar-icon" />
+            </>
+            }
+            
 
             {user.username && (
               <>
@@ -86,19 +108,38 @@ const Header = () => {
               </>
             )}
           </button>
-        </OutsideClickHandler>
+          {!user.username && (
+            <div
+              onClick={() => setModalVisibility(true)}
+              className={
+                userDropDownVisibilityClass === "hidden"
+                  ? "hide-box"
+                  : " show-box"
+              }
+            >
+              <button href="" className="btn link-box">
+                <SlLogin className=" login-icon" />
+                Log In / Sign UP
+              </button>
+            </div>
+          )}
+          {user.username && (
+            <div
+              // onClick={logout}
+              className={
+                userDropDownVisibilityClass === "hidden"
+                  ? "hide-box"
+                  : " show-box"
+              }
+            >
+              <button href="" className="btn link-box">
+                <SlLogin className=" login-icon" />
+               Logout
+              </button>
+            </div>
 
-        <div
-          onClick={() => setModalVisibility(true)}
-          className={
-            userDropDownVisibilityClass === "hidden" ? "hide-box" : " show-box"
-          }
-        >
-          <button href="" className="btn link-box">
-            <SlLogin className=" login-icon" />
-            Log In / Sign UP
-          </button>
-        </div>
+          )}
+        </OutsideClickHandler>
       </div>
     </header>
   );

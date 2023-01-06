@@ -13,22 +13,32 @@ import UserContext from "./context/UserContext";
 import AuthModalContext from "./context/AuthModalContext";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
-// import { UserProvider } from "./context/UserContext";
+
+
 import axios from "axios";
 
 import { useState, useEffect, useContext } from "react";
 
 function App() {
+
   const [user, setUser] = useState({});
   useEffect(() => {
-    axios.get("http://localhost:4000/user", { withCredentials: true })
-    .then((response) => setUser(response.data));
+    const getUser = async() => {
+
+      const response = await axios.get("http://localhost:4000/user", { withCredentials: true })
+      // .then((response) => setUser(response.data))
+     setUser(response.data)
+    }
+    getUser()
+
   }, []);
 
+  // console.log(user)
+  
   return (
     <AuthModalProvider>
       {/* <UserProvider> */}
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={{user,setUser}}>
           <ModalProvider>
             <Header />
             <Authmodal />
