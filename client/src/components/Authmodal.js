@@ -5,9 +5,9 @@ import axios from "axios";
 import AuthModalContext from "../context/AuthModalContext";
 import OutsideClickHandler from "react-outside-click-handler";
 import ModalContext from "../context/ModalContext";
+import UserContext from "../context/UserContext";
 
 const Authmodal = () => {
-
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,11 @@ const Authmodal = () => {
   // console.log(visibleClass)
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
-  const {modalType, setModalType} = useContext(ModalContext)
+  const { modalType, setModalType } = useContext(ModalContext);
+  const userContext = useContext(UserContext);
+  // console.log(userContext)
+  const setUser = userContext.setUser;
+
   // console.log(modalVisibility);
   async function register(e) {
     e.preventDefault();
@@ -26,7 +30,11 @@ const Authmodal = () => {
       const res = await axios.post("http://localhost:4000/register", data, {
         withCredentials: true,
       });
-      console.log(res)
+      await setUser({ username });
+      setEmail("");
+      setPassword("");
+
+      console.log(res);
     } catch (err) {
       console.error(err.message);
     }
@@ -67,7 +75,7 @@ const Authmodal = () => {
           </label>
           {modalType === "login" && <Headerbuttons>Log In</Headerbuttons>}
           {modalType === "register" && (
-            <Headerbuttons onClick={(e) => register(e)}>Sign Up</Headerbuttons>
+            <Headerbuttons onClick={register}>Sign Up</Headerbuttons>
           )}
           {modalType === "login" && (
             <div className="login-state">

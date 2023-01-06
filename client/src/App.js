@@ -14,39 +14,43 @@ import AuthModalContext from "./context/AuthModalContext";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
 
-
 import axios from "axios";
 
 import { useState, useEffect, useContext } from "react";
 
 function App() {
-
   const [user, setUser] = useState({});
   useEffect(() => {
-    const getUser = async() => {
-
-      const response = await axios.get("http://localhost:4000/user", { withCredentials: true })
+    const getUser = async () => {
+      const response = await axios.get("http://localhost:4000/user", {
+        withCredentials: true,
+      });
       // .then((response) => setUser(response.data))
-     setUser(response.data)
-    }
-    getUser()
-
+      setUser(response.data);
+    };
+    getUser();
   }, []);
 
+  const logout = () => {
+    axios.post("http://localhost:4000/logout", { withCredentials: true });
+    setUser({});
+    console.log("hey");
+  };
   // console.log(user)
-  
+
   return (
     <AuthModalProvider>
       {/* <UserProvider> */}
-        <UserContext.Provider value={{user,setUser}}>
-          <ModalProvider>
-            <Header />
-            <Authmodal />
-            <Headerboard />
-            <Postform />
-            <Redditmain />
-          </ModalProvider>
-        </UserContext.Provider>
+      <UserContext.Provider value={{user, setUser, logout }}>
+        <ModalProvider>
+          <Header />
+
+          <Authmodal />
+          <Headerboard />
+          <Postform />
+          <Redditmain />
+        </ModalProvider>
+      </UserContext.Provider>
       {/* </UserProvider> */}
     </AuthModalProvider>
   );

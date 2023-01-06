@@ -12,6 +12,7 @@ import logo from "../images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsChevronDown } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
+import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
 import avatar from "../images/chess.webp";
 
@@ -21,6 +22,7 @@ const Header = () => {
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
   const userContext = useContext(UserContext);
+  const logout = userContext.logout
   const user = userContext.user
 
 
@@ -70,7 +72,8 @@ const Header = () => {
           />
         </form>
         {user.username && (
-          <>
+          <> 
+          <p style={{color: "red"}}>Welcome, {user.username} </p>
             <button className="icon-btn">
               <BsBell className="icon" />
             </button>
@@ -105,6 +108,7 @@ const Header = () => {
               <>
                 <img src={avatar} alt="" className="avatar" />
                 <BsChevronDown className="icon avatar-icon" />
+             
               </>
             )}
           </button>
@@ -125,7 +129,7 @@ const Header = () => {
           )}
           {user.username && (
             <div
-              // onClick={logout}
+              onClick={logout}
               className={
                 userDropDownVisibilityClass === "hidden"
                   ? "hide-box"
@@ -133,7 +137,7 @@ const Header = () => {
               }
             >
               <button href="" className="btn link-box">
-                <SlLogin className=" login-icon" />
+                <SlLogout className=" login-icon" />
                Logout
               </button>
             </div>
