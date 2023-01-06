@@ -25,14 +25,16 @@ const Authmodal = () => {
   // console.log(modalVisibility);
   async function register(e) {
     e.preventDefault();
+    setModalVisibility(false)
+    setEmail("");
+    setPassword("");
+    setUsername("")
     const data = { email, username, password };
     try {
       const res = await axios.post("http://localhost:4000/register", data, {
         withCredentials: true,
       });
       await setUser({ username });
-      setEmail("");
-      setPassword("");
 
       console.log(res);
     } catch (err) {

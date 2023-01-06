@@ -73,7 +73,6 @@ const Header = () => {
         </form>
         {user.username && (
           <> 
-          <p style={{color: "red"}}>Welcome, {user.username} </p>
             <button className="icon-btn">
               <BsBell className="icon" />
             </button>
@@ -106,6 +105,7 @@ const Header = () => {
 
             {user.username && (
               <>
+              
                 <img src={avatar} alt="" className="avatar" />
                 <BsChevronDown className="icon avatar-icon" />
              
@@ -129,13 +129,20 @@ const Header = () => {
           )}
           {user.username && (
             <div
-              onClick={logout}
-              className={
-                userDropDownVisibilityClass === "hidden"
-                  ? "hide-box"
-                  : " show-box"
-              }
+
+            
+            onClick={logout}
+            className={
+              userDropDownVisibilityClass === "hidden"
+              ? "hide-box"
+              : " show-box"
+            }
             >
+            <p
+           >Welcome, {user.username} 
+
+
+            </p>
               <button href="" className="btn link-box">
                 <SlLogout className=" login-icon" />
                Logout

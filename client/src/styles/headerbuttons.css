@@ -37,24 +37,39 @@ body {
   right: 0px;
   top: 40px;
   color: var(--offwhite);
-  background-color: var(--reddit_border);
-  z-index: 10;
+  background-color: var(--reddit_midgrey);
+
+  /* z-index: 10; */
   border-radius: 4px;
-  overflow: hidden;
+display: flex;
+flex-direction: column;
+  /* overflow: hidden; */
   /* display: none; */
 
 }
 .hide-box {
   display: none;
 }
+.show-box p {
+  padding: 10px 14px;
+  background-color: var(--reddit_midgrey);
+  border-radius: 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color:#FF4500 ;
+}
+.show-box p:hover {
+  background-color: var(--offwhite);
+  color: var(--offBlack)
+}
 .link-box {
   display: flex;
-  padding: 8px 10px;
   justify-content: space-evenly;
+  padding: 8px 14px;
+  /* justify-content: space-evenly; */
   color: var(--offwhite);
-  text-decoration: none;
-  font-size: x-small;
-  width: 12rem;
+border-radius: 4px;
+  width:inherit;
   background-color: var(--reddit_midgrey);
 
 
