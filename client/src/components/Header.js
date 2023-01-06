@@ -14,8 +14,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
-import avatar from "../images/chess.webp";
-
+import avatar from "../images/IMG_9146.jpg";
 const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
     useState("hidden");
