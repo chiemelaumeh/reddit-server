@@ -54,12 +54,12 @@ app.post("/register", async (req, res) => {
       console.log(info);
       res.status(201);
 
-      jwt.sign({ id: user._id }, secret, (err, token) => {
+      jwt.sign({ id: user._id }, secret, { expiresIn: 10 }, (err, token) => {
         if (err) {
           console.log(err);
           res.status(500);
         } else {
-          console.log(token);
+          // console.log(token);
           res.status(201).cookie("token", token).send();
         }
       });
@@ -75,13 +75,12 @@ app.post("/register", async (req, res) => {
 // }
 app.get("/user", (req, res) => {
   const token = req.cookies.token;
-  console.log({ token });
-
   const getUser = async () => {
     try {
       const userInfo = jwt.verify(token, secret);
       const user = await User.findById(userInfo.id);
-      res.json({username: user.username});
+
+      res.json({ username: user.username });
     } catch (err) {
       // console.log("error45")
       console.error(err.message);
@@ -93,10 +92,27 @@ app.get("/user", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-  res.cookie("token", "").send()
-})
+  res.clearCookie("token", "").send();
+});
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  const findUser = async () => {
+    const user = await User.find({username});
+    console.log(user)
+    // try {
+    //   if (user.username == username) {
+
+    //   }
+    // } catch (error) {}
+  };
+  findUser();
+});
+
 const removeUsers = async () => {
+  //  const user = await User.findOne({username: "jn"});
   await User.deleteMany({});
+  //  console.log(user)
 };
 //  removeUsers()
 app.listen(4000, () => {
