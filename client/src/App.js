@@ -30,24 +30,25 @@ function App() {
     };
     getUser();
   }, []);
+  // useEffect(() => {
+    const logout = async () => {
+      await axios.get("http://localhost:4000/logout", {
+        withCredentials: true,
+      });
+      setUser({});
+    };
 
-  const logout = async () => {
-    await axios.post("http://localhost:4000/logout", { withCredentials: true });
-    setUser({});
-    console.log("hey");
-  };
+    // function runLogout() {
+    
+    // }
+    // runLogout();
+  // }, []);
   // console.log(user)
-  const login = async () => {
-    // const data = { username, password };
-    // await axios.post("http://localhost:4000/login", data, {
-    //   withCredentials: true,
-    // });
-    console.log("dcc")
-  };
+
   return (
     <AuthModalProvider>
       {/* <UserProvider> */}
-      <UserContext.Provider value={{ user, setUser, logout, logout }}>
+      <UserContext.Provider value={{ user, setUser, logout }}>
         <ModalProvider>
           <Header />
 

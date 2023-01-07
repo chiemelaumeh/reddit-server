@@ -74,11 +74,15 @@ app.post("/register", async (req, res) => {
 
 // }
 app.get("/user", (req, res) => {
-  const token = req.cookies.token;
   const getUser = async () => {
+    const token = req.cookies.token;
+    console.log(token)
+
     try {
-      const userInfo = jwt.verify(token, secret);
+      const userInfo = await jwt.verify(token, secret);
+
       const user = await User.findById(userInfo.id);
+      // res.clearCookie("token", "").send();
 
       res.json({ username: user.username });
     } catch (err) {
@@ -91,20 +95,48 @@ app.get("/user", (req, res) => {
   getUser();
 });
 
-app.post("/logout", (req, res) => {
-  res.clearCookie("token", "").send();
+app.get("/logout", (req, res) => {
+
+  const token = req.cookies.token;
+  console.log(token)
+  // try {
+  //   const userInfo =  jwt.verify(token, secret);
+  //   const user =  User.findById(userInfo.id);
+  //   // res.clearCookie("token", "").send();
+
+  //   res.json({ username: user.username });
+  // } catch (err) {
+  //   // console.log("error45")
+  //   console.error(err.message);
+  //   res.status(500);
+  // }
+
+
+        res.clearCookie("token", "").send()
 });
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const findUser = async () => {
-    const user = await User.find({username});
-    console.log(user)
-    // try {
-    //   if (user.username == username) {
-
-    //   }
-    // } catch (error) {}
+    try {
+      const user = await User.findOne({ username });
+      console.log(user);
+      if (user && user.username == username) {
+        const passOk = bcrypt.compareSync(password, user.password);
+        // res.json(passOk);
+        if (passOk) {
+          jwt.sign({ id: user._id }, secret, (err, token) => {
+            res.cookie("token", token).send();
+          });
+        } else {
+          res.status(422).json("Invalid password");
+        }
+      } else {
+        res.status(422).json("Invalid username");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   findUser();
 });

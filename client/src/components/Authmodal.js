@@ -42,6 +42,16 @@ const Authmodal = () => {
     }
   }
 
+
+  const login = async () => {
+    setModalVisibility(false)
+    const data = { username, password };
+    await axios.post("http://localhost:4000/login", data, {
+      withCredentials: true,
+    });
+
+
+  };
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
       <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
@@ -75,7 +85,7 @@ const Authmodal = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          {modalType === "login" && <Headerbuttons>Log In</Headerbuttons>}
+          {modalType === "login" && <Headerbuttons onClick={login}>Log In</Headerbuttons>}
           {modalType === "register" && (
             <Headerbuttons onClick={register}>Sign Up</Headerbuttons>
           )}

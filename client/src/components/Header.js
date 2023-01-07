@@ -35,9 +35,6 @@ const Header = () => {
 
 
 
-
-
-
   
   const handleLogin = () => {
     setModalVisibility(true);
