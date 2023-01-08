@@ -54,7 +54,7 @@ app.post("/register", async (req, res) => {
       console.log(info);
       res.status(201);
 
-      jwt.sign({ id: user._id }, secret, { expiresIn: 10 }, (err, token) => {
+      jwt.sign({ id: user._id }, secret, (err, token) => {
         if (err) {
           console.log(err);
           res.status(500);
@@ -76,7 +76,9 @@ app.post("/register", async (req, res) => {
 app.get("/user", (req, res) => {
   const getUser = async () => {
     const token = req.cookies.token;
-    console.log(token)
+    // if(token) {
+    //   console.log("valid token")
+    // }
 
     try {
       const userInfo = await jwt.verify(token, secret);
@@ -98,7 +100,7 @@ app.get("/user", (req, res) => {
 app.get("/logout", (req, res) => {
 
   const token = req.cookies.token;
-  console.log(token)
+  // console.log(token)
   // try {
   //   const userInfo =  jwt.verify(token, secret);
   //   const user =  User.findById(userInfo.id);
@@ -119,8 +121,12 @@ app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const findUser = async () => {
     try {
+     
       const user = await User.findOne({ username });
-      console.log(user);
+      if(user.username === username && user.password === password) {
+
+        console.log(user);
+      }
       if (user && user.username == username) {
         const passOk = bcrypt.compareSync(password, user.password);
         // res.json(passOk);
