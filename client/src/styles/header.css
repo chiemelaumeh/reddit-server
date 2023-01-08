@@ -76,15 +76,15 @@ body {
   padding: 0 8px;
 }
 .avatar {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 2.3rem;
   background-color: var(--offBlack);
   margin-left: -0.4rem;
 
 }
 .default-icon {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   /* background-color: var(--offBlack); */
   /* margin-left: -0.4rem; */
 }
@@ -95,7 +95,7 @@ overflow: hidden;
   border: 1px solid var(--reddit_border);
   background-color: inherit;
   width: 4.4rem;
-  height: 2.2rem;
+  height: 2.25rem;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -107,10 +107,10 @@ overflow: hidden;
   margin-right: 0.5rem
 }
 .chevron {
-  width: 3rem;
-  height: 1.75rem;
+  width: 2rem;
+  height: 1.5rem;
   color: #d6d6d6;
-  margin: 0 8px;
+  margin: 0 6px;
 
   /* margin-left: 0; */
 }
