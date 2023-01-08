@@ -82,19 +82,35 @@ body {
   margin-left: -0.4rem;
 
 }
+.default-icon {
+  width: 3rem;
+  height: 3rem;
+  /* background-color: var(--offBlack); */
+  /* margin-left: -0.4rem; */
+}
 .avatar-btn {
 overflow: hidden;
   display: flex;
   align-items: center;
   border: 1px solid var(--reddit_border);
   background-color: inherit;
-  width: 4.2rem;
-  height: 2rem;
+  width: 4.4rem;
+  height: 2.2rem;
   border-radius: 4px;
   cursor: pointer;
 }
-.avatar-icon {
-  width: 2rem;
-  height: 175rem;
+.default-chevron{
+  width: 3.5rem;
+  height: 1.75rem;
+  color: #d6d6d6;
+  /* margin: 0 1px; */
+  margin-right: 0.5rem
+}
+.chevron {
+  width: 3rem;
+  height: 1.75rem;
+  color: #d6d6d6;
+  margin: 0 8px;
+
   /* margin-left: 0; */
 }

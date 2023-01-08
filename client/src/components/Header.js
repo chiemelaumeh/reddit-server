@@ -93,8 +93,8 @@ const Header = () => {
             {!user.username&& 
           <button className="avatar-btn" onClick={toggleDropDown}>
             <>
-            <CiUser className="icon" />
-            <BsChevronDown className="icon avatar-icon" />
+            <CiUser className="icon default-icon" />
+            <BsChevronDown className="default-chevron" />
             </>
             </button>
             }
@@ -104,7 +104,7 @@ const Header = () => {
             <button className="avatar-btn" onClick={toggleDropDown}>
               
                 <img src={avatar} alt="" className="avatar" />
-                <BsChevronDown className="icon avatar-icon" />
+                <BsChevronDown className="chevron" />
              
                 </button>
             )}
