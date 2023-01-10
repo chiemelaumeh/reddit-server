@@ -147,6 +147,11 @@ app.post("/login", (req, res) => {
   findUser();
 });
 
+app.get("/posts", (req, res)=>{
+  
+})
+
+
 const removeUsers = async () => {
   //  const user = await User.findOne({username: "jn"});
   await User.deleteMany({});
