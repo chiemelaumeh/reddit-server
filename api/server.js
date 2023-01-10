@@ -6,6 +6,7 @@ import cors from "cors";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "./models/User.js";
+import Comment from "./models/Comments.js";
 const app = express();
 
 app.use(express.json());
@@ -98,7 +99,6 @@ app.get("/user", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-
   const token = req.cookies.token;
   // console.log(token)
   // try {
@@ -113,18 +113,15 @@ app.get("/logout", (req, res) => {
   //   res.status(500);
   // }
 
-
-        res.clearCookie("token", "").send()
+  res.clearCookie("token", "").send();
 });
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const findUser = async () => {
     try {
-     
       const user = await User.findOne({ username });
-      if(user.username === username && user.password === password) {
-
+      if (user.username === username && user.password === password) {
         console.log(user);
       }
       if (user && user.username == username) {
@@ -147,10 +144,14 @@ app.post("/login", (req, res) => {
   findUser();
 });
 
-app.get("/posts", (req, res)=>{
-  
-})
-
+app.get("/comments", async (req, res) => {
+  try {
+    const comments = await Comment.find({});
+     res.json(comments)
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 const removeUsers = async () => {
   //  const user = await User.findOne({username: "jn"});

@@ -20,7 +20,7 @@ import { useState, useEffect, useContext } from "react";
 
 function App() {
   const [user, setUser] = useState({});
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState([]);
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get("http://localhost:4000/user", {
@@ -31,27 +31,27 @@ function App() {
     };
     getUser();
 
-    const getComments = async ()=> {
-      const response = await axios.get("http://localhost:4000/comments", { withCredentials: true})
-      
-      setComments([response.data])
-
-    }
-    getComments()
-
-  }, []);
-  // useEffect(() => {
-    const logout = async () => {
-      await axios.get("http://localhost:4000/logout", {
+    const getComments = async () => {
+      const response = await axios.get("http://localhost:4000/comments", {
         withCredentials: true,
       });
-      setUser({});
+      setComments([response.data]);
+      console.log(comment)
     };
+    getComments();
+  }, []);
+  // useEffect(() => {
+  const logout = async () => {
+    await axios.get("http://localhost:4000/logout", {
+      withCredentials: true,
+    });
+    setUser({});
+  };
 
-    // function runLogout() {
-    
-    // }
-    // runLogout();
+  // function runLogout() {
+
+  // }
+  // runLogout();
   // }, []);
   // console.log(user)
 
@@ -64,7 +64,12 @@ function App() {
           <Authmodal />
           <Headerboard />
           <Postform />
-          <Redditmain />
+          <div>
+           {comments.map((comment) => (
+          <p>cef</p>
+     
+           ))}
+          </div>
         </ModalProvider>
       </UserContext.Provider>
       {/* </UserProvider> */}
