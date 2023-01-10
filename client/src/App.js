@@ -20,6 +20,7 @@ import { useState, useEffect, useContext } from "react";
 
 function App() {
   const [user, setUser] = useState({});
+  const [comments, setComments] = useState([])
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get("http://localhost:4000/user", {
@@ -29,6 +30,15 @@ function App() {
       setUser(response.data);
     };
     getUser();
+
+    const getComments = async ()=> {
+      const response = await axios.get("http://localhost:4000/comments", { withCredentials: true})
+      
+      setComments([response.data])
+
+    }
+    getComments()
+
   }, []);
   // useEffect(() => {
     const logout = async () => {
@@ -51,7 +61,6 @@ function App() {
       <UserContext.Provider value={{ user, setUser, logout }}>
         <ModalProvider>
           <Header />
-
           <Authmodal />
           <Headerboard />
           <Postform />
