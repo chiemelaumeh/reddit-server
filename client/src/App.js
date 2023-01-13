@@ -66,7 +66,9 @@ function App() {
 
           <div>
             {comments.map((comment) => (
-              <Redditmain />
+              <>
+                <Redditmain {...comment}/>
+              </>
             ))}
           </div>
         </ModalProvider>
