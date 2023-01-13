@@ -35,8 +35,8 @@ function App() {
       const response = await axios.get("http://localhost:4000/comments", {
         withCredentials: true,
       });
-      setComments([response.data]);
-      console.log(comment)
+      // console.log(response.data)
+      setComments(response.data);
     };
     getComments();
   }, []);
@@ -63,12 +63,11 @@ function App() {
           <Header />
           <Authmodal />
           <Headerboard />
-          <Postform />
+
           <div>
-           {comments.map((comment) => (
-          <p>cef</p>
-     
-           ))}
+            {comments.map((comment) => (
+              <Redditmain />
+            ))}
           </div>
         </ModalProvider>
       </UserContext.Provider>

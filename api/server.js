@@ -148,6 +148,7 @@ app.get("/comments", async (req, res) => {
   try {
     const comments = await Comment.find({});
      res.json(comments)
+    //  console.log(comments)
   } catch (err) {
     console.error(err.message);
   }
