@@ -25,7 +25,13 @@ body {
   padding: 8px;
  
   border-radius: 4px;
+
 }
+.reddit-story:hover {
+  cursor: pointer;
+
+}
+
 .reddit-story h5 {
   margin-top: 0;
   font-weight: 300;
@@ -42,8 +48,16 @@ body {
 
 }
 .main-story {
+
   height: auto;
   padding: 0 24px;
-  background-color: var(--reddit_dark);
   color: var(--reddit_text);
+}
+
+
+.app-reddit-story {
+
+
+  background-color: var(--reddit_dark);
+  
 }

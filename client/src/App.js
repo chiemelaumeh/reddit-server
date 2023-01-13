@@ -63,8 +63,9 @@ function App() {
           <Header />
           <Authmodal />
           <Headerboard />
+          <Postform />
 
-          <div>
+          <div className="app-reddit-story">
             {comments.map((comment) => (
               <>
                 <Redditmain {...comment}/>
