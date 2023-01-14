@@ -13,6 +13,8 @@ import UserContext from "./context/UserContext";
 import AuthModalContext from "./context/AuthModalContext";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
+import { Switch, Route, BrowserRouter as Router,} from "react-router-dom"
+
 
 import axios from "axios";
 
