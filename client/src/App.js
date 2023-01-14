@@ -7,14 +7,14 @@ import "./styles/headerbuttons.css";
 import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
 import Postform from "./components/Postform";
+import Postlisting from "./components/Postlisting";
 import Redditmain from "./components/Redditmain";
 import Authmodal from "./components/Authmodal";
 import UserContext from "./context/UserContext";
 import AuthModalContext from "./context/AuthModalContext";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
-import { Switch, Route, BrowserRouter as Router,} from "react-router-dom"
-
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
 import axios from "axios";
 
@@ -22,7 +22,6 @@ import { useState, useEffect, useContext } from "react";
 
 function App() {
   const [user, setUser] = useState({});
-  const [comments, setComments] = useState([]);
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get("http://localhost:4000/user", {
@@ -32,15 +31,6 @@ function App() {
       setUser(response.data);
     };
     getUser();
-
-    const getComments = async () => {
-      const response = await axios.get("http://localhost:4000/comments", {
-        withCredentials: true,
-      });
-      // console.log(response.data)
-      setComments(response.data);
-    };
-    getComments();
   }, []);
   // useEffect(() => {
   const logout = async () => {
@@ -66,14 +56,11 @@ function App() {
           <Authmodal />
           <Headerboard />
           <Postform />
-
-          <div className="app-reddit-story">
-            {comments.map((comment) => (
-              <>
-                <Redditmain {...comment}/>
-              </>
-            ))}
-          </div>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Postlisting />} />
+            </Routes>
+          </Router>
         </ModalProvider>
       </UserContext.Provider>
       {/* </UserProvider> */}
