@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
+  /* background-color: var(--reddit_dark); */
 }
 * {
   --offBlack: #111;
@@ -20,11 +21,14 @@ body {
 }
 
 .reddit-story {
+  display: block;
   border: 1px solid var(--reddit_border);
   background-color: var(--reddit_midgrey);
   padding: 8px;
- 
   border-radius: 4px;
+  text-decoration: none;
+  color: var(--reddit_lightgrey);
+
 
 }
 .reddit-story:hover {
@@ -51,6 +55,9 @@ body {
 
   height: auto;
   padding: 0 24px;
+  padding-bottom: 1rem;
+
+  /* padding-bottom: 1rem; */
   color: var(--reddit_text);
 }
 
