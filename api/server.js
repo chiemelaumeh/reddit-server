@@ -154,6 +154,16 @@ app.get("/comments", async (req, res) => {
   }
 });
 
+app.get("/comments/:id", async(req, res)=> {
+  try {
+    const comment = await Comment.findById(req.params.id)
+    res.json(comment)
+    
+  } catch (error) {
+    
+  }
+})
+
 const removeUsers = async () => {
   //  const user = await User.findOne({username: "jn"});
   await User.deleteMany({});
