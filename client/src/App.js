@@ -4,13 +4,10 @@ import "./styles/postform.css";
 import "./styles/redditstory.css";
 import "./styles/headerbuttons.css";
 
-
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
 import { useState, useEffect, useContext } from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-
-
 
 import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
@@ -23,9 +20,6 @@ import AuthModalContext from "./context/AuthModalContext";
 import Board from "./components/Board";
 import Commentpage from "./components/Commentpage";
 import axios from "axios";
-
-
-
 
 function App() {
   const [user, setUser] = useState({});
@@ -59,14 +53,12 @@ function App() {
       {/* <UserProvider> */}
       <UserContext.Provider value={{ user, setUser, logout }}>
         <ModalProvider>
-          <Header />
           <Authmodal />
-         
-       
           <Router>
+            <Header />
             <Routes>
-              <Route exact path="/" element={ <Board />} />
-               <Route exact path="/comments/:id" element={<Commentpage />}/>
+              <Route exact path="/" element={<Board />} />
+              <Route exact path="/comments/:id" element={<Commentpage />} />
             </Routes>
           </Router>
         </ModalProvider>

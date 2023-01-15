@@ -15,27 +15,19 @@ import { SlLogin } from "react-icons/sl";
 import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
 import avatar from "../images/IMG_9146.jpg";
+import { Link } from "react-router-dom";
 const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
     useState("hidden");
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
   const userContext = useContext(UserContext);
-  const logout = userContext.logout
-  const user = userContext.user
+  const logout = userContext.logout;
+  const user = userContext.user;
 
-
-
-
-  
   // const setUser = userContext.setUser
   // setUser("new")
 
-
-
-
-
-  
   const handleLogin = () => {
     setModalVisibility(true);
     setModalType("login");
@@ -57,7 +49,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="sub-header">
+        <Link to="/">
         <img className="logo" src={logo} alt="" />
+        </Link>
         <form className="form" action="">
           <CiSearch className="search-icon" />
 
@@ -68,7 +62,7 @@ const Header = () => {
           />
         </form>
         {user.username && (
-          <> 
+          <>
             <button className="icon-btn">
               <BsBell className="icon" />
             </button>
@@ -90,24 +84,21 @@ const Header = () => {
         <OutsideClickHandler
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
         >
-            {!user.username&& 
-          <button className="avatar-btn" onClick={toggleDropDown}>
-            <>
-            <CiUser className="icon default-icon" />
-            <BsChevronDown className="default-chevron" />
-            </>
-            </button>
-            }
-            
-
-            {user.username && (
+          {!user.username && (
             <button className="avatar-btn" onClick={toggleDropDown}>
-              
-                <img src={avatar} alt="" className="avatar" />
-                <BsChevronDown className="chevron" />
-             
-                </button>
-            )}
+              <>
+                <CiUser className="icon default-icon" />
+                <BsChevronDown className="default-chevron" />
+              </>
+            </button>
+          )}
+
+          {user.username && (
+            <button className="avatar-btn" onClick={toggleDropDown}>
+              <img src={avatar} alt="" className="avatar" />
+              <BsChevronDown className="chevron" />
+            </button>
+          )}
           {!user.username && (
             <div
               onClick={() => setModalVisibility(true)}
@@ -125,26 +116,18 @@ const Header = () => {
           )}
           {user.username && (
             <div
-
-            
-            
-            className={
-              userDropDownVisibilityClass === "hidden"
-              ? "hide-box"
-              : " show-box"
-            }
+              className={
+                userDropDownVisibilityClass === "hidden"
+                  ? "hide-box"
+                  : " show-box"
+              }
             >
-            <p
-           >Welcome, {user.username} 
-
-
-            </p>
+              <p>Welcome, {user.username}</p>
               <button onClick={logout} href="" className="btn link-box">
                 <SlLogout className=" login-icon" />
-               Logout
+                Logout
               </button>
             </div>
-
           )}
         </OutsideClickHandler>
       </div>

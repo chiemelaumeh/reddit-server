@@ -68,3 +68,11 @@ body {
   background-color: var(--reddit_dark);
   
 }
+
+
+
+
+.comment-main {
+  background-color: var(--reddit_dark);
+  padding:1rem 0;
+}

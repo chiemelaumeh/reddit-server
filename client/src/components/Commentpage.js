@@ -23,10 +23,11 @@ const Commentpage = () => {
   }, []);
 
   return(
-    <>
-    <Redditmain {...comment}/>
-    
-    </>
+    <div className="comment-main"> {comment && (
+
+      <Redditmain {...comment}/>
+    )}
+    </div>
   )
 };
 
