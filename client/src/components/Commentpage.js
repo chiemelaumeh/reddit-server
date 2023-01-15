@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Redditmain from "./Redditmain";
 
 const Commentpage = () => {
   const [comment, setComment] = useState({});
@@ -21,7 +22,12 @@ const Commentpage = () => {
     getComments();
   }, []);
 
-  return <div>Comment page: {id}</div>;
+  return(
+    <>
+    <Redditmain {...comment}/>
+    
+    </>
+  )
 };
 
 export default Commentpage;

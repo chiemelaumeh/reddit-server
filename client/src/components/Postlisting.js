@@ -12,7 +12,7 @@ const Postlisting = () => {
       const response = await axios.get("http://localhost:4000/comments", {
         withCredentials: true,
       });
-      // console.log(response.data)
+
       setComments(response.data);
     };
     getComments();
@@ -21,7 +21,7 @@ const Postlisting = () => {
   return (
     <div className="app-reddit-story">
       {comments.map((comment) => (
-        <Redditmain {...comment} />
+        <Redditmain {...comment}/>
       ))}
     </div>
   );
