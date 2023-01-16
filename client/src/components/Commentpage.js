@@ -24,8 +24,7 @@ const Commentpage = () => {
 
   return(
     <div className="comment-main"> {comment && (
-
-      <Redditmain {...comment}/>
+      <Redditmain {...comment} open={true}/>
     )}
     </div>
   )

@@ -20,6 +20,19 @@ body {
   --reddit_border: #343536;
 }
 
+.reddit-story-closed {
+ display: block; 
+  border: 1px solid var(--reddit_border);
+  background-color: var(--reddit_midgrey);
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--reddit_lightgrey);
+    cursor:auto; 
+
+}
+
+
 .reddit-story {
   display: block;
   border: 1px solid var(--reddit_border);
@@ -30,9 +43,9 @@ body {
   color: var(--reddit_lightgrey);
 
 
+
 }
 .reddit-story:hover {
-  cursor: pointer;
   border: 1px solid var(--offwhite)
 }
 
