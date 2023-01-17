@@ -15,7 +15,7 @@ const Commentpage = () => {
           withCredentials: true,
         });
         setComment(response.data)
-        console.log(comment);
+        // console.log(comment);
       } catch (error) {
         console.log(error.message);
       }
