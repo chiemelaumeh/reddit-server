@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Redditmain from "./Redditmain";
 
+
 const Commentpage = () => {
   const [comment, setComment] = useState({});
   const { id } = useParams();

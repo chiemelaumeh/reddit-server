@@ -7,8 +7,6 @@ import "./styles/headerbuttons.css";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
 import { useState, useEffect, useContext } from "react";
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-
 import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
 import Postform from "./components/Postform";
@@ -20,6 +18,7 @@ import AuthModalContext from "./context/AuthModalContext";
 import Board from "./components/Board";
 import Commentpage from "./components/Commentpage";
 import axios from "axios";
+import Routing from "./components/Routing";
 
 function App() {
   const [user, setUser] = useState({});
@@ -48,19 +47,16 @@ function App() {
   // }, []);
   // console.log(user)
 
+  // const location = useLocation()
+  // console.log(location)
+
   return (
     <AuthModalProvider>
       {/* <UserProvider> */}
       <UserContext.Provider value={{ user, setUser, logout }}>
         <ModalProvider>
           <Authmodal />
-          <Router>
-            <Header />
-            <Routes>
-              <Route exact path="/" element={<Board />} />
-              <Route exact path="/comments/:id" element={<Commentpage />} />
-            </Routes>
-          </Router>
+          <Routing />
         </ModalProvider>
       </UserContext.Provider>
       {/* </UserProvider> */}

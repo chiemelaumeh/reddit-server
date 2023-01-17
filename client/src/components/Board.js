@@ -1,6 +1,7 @@
 import Headerboard from "./Headerboard"
 import Postform from "./Postform"
 import Postlisting from "./Postlisting"
+import { useLocation } from "react-router-dom"
 
 const Board = () => {
   return (
