@@ -79,22 +79,41 @@ body {
 
   position: fixed;
 }
+.post-modal-page {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:red;
+  position: fixed;
+  
+}
+.post-sub {
+  background-color: var(--reddit_grey);
+   padding: 10px 20px; 
+   color: var(--offwhite); 
+    /* margin: 0px 16px;  */
+   /* display:flex; */
+  /* align-self: center;  */
+   width: 70%;
+   border: 1px solid var(--reddit_border);
+   margin: 0 auto;
+   border-radius: 4px;
+   padding-right: 34px; 
+ }
 .hide-auth-page{
   display: none;
 }
-.auth-sub {
-  /* background-color: var(--reddit_dark);
-  padding: 10px 20px;
-  color: var(--offwhite); */
-  /* margin: 0px 16px; */
-  /* display:flex; */
-  /* align-self: center;
-  width: 50%;
-  border: 1px solid var(--reddit_border);
-  margin: 0 auto;
-  border-radius: 4px;
-  padding-right: 34px; */
+.hide-post-modal-page{
+  display: none;
 }
+
 .auth-sub {
  background-color: var(--reddit_dark);
   padding: 10px 20px; 
@@ -174,6 +193,32 @@ body {
 }
 @media screen and (min-width: 1900px) {
   .auth-sub {
+    width: 10%;
+  }
+}
+
+
+
+
+
+
+@media screen and (min-width: 400px) {
+  .post-sub {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .post-sub {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .post-sub {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .post-sub {
     width: 10%;
   }
 }
