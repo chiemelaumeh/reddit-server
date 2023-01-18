@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import Board from "./Board";
 import Commentpage from "./Commentpage";
+import Postmodal from "./Postmodal";
 
 const Routinglocation = () => {
   let location = useLocation();
@@ -13,8 +14,11 @@ const Routinglocation = () => {
   console.log(location);
   return (
     <div>
-      {commentId && (<div>WE HAVE COMMENT ID: {commentId}</div>)}
-
+      {commentId && (
+        <div>
+          <Postmodal />
+        </div>
+      )}
       <Routes location={location}>
         <Route exact path="/" element={<Board />} />
         <Route exact path="/comments/:id" element={<Commentpage />} />
