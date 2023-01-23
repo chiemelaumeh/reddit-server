@@ -14,24 +14,22 @@ body {
   --reddit_grey: rgb(38, 34, 34);
   --reddit_midgrey: #222;
   --reddit_lightgrey: rgb(128, 124, 124);
-  --reddit_text:rgb(215, 218, 220);
+  --reddit_text: rgb(215, 218, 220);
   --white: #fff;
   --offwhite: #d6d6d6;
   --reddit_border: #343536;
 }
 
 .reddit-story-closed {
- display: block; 
+  display: block;
   border: 1px solid var(--reddit_border);
   background-color: var(--reddit_midgrey);
   padding: 8px;
   border-radius: 4px;
   text-decoration: none;
   color: var(--reddit_lightgrey);
-    cursor:auto; 
-
+  cursor: auto;
 }
-
 
 .reddit-story {
   display: block;
@@ -41,12 +39,9 @@ body {
   border-radius: 4px;
   text-decoration: none;
   color: var(--reddit_lightgrey);
-
-
-
 }
 .reddit-story:hover {
-  border: 1px solid var(--offwhite)
+  border: 1px solid var(--offwhite);
 }
 
 .reddit-story h5 {
@@ -57,15 +52,12 @@ body {
 }
 .reddit-story p {
   line-height: 1.5rem;
-
 }
 .reddit-story h2 {
   font-size: 1.5rem;
   margin-bottom: 0;
-
 }
 .main-story {
-
   height: auto;
   padding: 0 24px;
   padding-bottom: 1rem;
@@ -74,18 +66,11 @@ body {
   color: var(--reddit_text);
 }
 
-
 .app-reddit-story {
-
-
   background-color: var(--reddit_dark);
-  
 }
-
-
-
 
 .comment-main {
   background-color: var(--reddit_dark);
-  padding:1rem 0;
+  padding: 1rem 0;
 }

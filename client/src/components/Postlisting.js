@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import axios from "axios"
-import Redditmain from "./Redditmain";
-
+import axios from "axios";
+import Redditmain from "./Post";
 
 const Postlisting = () => {
   const [comments, setComments] = useState([]);
-
 
   useEffect(() => {
     const getComments = async () => {
@@ -17,11 +15,11 @@ const Postlisting = () => {
     };
     getComments();
   }, []);
-  
+
   return (
     <div className="app-reddit-story">
       {comments.map((comment) => (
-        <Redditmain {...comment}/>
+        <Redditmain {...comment} />
       ))}
     </div>
   );

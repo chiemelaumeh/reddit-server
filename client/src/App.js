@@ -11,12 +11,12 @@ import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
 import Postform from "./components/Postform";
 import Postlisting from "./components/Postlisting";
-import Redditmain from "./components/Redditmain";
+import Redditmain from "./components/Post";
 import Authmodal from "./components/Authmodal";
 import UserContext from "./context/UserContext";
 import AuthModalContext from "./context/AuthModalContext";
 import Board from "./components/Board";
-import Commentpage from "./components/Commentpage";
+import Commentpage from "./components/Postpage";
 import axios from "axios";
 import Routing from "./components/Routing";
 

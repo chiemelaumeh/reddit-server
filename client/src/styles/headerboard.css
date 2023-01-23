@@ -90,42 +90,46 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:red;
   position: fixed;
-  
 }
 .post-sub {
-  background-color: var(--reddit_grey);
-   padding: 10px 20px; 
-   color: var(--offwhite); 
-    /* margin: 0px 16px;  */
-   /* display:flex; */
+  background-color: var(--reddit_dark);
+  padding: 20px 20px;
+  color: var(--offwhite);
+  /* margin: 0px 16px;  */
+  /* display:flex; */
   /* align-self: center;  */
-   width: 70%;
-   border: 1px solid var(--reddit_border);
-   margin: 0 auto;
-   border-radius: 4px;
-   padding-right: 34px; 
- }
-.hide-auth-page{
+  width: 40%;
+  border: 1px solid var(--reddit_border);
+  margin: 0 auto;
+  border-radius: 4px;
+
+  /* padding-right: 34px; */
+}
+.post-sub h5 {
+  color: var(--reddit_lightgrey);
+  font-weight: 300;
+  font-size: 1px;
+}
+.hide-auth-page {
   display: none;
 }
-.hide-post-modal-page{
+.hide-post-modal-page {
   display: none;
 }
 
 .auth-sub {
- background-color: var(--reddit_dark);
-  padding: 10px 20px; 
-  color: var(--offwhite); 
-   /* margin: 0px 16px;  */
+  background-color: var(--reddit_dark);
+  padding: 10px 20px;
+  color: var(--offwhite);
+  /* margin: 0px 16px;  */
   /* display:flex; */
- /* align-self: center;  */
+  /* align-self: center;  */
   width: 70%;
   border: 1px solid var(--reddit_border);
   margin: 0 auto;
   border-radius: 4px;
-  padding-right: 34px; 
+  padding-right: 34px;
 }
 .auth-sub h1 {
   margin: 0;
@@ -140,7 +144,7 @@ body {
   border: var(--reddit_dark);
   border-radius: 4px;
   display: block;
-  color:var(--offwhite)
+  color: var(--offwhite);
 }
 .auth-sub span {
   color: var(--reddit_lightgrey);
@@ -159,7 +163,7 @@ body {
 }
 .auth-sub button:nth-child(2) {
   background-color: var(--reddit_dark);
-  color:#FF4500;
+  color: #ff4500;
   width: 5rem;
 }
 /* .auth-sub input:nth-child(2) {
@@ -191,34 +195,31 @@ body {
     width: 90%;
   }
 }
-@media screen and (min-width: 1900px) {
+@media screen and (min-width: 2100px) {
   .auth-sub {
     width: 10%;
   }
 }
 
-
-
-
-
-
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 380px) {
   .post-sub {
-    width: 90%;
+    margin: auto;
+    width: 80%;
+
   }
 }
 @media screen and (min-width: 1024px) {
   .post-sub {
-    width: 80%;
+    width: 55%;
   }
 }
 @media screen and (min-width: 1400px) {
   .post-sub {
-    width: 90%;
+    width: 45%;
   }
 }
 @media screen and (min-width: 1900px) {
   .post-sub {
-    width: 10%;
+    width: 40%;
   }
 }

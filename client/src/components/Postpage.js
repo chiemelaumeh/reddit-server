@@ -1,20 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Redditmain from "./Redditmain";
-
+import Redditmain from "./Post";
 
 const Commentpage = () => {
-  const [comment, setComment] = useState({});
   const { id } = useParams();
 
+  const [comment, setComment] = useState({});
   useEffect(() => {
     const getComment = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/comments/${id}`, {
-          withCredentials: true,
-        });
-        setComment(response.data)
+        const response = await axios.get(
+          `http://localhost:4000/comments/${id}`,
+          {
+            withCredentials: true,
+          }
+        );
+        setComment(response.data);
         // console.log(comment);
       } catch (error) {
         console.log(error.message);
@@ -23,12 +25,12 @@ const Commentpage = () => {
     getComment();
   }, []);
 
-  return(
-    <div className="comment-main"> {comment && (
-      <Redditmain {...comment} open={true}/>
-    )}
+  return (
+    <div className="comment-main">
+      {" "}
+      {comment && <Redditmain {...comment} open={true} />}
     </div>
-  )
+  );
 };
 
 export default Commentpage;
