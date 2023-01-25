@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
 import AuthModalContext from "../context/AuthModalContext";
-import Postcontent from "./PostContent";
+import PostContent from "./Postcontent";
 import axios from "axios";
 import OutsideClickHandler from "react-outside-click-handler";
 
@@ -37,7 +37,7 @@ const Postmodal = (props) => {
     >
       <OutsideClickHandler onOutsideClick={() => setPostModalVisibility(false)}>
         <div className="post-sub">
-          <Postcontent open={true} {...comment} />
+          <PostContent open={true} {...comment} />
         </div>
       </OutsideClickHandler>
     </div>
