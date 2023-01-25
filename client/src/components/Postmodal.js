@@ -1,11 +1,13 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
 import AuthModalContext from "../context/AuthModalContext";
-import Postcontent from "./Postcontent";
+import PostContent from "./Postcontent";
 import axios from "axios";
 import OutsideClickHandler from "react-outside-click-handler";
 
 const Postmodal = (props) => {
+  const { postModalVisibility, setPostModalVisibility } =
+    useContext(AuthModalContext);
   const [comment, setComment] = useState({});
   useEffect(() => {
     const getComment = async () => {
@@ -25,22 +27,19 @@ const Postmodal = (props) => {
     getComment();
   }, []);
 
-  const { postModalVisibility, setPostModalVisibility } =
-    useContext(AuthModalContext);
-
   return (
     // <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
     // </OutsideClickHandler>
     <div
-
       className={
         postModalVisibility ? "post-modal-page" : "hide-post-modal-page"
       }
     >
-      <div className="post-sub">
-        <Postcontent open={true} {...comment} />
-      </div>
-
+      <OutsideClickHandler onOutsideClick={() => setPostModalVisibility(false)}>
+        <div className="post-sub">
+          <PostContent open={true} {...comment} />
+        </div>
+      </OutsideClickHandler>
     </div>
   );
 };

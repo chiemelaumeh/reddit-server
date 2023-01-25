@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthModalContext from "../context/AuthModalContext";
-import Postcontent from "./Postcontent";
+import PostContent from "./Postcontent";
 
 const Redditmain = (props) => {
   const { postModaVisibility, setPostModalVisibility } =
@@ -10,7 +10,7 @@ const Redditmain = (props) => {
   return (
     <>
       <div className="main-story">
-        {props.open && <Postcontent />}
+        {props.open && <PostContent />}
 
         {!props.open && (
           <Link
@@ -19,7 +19,7 @@ const Redditmain = (props) => {
             className={props.open ? "reddit-story-closed" : "reddit-story"}
             onClick={() => setPostModalVisibility(true)}
           >
-            <Postcontent {...props} />
+            <PostContent {...props} />
           </Link>
         )}
       </div>
