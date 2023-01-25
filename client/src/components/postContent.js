@@ -1,6 +1,6 @@
 import React from "react";
 
-const postContent = (props) => {
+const PostContent = (props) => {
   return (
     <div>
       <h5>
@@ -13,4 +13,4 @@ const postContent = (props) => {
   );
 };
 
-export default postContent;
+export default PostContent;
