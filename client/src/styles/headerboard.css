@@ -123,9 +123,7 @@ body {
   background-color: var(--reddit_dark);
   padding: 10px 20px;
   color: var(--offwhite);
-  /* margin: 0px 16px;  */
-  /* display:flex; */
-  /* align-self: center;  */
+ 
   width: 70%;
   border: 1px solid var(--reddit_border);
   margin: 0 auto;

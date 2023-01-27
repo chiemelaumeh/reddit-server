@@ -73,3 +73,35 @@ p {
 ::placeholder {
   color: var(--reddit_border);
 }
+
+.post-modal-page {
+
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: scroll;
+}
+.hide-post-modal-page {
+
+  display: none;
+}
+
+.post-modal-sub {
+  background-color: var(--reddit_dark);
+  padding: 20px 20px;
+  color: var(--offwhite);
+
+  width: 40%;
+  height: auto;
+  border: 1px solid var(--reddit_border);
+
+  border-radius: 4px;
+}

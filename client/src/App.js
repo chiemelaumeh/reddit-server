@@ -19,6 +19,7 @@ import Board from "./components/Board";
 import Commentpage from "./components/Postpage";
 import axios from "axios";
 import Routing from "./components/Routing";
+import PostFormModal from "./components/PostFormModal";
 
 function App() {
   const [user, setUser] = useState({});
@@ -40,23 +41,14 @@ function App() {
     setUser({});
   };
 
-  // function runLogout() {
-
-  // }
-  // runLogout();
-  // }, []);
-  // console.log(user)
-
-  // const location = useLocation()
-  // console.log(location)
-
   return (
     <AuthModalProvider>
       {/* <UserProvider> */}
       <UserContext.Provider value={{ user, setUser, logout }}>
         <ModalProvider>
-          <Authmodal />
           <Routing />
+          <Authmodal />
+          <PostFormModal />
         </ModalProvider>
       </UserContext.Provider>
       {/* </UserProvider> */}

@@ -25,13 +25,11 @@ const Postmodal = (props) => {
       }
     };
     getModalComment();
-
-   
   }, [props.id]);
- function reset() {
-  //  setComment({})
-  setPostModalVisibility(false)
- }
+  function reset() {
+    //  setComment({})
+    setPostModalVisibility(false);
+  }
   return (
     // <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
     // </OutsideClickHandler>
@@ -41,10 +39,7 @@ const Postmodal = (props) => {
       }
     >
       <div className="post-sub">
-        <OutsideClickHandler
-        
-          onOutsideClick={reset}
-        >
+        <OutsideClickHandler onOutsideClick={reset}>
           <PostContent open={true} {...modalComment} />
         </OutsideClickHandler>
       </div>
