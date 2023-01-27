@@ -8,25 +8,30 @@ import OutsideClickHandler from "react-outside-click-handler";
 const Postmodal = (props) => {
   const { postModalVisibility, setPostModalVisibility } =
     useContext(AuthModalContext);
-  const [comment, setComment] = useState({});
+  const [modalComment, setModalComment] = useState({});
   useEffect(() => {
-    const getComment = async () => {
+    const getModalComment = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/comments/` + props.id,
+          `http://localhost:4000/comments/${props.id}`,
           {
             withCredentials: true,
           }
         );
-        setComment(response.data);
+        setModalComment(response.data);
         // console.log(comment);
       } catch (error) {
         console.log(error.message);
       }
     };
-    getComment();
-  }, []);
+    getModalComment();
 
+   
+  }, [props.id]);
+ function reset() {
+  //  setComment({})
+  setPostModalVisibility(false)
+ }
   return (
     // <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
     // </OutsideClickHandler>
@@ -35,11 +40,14 @@ const Postmodal = (props) => {
         postModalVisibility ? "post-modal-page" : "hide-post-modal-page"
       }
     >
-      <OutsideClickHandler onOutsideClick={() => setPostModalVisibility(false)}>
-        <div className="post-sub">
-          <PostContent open={true} {...comment} />
-        </div>
-      </OutsideClickHandler>
+      <div className="post-sub">
+        <OutsideClickHandler
+        
+          onOutsideClick={reset}
+        >
+          <PostContent open={true} {...modalComment} />
+        </OutsideClickHandler>
+      </div>
     </div>
   );
 };
