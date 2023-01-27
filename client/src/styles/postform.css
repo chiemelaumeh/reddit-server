@@ -101,6 +101,10 @@ p {
   /* height: 20rem; */
   
 }
+.post-modal-sub h3 {
+  padding:0 13px;
+
+}
 .hide-post-modal-page {
 
   display: none;
@@ -116,11 +120,13 @@ p {
 }
 .input-box {
   margin-bottom: .5rem;
-  padding: 10px 20px;
+  padding: 10px 10px;
 }
 .textarea-box {
-  padding: 10px 20px;
-
+  padding: 10px 10px;
+  max-width: 90%;
+  min-width: 90%;
+  min-height: 40%;
 }
 .post-form-btn {
   width: 10%;
@@ -128,8 +134,9 @@ p {
   border-radius: 8px;
   border: none;
   margin-top: 1rem;
-  margin-left: 1rem;
+  margin-left: 34rem;
   padding: 4px;
   font-weight: 600;
+  cursor: pointer;
 
 }

@@ -4,7 +4,6 @@ import AuthModalContext from "../context/AuthModalContext";
 import Input from "./Input";
 import TextArea from "./TextArea";
 
-
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
     useContext(AuthModalContext);
@@ -18,7 +17,8 @@ const PostFormModal = () => {
         onOutsideClick={() => setPostFormModalVisibility(false)}
       >
         <div className="post-modal-sub">
-          <Input placeholder={"Title"}/>
+          <h3>Create a Post</h3>
+          <Input placeholder={"Title"} />
           <TextArea placeholder={"Text (required)"} />
           <button className="post-form-btn">POST</button>
         </div>
