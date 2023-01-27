@@ -1,6 +1,9 @@
 import OutsideClickHandler from "react-outside-click-handler";
 import { useState, useContext } from "react";
 import AuthModalContext from "../context/AuthModalContext";
+import Input from "./Input";
+import TextArea from "./TextArea";
+
 
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
@@ -14,7 +17,11 @@ const PostFormModal = () => {
       <OutsideClickHandler
         onOutsideClick={() => setPostFormModalVisibility(false)}
       >
-        <div className="post-modal-sub">ef</div>
+        <div className="post-modal-sub">
+          <Input placeholder={"Title"}/>
+          <TextArea placeholder={"Text (required)"} />
+          <button className="post-form-btn">POST</button>
+        </div>
       </OutsideClickHandler>
     </div>
   );

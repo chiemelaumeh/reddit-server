@@ -1,5 +1,5 @@
 const Input = (props) => {
-  return <input {...props} className="login-input" />;
+  return <input {...props} className="input input-box" />;
 };
 
 export default Input;
