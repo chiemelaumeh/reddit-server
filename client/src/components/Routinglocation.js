@@ -16,7 +16,7 @@ const Routinglocation = () => {
     <div>
       {commentId && (
         <div>
-          <Postmodal id={commentId} open={true} />
+          <Postmodal id={commentId} open={true}/>
           {/* { commentId} */}
         </div>
       )}
