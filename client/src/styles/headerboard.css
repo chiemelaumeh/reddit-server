@@ -91,20 +91,21 @@ body {
   justify-content: center;
   align-items: center;
   position: fixed;
+  overflow: scroll;
 }
 .post-sub {
   background-color: var(--reddit_dark);
   padding: 20px 20px;
   color: var(--offwhite);
-  /* margin: 0px 16px;  */
-  /* display:flex; */
-  /* align-self: center;  */
-  width: 40%;
-  border: 1px solid var(--reddit_border);
-  margin: 0 auto;
-  border-radius: 4px;
 
-  /* padding-right: 34px; */
+  width: 40%;
+  height: auto;
+  border: 1px solid var(--reddit_border);
+
+  border-radius: 4px;
+}
+.post-main {
+  display: block;
 }
 .post-sub h5 {
   color: var(--reddit_lightgrey);
@@ -205,7 +206,6 @@ body {
   .post-sub {
     margin: auto;
     width: 80%;
-
   }
 }
 @media screen and (min-width: 1024px) {
