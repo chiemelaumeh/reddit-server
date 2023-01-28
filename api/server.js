@@ -8,10 +8,13 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Comment from "./models/Comments.js";
 const app = express();
+import dotenv  from "dotenv"
+dotenv.config()
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -20,10 +23,12 @@ app.use(
   })
 );
 
-const secret = "secret123";
+const secret = process.env.SECRET_KEY;
+const connectionString = process.env.DATABASE_URL
+
 
 mongoose.set("strictQuery", false);
-await mongoose.connect("mongodb://localhost:27017/reddit", {
+await mongoose.connect(connectionString,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -31,8 +36,11 @@ await mongoose.connect("mongodb://localhost:27017/reddit", {
 const db = mongoose.connection;
 db.on("error", console.log);
 
-app.get("/", (req, res) => {
-  res.send("ok");
+app.get("/", async(req, res) => {
+  const comment = await Users.find({});
+    res.json(comment);
+
+
 });
 
 app.post("/register", async (req, res) => {
