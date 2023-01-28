@@ -36,12 +36,12 @@ await mongoose.connect(connectionString,{
 const db = mongoose.connection;
 db.on("error", console.log);
 
-app.get("/", async(req, res) => {
-  const comment = await Users.find({});
-    res.json(comment);
+// app.get("/", async(req, res) => {
+//   const comment = await Comment.find({});
+//     res.json(comment);
 
 
-});
+// });
 
 app.post("/register", async (req, res) => {
   const { email, username } = req.body;
