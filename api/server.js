@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://reddit-app-nw97.onrender.com",
     methods: ["GET", "POST"],
     credentials: true,
   })
