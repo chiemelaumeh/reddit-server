@@ -31,7 +31,7 @@ const Authmodal = () => {
     setUsername("")
     const data = { email, username, password };
     try {
-      const res = await axios.post("http://localhost:4000/register", data, {
+      const res = await axios.post("https://redditt-api.onrender.com/register", data, {
         withCredentials: true,
       });
       await setUser({ username });
@@ -46,7 +46,7 @@ const Authmodal = () => {
   const login = async () => {
     setModalVisibility(false)
     const data = { username, password };
-    await axios.post("http://localhost:4000/login", data, {
+    await axios.post("https://redditt-api.onrender.com/login", data, {
       withCredentials: true,
     });
 
