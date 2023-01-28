@@ -25,22 +25,23 @@ function App() {
   const [user, setUser] = useState({});
   useEffect(() => {
     const getUser = async () => {
-      const response = await axios.get("http://localhost:4000/user", {
+      const response = await axios.get("https://redditt-api.onrender.com/user", {
         withCredentials: true,
       });
       // .then((response) => setUser(response.data))
       setUser(response.data);
     };
     getUser();
+    console.log("f")
   }, []);
   // useEffect(() => {
-  const logout = async () => {
-    await axios.get("http://localhost:4000/logout", {
-      withCredentials: true,
-    });
-    setUser({});
-  };
-
+    const logout = async () => {
+      await axios.get("https://redditt-api.onrender.com/logout", {
+        withCredentials: true,
+      });
+      setUser({});
+    };
+    
   return (
     <AuthModalProvider>
       {/* <UserProvider> */}
