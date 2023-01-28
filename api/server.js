@@ -19,15 +19,17 @@ app.use(cookieParser());
 
 app.use(cors());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
-});
+}
+
+app.configure(function() {
+  app.use(allowCrossDomain);
+ 
+}); 
 const secret = process.env.SECRET_KEY;
 const connectionString = process.env.DATABASE_URL
 
