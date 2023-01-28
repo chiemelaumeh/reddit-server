@@ -1,3 +1,6 @@
+
+import dotenv  from "dotenv"
+dotenv.config()
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -8,8 +11,7 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Comment from "./models/Comments.js";
 const app = express();
-import dotenv  from "dotenv"
-dotenv.config()
+
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,7 +39,7 @@ const db = mongoose.connection;
 db.on("error", console.log);
 
 app.get("/", async(req, res) => {
-  const comment = await Users.find({});
+  const comment = await Comment.find({});
     res.json(comment);
 
 
@@ -156,7 +158,7 @@ app.get("/comments", async (req, res) => {
   try {
     const comments = await Comment.find({});
     res.json(comments);
-    //  console.log(comments)
+
   } catch (err) {
     console.error(err.message);
   }
