@@ -149,6 +149,7 @@ app.post("/login", (req, res) => {
       }
     } catch (error) {
       console.log(error.message);
+      // console.log("nice")
     }
   };
   findUser();
