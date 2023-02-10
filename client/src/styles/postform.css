@@ -91,13 +91,15 @@ p {
 }
 .post-modal-sub {
   background-color: var(--reddit_dark);
-  padding: 15px 5px;
+  padding: 20px 5px;
+  height:30vh;
   color: var(--offwhite);
   width:65vw;
   border: 1px solid var(--reddit_border);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   /* height: 20rem; */
   
 }
@@ -129,14 +131,18 @@ p {
   min-height: 40%;
 }
 .post-form-btn {
-  width: 10%;
+  width: 4rem;
   /* margin: auto; */
   border-radius: 8px;
   border: none;
-  margin-top: 1rem;
-  margin-left: 34rem;
+  margin-top: 2rem;
+  /* margin-left: 34rem; */
+  display: block;
+  margin-top:auto ;
   padding: 4px;
   font-weight: 600;
   cursor: pointer;
+
+  align-self: center;
 
 }
