@@ -140,7 +140,7 @@ p {
   padding: 0.4rem 1rem;
 }
 
-.post-form-btn-close {
+.post-form-btn-close { 
   border-radius: 15px;
   border:1px solid var(--offwhite);
   cursor: pointer;

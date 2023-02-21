@@ -18,8 +18,9 @@ const PostFormModal = () => {
   const createPost = async () => {
     try {
        await axios.post(
+        // "http://localhost:4000/comments/",
         "https://redditt-api.onrender.com/comments/",
-        data
+        data, {withCredentials:true}
       );
     
     } catch (error) {
