@@ -26,6 +26,12 @@ app.use(
 const secret = process.env.SECRET_KEY;
 const connectionString = process.env.DATABASE_URL;
 
+const getUserFromToken = async (token) => {
+  const userInfo = await jwt.verify(token, secret);
+
+  return await User.findById(userInfo.id);
+};
+
 mongoose.set("strictQuery", false);
 await mongoose.connect(connectionString, {
   useNewUrlParser: true,
@@ -82,14 +88,9 @@ app.post("/register", async (req, res) => {
 app.get("/user", (req, res) => {
   const getUser = async () => {
     const token = req.cookies.token;
-    // if(token) {
-    //   console.log("valid token")
-    // }
 
     try {
-      const userInfo = await jwt.verify(token, secret);
-
-      const user = await User.findById(userInfo.id);
+      getUserFromToken(token);
       // res.clearCookie("token", "").send();
 
       res.json({ username: user.username });
@@ -150,23 +151,29 @@ app.post("/login", (req, res) => {
   findUser();
 });
 
-app.post("/comments", (req, res) => {
-  const { title, body } = req.body;
-  const createCommment = async () => {
-    const comment = new Comment({
-      title,
-      body,
-    });
+app.post(
+  
+  "/comments",
+  async (req, res) => {
+ 
     try {
+       const userInfo = await getUserFromToken(req.cookies.token);
+      const { title, body } = req.body;
+      // const createCommment = async () => {
+      const comment = new Comment({
+        title,
+        body,
+        author:userInfo.username,
+        postedAt:Date.now()
+      });
       const newComment = await comment.save();
       res.status(201).json(newComment);
     } catch (error) {
       console.error(error.message);
     }
-  };
-  createCommment();
-
-});
+  }
+  // createCommment();
+);
 
 app.get("/comments", async (req, res) => {
   try {
