@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import inputavatar from "../images/input-avatar.png";
 import AuthModalContext from "../context/AuthModalContext";
-const Postform = () => {
 
+const Postform = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
-  useContext(AuthModalContext);
+    useContext(AuthModalContext);
   return (
     <>
       <div className="reddit-main">
@@ -13,7 +13,15 @@ const Postform = () => {
             <img src={inputavatar} alt="" />
           </div>
           <form action="">
-            <input type="text" className="first-form" placeholder="New Post" onClick={()=> {setPostFormModalVisibility(true)}} />
+            <input
+              type="text"
+              onFocus={(e) => {
+                e.preventDefault();
+                setPostFormModalVisibility(true);
+              }}
+              className="first-form"
+              placeholder="New Post"
+            />
           </form>
         </div>
       </div>

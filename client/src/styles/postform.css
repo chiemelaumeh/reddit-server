@@ -131,18 +131,34 @@ p {
   min-height: 40%;
 }
 .post-form-btn {
-  width: 4rem;
-  /* margin: auto; */
-  border-radius: 8px;
+  /* width: 4rem; */
+
+  border-radius: 15px;
   border: none;
-  margin-top: 2rem;
-  /* margin-left: 34rem; */
-  display: block;
-  margin-top:auto ;
-  padding: 4px;
   font-weight: 600;
   cursor: pointer;
+  padding: 0.4rem 1rem;
+}
 
-  align-self: center;
+.post-form-btn-close {
+  border-radius: 15px;
+  border:1px solid var(--offwhite);
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  background-color: var(--reddit_dark);
+  color: #d6d6d6;
+  margin-right: 1rem;
+  /* outline: auto; */
+  
+
+}
+.post-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* padding: 0 rem; */
+  align-items: center;
+  max-width: 95%;
+
 
 }
