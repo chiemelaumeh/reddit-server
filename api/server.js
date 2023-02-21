@@ -1,6 +1,5 @@
-
-import dotenv  from "dotenv"
-dotenv.config()
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -11,7 +10,6 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Comment from "./models/Comments.js";
 const app = express();
-
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,11 +24,10 @@ app.use(
 );
 
 const secret = process.env.SECRET_KEY;
-const connectionString = process.env.DATABASE_URL
-
+const connectionString = process.env.DATABASE_URL;
 
 mongoose.set("strictQuery", false);
-await mongoose.connect(connectionString,{
+await mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -38,11 +35,9 @@ await mongoose.connect(connectionString,{
 const db = mongoose.connection;
 db.on("error", console.log);
 
-app.get("/", async(req, res) => {
+app.get("/", async (req, res) => {
   const comment = await Comment.find({});
-    res.json(comment);
-
-
+  res.json(comment);
 });
 
 app.post("/register", async (req, res) => {
@@ -155,11 +150,28 @@ app.post("/login", (req, res) => {
   findUser();
 });
 
+app.post("/comments", (req, res) => {
+  const { title, body } = req.body;
+  const createCommment = async () => {
+    const comment = new Comment({
+      title,
+      body,
+    });
+    try {
+      const newComment = await comment.save();
+      res.status(201).json(newComment);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  createCommment();
+
+});
+
 app.get("/comments", async (req, res) => {
   try {
     const comments = await Comment.find({});
     res.json(comments);
-
   } catch (err) {
     console.error(err.message);
   }

@@ -5,6 +5,7 @@ import Input from "./Input";
 import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+import axios from "axios";
 
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
@@ -12,6 +13,19 @@ const PostFormModal = () => {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+
+  const data = { title, body };
+  const createPost = async () => {
+    try {
+       await axios.post(
+        "https://redditt-api.onrender.com/comments/",
+        data
+      );
+    
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   return (
     <div
       className={
@@ -19,28 +33,35 @@ const PostFormModal = () => {
       }
     >
       {/* <OutsideClickHandler */}
-        {/* onOutsideClick={() => setPostFormModalVisibility(false)} */}
+      {/* onOutsideClick={() => setPostFormModalVisibility(false)} */}
       {/* > */}
-        <div className="post-modal-sub">
-          <h3>Create a Post</h3>
-          <Input
-           placeholder={"Title"}
-           value={title}
-            onChange={e => setTitle(e.target.value)}/>
-          <TextArea
-           placeholder={"Text (required)"}
-            value={body}
-            onChange={e => setBody(e.target.value)}
-             />
-          <div>
-            <ReactMarkdown remarkPlugins={[gfm]} children={""} />
-          </div>
-          <div className="post-btns">
-
-          <button onClick={() => setPostFormModalVisibility(false)} className="post-form-btn-close">Cancel</button>
-          <button className="post-form-btn">POST</button>
-          </div>
+      <div className="post-modal-sub">
+        <h3>Create a Post</h3>
+        <Input
+        required
+          placeholder={"Title"}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TextArea
+          placeholder={"Text (required)"}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          
+        />
+        <div>
+          <ReactMarkdown remarkPlugins={[gfm]} children={""} />
         </div>
+        <div className="post-btns">
+          <button
+            onClick={() => setPostFormModalVisibility(false)}
+            className="post-form-btn-close"
+          >
+            Cancel
+          </button>
+          <button className="post-form-btn" onClick={createPost}>POST</button>
+        </div>
+      </div>
       {/* </OutsideClickHandler> */}
     </div>
   );
