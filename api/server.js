@@ -151,29 +151,27 @@ app.post("/login", (req, res) => {
   findUser();
 });
 
-app.post(
-  
-  "/comments",
-  async (req, res) => {
- 
+app.post("/comments", (req, res) => {
+  const createCommment = async () => {
     try {
-       const userInfo = await getUserFromToken(req.cookies.token);
+      const userInfo = await getUserFromToken(req.cookies.token);
       const { title, body } = req.body;
-      // const createCommment = async () => {
+
       const comment = new Comment({
         title,
         body,
-        author:userInfo.username,
-        postedAt:Date.now()
+        author: userInfo.username,
+        postedAt: Date.now(),
       });
       const newComment = await comment.save();
+
       res.status(201).json(newComment);
     } catch (error) {
       console.error(error.message);
     }
-  }
-  // createCommment();
-);
+  };
+  createCommment();
+});
 
 app.get("/comments", async (req, res) => {
   try {
