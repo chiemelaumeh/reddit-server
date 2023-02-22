@@ -12,6 +12,7 @@ const Commentpage = () => {
       try {
         const response = await axios.get(
           `https://redditt-api.onrender.com/comments/${id}`,
+          // `http://localhost:4000/comments/${id}`,
           {
             withCredentials: true,
           }

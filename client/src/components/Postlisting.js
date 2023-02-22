@@ -7,7 +7,10 @@ const Postlisting = () => {
 
   useEffect(() => {
     const getComments = async () => {
-      const response = await axios.get("https://redditt-api.onrender.com/comments", {
+      const response = await axios.get(
+        "https://redditt-api.onrender.com/comments",
+        // "http://localhost:4000/comments/",
+         {
         withCredentials: true,
       });
 
