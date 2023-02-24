@@ -6,6 +6,7 @@ import "./styles/headerbuttons.css";
 
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
+import { UserProvider } from "./context/UserContext";
 import { useState, useEffect, useContext } from "react";
 import Header from "./components/Header";
 import Headerboard from "./components/Headerboard";
@@ -21,41 +22,54 @@ import axios from "axios";
 import Routing from "./components/Routing";
 import PostFormModal from "./components/PostFormModal";
 
+
 function App() {
-  const [user, setUser] = useState({});
+
+  const {user, setUser} = useContext(UserContext);
   useEffect(() => {
     const getUser = async () => {
-      const response = await axios.get("https://redditt-api.onrender.com/user", {
-        withCredentials: true,
-      });
-      // .then((response) => setUser(response.data))
-      setUser(response.data);
-    };
-    getUser();
-    console.log("f")
+      const response = await axios.get(
+        // "https://redditt-api.onrender.com/user",
+        "http://localhost:4000/user",
+        {
+          withCredentials: true,
+        }
+        );
+        setUser(response.data);
+      };
+      console.log(user)
+      getUser();
   }, []);
+
+  
+  // console.log(user);
+
+
   // useEffect(() => {
-    const logout = async () => {
-      await axios.get("https://redditt-api.onrender.com/logout", {
+  const logout = async () => {
+    await axios.get(
+      // "https://redditt-api.onrender.com/logout",
+      "http://localhost:4000/logout",
+      {
         withCredentials: true,
-      });
-      setUser({});
-    };
-    
+      }
+    );
+    setUser({});
+  };
+// logout()
   return (
-    <AuthModalProvider>
-      {/* <UserProvider> */}
-      <UserContext.Provider value={{ user, setUser, logout }}>
-        <ModalProvider>
-          <Routing />
-          <Authmodal />
-          <PostFormModal />
-        </ModalProvider>
-      </UserContext.Provider>
-      {/* </UserProvider> */}
-    </AuthModalProvider>
+    // <AuthModalProvider>
+    //   <UserProvider>
+    //     <ModalProvider>
+    <>
+      <Routing />
+      <Authmodal />
+      <PostFormModal />
+    </>
+    //     </ModalProvider>
+    //   </UserProvider>
+    // </AuthModalProvider>
   );
 }
 
 export default App;
-//check

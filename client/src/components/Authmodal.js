@@ -1,6 +1,6 @@
 import Headerbuttons from "./Headerbuttons";
 import Input from "./Input";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import AuthModalContext from "../context/AuthModalContext";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -18,25 +18,25 @@ const Authmodal = () => {
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
-  const userContext = useContext(UserContext);
-  // console.log(userContext)
-  const setUser = userContext.setUser;
-
-  // console.log(modalVisibility);
+  const { user, setUser } = useContext(UserContext);
+  
+  
   async function register(e) {
     e.preventDefault();
-    setModalVisibility(false)
+    setModalVisibility(false);
     setEmail("");
     setPassword("");
-    setUsername("")
+    setUsername("");
     const data = { email, username, password };
     try {
       const res = await axios.post(
-        "https://redditt-api.onrender.com/register",
-        // "http://localhost:4000/register",
-         data, {
-        withCredentials: true,
-      });
+        // "https://redditt-api.onrender.com/register",
+        "http://localhost:4000/register",
+        data,
+        {
+          withCredentials: true,
+        }
+      );
       await setUser({ username });
 
       console.log(res);
@@ -44,20 +44,25 @@ const Authmodal = () => {
       console.error(err.message);
     }
   }
-
-
+  
   const login = async () => {
-    setModalVisibility(false)
+    setModalVisibility(false);
     const data = { username, password };
-    await axios.post(
-      "https://redditt-api.onrender.com/login",
-      // "http://localhost:4000/login",
-     data, {
-      withCredentials: true,
-    });
+    const response = await axios.post(
+      // "https://redditt-api.onrender.com/login",
+      "http://localhost:4000/login",
+      data,
+      {
+        withCredentials: true,
+      }
+      );
 
+      // const user = response.data.username;
+      // setUser(user);
+      // console.log(urser)
+    
+    };
 
-  };
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
       <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
@@ -91,7 +96,9 @@ const Authmodal = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          {modalType === "login" && <Headerbuttons onClick={login}>Log In</Headerbuttons>}
+          {modalType === "login" && (
+            <Headerbuttons onClick={login}>Log In</Headerbuttons>
+          )}
           {modalType === "register" && (
             <Headerbuttons onClick={register}>Sign Up</Headerbuttons>
           )}

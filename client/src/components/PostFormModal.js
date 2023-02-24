@@ -17,12 +17,12 @@ const PostFormModal = () => {
   const data = { title, body };
   const createPost = async () => {
     try {
-       await axios.post(
-        // "http://localhost:4000/comments/",
-        "https://redditt-api.onrender.com/comments/",
-        data, {withCredentials:true}
+      await axios.post(
+        "http://localhost:4000/comments/",
+        // "https://redditt-api.onrender.com/comments/",
+        data,
+        { withCredentials: true }
       );
-    
     } catch (error) {
       console.error(error.message);
     }
@@ -39,7 +39,7 @@ const PostFormModal = () => {
       <div className="post-modal-sub">
         <h3>Create a Post</h3>
         <Input
-        required
+          required
           placeholder={"Title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -48,7 +48,6 @@ const PostFormModal = () => {
           placeholder={"Text (required)"}
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          
         />
         <div>
           <ReactMarkdown remarkPlugins={[gfm]} children={""} />
@@ -60,7 +59,9 @@ const PostFormModal = () => {
           >
             Cancel
           </button>
-          <button className="post-form-btn" onClick={createPost}>POST</button>
+          <button className="post-form-btn" onClick={createPost}>
+            POST
+          </button>
         </div>
       </div>
       {/* </OutsideClickHandler> */}

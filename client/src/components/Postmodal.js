@@ -13,8 +13,8 @@ const Postmodal = (props) => {
     const getModalComment = async () => {
       try {
         const response = await axios.get(
-          `https://redditt-api.onrender.com/comments/${props.id}`,
-          // `http://localhost:4000/comments/${props.id}`,
+          // `https://redditt-api.onrender.com/comments/${props.id}`,
+          `http://localhost:4000/comments/${props.id}`,
           {
             withCredentials: true,
           }

@@ -28,7 +28,6 @@ const connectionString = process.env.DATABASE_URL;
 
 const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
-
   return await User.findById(userInfo.id);
 };
 
@@ -63,7 +62,6 @@ app.post("/register", async (req, res) => {
     });
     try {
       const info = await user.save();
-      console.log(info);
       res.status(201);
 
       jwt.sign({ id: user._id }, secret, (err, token) => {
@@ -88,11 +86,10 @@ app.post("/register", async (req, res) => {
 app.get("/user", (req, res) => {
   const getUser = async () => {
     const token = req.cookies.token;
-
     try {
-      getUserFromToken(token);
+      const user = await getUserFromToken(token);
       // res.clearCookie("token", "").send();
-
+       
       res.json({ username: user.username });
     } catch (err) {
       // console.log("error45")
@@ -118,12 +115,43 @@ app.get("/logout", (req, res) => {
   //   console.error(err.message);
   //   res.status(500);
   // }
-
   res.clearCookie("token", "").send();
 });
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
+  // const findUser = async () => {
+  //   try {
+  //     const user = await User.findOne({ username });
+  //     // console.log(user)
+  //     if (user.username === username ) {
+        
+  //       // res.status(201).send(user);
+        
+  //       }
+  //       // if (user && user.username == username) {
+  //         const passOk = bcrypt.compareSync(password, user.password);
+  //         // console.log(passOk);
+  //       if (passOk) {
+  //         jwt.sign({ id: user._id }, secret, (err, token) => {
+  //           res.cookie("token", token).send();
+  //           console.log(token)
+  //         });
+
+  //       }
+  //       //  else {
+  //       //   res.status(422).json("Invalid password");
+  //       // }
+  //     // } 
+  //     // else {
+  //     //   res.status(422).json("Invalid username");
+  //     // }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     // console.log("nice")
+  //   }
+  // };
+  // findUser();
   const findUser = async () => {
     try {
       const user = await User.findOne({ username });
@@ -136,6 +164,7 @@ app.post("/login", (req, res) => {
         if (passOk) {
           jwt.sign({ id: user._id }, secret, (err, token) => {
             res.cookie("token", token).send();
+            console.log(token)
           });
         } else {
           res.status(422).json("Invalid password");
