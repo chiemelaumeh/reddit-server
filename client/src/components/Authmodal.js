@@ -12,15 +12,10 @@ const Authmodal = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // const visibleClass = props.show ? 'hidden' : 'block'
-  // const visibleClass = useContext(AuthModalContext);
-  // console.log(visibleClass)
-
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
-  
-  
+
   async function register(e) {
     e.preventDefault();
     setModalVisibility(false);
@@ -44,24 +39,25 @@ const Authmodal = () => {
       console.error(err.message);
     }
   }
-  
+
   const login = async () => {
     setModalVisibility(false);
     const data = { username, password };
-    const response = await axios.post(
-      // "https://redditt-api.onrender.com/login",
-      "http://localhost:4000/login",
-      data,
-      {
-        withCredentials: true,
-      }
-      );
-
-      // const user = response.data.username;
-      // setUser(user);
-      // console.log(urser)
-    
-    };
+    try {
+      const response = await axios.post(
+        // "https://redditt-api.onrender.com/login",
+        "http://localhost:4000/login",
+        data,
+        {
+          withCredentials: true,
+        }
+        );
+        // console.log(response.data.username)
+        setUser(response.data.username)
+    } catch (error) {
+      console.error(error.messagee);
+    }
+  };
 
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
