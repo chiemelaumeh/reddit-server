@@ -93,7 +93,7 @@ app.get("/user", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  res.clearCookie("token", "").send();
+  res.clearCookie("token", "").send("Successfully logged out");
 });
 
 app.post("/login", (req, res) => {
@@ -139,12 +139,12 @@ app.post("/login", (req, res) => {
   findUser();
 });
 
-app.post("/comments", (req, res) => {
-  const createCommment = async () => {
+app.post("/comments", async (req, res) => {
+  // const createCommment = async () => {
+    const token = req.cookies.token
     try {
-      const userInfo = await getUserFromToken(req.cookies.token);
+      const userInfo = await getUserFromToken(token);
       const { title, body } = req.body;
-
       const comment = new Comment({
         title,
         body,
@@ -153,12 +153,12 @@ app.post("/comments", (req, res) => {
       });
       const newComment = await comment.save();
 
-      res.status(201).json(newComment);
+      res.status(201).send(newComment);
     } catch (error) {
       console.error(error.message);
     }
-  };
-  createCommment();
+  // };
+  // createCommment();
 });
 
 app.get("/comments", async (req, res) => {
