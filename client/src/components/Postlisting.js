@@ -22,8 +22,9 @@ const Postlisting = () => {
   return (
     <div className="app-reddit-story">
       {comments.map((comment) => (
-        <Redditmain {...comment} />
+        <Redditmain {...comment}  />
       ))}
+    
     </div>
   );
 };

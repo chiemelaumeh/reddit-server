@@ -6,7 +6,8 @@ import Redditmain from "./Post";
 const Commentpage = () => {
   const { id } = useParams();
 
-  const [comment, setComment] = useState({});
+
+  const [comment, setComment] = useState(null);
   useEffect(() => {
     const getComment = async () => {
       try {
@@ -17,8 +18,8 @@ const Commentpage = () => {
             withCredentials: true,
           }
         );
-        setComment(response.data);
-        // console.log(comment);
+        setComment(response.data)
+     
       } catch (error) {
         console.log(error.message);
       }
@@ -29,7 +30,7 @@ const Commentpage = () => {
   return (
     <div className="comment-main">
       {" "}
-      {comment && <Redditmain {...comment} open={true} />}
+      {comment && <Redditmain {...comment} open={false} />}
     </div>
   );
 };

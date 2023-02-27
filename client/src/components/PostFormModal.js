@@ -13,18 +13,20 @@ const PostFormModal = () => {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
   const data = { title, body };
+
+
   const createPost = async () => {
     try {
-      await axios.post(
+      const response = await axios.post(
         "http://localhost:4000/comments/",
         // "https://redditt-api.onrender.com/comments/",
         data,
         { withCredentials: true }
       );
+      console.log(response)
     } catch (error) {
-      console.error(error.message);
+      console.error(error.message)
     }
   };
   return (
