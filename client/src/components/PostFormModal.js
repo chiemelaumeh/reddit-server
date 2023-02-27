@@ -6,6 +6,7 @@ import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
@@ -13,6 +14,7 @@ const PostFormModal = () => {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [newPostId, setNewPostId] = useState(null)
   const data = { title, body };
 
 
@@ -24,11 +26,17 @@ const PostFormModal = () => {
         data,
         { withCredentials: true }
       );
-      console.log(response)
+      setNewPostId(response.data._id)
+      console.log(newPostId)
     } catch (error) {
       console.error(error.message)
     }
   };
+
+  if (newPostId) {
+    return (<Navigate to={'/comments/' + newPostId} />)
+  }
+
   return (
     <div
       className={

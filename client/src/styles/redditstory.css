@@ -73,4 +73,5 @@ body {
 .comment-main {
   background-color: var(--reddit_dark);
   padding: 1rem 0;
+  height: 100vh;
 }

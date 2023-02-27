@@ -124,7 +124,7 @@ app.post("/login", (req, res) => {
             // const user = await getUserFromToken(token)
           });
         } else {
-          res.status(422).send("rw");
+          res.status(422).send();
           console.log("invalid password");
         }
       } else {
@@ -163,8 +163,10 @@ app.post("/comments", async (req, res) => {
 
 app.get("/comments", async (req, res) => {
   try {
-    const comments = await Comment.find({});
+    const comments = await Comment.find().sort({postedAt: -1});
+    // const comments = await Comment.find({});
     res.json(comments);
+    // console.log(comments)
   } catch (err) {
     console.error(err.message);
   }
@@ -174,7 +176,9 @@ app.get("/comments/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     res.json(comment);
-  } catch (error) {}
+  } catch (error) {
+    console.error(err.message)
+  }
 });
 
 app.listen(4000, () => {

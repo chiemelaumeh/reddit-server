@@ -11,7 +11,7 @@ const Routinglocation = () => {
     location.pathname = "/";
     commentId = location.state.commentId;
   }
-  console.log(location)
+  // console.log(location)
   return (
     <div>
       {commentId && (
