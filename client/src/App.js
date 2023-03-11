@@ -3,6 +3,7 @@ import "./styles/headerboard.css";
 import "./styles/postform.css";
 import "./styles/redditstory.css";
 import "./styles/headerbuttons.css";
+import "./styles/comments.css"
 
 import { useEffect, useContext } from "react";
 
@@ -14,7 +15,7 @@ import PostFormModal from "./components/PostFormModal";
 
 
 function App() {
-  const {setUser} = useContext(UserContext);
+  const {user, setUser} = useContext(UserContext);
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get(
@@ -27,9 +28,10 @@ function App() {
         setUser(response.data);
       };
       getUser();
-  }, []);
-
-
+    }, []);
+    console.log(user)
+    
+    
 
   return (
     <>

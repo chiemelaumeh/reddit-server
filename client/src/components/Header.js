@@ -58,7 +58,6 @@ const Header = () => {
           }
         );
 
-       
         setUser({});
       };
     

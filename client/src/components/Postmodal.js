@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
 import AuthModalContext from "../context/AuthModalContext";
+import PostCommentForm from "./PostCommentForm";
 import PostContent from "./Postcontent";
 import axios from "axios";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -39,11 +40,13 @@ const Postmodal = (props) => {
         postModalVisibility ? "post-modal-page" : "hide-post-modal-page"
       }
     >
-      <div className="post-sub">
-        <OutsideClickHandler onOutsideClick={reset}>
+      <OutsideClickHandler onOutsideClick={reset}>
+        <div className="post-sub">
           <PostContent open={true} {...modalComment} />
-        </OutsideClickHandler>
-      </div>
+          <hr />
+          <PostCommentForm />
+        </div>
+      </OutsideClickHandler>
     </div>
   );
 };
