@@ -3,7 +3,7 @@ import "./styles/headerboard.css";
 import "./styles/postform.css";
 import "./styles/redditstory.css";
 import "./styles/headerbuttons.css";
-import "./styles/comments.css"
+
 
 import { useEffect, useContext } from "react";
 

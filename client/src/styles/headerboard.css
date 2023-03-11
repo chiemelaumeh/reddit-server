@@ -97,12 +97,33 @@ body {
   background-color: var(--reddit_dark);
   padding: 20px 20px;
   color: var(--offwhite);
-
   width: 40%;
   height: auto;
   border: 1px solid var(--reddit_border);
-
   border-radius: 4px;
+  align-items: center;
+}
+.post-sub hr {
+  background-color: aquamarine;
+  margin:1rem 0;
+}
+.comment-sub textarea {
+  padding: 10px 10px;
+  max-width: 100%;
+  min-width: 90%;
+  min-height: 40%;
+  outline: none;
+  color: var(--offwhite); 
+  margin-top: 1rem;
+  
+
+}
+
+.comment-sub {
+  display: flex;
+  justify-content: center;
+
+
 }
 .post-main {
   display: block;

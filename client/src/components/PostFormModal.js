@@ -8,6 +8,7 @@ import gfm from "remark-gfm";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
+
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
     useContext(AuthModalContext);
@@ -65,11 +66,11 @@ const PostFormModal = () => {
         <div className="post-btns">
           <button
             onClick={() => setPostFormModalVisibility(false)}
-            className="post-form-btn-close"
+            className="post-form-btn-close "
           >
             Cancel
           </button>
-          <button className="post-form-btn" onClick={createPost}>
+          <button className="post-form-btn btn" onClick={createPost}>
             POST
           </button>
         </div>
