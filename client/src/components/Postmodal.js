@@ -44,7 +44,7 @@ const Postmodal = (props) => {
         <div className="post-sub">
           <PostContent open={true} {...modalComment} />
           <hr />
-          <PostCommentForm />
+          <PostCommentForm  />
         </div>
       </OutsideClickHandler>
     </div>

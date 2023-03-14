@@ -9,6 +9,7 @@ const PostContent = (props) => {
       </h5>
       <h2>{props.title}</h2>
       <div>{props.body}</div>
+      
     </div>
   );
 };
