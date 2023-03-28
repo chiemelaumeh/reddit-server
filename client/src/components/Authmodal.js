@@ -32,7 +32,7 @@ const Authmodal = () => {
           withCredentials: true,
         }
       );
-      await setUser({ username });
+       setUser({ username });
 
       console.log(res);
     } catch (err) {

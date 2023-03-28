@@ -1,6 +1,6 @@
 import React from "react";
 
-const PostContent = (props) => {
+const ModalContent = (props) => {
   return (
     <div>
       <h5>
@@ -13,4 +13,4 @@ const PostContent = (props) => {
   );
 };
 
-export default PostContent;
+export default ModalContent;

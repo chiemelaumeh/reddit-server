@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Redditmain from "./Post";
@@ -17,6 +15,7 @@ const Postlisting = () => {
       });
 
       setComments(response.data);
+      // console.log(response.data)
     };
     getComments();
   }, []);

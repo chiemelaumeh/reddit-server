@@ -176,7 +176,7 @@ app.get("/comments/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     res.json(comment);
-  } catch (error) {
+  } catch (err) {
     console.error(err.message)
   }
 });

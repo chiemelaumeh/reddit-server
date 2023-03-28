@@ -8,7 +8,7 @@ const Commentpage = () => {
 
 
   const [comment, setComment] = useState(null);
-  useEffect(() => {
+  // useEffect(() => {
     const getComment = async () => {
       try {
         const response = await axios.get(
@@ -25,12 +25,12 @@ const Commentpage = () => {
       }
     };
     getComment();
-  }, []);
+  // });
 
   return (
     <div className="comment-main">
       {" "}
-      {comment && <Redditmain {...comment} open={false} />}
+       <Redditmain {...comment}  />
     </div>
   );
 };

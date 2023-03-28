@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useState, useEffect } from "react";
 import AuthModalContext from "../context/AuthModalContext";
 import PostCommentForm from "./PostCommentForm";
-import PostContent from "./Postcontent";
+import ModalContent from "./ModalContent";
 import axios from "axios";
 import OutsideClickHandler from "react-outside-click-handler";
 
@@ -21,7 +21,7 @@ const Postmodal = (props) => {
           }
         );
         setModalComment(response.data);
-        // console.log(comment);
+        console.log(response.data);
       } catch (error) {
         console.log(error.message);
       }
@@ -42,9 +42,17 @@ const Postmodal = (props) => {
     >
       <OutsideClickHandler onOutsideClick={reset}>
         <div className="post-sub">
-          <PostContent open={true} {...modalComment} />
-          <hr />
-          <PostCommentForm  />
+    
+          <ModalContent open={true} {...modalComment} />
+          {
+            !!modalComment &&  !!modalComment._id &&
+              <>
+              {/* < hr /> */}
+              <PostCommentForm rootId={modalComment._id} parentId={modalComment._id}/>
+              </>
+            
+          }
+         
         </div>
       </OutsideClickHandler>
     </div>

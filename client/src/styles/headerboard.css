@@ -109,7 +109,9 @@ body {
   margin:1rem 0;
 
 }
-
+.comment-btn {
+  border-radius: 2rem;
+}
 .comment-form textarea {
   /* display:inline-block; */
   background-color: var(--reddit_midgrey);
@@ -120,8 +122,6 @@ body {
   outline: none;
   color: var(--offwhite);
   padding: 10px 10px;
-  /* resize: none; */
-  /* padding: 0.5rem 0.5rem; */
 
   max-width: 97%;
   min-width: 97%;
@@ -209,6 +209,8 @@ body {
   /* justify-content:center; */
   width: 100%;
 }
+
+
 @media screen and (max-width: 600px) {
   .login-div {
     display: block;
