@@ -21,7 +21,7 @@ const Postmodal = (props) => {
           }
         );
         setModalComment(response.data);
-        console.log(response.data);
+    
       } catch (error) {
         console.log(error.message);
       }
@@ -48,7 +48,7 @@ const Postmodal = (props) => {
             !!modalComment &&  !!modalComment._id &&
               <>
               {/* < hr /> */}
-              <PostCommentForm rootId={modalComment._id} parentId={modalComment._id}/>
+              <PostCommentForm title={modalComment.title} parentId={modalComment._id} rootId={modalComment._id}/>
               </>
             
           }

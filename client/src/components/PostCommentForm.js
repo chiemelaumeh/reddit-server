@@ -3,15 +3,18 @@ import { useContext, useState } from "react";
 import UserContext from "../context/UserContext";
 import axios from "axios";
 
-const PostCommentForm = () => {
+const PostCommentForm = (props) => {
   const [userComment, setUserComment] = useState("");
   const { user, setUser } = useContext(UserContext);
 
-  const postComment = async () => {
-    const data = { user, userComment, parentId:0, rootId:0};
+
+  const postComment = async (e) => {
+   e.preventDefault()
+    const data = { title:props.title, body:userComment, parentId:props.parentId, rootId:props.rootId};
     try {
       const response = axios.post("http://localhost:4000/comments/", data, {
         withCredentials: true,
+
       });
     } catch (err) {
       console.error(err.message)
@@ -25,7 +28,7 @@ const PostCommentForm = () => {
   return (
     <div>
       {user.username && <div>Comment as {user.username}</div>}
-      <form className="comment-form">
+      <form className="comment-form" onSubmit={postComment} >
         <textarea
           onChange={changeUserComment}
           value={userComment}
@@ -33,7 +36,7 @@ const PostCommentForm = () => {
         ></textarea>
 
         <div className="btn-div">
-          <button className="btn comment-btn" onClick={postComment}>Comment</button>
+          <button className="btn comment-btn"  >Comment</button>
         </div>
       </form>
     </div>

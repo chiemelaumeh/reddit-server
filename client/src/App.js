@@ -24,11 +24,11 @@ function App() {
           withCredentials: true,
         }
         );
-        setUser(response.data);
+        setUser(response.data.username);
       };
       getUser();
     }, []);
-    console.log(user)
+
 
   return (
     <>
