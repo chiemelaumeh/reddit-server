@@ -10,7 +10,7 @@ const PostCommentForm = (props) => {
 
   const postComment = async (e) => {
    e.preventDefault()
-    const data = { title:props.title, body:userComment, parentId:props.parentId, rootId:props.rootId};
+    const data = { title:props.title, body:userComment, parentId:props._id, rootId:props._id};
     try {
       const response = axios.post("http://localhost:4000/comments/", data, {
         withCredentials: true,

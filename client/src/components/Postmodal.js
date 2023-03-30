@@ -49,9 +49,9 @@ const Postmodal = (props) => {
             !!modalComment &&  !!modalComment._id &&
               <>
               < hr />
-              <PostCommentForm title={modalComment.title} parentId={modalComment._id} rootId={modalComment._id}/>
+              <PostCommentForm {...modalComment} />
               < hr />
-              <Comments />
+              <Comments parentId={modalComment._id} comments={[{body: "Test Commments"}]} />
 
 
               </>

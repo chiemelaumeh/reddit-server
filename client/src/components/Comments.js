@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
 
-const Comments = () => {
+const Comments = (props) => {
+  const postComments = props.comments.filter(
+    (comment) => props.parentID === comment.parentId
+  );
+
   return (
-    <div>Comments</div>
-  )
-}
+    <div>
+      {postComments.map((singleComment) => (
+        <div>
+          <div className="post-comments"></div>
+          {/* {singleComment} */}
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default Comments
+export default Comments;
