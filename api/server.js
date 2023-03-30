@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3001", "https://reddit-app-nw97.onrender.com"],
+    origin: ["http://localhost:3000", "https://reddit-app-nw97.onrender.com"],
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -144,12 +144,14 @@ app.post("/comments", async (req, res) => {
     const token = req.cookies.token
     try {
       const userInfo = await getUserFromToken(token);
-      const { title, body } = req.body;
+      const { title, body, parentId, rootId } = req.body;
       const comment = new Comment({
         title,
         body,
         author: userInfo.username,
         postedAt: Date.now(),
+        parentId,
+        rootId
       });
       const newComment = await comment.save();
 
@@ -163,7 +165,7 @@ app.post("/comments", async (req, res) => {
 
 app.get("/comments", async (req, res) => {
   try {
-    const comments = await Comment.find().sort({postedAt: -1});
+    const comments = await Comment.find({rootId:null}).sort({postedAt: -1});
     // const comments = await Comment.find({});
     res.json(comments);
     // console.log(comments)

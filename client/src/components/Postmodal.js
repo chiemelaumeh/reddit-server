@@ -5,6 +5,7 @@ import PostCommentForm from "./PostCommentForm";
 import ModalContent from "./ModalContent";
 import axios from "axios";
 import OutsideClickHandler from "react-outside-click-handler";
+import Comments from "./Comments";
 
 const Postmodal = (props) => {
   const { postModalVisibility, setPostModalVisibility } =
@@ -47,8 +48,12 @@ const Postmodal = (props) => {
           {
             !!modalComment &&  !!modalComment._id &&
               <>
-              {/* < hr /> */}
+              < hr />
               <PostCommentForm title={modalComment.title} parentId={modalComment._id} rootId={modalComment._id}/>
+              < hr />
+              <Comments />
+
+
               </>
             
           }

@@ -24,7 +24,7 @@ function App() {
           withCredentials: true,
         }
         );
-        setUser(response.data.username);
+        setUser(response.data);
       };
       getUser();
     }, []);
