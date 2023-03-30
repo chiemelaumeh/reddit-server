@@ -183,6 +183,16 @@ app.get("/comments/:id", async (req, res) => {
   }
 });
 
+
+app.get("/comments/root/:rootId", async (req, res) => {
+  try {
+    const comments = await Comment.find({rootId:req.params.rootId});
+    res.json(comments);
+  } catch (err) {
+    console.error(err.message)
+  }
+});
+
 app.listen(4000, () => {
   console.log("Listening on Port 4000");
 });

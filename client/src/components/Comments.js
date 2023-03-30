@@ -1,8 +1,8 @@
 import React from "react";
 
 const Comments = (props) => {
-  const postComments = props.comments.filter(
-    (comment) => props.parentID === comment.parentId
+  const postComments = props.postComments.filter(
+    (comment) => props.parentId === comment.parentId
   );
 
   return (
@@ -10,9 +10,13 @@ const Comments = (props) => {
       {postComments.map((singleComment) => (
         <div>
           <div className="post-comments"></div>
-          {/* {singleComment} */}
+          {singleComment.author}
+          
+           {singleComment.body} 
+       
+          
         </div>
-      ))}
+       ))} 
     </div>
   );
 };

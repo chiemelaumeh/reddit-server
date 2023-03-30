@@ -11,6 +11,8 @@ const Postmodal = (props) => {
   const { postModalVisibility, setPostModalVisibility } =
     useContext(AuthModalContext);
   const [modalComment, setModalComment] = useState({});
+  const [postComments, setPostComments] = useState([]);
+
   useEffect(() => {
     const getModalComment = async () => {
       try {
@@ -21,16 +23,32 @@ const Postmodal = (props) => {
             withCredentials: true,
           }
         );
+        
         setModalComment(response.data);
-    
       } catch (error) {
         console.log(error.message);
       }
     };
     getModalComment();
+
+    const getPostComments = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/comments/root/${props.id}`,
+          { withCredentials: true }
+        );
+        
+        console.log("response.data")
+       
+        setPostComments(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getPostComments();
   }, [props.id]);
+
   function reset() {
-    //  setComment({})
     setPostModalVisibility(false);
   }
   return (
@@ -43,21 +61,18 @@ const Postmodal = (props) => {
     >
       <OutsideClickHandler onOutsideClick={reset}>
         <div className="post-sub">
-    
           <ModalContent open={true} {...modalComment} />
-          {
-            !!modalComment &&  !!modalComment._id &&
-              <>
-              < hr />
+          {!!modalComment && !!modalComment._id && (
+            <>
+              <hr />
               <PostCommentForm {...modalComment} />
-              < hr />
-              <Comments parentId={modalComment._id} comments={[{body: "Test Commments"}]} />
-
-
-              </>
-            
-          }
-         
+              <hr />
+              <Comments
+                parentId={modalComment._id}
+                postComments={postComments}
+              />
+            </>
+          )}
         </div>
       </OutsideClickHandler>
     </div>
