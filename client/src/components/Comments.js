@@ -1,13 +1,23 @@
 import React from "react";
 import TimeAgo from "timeago-react"; // var TimeAgo = require('timeago-react');
 import PostCommentForm from "./PostCommentForm";
+import { useState } from "react";
 
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
 const Comments = (props) => {
+  const [showReplyBox, setShowReplyBox] = useState(false);
+
   const postComments = props.postComments.filter(
     (comment) => props.parentId === comment.parentId
   );
+
+  // const toggleBox = () => {
+  //   if (showReplyBox === false) {
+  //     setShowReplyBox(!showReplyBox);
+
+  //   }
+  // };
 
   return (
     <div>
@@ -24,9 +34,12 @@ const Comments = (props) => {
             {singleComment.body}
 
             <div>
-              <button className="comment-reply">Reply</button>
+              <button className="comment-reply" onClick={() => setShowReplyBox(singleComment._id)}>
+                Reply
+              </button>
+            
             </div>
-          <PostCommentForm />
+            {singleComment._id === showReplyBox && <PostCommentForm showButton={true} onCancel={() => setShowReplyBox(false)}/>}
           </div>
 
           {/* <div className="rule-div">
