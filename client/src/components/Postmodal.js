@@ -37,7 +37,7 @@ const Postmodal = (props) => {
           `http://localhost:4000/comments/root/${props.id}`,
           { withCredentials: true }
         );
-        
+
         console.log("response.data")
        
         setPostComments(response.data);
@@ -68,6 +68,7 @@ const Postmodal = (props) => {
               <PostCommentForm {...modalComment} />
               <hr />
               <Comments
+                rootId={modalComment._id}
                 parentId={modalComment._id}
                 postComments={postComments}
               />

@@ -99,7 +99,8 @@ body {
   background-color: var(--reddit_dark);
   padding: 20px 20px;
   color: var(--offwhite);
-  width: 40%;
+  line-height: 1.5rem;
+  width: 50vw;
   height: auto;
   border: 1px solid var(--reddit_border);
   border-radius: 4px;
@@ -236,25 +237,25 @@ body {
     width: 10%;
   }
 }
-
-@media screen and (min-width: 380px) {
+/* 
+ @media screen and (min-width: 380px) {
   .post-sub {
     margin: auto;
     width: 80%;
   }
-}
+} 
 @media screen and (min-width: 1024px) {
   .post-sub {
     width: 55%;
   }
-}
-@media screen and (min-width: 1400px) {
+} 
+ @media screen and (min-width: 1400px) {
   .post-sub {
     width: 45%;
   }
-}
-@media screen and (min-width: 1900px) {
+} 
+ @media screen and (min-width: 1900px) {
   .post-sub {
     width: 40%;
   }
-}
+}  */

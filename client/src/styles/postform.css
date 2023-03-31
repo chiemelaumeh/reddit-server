@@ -167,5 +167,16 @@ p {
   width: 2rem;
   height:2rem ;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin-bottom:0.2rem;
+
+}
+
+.comment-div {
+  margin-bottom: 1.75rem;
+
+}
+.comment-div h3 {
+  margin: 0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }

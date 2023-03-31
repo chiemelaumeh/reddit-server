@@ -6,13 +6,19 @@ const Comments = (props) => {
   );
 
   return (
-    <div>
+    <div >
       {postComments.map((singleComment) => (
-        <div>
+        <div className="comment-div">
           <div className="post-comments"></div>
-          {singleComment.author}
           
+          <h3>
+          {singleComment.author} said:
+          </h3>
+
+          <div>
+
            {singleComment.body} 
+          </div>
        
           
         </div>
