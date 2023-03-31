@@ -65,7 +65,7 @@ const Postmodal = (props) => {
           {!!modalComment && !!modalComment._id && (
             <>
               <hr />
-              <PostCommentForm {...modalComment} />
+              <PostCommentForm {...modalComment} showAuthor={true} />
               <hr />
               <Comments
                 rootId={modalComment._id}

@@ -16,6 +16,7 @@
     "react-router-dom": "^6.6.2",
     "react-scripts": "^4.0.3",
     "remark-gfm": "^3.0.1",
+    "timeago-react": "^3.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

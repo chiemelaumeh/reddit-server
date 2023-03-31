@@ -10,7 +10,7 @@ const PostCommentForm = (props) => {
 
   const postComment = async (e) => {
    e.preventDefault()
-    const data = { title:props.title, body:userComment, parentId:props._id, rootId:props._id};
+    const data = { title:props.title, body:userComment, parentId:props._id, rootId:props.rootId};
     try {
       const response = axios.post("http://localhost:4000/comments/", data, {
         withCredentials: true,
@@ -27,7 +27,7 @@ const PostCommentForm = (props) => {
 
   return (
     <div>
-      {user.username && <div>Comment as {user.username}</div>}
+      {props.showAuthor && <div>Comment as {user.username}</div>}
       <form className="comment-form" onSubmit={postComment} >
         <textarea
           onChange={changeUserComment}
