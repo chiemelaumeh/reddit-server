@@ -34,12 +34,21 @@ const Comments = (props) => {
             {singleComment.body}
 
             <div>
-              <button className="comment-reply" onClick={() => setShowReplyBox(singleComment._id)}>
+              <button
+                className="comment-reply"
+                onClick={() => setShowReplyBox(singleComment._id)}
+              >
                 Reply
               </button>
-            
             </div>
-            {singleComment._id === showReplyBox && <PostCommentForm showButton={true} onCancel={() => setShowReplyBox(false)}/>}
+            {singleComment._id === showReplyBox && (
+              <PostCommentForm
+               parentId = {singleComment._id}
+               rootId={props.parentId}
+                showButton={true}
+                onCancel={() => setShowReplyBox(false)}
+              />
+            )}
           </div>
 
           {/* <div className="rule-div">
