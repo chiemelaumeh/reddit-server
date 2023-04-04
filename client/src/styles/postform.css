@@ -206,4 +206,8 @@ p {
   font-weight: 600;
   margin-left: 1rem;
   cursor: pointer;
+ 
+}
+.hide-comment-reply {
+  display: none;
 }

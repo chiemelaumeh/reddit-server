@@ -186,7 +186,7 @@ app.get("/comments/:id", async (req, res) => {
 
 app.get("/comments/root/:rootId", async (req, res) => {
   try {
-    const comments = await Comment.find({rootId:req.params.rootId}).sort({postedAt: -1});
+    const comments = await Comment.find({rootId:req.params.rootId});
     res.json(comments);
   } catch (err) {
     console.error(err.message)

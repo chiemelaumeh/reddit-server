@@ -23,7 +23,7 @@ const Postmodal = (props) => {
             withCredentials: true,
           }
         );
-        
+
         setModalComment(response.data);
       } catch (error) {
         console.log(error.message);
@@ -38,8 +38,8 @@ const Postmodal = (props) => {
           { withCredentials: true }
         );
 
-        console.log("response.data")
-       
+        console.log("response.data");
+
         setPostComments(response.data);
       } catch (error) {
         console.log(error.message);
@@ -65,10 +65,20 @@ const Postmodal = (props) => {
           {!!modalComment && !!modalComment._id && (
             <>
               <hr />
-              <PostCommentForm {...modalComment} showAuthor={true} showButton={false} />
+              <PostCommentForm
+                  {...modalComment}
+                  postComments={postComments}
+                  setPostComments={setModalComment}
+                  title={modalComment.title}
+                  rootId={modalComment._id}
+                  parentId={modalComment._id}
+                showAuthor={true}
+                showButton={false}
+              />
               <hr />
               <Comments
-                rootId={modalComment._id}
+                // rootId={modalComment._id}
+                // title={modalComment.title}
                 parentId={modalComment._id}
                 postComments={postComments}
               />

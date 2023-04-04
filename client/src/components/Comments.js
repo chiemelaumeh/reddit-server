@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const Comments = (props) => {
   const [showReplyBox, setShowReplyBox] = useState(false);
+  const [hideReplyButton, setHideReplyButton] = useState(false);
 
   const postComments = props.postComments.filter(
     (comment) => props.parentId === comment.parentId
@@ -35,20 +36,25 @@ const Comments = (props) => {
 
             <div>
               <button
-                className="comment-reply"
+                className={
+                  hideReplyButton ? "hide-comment-reply" : "comment-reply"
+                }
                 onClick={() => setShowReplyBox(singleComment._id)}
+                // onClick={() => setHideReplyButton(!hideReplyButton)}
               >
                 Reply
               </button>
             </div>
-            {singleComment._id === showReplyBox && (
+            {singleComment._id === showReplyBox && 
               <PostCommentForm
-               parentId = {singleComment._id}
-               rootId={props.parentId}
+                // title={props.title}
+                parentId={singleComment._id}
+                rootId={props.parentId}
+                title={singleComment.title}
                 showButton={true}
                 onCancel={() => setShowReplyBox(false)}
               />
-            )}
+            }
           </div>
 
           {/* <div className="rule-div">
