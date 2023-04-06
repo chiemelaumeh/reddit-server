@@ -193,6 +193,26 @@ app.get("/comments/root/:rootId", async (req, res) => {
   }
 });
 
+app.get("/comments/parent/:parentId", async (req, res) => {
+  try {
+    const comments = await Comment.find({parentId:req.params.parentId});
+    res.json(comments)
+  } catch (err) {
+    console.error(err.message) 
+  }
+})
+
+async function deleteAll () {
+
+  
+    await Comment.remove({rootId: {$exists: true}})
+    console.log("Deleted All")
+
+    
+  
+}
+ 
+// deleteAll()
 app.listen(4000, () => {
   console.log("Listening on Port 4000");
 });
