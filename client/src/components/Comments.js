@@ -2,23 +2,36 @@ import React from "react";
 import TimeAgo from "timeago-react"; // var TimeAgo = require('timeago-react');
 import PostCommentForm from "./PostCommentForm";
 import { useState } from "react";
+import CommentReplies from "./CommentReplies";
+import axios from "axios";
+
 
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
 const Comments = (props) => {
-  const [showReplyBox, setShowReplyBox] = useState(false);
-  const [hideReplyButton, setHideReplyButton] = useState(false);
+  const [showReplyBox, setShowReplyBox] = useState("wefw");
+  const [hideReplyButton, setHideReplyButton] = useState("");
+  const [fetchedReplies, setfetchedReplies] = useState([]);
 
   const postComments = props.postComments.filter(
     (comment) => props.parentId === comment.parentId
   );
 
-  // const toggleBox = () => {
-  //   if (showReplyBox === false) {
-  //     setShowReplyBox(!showReplyBox);
+  
 
-  //   }
-  // };
+  const fetchReplies = async (parentId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:4000/comments/parent/${parentId}`
+      );
+      console.log(response)
+      setfetchedReplies(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+
 
   return (
     <div>
@@ -45,18 +58,25 @@ const Comments = (props) => {
                 Reply
               </button>
             </div>
-            {singleComment._id === showReplyBox && 
+            {/* {singleComment._id === showReplyBox && (
               <PostCommentForm
                 // title={props.title}
                 parentId={singleComment._id}
                 rootId={props.parentId}
                 title={singleComment.title}
                 showButton={true}
-                onCancel={() => setShowReplyBox(false)}
+                onCancel={() => setShowReplyBox("")}
+                onSubmit={() => {
+              
+                  setShowReplyBox("");
+                  fetchReplies(singleComment._id);
+                }}
               />
-            }
-          </div>
+            )} */}
 
+          <CommentReplies singleComment={singleComment}/>
+          </div>
+      
           {/* <div className="rule-div">
             <hr />
           </div> */}

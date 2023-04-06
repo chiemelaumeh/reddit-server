@@ -66,9 +66,7 @@ const Postmodal = (props) => {
             <>
               <hr />
               <PostCommentForm
-                  {...modalComment}
                   postComments={postComments}
-                  setPostComments={setModalComment}
                   title={modalComment.title}
                   rootId={modalComment._id}
                   parentId={modalComment._id}
@@ -77,7 +75,7 @@ const Postmodal = (props) => {
               />
               <hr />
               <Comments
-                // rootId={modalComment._id}
+                rootId={modalComment._id}
                 // title={modalComment.title}
                 parentId={modalComment._id}
                 postComments={postComments}
