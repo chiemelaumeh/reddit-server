@@ -20,41 +20,42 @@ const PostCommentForm = (props) => {
       const response = axios.post("http://localhost:4000/comments/", data, {
         withCredentials: true,
       });
-      setUserComment("");
+      setUserComment("")
     } catch (err) {
       console.error(err.message);
     }
   };
-  // useEffect(() => {
+// useEffect(() => {
 
-  //   const getPostComments = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:4000/comments/` + props.modalComment._id,
-  //         { withCredentials: true }
-  //       );
+//   const getPostComments = async () => {
+//     try {
+//       const response = await axios.get(
+//         `http://localhost:4000/comments/` + props.modalComment._id,
+//         { withCredentials: true }
+//       );
 
-  //       console.log("response.data");
+//       console.log("response.data");
 
-  //       props.setPostComments(response.data);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   getPostComments();
-  // }, [props.modalComment_id])
+//       props.setPostComments(response.data);
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   };
+//   getPostComments();
+// }, [props.modalComment_id])
 
+
+ 
   const changeUserComment = (e) => {
     setUserComment(e.target.value);
   };
-  const runOnSubmit = ()=> {
 
-     props.onSubmit()
-  }
   return (
     <div>
-      {props.showAuthor && <div>Comment as {user.username}</div>}
-      <form className="comment-form" onSubmit={() => {runOnSubmit(); props.onSubmit()}}>
+      {props.showAuthor  && (
+        <div>Comment as {user.username}</div>
+      )}
+      <form className="comment-form" onSubmit={postComment}>
         <textarea
           onChange={changeUserComment}
           value={userComment}
@@ -72,21 +73,22 @@ const PostCommentForm = (props) => {
               </button>
               <button
                 className="btn comment-btn"
-                
+                // onClick={() => props.onSubmit()}
               >
+              
                 Comment
               </button>
             </>
-          )}
-          {props.showButton === false && (
-            <button className="btn comment-btn">Comment</button>
           )}
 
           {/* {props.showButton && (
             <button className="btn comment-btn">Post Reply</button>
           )} */}
+          {props.showButton === false && (
+            <button className="btn comment-btn">Comment</button>
+          )} 
+            {/* <button className="btn comment-btn">Comment</button> */}
 
-          {/* <button className="btn comment-btn">Comment</button> */}
         </div>
       </form>
     </div>
