@@ -41,25 +41,26 @@ const Comments = (props) => {
           <div className="comment-div">
             <div className="post-comments"></div>
 
-            <h3>{singleComment.author}, </h3>
-            <p>
+            <p>{singleComment.author} </p>
+            <p className="time-ago-div">
               <TimeAgo datetime={singleComment.postedAt} />
             </p>
 
-            <div className="comment-body-div">
-              {singleComment.body}
-
-              <div>
-                <button
-                  className={
-                    hideReplyButton ? "hide-comment-reply" : "comment-reply"
-                  }
-                  onClick={() => setShowReplyBox(singleComment._id)}
-                  // onClick={() => setHideReplyButton(!hideReplyButton)}
-                >
-                  Reply
-                </button>
-              </div>
+            {/* <div> */}
+              <div className="comment-body-div">
+                {singleComment.body}
+                <div>
+                  <button
+                    className={
+                      hideReplyButton ? "hide-comment-reply" : "comment-reply"
+                    }
+                    onClick={() => setShowReplyBox(singleComment._id)}
+                    // onClick={() => setHideReplyButton(!hideReplyButton)}
+                  >
+                    Reply
+                  </button>
+                </div>
+            {/* </div> */}
 
               <div>
 
@@ -71,6 +72,11 @@ const Comments = (props) => {
                   title={singleComment.title}
                   showButton={true}
                   onCancel={() => setShowReplyBox("")}
+
+                  // onSubmitt={() => {
+                  //   setShowReplyBox("");
+                    
+                  // }}
                  
                 />
               )}

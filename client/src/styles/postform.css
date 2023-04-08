@@ -175,11 +175,11 @@ p {
   margin-bottom: 1.75rem;
 
 }
-.comment-div h3 {
+.comment-div p {
   margin: 0;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
-  display: inline;
+  margin-bottom: 0.1rem;
+  /* display: inline; */
 }
 .rule-div {
   display: flex;
@@ -197,6 +197,8 @@ p {
 .comment-body-div {
   border-left:1px solid var(--reddit_border);
   padding: 0 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
  
 }
 
@@ -236,14 +238,17 @@ textarea::placeholder {
   /* justify-content: space-around; */
  
 }
-.reply-main-div{
-
+.reply-main-div p{
+margin-left: 0.5rem
 
 }
-.reply-main-div p{
+.profile-timeago {
   font-weight: 300;
   /* padding */
-  margin: 0 1rem;
+  margin: 0 0.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .hide-comment-reply {
   display: none;
@@ -257,5 +262,11 @@ textarea::placeholder {
   background-color: var(--reddit_dark);
   /* margin-left: 5rem; */
   color: var(--offwhite);
-  border: 1px solid var(--offwhite)
+  border: 1px solid var(--offwhite);
+  cursor: pointer;
+}
+
+.time-ago-div {
+  margin-left: 1rem;
+  color: var(--reddit_border);
 }

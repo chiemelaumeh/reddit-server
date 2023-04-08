@@ -10,9 +10,16 @@ const CommentReplies = (props) => {
       {replies.map((singleReply) => {
         return (
           <div className="reply-main-div">
+              <div className="profile-timeago">
+              <div className="post-comments"></div>
               <p>
-                <TimeAgo datetime={singleReply.postedAt} />
+                {singleReply.author}
               </p>
+              </div>
+              <div className="time-ago-div">
+
+                <TimeAgo datetime={singleReply.postedAt} />
+              </div>
             <div className="single-reply-div">
               {singleReply.body}
             </div>

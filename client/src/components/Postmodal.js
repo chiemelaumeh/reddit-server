@@ -23,7 +23,7 @@ const Postmodal = (props) => {
             withCredentials: true,
           }
         );
-
+         
         setModalComment(response.data);
       } catch (error) {
         console.log(error.message);
