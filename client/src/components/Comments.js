@@ -17,7 +17,7 @@ const Comments = (props) => {
   const postComments = props.postComments.filter(
     (comment) => props.parentId === comment.parentId
   );
-
+  // console.log(postComments)
   // const fetchReplies = async (parentId) => {
   //   try {
   //     const response = await axios.get(
@@ -32,9 +32,10 @@ const Comments = (props) => {
 
   return (
     <div>
-      {postComments.map((singleComment) => {
+      {postComments.map(singleComment => {
 
-        const replies = postComments.filter(loopedComment => loopedComment.parentId === singleComment._id)
+        const replies = props.postComments.filter(loopedComment => loopedComment.parentId === singleComment._id)
+        // console.log(replies)
         
         return (
           <div className="comment-div">
