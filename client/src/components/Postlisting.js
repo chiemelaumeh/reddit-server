@@ -7,11 +7,15 @@ const Postlisting = () => {
 
   useEffect(() => {
     const getComments = async () => {
-      const response = await axios.get("http://localhost:4000/comments", {
+      const response = await axios.get(
+        // "https://redditt-api.onrender.com/comments",
+        "http://localhost:4000/comments/",
+         {
         withCredentials: true,
       });
 
       setComments(response.data);
+      // console.log(response.data)
     };
     getComments();
   }, []);
@@ -19,8 +23,9 @@ const Postlisting = () => {
   return (
     <div className="app-reddit-story">
       {comments.map((comment) => (
-        <Redditmain {...comment} />
+        <Redditmain {...comment}  />
       ))}
+    
     </div>
   );
 };

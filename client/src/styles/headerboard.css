@@ -1,3 +1,6 @@
+
+
+
 :root {
   box-sizing: border-box;
 }
@@ -76,7 +79,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: fixed;
 }
 .post-modal-page {
@@ -97,12 +99,47 @@ body {
   background-color: var(--reddit_dark);
   padding: 20px 20px;
   color: var(--offwhite);
-
-  width: 40%;
+  line-height: 1.5rem;
+  width: 50vw;
   height: auto;
   border: 1px solid var(--reddit_border);
-
   border-radius: 4px;
+  align-items: center;
+}
+.post-sub hr {
+  margin:1rem 0;
+
+}
+.comment-btn {
+  border-radius: 2rem;
+}
+.comment-form textarea {
+  /* display:inline-block; */
+  background-color: var(--reddit_midgrey);
+  border: none;
+  border-radius: 4px;
+  width:96%;
+  height: 6rem;
+  outline: none;
+  color: var(--offwhite);
+  padding: 10px 10px;
+
+  max-width: 97%;
+  min-width: 97%;
+  min-height: 6rem;
+  max-height: 15rem;
+}
+.btn-div {
+  text-align:end;
+  margin-top: 1rem;
+}
+
+
+.comment-sub {
+  display: flex;
+  justify-content: center;
+
+
 }
 .post-main {
   display: block;
@@ -123,7 +160,6 @@ body {
   background-color: var(--reddit_dark);
   padding: 10px 20px;
   color: var(--offwhite);
- 
   width: 70%;
   border: 1px solid var(--reddit_border);
   margin: 0 auto;
@@ -174,6 +210,8 @@ body {
   /* justify-content:center; */
   width: 100%;
 }
+
+
 @media screen and (max-width: 600px) {
   .login-div {
     display: block;
@@ -199,25 +237,25 @@ body {
     width: 10%;
   }
 }
-
-@media screen and (min-width: 380px) {
+/* 
+ @media screen and (min-width: 380px) {
   .post-sub {
     margin: auto;
     width: 80%;
   }
-}
+} 
 @media screen and (min-width: 1024px) {
   .post-sub {
     width: 55%;
   }
-}
-@media screen and (min-width: 1400px) {
+} 
+ @media screen and (min-width: 1400px) {
   .post-sub {
     width: 45%;
   }
-}
-@media screen and (min-width: 1900px) {
+} 
+ @media screen and (min-width: 1900px) {
   .post-sub {
     width: 40%;
   }
-}
+}  */

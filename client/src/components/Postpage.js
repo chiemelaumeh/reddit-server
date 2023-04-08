@@ -6,29 +6,31 @@ import Redditmain from "./Post";
 const Commentpage = () => {
   const { id } = useParams();
 
-  const [comment, setComment] = useState({});
-  useEffect(() => {
+
+  const [comment, setComment] = useState(null);
+  // useEffect(() => {
     const getComment = async () => {
       try {
         const response = await axios.get(
+          // `https://redditt-api.onrender.com/comments/${id}`,
           `http://localhost:4000/comments/${id}`,
           {
             withCredentials: true,
           }
         );
-        setComment(response.data);
-        // console.log(comment);
+        setComment(response.data)
+     
       } catch (error) {
         console.log(error.message);
       }
     };
     getComment();
-  }, []);
+  // });
 
   return (
     <div className="comment-main">
       {" "}
-      {comment && <Redditmain {...comment} open={true} />}
+       <Redditmain {...comment}  />
     </div>
   );
 };

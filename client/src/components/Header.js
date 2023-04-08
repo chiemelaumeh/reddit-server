@@ -16,17 +16,18 @@ import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
 import avatar from "../images/IMG_9146.jpg";
 import { Link } from "react-router-dom";
+import axios from "axios"
+
+
 const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
     useState("hidden");
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
-  const userContext = useContext(UserContext);
-  const logout = userContext.logout;
-  const user = userContext.user;
+  const { user, setUser } = useContext(UserContext);
 
-  // const setUser = userContext.setUser
-  // setUser("new")
+
+
 
   const handleLogin = () => {
     setModalVisibility(true);
@@ -45,6 +46,23 @@ const Header = () => {
       setUserDropDownVisibilityClass("hidden");
     }
   };
+
+
+
+      const logout = async () => {
+        const response = await axios.get(
+          // "https://redditt-api.onrender.com/logout",
+          "http://localhost:4000/logout",
+          {
+            withCredentials: true,
+          }
+        );
+
+        setUser({});
+      };
+    
+      
+    
 
   return (
     <header className="header">
@@ -136,24 +154,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// const useUserDropDown = (ref) => {
-//   useEffect(() => {
-
-//     function handleClickOutside(event) {
-//       if (ref.current && !ref.current.contains(event.target)) {
-//         // alert("You clicked outside of me!");
-//         setUserDropDownVisibilityClass("hidden")
-//       }
-//     }
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, [ref]);
-
-// }
-// const userDropDownRef = useRef(null)
-// useUserDropDown(userDropDownRef)

@@ -2,9 +2,11 @@ import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
   author: {type: String, required: true},
-  title: {type: String},
-  postedAt: {type: Date, required: true},
-  body: {type: String, required: true}
+  title: {type: String, required: true}, 
+  postedAt: {type: Date},
+  body: {type: String, required: true},
+  parentId:{type:mongoose.ObjectId, reequired:false},
+  rootId:{type:mongoose.ObjectId, reequired:false}
 
 })
 

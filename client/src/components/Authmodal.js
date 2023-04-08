@@ -1,6 +1,6 @@
 import Headerbuttons from "./Headerbuttons";
 import Input from "./Input";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import AuthModalContext from "../context/AuthModalContext";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -12,29 +12,27 @@ const Authmodal = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // const visibleClass = props.show ? 'hidden' : 'block'
-  // const visibleClass = useContext(AuthModalContext);
-  // console.log(visibleClass)
-
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
-  const userContext = useContext(UserContext);
-  // console.log(userContext)
-  const setUser = userContext.setUser;
+  const { user, setUser } = useContext(UserContext);
 
-  // console.log(modalVisibility);
   async function register(e) {
     e.preventDefault();
-    setModalVisibility(false)
+    setModalVisibility(false);
     setEmail("");
     setPassword("");
-    setUsername("")
+    setUsername("");
     const data = { email, username, password };
     try {
-      const res = await axios.post("http://localhost:4000/register", data, {
-        withCredentials: true,
-      });
-      await setUser({ username });
+      const res = await axios.post(
+        // "https://redditt-api.onrender.com/register",
+        "http://localhost:4000/register",
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+       setUser({ username });
 
       console.log(res);
     } catch (err) {
@@ -42,16 +40,25 @@ const Authmodal = () => {
     }
   }
 
-
   const login = async () => {
-    setModalVisibility(false)
+    setModalVisibility(false);
     const data = { username, password };
-    await axios.post("http://localhost:4000/login", data, {
-      withCredentials: true,
-    });
-
-
+    try {
+      const response = await axios.post(
+        // "https://redditt-api.onrender.com/login",
+        "http://localhost:4000/login",
+        data,
+        {
+          withCredentials: true,
+        }
+        );
+        // console.log(response.data.username)
+        setUser(response.data.username)
+    } catch (error) {
+      console.error(error.messagee);
+    }
   };
+
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
       <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
@@ -85,7 +92,9 @@ const Authmodal = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          {modalType === "login" && <Headerbuttons onClick={login}>Log In</Headerbuttons>}
+          {modalType === "login" && (
+            <Headerbuttons onClick={login}>Log In</Headerbuttons>
+          )}
           {modalType === "register" && (
             <Headerbuttons onClick={register}>Sign Up</Headerbuttons>
           )}

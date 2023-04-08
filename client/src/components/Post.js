@@ -10,9 +10,9 @@ const Redditmain = (props) => {
   return (
     <>
       <div className="main-story">
-        {props.open && <PostContent />}
+        {/* {props.open && <PostContent />} */}
 
-        {!props.open && (
+        {/* {!props.open && */}
           <Link
             to={`/comments/${props._id}`}
             state={{ commentId: props._id }}
@@ -21,7 +21,7 @@ const Redditmain = (props) => {
           >
             <PostContent {...props} />
           </Link>
-        )}
+        {/* } */}
       </div>
     </>
   );
