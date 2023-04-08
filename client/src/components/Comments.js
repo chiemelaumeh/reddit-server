@@ -60,6 +60,9 @@ const Comments = (props) => {
                   Reply
                 </button>
               </div>
+
+              <div>
+
               {singleComment._id === showReplyBox && (
                 <PostCommentForm
                   // title={props.title}
@@ -68,12 +71,10 @@ const Comments = (props) => {
                   title={singleComment.title}
                   showButton={true}
                   onCancel={() => setShowReplyBox("")}
-                  onSubmitt={() => {
-                    setShowReplyBox("");
-                    // fetchReplies(singleComment._id);
-                  }}
+                 
                 />
               )}
+              </div>
                {replies.length > 0 &&
                <CommentReplies replies={replies} />
                

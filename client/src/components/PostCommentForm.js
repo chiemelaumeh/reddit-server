@@ -56,29 +56,30 @@ const PostCommentForm = (props) => {
         <div>Comment as {user.username}</div>
       )}
       <form className="comment-form" onSubmit={postComment}>
-        <textarea
+        <textArea
+         required
           onChange={changeUserComment}
           value={userComment}
           placeholder="Your comment. You can use Markdown here"
-        ></textarea>
+        ></textArea>
 
         <div className="btn-div">
           {props.showButton && (
-            <>
+            <div className="comment-cancel-btn">
               <button
-                className="btn comment-btn"
+                className=" comment-btn cancel-btn"
                 onClick={() => props.onCancel()}
               >
                 Cancel
               </button>
               <button
                 className="btn comment-btn"
-                // onClick={() => props.onSubmit()}
+                onClick={() => props.onCancel()}
               >
               
                 Comment
               </button>
-            </>
+            </div>
           )}
 
           {/* {props.showButton && (
