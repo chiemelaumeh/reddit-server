@@ -7,6 +7,7 @@ import { useEffect } from "react";
 const PostCommentForm = (props) => {
   const [userComment, setUserComment] = useState("");
   const { user, setUser } = useContext(UserContext);
+  const setShowReplyBox=props.setShowReplyBox
 
   const postComment = async (e) => {
     e.preventDefault();
@@ -44,7 +45,7 @@ const PostCommentForm = (props) => {
 //   getPostComments();
 // }, [props.modalComment_id])
 
-
+  
  
   const changeUserComment = (e) => {
     setUserComment(e.target.value);
@@ -69,7 +70,8 @@ const PostCommentForm = (props) => {
             <>
               <button
                 className=" comment-btn cancel-btn"
-                onClick={() => props.onCancel()}
+                // onClick={() => props.onCancel()}
+                onClick={()=>{setShowReplyBox("")}}
               >
                 Cancel
               </button>

@@ -71,12 +71,8 @@ const Comments = (props) => {
                   rootId={props.parentId}
                   title={singleComment.title}
                   showButton={true}
-                  onCancel={() => setShowReplyBox("")}
+                  setShowReplyBox={setShowReplyBox}
 
-                  // onSubmitt={() => {
-                  //   setShowReplyBox("");
-                    
-                  // }}
                  
                 />
               )}
