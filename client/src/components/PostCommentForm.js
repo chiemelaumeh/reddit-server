@@ -1,13 +1,17 @@
 import React from "react";
 import { useContext, useState } from "react";
 import UserContext from "../context/UserContext";
+import RootCommentContext from "../context/RootCommentContext";
+
 import axios from "axios";
 import { useEffect } from "react";
 
 const PostCommentForm = (props) => {
   const [userComment, setUserComment] = useState("");
   const { user, setUser } = useContext(UserContext);
-  const setShowReplyBox=props.setShowReplyBox
+  const setShowReplyBox = props.setShowReplyBox
+  const rootCommentInfo = useContext(RootCommentContext)
+
 
   const postComment = async (e) => {
     e.preventDefault();
@@ -77,7 +81,11 @@ const PostCommentForm = (props) => {
               </button>
               <button
                 className="btn comment-btn"
-                onClick={postComment}
+                onClick={()=> {postComment();
+                // setShowReplyBox("")
+                rootCommentInfo.getPostComments()
+              }}
+
                 
               >
               

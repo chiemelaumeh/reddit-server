@@ -1,16 +1,19 @@
-import React from "react";
 import TimeAgo from "timeago-react"; // var TimeAgo = require('timeago-react');
 import PostCommentForm from "./PostCommentForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CommentReplies from "./CommentReplies";
+import RootCommentContext from "../context/RootCommentContext";
 import axios from "axios";
+
 
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
 const Comments = (props) => {
   const [showReplyBox, setShowReplyBox] = useState("wefw");
   const [hideReplyButton, setHideReplyButton] = useState("");
-  // const [fetchedReplies, setfetchedReplies] = useState([]);
+  const rootCommentInfo = useContext(RootCommentContext)
+
+
 
 
 
@@ -72,6 +75,7 @@ const Comments = (props) => {
                   title={singleComment.title}
                   showButton={true}
                   setShowReplyBox={setShowReplyBox}
+        
 
                  
                 />
