@@ -9,7 +9,6 @@ import { useEffect } from "react";
 const PostCommentForm = (props) => {
   const [userComment, setUserComment] = useState("");
   const { user, setUser } = useContext(UserContext);
-  const setShowReplyBox = props.setShowReplyBox
   const rootCommentInfo = useContext(RootCommentContext)
 
 
@@ -26,30 +25,20 @@ const PostCommentForm = (props) => {
         withCredentials: true,
       });
       setUserComment("")
+      props.onCancel()
+      // rootCommentInfo.getPostComments()  
+      // if (props.getPostComments)   {
+
+        props.getPostComments()
+      // }
     } catch (err) {
       console.error(err.message);
     }
   };
-// useEffect(() => {
 
-//   const getPostComments = async () => {
-//     try {
-//       const response = await axios.get(
-//         `http://localhost:4000/comments/` + props.modalComment._id,
-//         { withCredentials: true }
-//       );
 
-//       console.log("response.data");
 
-//       props.setPostComments(response.data);
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   };
-//   getPostComments();
-// }, [props.modalComment_id])
 
-  
  
   const changeUserComment = (e) => {
     setUserComment(e.target.value);
@@ -62,7 +51,7 @@ const PostCommentForm = (props) => {
       )}
       <form className="comment-form" onSubmit={postComment}>
         <textarea
-         required
+        //  required
           onChange={changeUserComment}
           value={userComment}
           placeholder="Your comment. You can use Markdown here"
@@ -75,16 +64,13 @@ const PostCommentForm = (props) => {
               <button
                 className=" comment-btn cancel-btn"
                 // onClick={() => props.onCancel()}
-                onClick={()=>{setShowReplyBox("")}}
+                onClick={()=>props.onCancel()}
               >
                 Cancel
               </button>
-              <button
+              <button 
                 className="btn comment-btn"
-                onClick={()=> {postComment();
-                // setShowReplyBox("")
-                rootCommentInfo.getPostComments()
-              }}
+                // onSubmit={()=>props.onSubmit()}
 
                 
               >

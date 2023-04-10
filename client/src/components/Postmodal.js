@@ -69,7 +69,10 @@ const Postmodal = (props) => {
           {!!modalComment && !!modalComment._id && (
             <>
               <hr />
+              <RootCommentContext.Provider value={{getPostComments}} >
+
               <PostCommentForm
+                getPostComments={getPostComments}
                 postComments={postComments}
                 title={modalComment.title}
                 rootId={modalComment._id}
@@ -77,17 +80,16 @@ const Postmodal = (props) => {
                 showAuthor={true}
                 showButton={false}
               />
+               </RootCommentContext.Provider>
+
               <hr />
 
-               <RootCommentContext.Provider value={{getPostComments}} >
 
                 <Comments
                   rootId={modalComment._id}
-
                   parentId={modalComment._id}
                   postComments={postComments}
                 />
-               </RootCommentContext.Provider>
     
             </>
           )}

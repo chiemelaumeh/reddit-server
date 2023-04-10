@@ -34,7 +34,7 @@ const PostFormModal = () => {
   };
 
   if (newPostId) {
-    return (<Navigate to={'/comments/' + newPostId} />)
+    return (<Navigate to={'/' } />)
   }
 
   return (
