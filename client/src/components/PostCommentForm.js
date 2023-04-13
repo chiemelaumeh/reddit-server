@@ -3,12 +3,12 @@ import { useContext, useState } from "react";
 import UserContext from "../context/UserContext";
 import RerenderContext from "../context/RerenderContext";
 import axios from "axios";
-import { useEffect } from "react";
+
 
 const PostCommentForm = (props) => {
   const [userComment, setUserComment] = useState("");
-  const { user, setUser } = useContext(UserContext);
-  const { newComments, setNewComments } = useContext(RerenderContext);
+  const { user } = useContext(UserContext);
+  const { setNewComments } = useContext(RerenderContext);
   const postComment = async (e) => {
     e.preventDefault();
     const data = {

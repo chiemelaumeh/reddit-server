@@ -1,4 +1,3 @@
-import OutsideClickHandler from "react-outside-click-handler";
 import { useState, useContext } from "react";
 import AuthModalContext from "../context/AuthModalContext";
 import RerenderContext from "../context/RerenderContext";
@@ -7,11 +6,11 @@ import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } = useContext(AuthModalContext);
-  const { newPosts, setNewPosts } = useContext(RerenderContext);
+  const { setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const data = { title, body };

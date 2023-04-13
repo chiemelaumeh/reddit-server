@@ -1,8 +1,8 @@
 import TimeAgo from "timeago-react"; // var TimeAgo = require('timeago-react');
 import PostCommentForm from "./PostCommentForm";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import CommentReplies from "./CommentReplies";
-import axios from "axios";
+
 
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
@@ -64,12 +64,5 @@ const Comments = (props) => {
   );
 };
 
-export default Comments;
-var today = new Date();
-var date =
-  today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-var time =
-  today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var dateTime = date + " " + time;
 
-console.log(dateTime);
+export default Comments;

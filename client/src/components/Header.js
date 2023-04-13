@@ -22,8 +22,8 @@ import axios from "axios"
 const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
     useState("hidden");
-  const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
-  const { modalType, setModalType } = useContext(ModalContext);
+  const { setModalVisibility } = useContext(AuthModalContext);
+  const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
 
 
@@ -50,7 +50,7 @@ const Header = () => {
 
 
       const logout = async () => {
-        const response = await axios.get(
+        await axios.get(
           // "https://redditt-api.onrender.com/logout",
           "http://localhost:4000/logout",
           {

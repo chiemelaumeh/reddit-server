@@ -13,7 +13,7 @@ const Postmodal = (props) => {
     useContext(AuthModalContext);
   const [modalComment, setModalComment] = useState({});
   const [postComments, setPostComments] = useState([]);
-  const { newComments, setNewComments } = useContext(RerenderContext);
+  const { newComments } = useContext(RerenderContext);
 
   useEffect(() => {
     const getModalComment = async () => {
