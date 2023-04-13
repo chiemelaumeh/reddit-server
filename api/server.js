@@ -154,8 +154,8 @@ app.post("/comments", async (req, res) => {
         rootId
       });
       const newComment = await comment.save();
-
-      res.status(201).send(newComment);
+      // console.log(newComment)
+      res.status(201).json(newComment);
     } catch (error) {
       console.error(error.message);
     }
@@ -203,13 +203,13 @@ app.get("/comments/parent/:parentId", async (req, res) => {
 })
 
 async function deleteAll () {
+ await Comment.deleteMany({ 
+   $expr: { $lt: [ { $strLenCP: "$body" }, 10 ] },
+  //  rootId: { $exists: true }
+ 
+  })
 
-  
-    await Comment.deleteMany({rootId: {$exists: true}})
     console.log("Deleted All")
-
-    
-  
 }
  
 // deleteAll()
