@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthModalContext from "../context/AuthModalContext";
-import PostContent from "./Postcontent";
+import PostContent from "./postContent";
 
 const Redditmain = (props) => {
-  const { postModaVisibility, setPostModalVisibility } =
+  const {setPostModalVisibility } =
     useContext(AuthModalContext);
 
   return (

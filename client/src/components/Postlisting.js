@@ -5,7 +5,7 @@ import RerenderContext from "../context/RerenderContext";
 
 const Postlisting = () => {
   const [comments, setComments] = useState([]);
-  const { newPosts, setNewPosts } = useContext(RerenderContext);
+  const { newPosts } = useContext(RerenderContext);
 
   useEffect(() => {
     const getComments = async () => {
@@ -21,7 +21,7 @@ const Postlisting = () => {
   return (
     <div className="app-reddit-story">
       {comments.map((comment) => (
-        <Redditmain {...comment} />
+        <Redditmain {...comment} key={comment._id} />
       ))}
     </div>
   );

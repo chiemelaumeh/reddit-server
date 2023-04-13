@@ -1,6 +1,6 @@
 import Headerbuttons from "./Headerbuttons";
 import Input from "./Input";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import AuthModalContext from "../context/AuthModalContext";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -14,7 +14,7 @@ const Authmodal = () => {
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   async function register(e) {
     e.preventDefault();

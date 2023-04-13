@@ -5,12 +5,10 @@ import UserContext from "../context/UserContext";
 
 const Postform = () => {
   const {
-    postFormModalVisibility,
     setPostFormModalVisibility,
-    modalVisibility,
     setModalVisibility,
   } = useContext(AuthModalContext);
-  const { user, setUser } = useContext(UserContext);
+  const { user} = useContext(UserContext);
 
 
   const popUpModal = () => {
@@ -29,9 +27,6 @@ const Postform = () => {
           </div>
           <form action="">
             <input
-            value={""}
-            
-          
               type="text"
               onClick={(e) => {
                 e.preventDefault();
