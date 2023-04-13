@@ -1,6 +1,7 @@
 import OutsideClickHandler from "react-outside-click-handler";
 import { useState, useContext } from "react";
 import AuthModalContext from "../context/AuthModalContext";
+import RerenderContext from "../context/RerenderContext";
 import Input from "./Input";
 import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
@@ -8,56 +9,61 @@ import gfm from "remark-gfm";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
-
 const PostFormModal = () => {
-  const { postFormModalVisibility, setPostFormModalVisibility } =
-    useContext(AuthModalContext);
-
+  const { postFormModalVisibility, setPostFormModalVisibility } = useContext(AuthModalContext);
+  const { newPosts, setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [newPostId, setNewPostId] = useState(null)
   const data = { title, body };
-
 
   const createPost = async () => {
     try {
       const response = await axios.post(
         "http://localhost:4000/comments/",
-        // "https://redditt-api.onrender.com/comments/",
         data,
         { withCredentials: true }
       );
-      setNewPostId(response.data._id)
+      setNewPosts(response.data);
+    
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
   };
 
-  if (newPostId) {
-    return (<Navigate to={'/' } />)
+  // console.log(newComments)
+  // if (newPostId) {
+  //   return (<Navigate to={'/' } />)
+  // }
+  function handleTwo() {
+    createPost();
+    setPostFormModalVisibility(false);
+    setTitle("");
+    setBody("");
   }
-
   return (
     <div
       className={
         postFormModalVisibility ? "post-modal-page" : "hide-post-modal-page"
       }
     >
-      {/* <OutsideClickHandler */}
-      {/* onOutsideClick={() => setPostFormModalVisibility(false)} */}
-      {/* > */}
       <div className="post-modal-sub">
         <h3>Create a Post</h3>
-        <Input
+         <Input
+        
           required
           placeholder={"Title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-        />
+      
+          /> 
+   
+       
+        
         <TextArea
           placeholder={"Text (required)"}
           value={body}
           onChange={(e) => setBody(e.target.value)}
+          required
         />
         <div>
           <ReactMarkdown remarkPlugins={[gfm]} children={""} />
@@ -69,12 +75,11 @@ const PostFormModal = () => {
           >
             Cancel
           </button>
-          <button className="post-form-btn btn" onClick={createPost}>
+          <button className="post-form-btn btn" onClick={handleTwo}>
             POST
           </button>
         </div>
       </div>
-      {/* </OutsideClickHandler> */}
     </div>
   );
 };

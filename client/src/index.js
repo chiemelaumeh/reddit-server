@@ -5,11 +5,11 @@ import App from "./App";
 import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
 import { UserProvider } from "./context/UserContext";
-// import { RootCommentProvider } from "./context/RootCommentContext";
+import { RerenderContextProvider } from "./context/RerenderContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <RootCommentProvider>
+  <RerenderContextProvider>
     <AuthModalProvider>
       <UserProvider>
         <ModalProvider>
@@ -17,5 +17,5 @@ root.render(
         </ModalProvider>
       </UserProvider>
     </AuthModalProvider>
-  // </RootCommentProvider>
+  </RerenderContextProvider>
 );

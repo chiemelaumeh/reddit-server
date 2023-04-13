@@ -12,6 +12,7 @@ const Postform = () => {
   } = useContext(AuthModalContext);
   const { user, setUser } = useContext(UserContext);
 
+
   const popUpModal = () => {
     if (!user.username) {
       setModalVisibility(true);
@@ -28,10 +29,14 @@ const Postform = () => {
           </div>
           <form action="">
             <input
+            value={""}
+            
+          
               type="text"
-              onFocus={(e) => {
+              onClick={(e) => {
                 e.preventDefault();
                 popUpModal();
+            
               }}
               className="first-form"
               placeholder="New Post"
