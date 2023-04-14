@@ -17,13 +17,13 @@ const Comments = (props) => {
 
   return (
     <div>
-      {postComments.map((singleComment) => {
+      {postComments.map((singleComment, index) => {
         const replies = props.postComments.filter(
           (loopedComment) => loopedComment.parentId === singleComment._id
         );
 
         return (
-          <div className="comment-div">
+          <div key={index} className="comment-div">
             <div className="post-comments"></div>
 
             <p>{singleComment.author} </p>
@@ -36,18 +36,20 @@ const Comments = (props) => {
               {singleComment.body}
 
               {/* {showReplyBox === null && ( */}
-                <div>
-                  <div className="icon-reply-button"
-                  
-                  onClick={() => setShowReplyBox(singleComment._id)}
-                  >
+                <div className="voting-reply-main">
+                  <div className="voting-reply">
                    <Voting />
-                    <BsChatLeft className="reply-icon"/>
-                    <button
-                      className="comment-reply"
+                   <div className="icon-reply-button"
+                    onClick={() => setShowReplyBox(singleComment._id)}
                     >
-                      Reply
-                    </button>
+                     
+                      <BsChatLeft className="reply-icon"/>
+                      <button
+                        className="comment-reply"
+                      >
+                        Reply
+                      </button>
+                   </div>
                   </div>
                 </div>
               {/* )} */}

@@ -76,20 +76,149 @@ body {
   height: 100vh;
 }
 
-.vote-icon{
-  display: inline;
+
+
+
+
+.comment-body-div {
+  border-left:1px solid var(--reddit_border);
+  padding: 0 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  
+ 
+}
+
+.comment-body-div-reply {
+
+ 
+}
+.comment-reply {
+  color: var(--reddit_border);
+  background-color: var(--reddit_dark);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  /* margin-left: 1rem; */
+  /* margin-bottom: 1rem; */
+ 
+}
+.reply-icon {
+  color: var(--reddit_border);
+  font-weight: 600;
   font-size: 1.25rem;
-  color: var(--reddit_lightgrey);
+  
+
+
+
+
+}
+.icon-reply-button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+
+  
+}
+.single-reply-div{
+  /* border: 1px solid red; */
+  border-left:1px solid var(--reddit_border);
+  padding: 0.5rem 1rem;
+  margin-left: 1.3rem;
+  margin-bottom: 1rem;
+  
+  /* margin: 6 0rem; */
+
+
+}
+textarea::placeholder {
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+}
+.comment-cancel-btn {
+  margin-bottom: 2rem;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
+ 
+}
+.reply-main-div p{
+margin-left: 0.5rem
+
+}
+/* .reply-main-div {
+  border: 1px solid red;
+  margin-left: 0;
+  
+
+} */
+.profile-timeago {
+  font-weight: 300;
+  /* padding */
+  margin: 0 0.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.hide-comment-reply {
+  display: none;
+}
+
+.comment-btn {
+  padding:0.5rem 1rem;
+  margin-left: 1rem;
+}
+.cancel-btn {
+  background-color: var(--reddit_dark);
+  /* margin-left: 5rem; */
+  color: var(--offwhite);
+  border: 1px solid var(--offwhite);
+  cursor: pointer;
+}
+
+.time-ago-div {
+  margin-left: 1rem;
+  color: var(--reddit_border);
+}
+
+.voting-reply-main {
+  margin-bottom: 3rem;
+  
+
+}
+
+.vote-icon{
+  
+  font-size: 1.25rem;
   margin-right: 0.5rem;
   opacity: .6;
   cursor: pointer;
 }
 
+.vote-icon-number {
+
+  font-size: 0.75rem;
+  color: orangered;
+  margin-right: 0.5rem;
+  opacity: .6;
+
+}
 .voting-div{
   display: flex;
   flex-direction: column;
-  /* border: 1px solid red; */
   height: 4rem;
   align-items: center;
   justify-content:space-evenly;
+  margin-left: 0.5rem;
+}
+
+.voting-reply {
+  display: flex;
+  margin-top: 1rem;
 }

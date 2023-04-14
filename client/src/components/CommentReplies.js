@@ -7,9 +7,9 @@ const CommentReplies = (props) => {
 
   return (
     <div className="comment-body-div-reply">
-      {replies.map((singleReply) => {
+      {replies.map((singleReply, index) => {
         return (
-          <div className="reply-main-div">
+          <div className="reply-main-div" key={index}>
               <div className="profile-timeago">
               <div className="post-comments"></div>
               <p>
