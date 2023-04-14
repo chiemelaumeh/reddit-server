@@ -2,6 +2,9 @@ import TimeAgo from "timeago-react"; // var TimeAgo = require('timeago-react');
 import PostCommentForm from "./PostCommentForm";
 import { useState } from "react";
 import CommentReplies from "./CommentReplies";
+import { BsChatLeft } from "react-icons/bs";
+import Voting from "./Voting";
+
 
 
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
@@ -34,12 +37,18 @@ const Comments = (props) => {
 
               {/* {showReplyBox === null && ( */}
                 <div>
-                  <button
-                    className="comment-reply"
-                    onClick={() => setShowReplyBox(singleComment._id)}
+                  <div className="icon-reply-button"
+                  
+                  onClick={() => setShowReplyBox(singleComment._id)}
                   >
-                    Reply
-                  </button>
+                   <Voting />
+                    <BsChatLeft className="reply-icon"/>
+                    <button
+                      className="comment-reply"
+                    >
+                      Reply
+                    </button>
+                  </div>
                 </div>
               {/* )} */}
 

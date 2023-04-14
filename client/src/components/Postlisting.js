@@ -27,4 +27,5 @@ const Postlisting = () => {
   );
 };
 
+
 export default Postlisting;
