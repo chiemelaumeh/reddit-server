@@ -38,7 +38,7 @@ const Comments = (props) => {
               {/* {showReplyBox === null && ( */}
                 <div className="voting-reply-main">
                   <div className="voting-reply">
-                   <Voting />
+                   <Voting singleComment={singleComment}/>
                    <div className="icon-reply-button"
                     onClick={() => setShowReplyBox(singleComment._id)}
                     >

@@ -187,16 +187,12 @@ margin-left: 0.5rem
   color: var(--reddit_border);
 }
 
-.voting-reply-main {
-  margin-bottom: 3rem;
-  
 
-}
 
 .vote-icon{
   
-  font-size: 1.25rem;
-  margin-right: 0.5rem;
+  font-size: 1.5rem;
+
   opacity: .6;
   cursor: pointer;
 }
@@ -205,20 +201,36 @@ margin-left: 0.5rem
 
   font-size: 0.75rem;
   color: orangered;
-  margin-right: 0.5rem;
+  margin:0 0.15rem;
   opacity: .6;
+  padding: 0;
+  
 
 }
+
 .voting-div{
+  /* border: 1px solid red; */
   display: flex;
-  flex-direction: column;
-  height: 4rem;
+  flex-direction: row;
+  height: 3rem;
   align-items: center;
-  justify-content:space-evenly;
-  margin-left: 0.5rem;
+  width: 5rem;
+  padding: 0;
+  /* justify-content:space-evenly; */
+  /* margin-left: 0.5rem; */
 }
 
 .voting-reply {
   display: flex;
   margin-top: 1rem;
+  
+}
+
+.voting-reply-main {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+
 }
