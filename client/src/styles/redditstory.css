@@ -76,3 +76,20 @@ body {
   height: 100vh;
 }
 
+.vote-icon{
+  display: inline;
+  font-size: 1.25rem;
+  color: var(--reddit_lightgrey);
+  margin-right: 0.5rem;
+  opacity: .6;
+  cursor: pointer;
+}
+
+.voting-div{
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  height: 4rem;
+  align-items: center;
+  justify-content:space-evenly;
+}
