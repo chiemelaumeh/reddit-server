@@ -18,10 +18,14 @@ router.get("/vote/:commentId/:direction/", (req, res) => {
       const newvote = await vote.save();
 
       const commentVotes = await Vote.find({
-        commentId: req.params.commentId
-        
-      })
-      res.json(commentVotes);
+        commentId: req.params.commentId,
+      });
+      let total = 0;
+      commentVotes.forEach((vote) => {
+        total += vote.direction;
+      });
+      
+      res.json(total);
     } catch (error) {
       console.error(error.message);
     }
@@ -29,4 +33,21 @@ router.get("/vote/:commentId/:direction/", (req, res) => {
   handleVoting();
 });
 
+router.get("/votes/:commentId", (req, res) => {
+  // const {modalcommentsIds} = req.body
+  const handleTotal = async () => {
+    try {
+      const commentVotes = await Vote.find({ commentId: req.params.commentId });
+      let total = 0
+      commentVotes.forEach((vote) => {
+        total += vote.direction;
+      });
+
+      res.json(total);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  handleTotal();
+});
 export default router;

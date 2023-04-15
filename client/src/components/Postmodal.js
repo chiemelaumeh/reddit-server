@@ -15,6 +15,12 @@ const Postmodal = (props) => {
   const [postComments, setPostComments] = useState([]);
   const { newComments } = useContext(RerenderContext);
 
+  // const refreshVotes = async() => {
+  //   const modalCommentsIds = [modalComment._id, ...modalComment.map(modalComment => modalComment._id)]
+  //   const response = await axios.post("http://localhost:4000/votes/totals", modalCommentsIds)
+  //   console.log)
+  // }
+
   useEffect(() => {
     const getModalComment = async () => {
       try {
