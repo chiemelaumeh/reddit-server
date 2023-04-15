@@ -9,6 +9,11 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Comment from "./models/Comments.js";
+import router from "./routes/VotingRoutes.js";
+// import getUserFromToken from "./UserFunctions.js";
+
+
+
 
 const app = express();
 app.use(express.json());
@@ -25,9 +30,15 @@ app.use(
 const secret = process.env.SECRET_KEY;
 const connectionString = process.env.DATABASE_URL;
 
+
+app.use(router)
+
+
 const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
+  // console.log(userInfo)
   return await User.findById(userInfo.id);
+
 };
 
 mongoose.set("strictQuery", false);
@@ -112,6 +123,7 @@ app.post("/login", (req, res) => {
               try {
                 const user = await getUserFromToken(token);
                 // res.clearCookie("token", "").send();
+                console.log(user)
                 res.cookie("token", token).send({ username: user.username });
                 console.log(token);
               } catch (err) {
@@ -204,8 +216,8 @@ app.get("/comments/parent/:parentId", async (req, res) => {
 
 async function deleteAll () {
  await Comment.deleteMany({ 
-   $expr: { $lt: [ { $strLenCP: "$body" }, 10 ] },
-  //  rootId: { $exists: true }
+   $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
+   rootId: { $exists: true }
  
   })
 

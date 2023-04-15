@@ -196,7 +196,8 @@ margin-left: 0.5rem
   opacity: .6;
   cursor: pointer;
 }
-
+.vote-icon:hover {
+}
 .vote-icon-number {
 
   font-size: 0.75rem;
