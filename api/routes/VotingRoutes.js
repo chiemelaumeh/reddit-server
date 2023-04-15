@@ -1,27 +1,32 @@
-import express from "express"
-const router = express.Router()
-import {getUserFromToken} from "../UserFunctions.js"
+import express from "express";
+const router = express.Router();
+import Vote from "../models/Votes.js";
+import { getUserFromToken } from "../UserFunctions.js";
 
+router.get("/vote/:commentId/:direction/", (req, res) => {
+  const token = req.cookies.token;
+  const handleVoting = async () => {
+    try {
+      const userInfo = await getUserFromToken(token);
 
+      const vote = new Vote({
+        author: userInfo.username,
+        direction: req.params.direction === "up" ? 1 : -1,
+        commentId: req.params.commentId,
+      });
 
+      const newvote = await vote.save();
 
-  router.get("/vote/:commentId/:direction/", async(req, res)=> {
-    const token = req.cookies.token
-    const handleVoting = async()=> {
-
-      try {
-        const userInfo = await getUserFromToken(token)
-        res.json(userInfo)
-   
-     
-      } catch (error) {
-       console.error(error.message)
-      }
-     
+      const commentVotes = await Vote.find({
+        commentId: req.params.commentId
+        
+      })
+      res.json(commentVotes);
+    } catch (error) {
+      console.error(error.message);
     }
-   handleVoting()
-  })
+  };
+  handleVoting();
+});
 
-
-
-export default router
+export default router;

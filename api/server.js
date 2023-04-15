@@ -10,6 +10,7 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Comment from "./models/Comments.js";
 import router from "./routes/VotingRoutes.js";
+import Vote from "./models/Votes.js";
 // import getUserFromToken from "./UserFunctions.js";
 
 
@@ -216,9 +217,15 @@ app.get("/comments/parent/:parentId", async (req, res) => {
 
 async function deleteAll () {
  await Comment.deleteMany({ 
-   $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
-   rootId: { $exists: true }
+  //  $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
+   rootId: { $exists: true },
+
  
+  })
+
+  await Vote.deleteMany({
+   direction: {$exists: true}
+
   })
 
     console.log("Deleted All")
