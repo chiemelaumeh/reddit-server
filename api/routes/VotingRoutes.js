@@ -24,14 +24,21 @@ router.get("/vote/:commentId/:direction/", (req, res) => {
       commentVotes.forEach((vote) => {
         total += vote.direction;
       });
-      
-      res.json(total);
+      // console.log(commentVotes)
+      // sendUser(token)
+ res.json(total);
+//  res.json(commentVotes);
+
     } catch (error) {
       console.error(error.message);
     }
   };
   handleVoting();
 });
+ 
+
+
+
 
 router.get("/votes/:commentId", (req, res) => {
   // const {modalcommentsIds} = req.body

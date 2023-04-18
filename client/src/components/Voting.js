@@ -2,23 +2,28 @@ import React, { useEffect } from "react";
 import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext, { UserProvider } from "../context/UserContext";
 
 const Voting = (props) => {
   const [voteState, setVoteState] = useState(0)
-  
+  const [upVotedState, setUpVotedState] = useState(false)
+  const [downVotedState, setDownVotedState] = useState(false)
+  const {user, setUser} = useContext(UserContext)
+
+  // const [voteOnce, setVoteOnce ] = useState(user.username)
   //  console.log(props.singleComment._id)
   useEffect(() => {
     const refreshVotes = async () => { 
       const url = `http://localhost:4000/votes/${props.singleComment._id}/`
         try {
           const response = await axios.get(url, );
-          console.log(response)
+          // console.log(response)
           setVoteState(response.data)
         } catch (error) {
           console.error(error.message)
         }
-      console.log("me")
+      // console.log("me")
       };
       refreshVotes()
   },[props.singleComment._id])
@@ -38,13 +43,27 @@ const Voting = (props) => {
   };
 
   const handleVoteUp = () => {
-    sendVote("up")
+    if (upVotedState === false) {
+
+      sendVote("up")
+     setUpVotedState(true)
+     setDownVotedState(false)
+    } 
+    
+   
 
   };
   const handleVoteDown = () => {
-    if (voteState === 0) 
-    return
-    sendVote("down")
+
+    if (downVotedState === false ) {
+
+      if (voteState === 0) 
+      return
+      sendVote("down")
+      setDownVotedState(true)
+      setUpVotedState(false)
+
+    }
   };
 
   return (
