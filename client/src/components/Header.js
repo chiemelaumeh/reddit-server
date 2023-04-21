@@ -16,20 +16,16 @@ import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
 import avatar from "../images/IMG_9146.jpg";
 import { Link } from "react-router-dom";
-import axios from "axios"
-
-
-
-
+import axios from "axios";
+import RedirectContext from "../context/RedirectContext";
 
 const Header = () => {
-  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
-    useState("hidden");
+  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden");
   const { setModalVisibility } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
-
-
+  const { redirect, setRedirect} = useContext(RedirectContext)
+  const [searchText, setSearchText] = useState("")
 
 
   const handleLogin = () => {
@@ -50,36 +46,39 @@ const Header = () => {
     }
   };
 
+  const logout = async () => {
+    await axios.get(
+      // "https://redditt-api.onrender.com/logout",
+      "http://localhost:4000/logout",
+      {
+        withCredentials: true,
+      }
+    );
 
+    setUser({});
+  };
 
-      const logout = async () => {
-        await axios.get(
-          // "https://redditt-api.onrender.com/logout",
-          "http://localhost:4000/logout",
-          {
-            withCredentials: true,
-          }
-        );
-
-        setUser({});
-      };
-    
-      
-    
-
+  // const doSearch = (e) => {
+  //   e.preventDefault()
+  //   setRedirect("/search/" + encodeURIComponent(searchText))
+  // }
   return (
     <header className="header">
       <div className="sub-header">
         <Link to="/">
-        <img className="logo" src={logo} alt="" />
+          <img className="logo" src={logo} alt="" />
         </Link>
-        <form className="form" action="">
+        <form className="form" 
+        // onSubmit={doSearch}
+        >
           <CiSearch className="search-icon" />
 
           <input
             className="search-box"
             type="text"
             placeholder="Search Reddit"
+            value={searchText}
+            onChange={(e)=> setSearchText(e.target.value)}
           />
         </form>
         {user.username && (
