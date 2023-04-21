@@ -13,6 +13,7 @@ const Routing = () => {
       <Authmodal />
       <PostFormModal  />
     </Router>
+    
   );
 };
 
