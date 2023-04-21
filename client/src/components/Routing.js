@@ -8,21 +8,20 @@ import { useContext } from "react";
 import RedirectContext from "../context/RedirectContext";
 
 const Routing = () => {
-  // const { redirect, setRedirect } = useContext(RedirectContext);
+  const { redirect, setRedirect } = useContext(RedirectContext);
   return (
     <Router>
-      {/* {redirect && <Navigate to={redirect} />} */}
+      {redirect && <Navigate to={redirect} />}
 
-      {/* {!redirect && (
-      )} */}
-        {/* <> */}
+      {!redirect && (
+        <>
           <Header />
           <Routinglocation />
           <Authmodal />
           <PostFormModal />
-        {/* </> */}
+        </>
+      )}
     </Router>
-    
   );
 };
 

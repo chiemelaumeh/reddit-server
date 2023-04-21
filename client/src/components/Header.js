@@ -58,10 +58,10 @@ const Header = () => {
     setUser({});
   };
 
-  // const doSearch = (e) => {
-  //   e.preventDefault()
-  //   setRedirect("/search/" + encodeURIComponent(searchText))
-  // }
+  const doSearch = (e) => {
+    e.preventDefault()
+    setRedirect("/search/" + encodeURIComponent(searchText))
+  }
   return (
     <header className="header">
       <div className="sub-header">
@@ -69,7 +69,7 @@ const Header = () => {
           <img className="logo" src={logo} alt="" />
         </Link>
         <form className="form" 
-        // onSubmit={doSearch}
+        onSubmit={doSearch}
         >
           <CiSearch className="search-icon" />
 

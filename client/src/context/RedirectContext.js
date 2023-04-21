@@ -1,15 +1,15 @@
-// import { createContext, useState } from "react";
+import { createContext, useState } from "react";
 
-// const RedirectContext = createContext();
+const RedirectContext = createContext();
 
-// export const RedirectContextProvider = ({ children }) => {
-//   const [redirect, setRedirect] = useState(false);
+export const RedirectContextProvider = ({ children }) => {
+  const [redirect, setRedirect] = useState(false);
 
-//   return (
-//     <RedirectContext.Provider value={{ redirect, setRedirect }}>
-//       {children}
-//     </RedirectContext.Provider>
-//   );
-// };
+  return (
+    <RedirectContext.Provider value={{ redirect, setRedirect }}>
+      {children}
+    </RedirectContext.Provider>
+  );
+};
 
-// export default RedirectContext
+export default RedirectContext

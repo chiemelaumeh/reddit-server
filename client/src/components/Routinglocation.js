@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Board from "./Board";
 import Commentpage from "./Postpage";
 import Postmodal from "./Postmodal";
+import SearchPage from "./SearchPage";
 
 const Routinglocation = () => {
   let location = useLocation();
@@ -23,6 +24,7 @@ const Routinglocation = () => {
       <Routes location={location}>
         <Route exact path="/" element={<Board />} />
         <Route exact path="/comments/:id" element={<Commentpage />} />
+        <Route exact path="/search/:text" element={<SearchPage />}/>
       </Routes>
     </div>
   );
