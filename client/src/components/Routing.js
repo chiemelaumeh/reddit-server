@@ -11,16 +11,18 @@ const Routing = () => {
   const { redirect, setRedirect } = useContext(RedirectContext);
   return (
     <Router>
-      {redirect && <Navigate to={redirect} />}
+       {!!redirect && (
+         <Navigate to={redirect} />
+      )}
 
-      {!redirect && (
+   
         <>
           <Header />
           <Routinglocation />
           <Authmodal />
           <PostFormModal />
         </>
-      )}
+      {/* )} */}
     </Router>
     
   );

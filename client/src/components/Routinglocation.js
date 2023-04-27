@@ -3,8 +3,13 @@ import Board from "./Board";
 import Commentpage from "./Postpage";
 import Postmodal from "./Postmodal";
 import SearchPage from "./SearchPage";
+import RedirectContext from "../context/RedirectContext";
+import { useContext } from "react";
+
 
 const Routinglocation = () => {
+  const { redirect, setRedirect } = useContext(RedirectContext);
+
   let location = useLocation();
   let commentId = null;
 
@@ -13,6 +18,11 @@ const Routinglocation = () => {
     commentId = location.state.commentId;
   }
   // console.log(location)
+  //  {/* {redirect && (
+  //        <Navigate to={redirect} />
+  //     )}
+
+  //     {!redirect && ( */}
   return (
     <div>
       {commentId && (

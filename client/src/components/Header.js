@@ -75,6 +75,7 @@ const Header = () => {
 
           <input
             className="search-box"
+            required
             type="text"
             placeholder="Search Reddit"
             value={searchText}
