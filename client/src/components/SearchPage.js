@@ -12,18 +12,26 @@ const SearchPage = (props) => {
   // </div>
 
   const [comments, setComments] = useState([]);
-  const { newPosts } = useContext(RerenderContext);
+  const { newPosts, errorPage, setErrorPage  } = useContext(RerenderContext);
 
-  useEffect(() => {
+  // useEffect(() => {
     const getComments = async () => {
-      const response = await axios.get("http://localhost:4000/comments/", {
+      const response = await axios.get(`http://localhost:4000/comments?search=${text}`, {
         withCredentials: true,
       });
+       
+      if (response.data.length === 0){
+  
+      
+        setErrorPage("/error/404")
 
-      setComments(response.data);
+      } else {
+        setComments(response.data)
+      }
+   
     };
     getComments();
-  }, [newPosts]);
+  // }, []);
 
   return (
     <div className="app-reddit-story">

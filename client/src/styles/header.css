@@ -51,7 +51,8 @@ body {
   border: none;
   padding: 0 6px;
   display: block;
-  color: var(--white);
+  color: var(--white); 
+  flex-grow: 1;
 }
 .search-icon {
   color: var(--reddit_lightgrey);

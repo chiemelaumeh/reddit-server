@@ -177,9 +177,13 @@ app.post("/comments", async (req, res) => {
 });
 
 app.get("/comments", async (req, res) => {
+  const search = req.query.search
+  const filter = search ? {title: {$regex: '.*' + search + '.*'}} : {rootId:null}
+  
   try {
-    const comments = await Comment.find({rootId:null}).sort({postedAt: -1});
-    // const comments = await Comment.find({});
+    const comments = await Comment.find(filter).sort({postedAt: -1});
+   
+
     res.json(comments);
     // console.log(comments)
   } catch (err) {

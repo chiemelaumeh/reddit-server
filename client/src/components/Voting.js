@@ -2,49 +2,55 @@ import React, { useEffect } from "react";
 import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext, { UserProvider } from "../context/UserContext";
 
 const Voting = (props) => {
-  const [voteState, setVoteState] = useState(0)
-  
-  //  console.log(props.singleComment._id)
+  const [voteState, setVoteState] = useState(0);
+  const [upVotedState, setUpVotedState] = useState(false);
+  const [downVotedState, setDownVotedState] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+
   useEffect(() => {
-    const refreshVotes = async () => { 
-      const url = `http://localhost:4000/votes/${props.singleComment._id}/`
-        try {
-          const response = await axios.get(url, );
-          console.log(response)
-          setVoteState(response.data)
-        } catch (error) {
-          console.error(error.message)
-        }
-      console.log("me")
-      };
-      refreshVotes()
-  },[props.singleComment._id])
-  const sendVote = async (direction) => { 
-  const url = `http://localhost:4000/vote/${props.singleComment._id}/${direction}`
+    const refreshVotes = async () => {
+      const url = `http://localhost:4000/votes/${props.singleComment._id}/`;
+      try {
+        const response = await axios.get(url);
+        setVoteState(response.data);
+      } catch (error) {
+        console.error(error.message);
+      }
+
+    };
+    refreshVotes();
+  }, [props.singleComment._id]);
+  const sendVote = async (direction) => {
+    const url = `http://localhost:4000/vote/${props.singleComment._id}/${direction}`;
     try {
       const response = await axios.get(url, {
         withCredentials: true,
       });
-    
 
-        setVoteState(response.data)
-     
+      setVoteState(response.data);
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
   };
 
   const handleVoteUp = () => {
-    sendVote("up")
-
+    if (upVotedState === false) {
+      sendVote("up");
+      setUpVotedState(true);
+      setDownVotedState(false);
+    }
   };
   const handleVoteDown = () => {
-    if (voteState === 0) 
-    return
-    sendVote("down")
+    if (downVotedState === false) {
+      if (voteState === 0) return;
+      sendVote("down");
+      setDownVotedState(true);
+      setUpVotedState(false);
+    }
   };
 
   return (
