@@ -115,3 +115,10 @@ overflow: hidden;
 
   /* margin-left: 0; */
 }
+.matching-Pass {
+  color: red;
+  font-weight: 200;
+  font-size: 1rem;
+  padding-left: 4.5rem;
+
+}
