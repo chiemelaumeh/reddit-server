@@ -26,7 +26,8 @@ const Header = () => {
     useState("hidden");
   const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] =
     useState("hidden");
-  const { setModalVisibility } = useContext(AuthModalContext);
+  const { setModalVisibility, setPostFormModalVisibility} = useContext(AuthModalContext);
+  // const { setPostFormModalVisibility} = useContext(A)
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { redirect, setRedirect } = useContext(RedirectContext);
@@ -114,9 +115,13 @@ const Header = () => {
                     : "show-box"
                 }
               >
-                <button className="btn link-box">
+                <button 
+                onClick={() => {setPostFormModalVisibility(true);setPlusDropDownVisibilityClass("hidden")}}
+                className="btn link-box">
                
                   Create new post
+                 
+
                   {/* <BsFillFileEarmarkPostFill
                   className=" icon" /> */}
                   </button>
