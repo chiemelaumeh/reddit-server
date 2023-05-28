@@ -31,23 +31,7 @@ body {
   margin: 0 8px;
 }
 
-.show-box {
-  position: absolute;
-  right: 0px;
-  top: 40px;
-  color: var(--offwhite);
-  background-color: var(--reddit_midgrey);
 
-  /* z-index: 10; */
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  /* overflow: hidden; */
-  /* display: none; */
-}
-.hide-box {
-  display: none;
-}
 .show-box p {
   padding: 10px 32px;
   background-color: var(--reddit_midgrey);
