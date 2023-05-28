@@ -2,6 +2,9 @@ import TimeAgo from "timeago-react"; // var TimeAgo = require('timeago-react');
 import PostCommentForm from "./PostCommentForm";
 import { useState } from "react";
 import CommentReplies from "./CommentReplies";
+import { BsChatLeft } from "react-icons/bs";
+import Voting from "./Voting";
+
 
 
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
@@ -14,13 +17,13 @@ const Comments = (props) => {
 
   return (
     <div>
-      {postComments.map((singleComment) => {
+      {postComments.map((singleComment, index) => {
         const replies = props.postComments.filter(
           (loopedComment) => loopedComment.parentId === singleComment._id
         );
 
         return (
-          <div className="comment-div">
+          <div key={index} className="comment-div">
             <div className="post-comments"></div>
 
             <p>{singleComment.author} </p>
@@ -33,13 +36,22 @@ const Comments = (props) => {
               {singleComment.body}
 
               {/* {showReplyBox === null && ( */}
-                <div>
-                  <button
-                    className="comment-reply"
+                <div className="voting-reply-main">
+                  <div className="voting-reply">
+                   <Voting singleComment={singleComment} postComments={postComments}
+                />
+                   <div className="icon-reply-button"
                     onClick={() => setShowReplyBox(singleComment._id)}
-                  >
-                    Reply
-                  </button>
+                    >
+                     
+                      <BsChatLeft className="reply-icon"/>
+                      <button
+                        className="comment-reply"
+                      >
+                        Reply
+                      </button>
+                   </div>
+                  </div>
                 </div>
               {/* )} */}
 

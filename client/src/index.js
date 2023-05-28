@@ -6,9 +6,13 @@ import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
 import { UserProvider } from "./context/UserContext";
 import { RerenderContextProvider } from "./context/RerenderContext";
+import RedirectContext, { RedirectContextProvider } from "./context/RedirectContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+
+  <RedirectContextProvider>
+
   <RerenderContextProvider>
     <AuthModalProvider>
       <UserProvider>
@@ -18,4 +22,5 @@ root.render(
       </UserProvider>
     </AuthModalProvider>
   </RerenderContextProvider>
+  </RedirectContextProvider>
 );

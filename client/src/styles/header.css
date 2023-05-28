@@ -51,7 +51,8 @@ body {
   border: none;
   padding: 0 6px;
   display: block;
-  color: var(--white);
+  color: var(--white); 
+  flex-grow: 1;
 }
 .search-icon {
   color: var(--reddit_lightgrey);
@@ -68,7 +69,23 @@ body {
   height: 1.25rem;
   margin: 0 8px;
 }
+.show-box {
+  position: absolute;
+  right: 0px;
+  top: 40px;
+  color: var(--offwhite);
+  background-color: var(--reddit_midgrey);
 
+  /* z-index: 10; */
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  /* overflow: hidden; */
+  /* display: none; */
+}
+.hide-box {
+  display: none;
+}
 .icon-btn {
   background-color: inherit;
   border: none;
@@ -113,4 +130,11 @@ overflow: hidden;
   margin: 0 6px;
 
   /* margin-left: 0; */
+}
+.matching-Pass {
+  color: red;
+  font-weight: 200;
+  font-size: 1rem;
+  padding-left: 4rem;
+
 }

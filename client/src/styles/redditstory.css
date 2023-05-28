@@ -76,3 +76,162 @@ body {
   height: 100vh;
 }
 
+
+
+
+
+.comment-body-div {
+  border-left:1px solid var(--reddit_border);
+  padding: 0 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  
+ 
+}
+
+.comment-body-div-reply {
+
+ 
+}
+.comment-reply {
+  color: var(--reddit_border);
+  background-color: var(--reddit_dark);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  /* margin-left: 1rem; */
+  /* margin-bottom: 1rem; */
+ 
+}
+.reply-icon {
+  color: var(--reddit_border);
+  font-weight: 600;
+  font-size: 1.25rem;
+  
+
+
+
+
+}
+.icon-reply-button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+
+  
+}
+.single-reply-div{
+  /* border: 1px solid red; */
+  border-left:1px solid var(--reddit_border);
+  padding: 0.5rem 1rem;
+  margin-left: 1.3rem;
+  margin-bottom: 1rem;
+  
+  /* margin: 6 0rem; */
+
+
+}
+textarea::placeholder {
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+}
+.comment-cancel-btn {
+  margin-bottom: 2rem;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
+ 
+}
+.reply-main-div p{
+margin-left: 0.5rem
+
+}
+/* .reply-main-div {
+  border: 1px solid red;
+  margin-left: 0;
+  
+
+} */
+.profile-timeago {
+  font-weight: 300;
+  /* padding */
+  margin: 0 0.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.hide-comment-reply {
+  display: none;
+}
+
+.comment-btn {
+  padding:0.5rem 1rem;
+  margin-left: 1rem;
+}
+.cancel-btn {
+  background-color: var(--reddit_dark);
+  /* margin-left: 5rem; */
+  color: var(--offwhite);
+  border: 1px solid var(--offwhite);
+  cursor: pointer;
+}
+
+.time-ago-div {
+  margin-left: 1rem;
+  color: var(--reddit_border);
+}
+
+
+
+.vote-icon{
+  
+  font-size: 1.5rem;
+
+  opacity: .6;
+  cursor: pointer;
+}
+.vote-icon:hover {
+}
+.vote-icon-number {
+
+  font-size: 0.75rem;
+  color: orangered;
+  margin:0 0.15rem;
+  opacity: .6;
+  padding: 0;
+  
+
+}
+
+.voting-div{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  align-items: center;
+  width: 5rem;
+  padding: 0;
+  /* justify-content:space-evenly; */
+  /* margin-left: 0.5rem; */
+}
+
+.voting-reply {
+  display: flex;
+  margin-top: 1rem;
+  
+}
+
+.voting-reply-main {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+
+}

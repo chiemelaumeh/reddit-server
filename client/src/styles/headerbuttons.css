@@ -22,7 +22,6 @@ body {
   cursor: pointer;
 }
 
-
 .header-buttons {
   border: 1px solid var(--reddit_border);
   background-color: var(--reddit_lightgrey);
@@ -32,56 +31,34 @@ body {
   margin: 0 8px;
 }
 
-.show-box {
-  position: absolute;
-  right: 0px;
-  top: 40px;
-  color: var(--offwhite);
-  background-color: var(--reddit_midgrey);
 
-  /* z-index: 10; */
-  border-radius: 4px;
-display: flex;
-flex-direction: column;
-  /* overflow: hidden; */
-  /* display: none; */
-
-}
-.hide-box {
-  display: none;
-}
 .show-box p {
   padding: 10px 32px;
   background-color: var(--reddit_midgrey);
   border-radius: 4px;
   margin-top: 0;
   margin-bottom: 0;
-  color:#FF4500 ;
+  color: #ff4500;
 }
 .show-box p:hover {
   background-color: var(--offwhite);
-  color: var(--offBlack)
+  color: var(--offBlack);
 }
 .link-box {
-
   display: flex;
   justify-content: space-evenly;
   padding: 8px 32px;
 
   /* justify-content: space-evenly; */
   color: var(--offwhite);
-border-radius: 4px;
-  width:inherit;
+  border-radius: 4px;
+  width: inherit;
   background-color: var(--reddit_midgrey);
-
-
-  
 }
 .link-box:hover {
   background-color: var(--offwhite);
   color: var(--offBlack);
 }
-
 
 .login-icon {
   width: 1.25rem;

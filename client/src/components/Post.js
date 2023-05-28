@@ -4,8 +4,7 @@ import AuthModalContext from "../context/AuthModalContext";
 import PostContent from "./postContent";
 
 const Redditmain = (props) => {
-  const {setPostModalVisibility } =
-    useContext(AuthModalContext);
+  const { setPostModalVisibility } = useContext(AuthModalContext);
 
   return (
     <>
@@ -13,14 +12,14 @@ const Redditmain = (props) => {
         {/* {props.open && <PostContent />} */}
 
         {/* {!props.open && */}
-          <Link
-            to={`/comments/${props._id}`}
-            state={{ commentId: props._id }}
-            className={props.open ? "reddit-story-closed" : "reddit-story"}
-            onClick={() => setPostModalVisibility(true)}
-          >
-            <PostContent {...props} />
-          </Link>
+        <Link
+          to={"/comments/" + (props.rootId || props._id)}
+          state={{ commentId: props.rootId || props._id }}
+          className={props.open ? "reddit-story-closed" : "reddit-story"}
+          onClick={() => setPostModalVisibility(true)}
+        >
+          <PostContent {...props} />
+        </Link>
         {/* } */}
       </div>
     </>

@@ -11,6 +11,8 @@ const Authmodal = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [matchingPass, setMatchingPass] = useState(true)
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
@@ -18,26 +20,37 @@ const Authmodal = () => {
 
   async function register(e) {
     e.preventDefault();
-    setModalVisibility(false);
     setEmail("");
     setPassword("");
+    setConfirmPassword("")
     setUsername("");
     const data = { email, username, password };
-    try {
-      const res = await axios.post(
-        // "https://redditt-api.onrender.com/register",
-        "http://localhost:4000/register",
-        data,
-        {
-          withCredentials: true,
-        }
-      );
-       setUser({ username });
-
-      console.log(res);
-    } catch (err) {
-      console.error(err.message);
+    if(password === confirmPassword) {
+      setMatchingPass(true)
+      setModalVisibility(false)
+      try {
+        const response = await axios.post(
+          // "https://redditt-api.onrender.com/register",
+          "http://localhost:4000/register",
+          data,
+          {
+            withCredentials: true,
+          }
+        );
+        alert(response.data)
+        setUser({ username });
+    
+      } catch (err) {
+        console.error(err.message);
+      }
+    }else {
+      setMatchingPass(false)
     }
+      // if (matchingPass) {
+
+    
+    
+    
   }
 
   const login = async () => {
@@ -51,9 +64,10 @@ const Authmodal = () => {
         {
           withCredentials: true,
         }
-        );
-        // console.log(response.data.username)
-        setUser(response.data.username)
+      );
+      // console.log(response.data)
+      // setUser(response.data.username);
+     
     } catch (error) {
       console.error(error.messagee);
     }
@@ -66,42 +80,71 @@ const Authmodal = () => {
           {modalType === "login" && <h1>Login</h1>}
           {modalType === "register" && <h1>Register</h1>}
           {modalType === "register" && (
-            <label>
+            <label required>
               <span>E-mail: </span>
               <Input
+                required
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
           )}
-          <label>
+          <label required>
             <span>Username: </span>
             <Input
+            required
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
-          <label>
+          <label required>
             <span>Password: </span>
 
             <Input
+             required
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
+          {modalType === "register" && 
+          <label required>
+            <span>Confirm Password: </span>
+
+            <Input
+            required
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            {/* {password != confirmPassword && ( */}
+              {matchingPass === false && (
+              <p className="matching-Pass">Passwords Do Not Match</p>
+              )}
+
+
+
+            {/* // )} */}
+          
+          </label>
+          
+          }
           {modalType === "login" && (
             <Headerbuttons onClick={login}>Log In</Headerbuttons>
           )}
           {modalType === "register" && (
-            <Headerbuttons onClick={register}>Sign Up</Headerbuttons>
+            <Headerbuttons 
+            // {modalType === "login" && <h1>Login</h1>}
+            onClick={register}
+            >Sign Up</Headerbuttons>
           )}
           {modalType === "login" && (
             <div className="login-state">
               <p className="login-p-1">New to Reddit?</p>
-              <button className="btn" onClick={() => setModalType("register")}>
+              <button className="btn" 
+              onClick={() => setModalType("register")}>
                 SIGN UP
               </button>
             </div>
