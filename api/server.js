@@ -37,7 +37,6 @@ app.use(router)
 
 const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
-  // console.log(userInfo)
   return await User.findById(userInfo.id);
 
 };
@@ -57,17 +56,23 @@ app.get("/", async (req, res) => {
 
 app.post("/register", async (req, res) => {
   const { email, username } = req.body;
-  const password = bcrypt.hashSync(req.body.password, 10);
-  const createUser = async () => {
-    const user = new User({
-      email,
-      username,
-      password,
-    });
+  const findUser = await User.findOne({ username })
+  if (findUser) {
+    res.status(422).send("Username taken. Try again.");
+    // console.log("rwe")
+  } else {
+
+    const password = bcrypt.hashSync(req.body.password, 10);
+    const createUser = async () => {
+      const user = new User({
+        email,
+        username,
+        password,
+      });
     try {
       const info = await user.save();
       res.status(201);
-
+  
       jwt.sign({ id: user._id }, secret, (err, token) => {
         if (err) {
           console.log(err);
@@ -78,12 +83,17 @@ app.post("/register", async (req, res) => {
         }
       });
     } catch (error) {
-      console.error(error.message);
+      console.error(error.mzsasaessage);
       res.status(500);
     }
   };
-
+  
   createUser();
+
+  }
+  ;
+  // if (user.username === username && user.password === password) {
+    // }
 });
 
 app.get("/user", (req, res) => {
@@ -113,8 +123,8 @@ app.post("/login", (req, res) => {
   const findUser = async () => {
     try {
       const user = await User.findOne({ username });
-      if (user.username === username && user.password === password) {
-      }
+      // if (user.username === username && user.password === password) {
+      // }
       if (user && user.username == username) {
         const passOk = bcrypt.compareSync(password, user.password);
         if (passOk) {

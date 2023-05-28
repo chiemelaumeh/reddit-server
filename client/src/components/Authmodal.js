@@ -29,7 +29,7 @@ const Authmodal = () => {
       setMatchingPass(true)
       setModalVisibility(false)
       try {
-        const res = await axios.post(
+        const response = await axios.post(
           // "https://redditt-api.onrender.com/register",
           "http://localhost:4000/register",
           data,
@@ -37,6 +37,7 @@ const Authmodal = () => {
             withCredentials: true,
           }
         );
+        console.log(response.data)
         setUser({ username });
     
       } catch (err) {
