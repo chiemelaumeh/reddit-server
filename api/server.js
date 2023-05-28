@@ -71,7 +71,7 @@ app.post("/register", async (req, res) => {
       });
     try {
       const info = await user.save();
-      res.status(201);
+      res.status(201).send(`profile created for ${username}, now please Log in!`);
   
       jwt.sign({ id: user._id }, secret, (err, token) => {
         if (err) {
@@ -134,8 +134,8 @@ app.post("/login", (req, res) => {
               try {
                 const user = await getUserFromToken(token);
                 // res.clearCookie("token", "").send();
-                console.log(user)
-                res.cookie("token", token).send({ username: user.username });
+                // console.log(user)
+                res.cookie("token", token).json({ username: user.username });
                 console.log(token);
               } catch (err) {
                 // console.log("error45")
