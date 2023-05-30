@@ -37,9 +37,7 @@ const Authmodal = () => {
             withCredentials: true,
           }
         );
-        alert(response.data)
-        setUser({ username });
-    
+        alert(response.data)    
       } catch (err) {
         console.error(err.message);
       }
@@ -65,8 +63,8 @@ const Authmodal = () => {
           withCredentials: true,
         }
       );
-      // console.log(response.data)
-      // setUser(response.data.username);
+ 
+      setUser({username});
      
     } catch (error) {
       console.error(error.messagee);

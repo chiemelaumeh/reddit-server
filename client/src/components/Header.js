@@ -26,7 +26,8 @@ const Header = () => {
     useState("hidden");
   const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] =
     useState("hidden");
-  const { setModalVisibility, setPostFormModalVisibility} = useContext(AuthModalContext);
+  const { setModalVisibility, setPostFormModalVisibility } =
+    useContext(AuthModalContext);
   // const { setPostFormModalVisibility} = useContext(A)
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
@@ -60,14 +61,14 @@ const Header = () => {
   };
 
   const logout = async () => {
-    await axios.get(
+    const response = await axios.get(
       // "https://redditt-api.onrender.com/logout",
       "http://localhost:4000/logout",
       {
         withCredentials: true,
       }
-    );
-
+      );
+      // console.log(response)
     setUser({});
   };
 
@@ -115,22 +116,23 @@ const Header = () => {
                     : "show-box"
                 }
               >
-                <button 
-                onClick={() => {setPostFormModalVisibility(true);setPlusDropDownVisibilityClass("hidden")}}
-                className="btn link-box">
-               
+                <button
+                  onClick={() => {
+                    setPostFormModalVisibility(true);
+                    setPlusDropDownVisibilityClass("hidden");
+                  }}
+                  className="btn link-box"
+                >
                   Create new post
-                 
-
                   {/* <BsFillFileEarmarkPostFill
                   className=" icon" /> */}
-                  </button>
+                </button>
 
                 <button className="btn link-box">
                   Create new community
-                {/* <FaUsers 
+                  {/* <FaUsers 
                 className=" icon" /> */}
-                  </button>
+                </button>
               </div>
             </>
 
