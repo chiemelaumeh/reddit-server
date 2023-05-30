@@ -30,7 +30,7 @@ const connectionString = process.env.DATABASE_URL;
 app.use(router);
 
 const getUserFromToken = async (token) => {
-  const userInfo = await jwt.verify(token, secret);
+  const userInfo = await jwt.verify(token, secret)
   return await User.findById(userInfo.id);
 };
 
@@ -68,6 +68,7 @@ app.post("/register", async (req, res) => {
         res
           .status(201)
           .send(`profile created for ${username}, now please Log in!`);
+          console.log(`profile created for ${username}, now please Log in!`)
 
         // jwt.sign({ id: user._id }, secret, (err, token) => {
         //   if (err) {
@@ -111,6 +112,7 @@ app.get("/user", (req, res) => {
 
 app.get("/logout", (req, res) => {
   res.clearCookie("token", "").send("Successfully logged out");
+  console.log("Successfully logged out")
 });
 
 app.post("/login", (req, res) => {

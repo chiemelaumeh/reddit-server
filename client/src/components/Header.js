@@ -61,14 +61,14 @@ const Header = () => {
   };
 
   const logout = async () => {
-    await axios.get(
+    const response = await axios.get(
       // "https://redditt-api.onrender.com/logout",
       "http://localhost:4000/logout",
       {
         withCredentials: true,
       }
-    );
-
+      );
+      // console.log(response)
     setUser({});
   };
 
