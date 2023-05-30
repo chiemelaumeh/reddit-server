@@ -23,6 +23,8 @@ function App() {
         }
         );
         setUser(response.data);
+        console.log(response.data)
+
       };
       getUser();
     }, []);

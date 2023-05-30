@@ -54,8 +54,7 @@ app.post("/register", async (req, res) => {
   const findUser = await User.findOne({ username });
   if (findUser) {
     res.send("Username taken. Try again.");
-    console.log("Username taken. Try again.")
-
+    console.log("Username taken. Try again.");
   } else {
     const password = bcrypt.hashSync(req.body.password, 10);
     const createUser = async () => {
@@ -81,7 +80,7 @@ app.post("/register", async (req, res) => {
         // });
       } catch (error) {
         console.error(error.message);
-        
+
         res.status(500);
       }
     };
@@ -126,7 +125,8 @@ app.post("/login", (req, res) => {
             const getUser = async () => {
               try {
                 const user = await getUserFromToken(token);
-                res.cookie("token", token).json({ username: user.username });
+                const username = user.username
+                res.cookie("token", token).json( username );
                 console.log(token);
               } catch (err) {
                 console.error(err.message);

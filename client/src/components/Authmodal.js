@@ -64,7 +64,7 @@ const Authmodal = () => {
         }
       );
  
-      setUser({username});
+      setUser(response.data);
      
     } catch (error) {
       console.error(error.messagee);
