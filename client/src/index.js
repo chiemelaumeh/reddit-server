@@ -6,21 +6,22 @@ import { AuthModalProvider } from "./context/AuthModalContext";
 import { ModalProvider } from "./context/ModalContext";
 import { UserProvider } from "./context/UserContext";
 import { RerenderContextProvider } from "./context/RerenderContext";
-import RedirectContext, { RedirectContextProvider } from "./context/RedirectContext";
+import { RedirectContextProvider } from "./context/RedirectContext";
+import { CommunityContextProvider } from "./context/CommunityContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-
-  <RedirectContextProvider>
-
-  <RerenderContextProvider>
-    <AuthModalProvider>
-      <UserProvider>
-        <ModalProvider>
-          <App />
-        </ModalProvider>
-      </UserProvider>
-    </AuthModalProvider>
-  </RerenderContextProvider>
-  </RedirectContextProvider>
+  <CommunityContextProvider>
+    <RedirectContextProvider>
+      <RerenderContextProvider>
+        <AuthModalProvider>
+          <UserProvider>
+            <ModalProvider>
+              <App />
+            </ModalProvider>
+          </UserProvider>
+        </AuthModalProvider>
+      </RerenderContextProvider>
+    </RedirectContextProvider>
+  </CommunityContextProvider>
 );
