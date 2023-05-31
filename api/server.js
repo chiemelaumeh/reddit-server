@@ -120,22 +120,20 @@ app.post("/login", (req, res) => {
   const findUser = async () => {
     try {
       const user = await User.findOne({ username });
+      console.log(user)
+      // res.json(user)
       if (user && user.username == username) {
         const passOk = bcrypt.compareSync(password, user.password);
         if (passOk) {
           jwt.sign({ id: user._id }, secret, (err, token) => {
-            const getUser = async () => {
+  
               try {
-                const user = await getUserFromToken(token);
-                const username = user.username
-                res.cookie("token", token).json( username );
+                 res.cookie("token", token).json();
                 console.log(token);
               } catch (err) {
                 console.error(err.message);
                 res.status(500);
-              }
             };
-            getUser();
           });
         } else {
           res.status(422).send("invalid password");
