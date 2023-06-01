@@ -1,15 +1,7 @@
-import { useState, useContext } from "react"
-import CommunityContext from "../context/CommunityContext"
+import CommunityPopUp from "./CommunityPopUp";
 
 const CommunityFormModal = () => {
-const { showCommunity, setShowCommunity } = useContext(CommunityContext)
+  return <CommunityPopUp />;
+};
 
-if (!showCommunity) {
-  return null
-}
-  return (
-    <div>CommunityFormModal</div>
-  )
-}
-
-export default CommunityFormModal
+export default CommunityFormModal;

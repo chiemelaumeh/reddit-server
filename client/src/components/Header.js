@@ -23,14 +23,11 @@ import axios from "axios";
 import RedirectContext from "../context/RedirectContext";
 
 const Header = () => {
-  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
-    useState("hidden");
-  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] =
-    useState("hidden");
+  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden");
+  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] = useState("hidden");
   const [searchText, setSearchText] = useState("");
 
-  const { setModalVisibility, setPostFormModalVisibility } =
-    useContext(AuthModalContext);
+  const { setModalVisibility, setPostFormModalVisibility } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
@@ -116,6 +113,7 @@ const Header = () => {
                 <button
                   onClick={() => {
                     setPostFormModalVisibility(true);
+                    setPlusDropDownVisibilityClass("hidden");
                   }}
                   className="btn link-box"
                 >
