@@ -9,7 +9,7 @@ import UserContext from "./context/UserContext";
 import axios from "axios";
 import Routing from "./components/Routing";
 
-
+axios.defaults.baseURL =  "http://localhost:4000/";
 
 function App() {
   const {setUser} = useContext(UserContext);
