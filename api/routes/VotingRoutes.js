@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import Vote from "../models/Votes.js";
-import { getUserFromToken } from "../UserFunctions.js";
+import { getUserFromToken } from "../server.js";
 
 router.get("/vote/:commentId/:direction/", (req, res) => {
   const token = req.cookies.token;

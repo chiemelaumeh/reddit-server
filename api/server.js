@@ -9,8 +9,9 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Comment from "./models/Comments.js";
-import router from "./routes/VotingRoutes.js";
-import Vote from "./models/Votes.js";
+import VotingRoutes from "./routes/VotingRoutes.js";
+import CommunityRoutes from "./routes/CommunityRoute.js"
+// import Vote from "./models/Votes.js";
 
 const app = express();
 app.use(express.json());
@@ -27,9 +28,10 @@ app.use(
 const secret = process.env.SECRET_KEY;
 const connectionString = process.env.DATABASE_URL;
 
-app.use(router);
+app.use(VotingRoutes);
+app.use(CommunityRoutes)
 
-const getUserFromToken = async (token) => {
+export const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
   return await User.findById(userInfo.id);
 };
@@ -51,13 +53,12 @@ app.get("/", async (req, res) => {
 
 app.post("/register", async (req, res) => {
   const { email, username } = req.body;
-  const findUser = await User.findOne({ username });
+  const findUser = await User.exists({ username });
   if (findUser) {
     res.send("Username taken. Try again.");
     console.log("Username taken. Try again.");
   } else {
     const password = bcrypt.hashSync(req.body.password, 10);
-    const createUser = async () => {
       const user = new User({
         email,
         username,
@@ -83,10 +84,7 @@ app.post("/register", async (req, res) => {
         console.error(error.message);
 
         res.status(500);
-      }
-    };
-
-    createUser();
+      };
   }
   // if (user.username === username && user.password === password) {
   // }
