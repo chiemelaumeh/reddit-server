@@ -167,6 +167,16 @@ body {
   border-radius: 4px;
   padding-right: 34px;
 }
+.community-sub {
+  background-color: var(--reddit_dark);
+  padding: 10px 20px;
+  color: var(--offwhite);
+  width: 90%;
+  border: 1px solid var(--reddit_border);
+  margin: 0 auto;
+  border-radius: 4px;
+  /* padding-right: 34px; */
+}
 .auth-sub h1 {
   margin: 0;
   margin-bottom: 20px;
@@ -210,6 +220,22 @@ body {
   /* align-items:center; */
   /* justify-content:center; */
   width: 100%;
+}
+.community-page {
+  height: 100vh;
+  width: 100%; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; 
+}
+.hide-community-page {
+ display: none;
 }
 
 

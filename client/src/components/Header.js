@@ -16,23 +16,22 @@ import { BsChevronDown } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
+import CommunityContext from "../context/CommunityContext";
 import avatar from "../images/IMG_9146.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import RedirectContext from "../context/RedirectContext";
 
 const Header = () => {
-  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
-    useState("hidden");
-  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] =
-    useState("hidden");
-  const { setModalVisibility, setPostFormModalVisibility } =
-    useContext(AuthModalContext);
-  // const { setPostFormModalVisibility} = useContext(A)
+  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden");
+  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] = useState("hidden");
+  const [searchText, setSearchText] = useState("");
+
+  const { setModalVisibility, setPostFormModalVisibility } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
-  const { redirect, setRedirect } = useContext(RedirectContext);
-  const [searchText, setSearchText] = useState("");
+  const { setRedirect } = useContext(RedirectContext);
+  const { setShowCommunity } = useContext(CommunityContext);
 
   const handleLogin = () => {
     setModalVisibility(true);
@@ -61,14 +60,9 @@ const Header = () => {
   };
 
   const logout = async () => {
-    const response = await axios.get(
-      // "https://redditt-api.onrender.com/logout",
-      "http://localhost:4000/logout",
-      {
-        withCredentials: true,
-      }
-      );
-      // console.log(response)
+    await axios.get("http://localhost:4000/logout", {
+      withCredentials: true,
+    });
     setUser({});
   };
 
@@ -128,34 +122,19 @@ const Header = () => {
                   className=" icon" /> */}
                 </button>
 
-                <button className="btn link-box">
+                <button
+                  onClick={() => {
+                    setShowCommunity(true);
+                    setPlusDropDownVisibilityClass("hidden");
+                  }}
+                  className="btn link-box"
+                >
                   Create new community
                   {/* <FaUsers 
                 className=" icon" /> */}
                 </button>
               </div>
             </>
-
-            // <>
-            // <button className="avatar-btn" onClick={toggleDropDown}>
-            //   <img src={avatar} alt="" className="avatar" />
-            //   <BsChevronDown className="chevron" />
-            // </button>
-
-            // <div
-            //   className={
-            //     userDropDownVisibilityClass === "hidden"
-            //       ? "hide-box"
-            //       : " show-box"
-            //   }
-            // >
-            //   <p>Welcome, {user.username}</p>
-            //   <button onClick={logout} href="" className="btn link-box">
-            //     <SlLogout className=" login-icon" />
-            //     Logout
-            //   </button>
-            // </div>
-            // </>
           )}
         </OutsideClickHandler>
         {!user.username && (

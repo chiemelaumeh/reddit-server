@@ -9,35 +9,36 @@ import axios from "axios";
 // import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
-  const { postFormModalVisibility, setPostFormModalVisibility } = useContext(AuthModalContext);
+  const { postFormModalVisibility, setPostFormModalVisibility } =
+    useContext(AuthModalContext);
   const { setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const data = { title, body };
 
   const createPost = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:4000/comments/",
-        data,
-        { withCredentials: true }
-      );
-      setNewPosts(response.data);
-    
-    } catch (error) {
-      console.error(error.message);
+    if (title || body === "") {
+      
+    } else {
+      try {
+        const response = await axios.post(
+          "http://localhost:4000/comments/",
+          data,
+          { withCredentials: true }
+        );
+     
+        setNewPosts(response.data);
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
 
-  // console.log(newComments)
-  // if (newPostId) {
-  //   return (<Navigate to={'/' } />)
-  // }
   function handleTwo() {
     createPost();
-    setPostFormModalVisibility(false);
     setTitle("");
     setBody("");
+    setPostFormModalVisibility(false);
   }
   return (
     <div
@@ -47,17 +48,13 @@ const PostFormModal = () => {
     >
       <div className="post-modal-sub">
         <h3>Create a Post</h3>
-         <Input
-        
+        <Input
           required
           placeholder={"Title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-      
-          /> 
-   
-       
-        
+        />
+
         <TextArea
           placeholder={"Text (required)"}
           value={body}
