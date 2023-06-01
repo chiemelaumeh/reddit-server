@@ -30,7 +30,7 @@ const connectionString = process.env.DATABASE_URL;
 app.use(router);
 
 const getUserFromToken = async (token) => {
-  const userInfo = await jwt.verify(token, secret)
+  const userInfo = await jwt.verify(token, secret);
   return await User.findById(userInfo.id);
 };
 
@@ -68,7 +68,7 @@ app.post("/register", async (req, res) => {
         res
           .status(201)
           .send(`profile created for ${username}, now please Log in!`);
-          console.log(`profile created for ${username}, now please Log in!`)
+        console.log(`profile created for ${username}, now please Log in!`);
 
         // jwt.sign({ id: user._id }, secret, (err, token) => {
         //   if (err) {
@@ -112,7 +112,7 @@ app.get("/user", (req, res) => {
 
 app.get("/logout", (req, res) => {
   res.clearCookie("token", "").send("Successfully logged out");
-  console.log("Successfully logged out")
+  console.log("Successfully logged out");
 });
 
 app.post("/login", (req, res) => {
@@ -120,20 +120,19 @@ app.post("/login", (req, res) => {
   const findUser = async () => {
     try {
       const user = await User.findOne({ username });
-      console.log(user)
+      console.log(user);
       // res.json(user)
       if (user && user.username == username) {
         const passOk = bcrypt.compareSync(password, user.password);
         if (passOk) {
           jwt.sign({ id: user._id }, secret, (err, token) => {
-  
-              try {
-                 res.cookie("token", token).json();
-                console.log(token);
-              } catch (err) {
-                console.error(err.message);
-                res.status(500);
-            };
+            try {
+              res.cookie("token", token).json();
+              console.log(token);
+            } catch (err) {
+              console.error(err.message);
+              res.status(500);
+            }
           });
         } else {
           res.status(422).send("invalid password");
