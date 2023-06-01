@@ -31,17 +31,19 @@ router.post("/communities", async (req, res) => {
   }
 });
 
-router.get("/communities/:chosenCommunity", async(req, res) => {
-const {chosenCommunity} = req.params
-console.log(chosenCommunity)
-try {
-  const theCommunity = await Community.findOne({chosenCommunity})
-  res.status(200).json(theCommunity)
+// const { email, username } = req.body;
+// const findUser = await User.exists({ username });
 
-  
-} catch (error) {
-  console.log(error.message)
-}
-})
+router.get("/communities/:community", async (req, res) => {
+  const { community } = req.params;
+  // console.log(community)
+  try {
+    const theCommunity = await Community.findOne({ name: community });
+    res.status(200).json(theCommunity);
+    console.log(theCommunity)
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 export default router;

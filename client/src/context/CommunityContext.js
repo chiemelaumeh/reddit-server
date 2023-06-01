@@ -4,24 +4,23 @@ import axios from "axios";
 const CommunityContext = createContext();
 export const CommunityContextProvider = ({ children }) => {
   const [showCommunity, setShowCommunity] = useState(false);
-  const [chosenCommunity, setChosenCommunity] = useState(null);
+  const [chosenCommunity, setChosenCommunity] = useState("");
   const [communityInfo, setCommunityInfo] = useState({});
 
   useEffect(() => {
-    // if (!chosenCommunity) {
-    //   return ;
-    // }
+    if (!chosenCommunity) {
+      return ;
+    }
     const getFullCommunity = async () => {
-
       try {
         const response = await axios.get(`/communities/${chosenCommunity}`);
-        // setCommunityInfo(response.data);
-        console.log(response.data)
+        setCommunityInfo(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error(error.messaage);
       }
     };
-    console.log("maybe")
+    // console.log("maybe");
     getFullCommunity();
   }, [chosenCommunity]);
   return (
@@ -31,7 +30,7 @@ export const CommunityContextProvider = ({ children }) => {
         setShowCommunity,
         chosenCommunity,
         setChosenCommunity,
-        ...communityInfo
+        ...communityInfo,
       }}
     >
       {children}
