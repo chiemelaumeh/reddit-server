@@ -37,8 +37,9 @@ const Routinglocation = () => {
       )}
       <Routes location={location}>
         <Route exact path="/" element={<Board />} />
+        <Route exact path="/r/:community" element={<Board />} />\
         <Route exact path="/comments/:id" element={<Commentpage />} />
-        <Route exact path="/search/:text" element={<SearchPage />} />
+        <Route exact path="search/:text" element={<SearchPage />} />
         <Route exact path="/error/404" element={<ErrorPage />} />
       </Routes>
     </div>
