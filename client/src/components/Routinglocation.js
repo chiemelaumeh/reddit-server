@@ -9,12 +9,9 @@ import RerenderContext from "../context/RerenderContext";
 
 import { useContext } from "react";
 
-
-
 const Routinglocation = () => {
-  const { redirect, setRedirect } = useContext(RedirectContext);
-  const { errorPage, setErrorPage } = useContext(RerenderContext);
-
+  // const { redirect, setRedirect } = useContext(RedirectContext);
+  // const { errorPage, setErrorPage } = useContext(RerenderContext);
 
   let location = useLocation();
   let commentId = null;
@@ -23,7 +20,6 @@ const Routinglocation = () => {
     location.pathname = "/";
     commentId = location.state.commentId;
   }
-
 
   // console.log(location)
   //  {/* {redirect && (
@@ -35,15 +31,15 @@ const Routinglocation = () => {
     <div>
       {commentId && (
         <div>
-          <Postmodal id={commentId} open={true}/>
+          <Postmodal id={commentId} open={true} />
           {/* { commentId} */}
         </div>
       )}
       <Routes location={location}>
         <Route exact path="/" element={<Board />} />
         <Route exact path="/comments/:id" element={<Commentpage />} />
-        <Route exact path="/search/:text" element={<SearchPage />}/>
-        <Route exact path="/error/404" element={<ErrorPage />}/>
+        <Route exact path="/search/:text" element={<SearchPage />} />
+        <Route exact path="/error/404" element={<ErrorPage />} />
       </Routes>
     </div>
   );

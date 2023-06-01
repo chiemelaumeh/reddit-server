@@ -1,24 +1,22 @@
-import { useState, useContext } from "react";
-import CommunityContext from "../context/CommunityContext";
-import OutsideClickHandler from "react-outside-click-handler";
+import Input from "./Input";
 
-const CommunityPopUp = () => {
-
-  const { showCommunity, setShowCommunity } = useContext(CommunityContext);
-
-  if (!showCommunity) {
-    return null;
-  }
+const CommunityPopUp = ({closeModal}) => {
   return (
-    <div className={showCommunity ? "community-page" : "hide-community-page"}>
-    <OutsideClickHandler onOutsideClick={() => setShowCommunity(false)}>
-      <div className="community-sub">
-        <h1>Create a Community</h1>
-        NICE
-      </div>
-    </OutsideClickHandler>
-  </div>
-  )
-}
+    <div className="community-sub">
+      <h1>Create a Subreddit </h1>
 
-export default CommunityPopUp
+      <Input placeholder={"Name"} />
+      <Input placeholder={"Slogan"} />
+      <Input placeholder={"Avatar"} />
+      <Input placeholder={"Cover"} />
+      <div className="post-btns">
+
+      <button onClick={closeModal} className="post-form-btn-close ">Cancel</button>
+      <button className="post-form-btn btn">Create subreditt!</button>
+      {/* <button className="post-form-btn "> Create your Subreddit!</button> */}
+      </div>
+    </div>
+  );
+};
+
+export default CommunityPopUp;

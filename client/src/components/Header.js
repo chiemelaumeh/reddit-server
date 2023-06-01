@@ -8,8 +8,8 @@ import { CiUser } from "react-icons/ci";
 import { BsBell } from "react-icons/bs";
 import { BsChatDots } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
-import { BsFillFileEarmarkPostFill } from "react-icons/bs";
-import { FaUsers } from "react-icons/fa";
+// import { BsFillFileEarmarkPostFill } from "react-icons/bs";
+// import { FaUsers } from "react-icons/fa";
 import logo from "../images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsChevronDown } from "react-icons/bs";
@@ -23,11 +23,14 @@ import axios from "axios";
 import RedirectContext from "../context/RedirectContext";
 
 const Header = () => {
-  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden");
-  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] = useState("hidden");
+  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
+    useState("hidden");
+  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] =
+    useState("hidden");
   const [searchText, setSearchText] = useState("");
 
-  const { setModalVisibility, setPostFormModalVisibility } = useContext(AuthModalContext);
+  const { setModalVisibility, setPostFormModalVisibility } =
+    useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
