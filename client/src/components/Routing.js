@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Header from "./Header";
 import Authmodal from "./Authmodal";
 import PostFormModal from "./PostFormModal";
+import CommunityFormModal from "./CommunityFormModal";
 import { BrowserRouter as Router, Navigate } from "react-router-dom";
 import Routinglocation from "./Routinglocation";
 import { useContext } from "react";
@@ -34,6 +35,7 @@ const Routing = () => {
           <Header />
           <Routinglocation />
           <Authmodal />
+          <CommunityFormModal /> 
           <PostFormModal />
         </>
       )}
