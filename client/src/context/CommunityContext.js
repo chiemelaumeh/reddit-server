@@ -8,14 +8,14 @@ export const CommunityContextProvider = ({ children }) => {
   const [communityInfo, setCommunityInfo] = useState({});
 
   useEffect(() => {
-    if (!chosenCommunity) {
-      return ;
-    }
+    // if (!chosenCommunity) {
+    //   return ;
+    // }
     const getFullCommunity = async () => {
       try {
         const response = await axios.get(`/communities/${chosenCommunity}`);
         setCommunityInfo(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error.messaage);
       }

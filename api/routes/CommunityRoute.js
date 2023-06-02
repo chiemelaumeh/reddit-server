@@ -34,13 +34,13 @@ router.post("/communities", async (req, res) => {
 // const { email, username } = req.body;
 // const findUser = await User.exists({ username });
 
-router.get("/communities/:community", async (req, res) => {
-  const { community } = req.params;
-  // console.log(community)
+router.get("/communities/:chosenCommunity", async (req, res) => {
+  const { chosenCommunity } = req.params;
+  // console.log(chosenCommunity)
   try {
-    const theCommunity = await Community.findOne({ name: community });
+    const theCommunity = await Community.findOne({ name: chosenCommunity });
     res.status(200).json(theCommunity);
-    console.log(theCommunity)
+    // console.log(theCommunity)
   } catch (error) {
     console.log(error.message);
   }

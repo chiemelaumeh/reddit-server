@@ -11,6 +11,7 @@ import User from "./models/User.js";
 import Comment from "./models/Comments.js";
 import VotingRoutes from "./routes/VotingRoutes.js";
 import CommunityRoutes from "./routes/CommunityRoute.js"
+import Community from "./models/Community.js";
 // import Vote from "./models/Votes.js";
 
 const app = express();
@@ -210,16 +211,18 @@ app.get("/comments/parent/:parentId", async (req, res) => {
   }
 });
 
-async function deleteAll() {
-  await Comment.deleteMany({
+ async function deleteAll() {
+  Comment.deleteMany({
     //  $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
     rootId: { $exists: true },
   });
 
-  await Vote.deleteMany({
-    direction: { $exists: true },
-  });
-
+//  Vote.deleteMany({
+//     direction: { $exists: true },
+//   });
+ await Community.deleteMany({
+  name: { $exists: true}
+ })
   console.log("Deleted All");
 }
 

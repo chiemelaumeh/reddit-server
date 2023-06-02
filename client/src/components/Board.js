@@ -7,11 +7,11 @@ import CommunityContext from "../context/CommunityContext";
 
 const Board = () => {
   const {communityFromUrl} = useParams();
-  const {setChosenCommunity} = useContext(CommunityContext);
-
+  const {chosenCommunity, setChosenCommunity} = useContext(CommunityContext);
+  // console.log(communityFromUrl)
   useEffect(() => {
     setChosenCommunity(communityFromUrl);
-  }, [communityFromUrl]);
+  }, []);
   return (
     <div>
       <Headerboard />

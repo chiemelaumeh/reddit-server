@@ -19,7 +19,7 @@ const CommunityPopUp = ({ closeModal }) => {
       const response = await axios.post("/communities", data, {
         withCredentials: true,
       });
-      setRedirect(`/r/` + name)
+      setRedirect(`/r/` + name )
     } catch (error) {
       console.error(error.message)
     }
