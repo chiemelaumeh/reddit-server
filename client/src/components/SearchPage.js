@@ -7,6 +7,7 @@ import axios from "axios";
 const SearchPage = (props) => {
   const { text } = useParams();
 
+
   // <div>{text}
 
   // </div>
@@ -14,7 +15,7 @@ const SearchPage = (props) => {
   const [comments, setComments] = useState([]);
   const { newPosts, errorPage, setErrorPage  } = useContext(RerenderContext);
 
-  // useEffect(() => {
+  useEffect(() => {
     const getComments = async () => {
       const response = await axios.get(`http://localhost:4000/comments?search=${text}`, {
         withCredentials: true,
@@ -31,7 +32,7 @@ const SearchPage = (props) => {
    
     };
     getComments();
-  // }, []);
+  }, []);
 
   return (
     <div className="app-reddit-story">

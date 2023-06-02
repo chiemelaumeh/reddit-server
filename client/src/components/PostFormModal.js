@@ -15,7 +15,7 @@ const PostFormModal = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const data = { title, body };
-
+  
   const createPost = async () => {
     if (title || body === "") {
       

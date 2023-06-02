@@ -57,7 +57,7 @@ const Authmodal = () => {
     try {
       const response = await axios.post(
         // "https://redditt-api.onrender.com/login",
-        "http://localhost:4000/login",
+        "/login",
         data,
         {
           withCredentials: true,

@@ -1,5 +1,7 @@
-
-const Headerboard = () => {
+import { useContext } from "react";
+import CommunityContext from "../context/CommunityContext";
+const Headerboard = ({ communityFromUrl }) => {
+  const { chosenCommunity,  ...communityInfo } = useContext(CommunityContext)
   
   return (
     <>
@@ -13,8 +15,8 @@ const Headerboard = () => {
           />
         </div>
         <div className="header-texts">
-          <h1 className="header-title">Learn to play chess</h1>
-          <h5 className="header-board">r/Checkmate</h5>
+          <h1 className="header-title">{communityInfo.name} : {communityInfo.slogan}</h1>
+          <h5 className="header-board">r/{communityInfo.name}</h5>
         </div>
       </div>
     </>
