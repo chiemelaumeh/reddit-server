@@ -10,7 +10,7 @@ const Postlisting = () => {
   const { chosenCommunity } = useContext(CommunityContext);
 
 
-  let url = chosenCommunity === null ? "/comments" : `/comments?community=${chosenCommunity}`;
+  let url = chosenCommunity === null ? "/comments" : `/comments?chosenCommunity=${chosenCommunity}`;
 
 
   useEffect(() => {

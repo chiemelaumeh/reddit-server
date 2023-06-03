@@ -152,7 +152,7 @@ app.post("/comments", async (req, res) => {
   const token = req.cookies.token;
   try {
     const userInfo = await getUserFromToken(token);
-    const { title, body, parentId, rootId, community } = req.body;
+    const { title, body, parentId, rootId, chosenCommunity } = req.body;
     console.log(req.body)
     const comment = new Comment({
       title,
@@ -171,13 +171,13 @@ app.post("/comments", async (req, res) => {
 });
 
 app.get("/comments", async (req, res) => {
-  const {search, community} = req.query
+  const {search, chosenCommunity} = req.query
   const filter = search
     ? { title: { $regex: ".*" + search + ".*" } }
     : { rootId: null };
 
-    if (community) {
-      filter.community = community
+    if (chosenCommunity) {
+      filter.chosenCommunity = chosenCommunity
     }
 
   try {

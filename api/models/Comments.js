@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   body: {type: String, required: true},
   parentId:{type:mongoose.ObjectId, required:false},
   rootId:{type:mongoose.ObjectId, required:false},
-  community: {type: String, required: true}
+  chosenCommunity: {type: String, required: true}
 
 })
 
