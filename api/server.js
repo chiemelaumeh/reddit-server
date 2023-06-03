@@ -152,10 +152,12 @@ app.post("/comments", async (req, res) => {
   const token = req.cookies.token;
   try {
     const userInfo = await getUserFromToken(token);
-    const { title, body, parentId, rootId } = req.body;
+    const { title, body, parentId, rootId, community } = req.body;
+    console.log(req.body)
     const comment = new Comment({
       title,
       body,
+      chosenCommunity,
       author: userInfo.username,
       postedAt: Date.now(),
       parentId,
@@ -169,10 +171,14 @@ app.post("/comments", async (req, res) => {
 });
 
 app.get("/comments", async (req, res) => {
-  const search = req.query.search;
+  const {search, community} = req.query
   const filter = search
     ? { title: { $regex: ".*" + search + ".*" } }
     : { rootId: null };
+
+    if (community) {
+      filter.community = community
+    }
 
   try {
     const comments = await Comment.find(filter).sort({ postedAt: -1 });
@@ -211,19 +217,28 @@ app.get("/comments/parent/:parentId", async (req, res) => {
   }
 });
 
+async function myFinder () {
+  const showCommunities = await Comment.find({
+  community: {$exists: true}
+  })
+  console.log(showCommunities)
+}
+
+// myFinder()
+
  async function deleteAll() {
-  Comment.deleteMany({
-    //  $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
-    rootId: { $exists: true },
+  await Comment.deleteMany({
+    // body: { $exists: true },
+     $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
   });
 
 //  Vote.deleteMany({
 //     direction: { $exists: true },
 //   });
- await Community.deleteMany({
-  // name: { $exists: true}
-      $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
- })
+//  await Community.deleteMany({
+//   // name: { $exists: true}
+//       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
+//  })
   console.log("Deleted All");
 }
 

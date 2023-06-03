@@ -4,7 +4,7 @@ import axios from "axios";
 const CommunityContext = createContext();
 export const CommunityContextProvider = ({ children }) => {
   const [showCommunity, setShowCommunity] = useState(false);
-  const [chosenCommunity, setChosenCommunity] = useState("");
+  const [chosenCommunity, setChosenCommunity] = useState(null);
   const [communityInfo, setCommunityInfo] = useState({});
 
   useEffect(() => {

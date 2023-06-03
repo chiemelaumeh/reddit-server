@@ -6,16 +6,18 @@ import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import axios from "axios";
+import CommunityContext from "../context/CommunityContext";
 // import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
     useContext(AuthModalContext);
+  const { chosenCommunity } = useContext(CommunityContext)
   const { setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const data = { title, body };
-
+  const data = { title, body, chosenCommunity };
+ 
   const createPost = async () => {
     if (title.length === 0 || body.length === 0) {
       return;
