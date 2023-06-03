@@ -15,22 +15,21 @@ const PostFormModal = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const data = { title, body };
-  
+
   const createPost = async () => {
-    if (title || body === "") {
-      
-    } else {
-      try {
-        const response = await axios.post(
-          "http://localhost:4000/comments/",
-          data,
-          { withCredentials: true }
-        );
-     
-        setNewPosts(response.data);
-      } catch (error) {
-        console.error(error.message);
-      }
+    if (title.length === 0 || body.length === 0) {
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/comments/",
+        data,
+        { withCredentials: true }
+      );
+
+      setNewPosts(response.data);
+    } catch (error) {
+      console.error(error.message);
     }
   };
 

@@ -119,9 +119,9 @@ app.post("/login", (req, res) => {
   const findUser = async () => {
     try {
       const user = await User.findOne({ username });
-      console.log(user);
+      // console.log(user);
       // res.json(user)
-      if (user && user.username == username) {
+      if (user && user.username === username) {
         const passOk = bcrypt.compareSync(password, user.password);
         if (passOk) {
           jwt.sign({ id: user._id }, secret, (err, token) => {
@@ -221,7 +221,8 @@ app.get("/comments/parent/:parentId", async (req, res) => {
 //     direction: { $exists: true },
 //   });
  await Community.deleteMany({
-  name: { $exists: true}
+  // name: { $exists: true}
+      $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
  })
   console.log("Deleted All");
 }
