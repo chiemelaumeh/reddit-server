@@ -1,21 +1,33 @@
 import { useContext } from "react";
+import avatar from "../images/avatar.jpg";
+
 import CommunityContext from "../context/CommunityContext";
-const Headerboard = ({ communityFromUrl }) => {
-  const { chosenCommunity,  ...communityInfo } = useContext(CommunityContext)
-  
+const Headerboard = () => {
+  const { chosenCommunity, ...communityInfo } = useContext(CommunityContext);
+  // const cover = chosenCommunity.cover
+  const { name, slogan, avatar, cover } = communityInfo;
+  console.log(chosenCommunity);
+
+  if (!communityInfo.name) {
+    return(
+    <div className="below-header" style={{backgroundImage: `url("https://w0.peakpx.com/wallpaper/100/43/HD-wallpaper-day-landscape-digital-art-artist-artwork-digital-art-deviantart.jpg")`}}> </div>
+    )
+  }
+
   return (
     <>
-      <div className="below-header"></div>
+      <div
+        className="below-header"
+        style={{ backgroundImage: `url(${cover})` }}
+      ></div>
       <div className="sub-main">
         <div className="com-div">
-          <img
-            className="com-icon"
-            src="https://i.etsystatic.com/20162739/r/il/f0f9f3/1936656917/il_1588xN.1936656917_cubv.jpg"
-            alt=""
-          />
+          <img className="com-icon" src={avatar} alt="" />
         </div>
         <div className="header-texts">
-          <h1 className="header-title">{communityInfo.name} : {communityInfo.slogan}</h1>
+          <h1 className="header-title">
+            {name} : {slogan}
+          </h1>
           <h5 className="header-board">r/{communityInfo.name}</h5>
         </div>
       </div>

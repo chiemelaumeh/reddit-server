@@ -119,9 +119,9 @@ app.post("/login", (req, res) => {
   const findUser = async () => {
     try {
       const user = await User.findOne({ username });
-      console.log(user);
+      // console.log(user);
       // res.json(user)
-      if (user && user.username == username) {
+      if (user && user.username === username) {
         const passOk = bcrypt.compareSync(password, user.password);
         if (passOk) {
           jwt.sign({ id: user._id }, secret, (err, token) => {
@@ -152,10 +152,12 @@ app.post("/comments", async (req, res) => {
   const token = req.cookies.token;
   try {
     const userInfo = await getUserFromToken(token);
-    const { title, body, parentId, rootId } = req.body;
+    const { title, body, parentId, rootId, chosenCommunity } = req.body;
+    console.log(req.body)
     const comment = new Comment({
       title,
       body,
+      chosenCommunity,
       author: userInfo.username,
       postedAt: Date.now(),
       parentId,
@@ -169,10 +171,14 @@ app.post("/comments", async (req, res) => {
 });
 
 app.get("/comments", async (req, res) => {
-  const search = req.query.search;
+  const {search, chosenCommunity} = req.query
   const filter = search
     ? { title: { $regex: ".*" + search + ".*" } }
     : { rootId: null };
+
+    if (chosenCommunity) {
+      filter.chosenCommunity = chosenCommunity
+    }
 
   try {
     const comments = await Comment.find(filter).sort({ postedAt: -1 });
@@ -211,18 +217,28 @@ app.get("/comments/parent/:parentId", async (req, res) => {
   }
 });
 
+async function myFinder () {
+  const showCommunities = await Comment.find({
+  community: {$exists: true}
+  })
+  console.log(showCommunities)
+}
+
+// myFinder()
+
  async function deleteAll() {
-  Comment.deleteMany({
-    //  $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
-    rootId: { $exists: true },
+  await Comment.deleteMany({
+    // body: { $exists: true },
+     $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
   });
 
 //  Vote.deleteMany({
 //     direction: { $exists: true },
 //   });
- await Community.deleteMany({
-  name: { $exists: true}
- })
+//  await Community.deleteMany({
+//   // name: { $exists: true}
+//       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
+//  })
   console.log("Deleted All");
 }
 

@@ -6,31 +6,32 @@ import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import axios from "axios";
+import CommunityContext from "../context/CommunityContext";
 // import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
   const { postFormModalVisibility, setPostFormModalVisibility } =
     useContext(AuthModalContext);
+  const { chosenCommunity } = useContext(CommunityContext)
   const { setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const data = { title, body };
-  
+  const data = { title, body, chosenCommunity };
+ 
   const createPost = async () => {
-    if (title || body === "") {
-      
-    } else {
-      try {
-        const response = await axios.post(
-          "http://localhost:4000/comments/",
-          data,
-          { withCredentials: true }
-        );
-     
-        setNewPosts(response.data);
-      } catch (error) {
-        console.error(error.message);
-      }
+    if (title.length === 0 || body.length === 0) {
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/comments/",
+        data,
+        { withCredentials: true }
+      );
+
+      setNewPosts(response.data);
+    } catch (error) {
+      console.error(error.message);
     }
   };
 
