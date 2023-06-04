@@ -150,10 +150,11 @@ app.post("/login", (req, res) => {
 
 app.post("/comments", async (req, res) => {
   const token = req.cookies.token;
+  
   try {
     const userInfo = await getUserFromToken(token);
     const { title, body, parentId, rootId, chosenCommunity } = req.body;
-    // console.log(req.body)
+    console.log(req.body)
     const communityExists = await Community.findOne({ name: chosenCommunity });
     // console.log(communityExists)
     // NEEDS MORE WORK
@@ -255,10 +256,10 @@ async function deleteAll() {
   //   // name: { $exists: true}
   //       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
   //  })
-  console.log("Deleted All");
+  // console.log("Deleted All");
 }
 
-// deleteAll()
+deleteAll()
 app.listen(4000, () => {
   console.log("Listening on Port 4000");
 });

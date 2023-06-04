@@ -18,8 +18,9 @@ const PostCommentForm = (props) => {
  
 
 
-
+console.log(props.chosenCommunity)
   const postComment = async (e) => {
+  
     e.preventDefault();
    
     const data = {
@@ -29,6 +30,7 @@ const PostCommentForm = (props) => {
       parentId: props.parentId,
       rootId: props.rootId,
     };
+    console.log(data)
   
     try {
       const response = await axios.post(

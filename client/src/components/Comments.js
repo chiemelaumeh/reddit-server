@@ -58,7 +58,9 @@ const Comments = (props) => {
               <div>
                 {singleComment._id === showReplyBox && (
                   <PostCommentForm
+
                     // title={props.title}
+                    chosenCommunity={props.chosenCommunity}
                     parentId={singleComment._id}
                     rootId={props.parentId}
                     title={singleComment.title}

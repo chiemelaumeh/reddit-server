@@ -82,6 +82,7 @@ const Postmodal = (props) => {
               <hr />
 
               <Comments
+                chosenCommunity={modalComment.chosenCommunity}
                 rootId={modalComment._id}
                 parentId={modalComment._id}
                 postComments={postComments}
