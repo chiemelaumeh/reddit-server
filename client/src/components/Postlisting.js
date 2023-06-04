@@ -15,7 +15,6 @@ const Postlisting = () => {
 
   useEffect(() => {
     const getComments = async () => {
-      console.log(url)
       const response = await axios.get(url, {
         withCredentials: true,
       });
@@ -26,7 +25,7 @@ const Postlisting = () => {
   }, [newPosts,chosenCommunity]);
 
   return (
-    <div className="app-reddit-story">
+    <div className="app-reddit-story ">
       {comments.map((comment) => (
         <Redditmain {...comment} key={comment._id} />
       ))}

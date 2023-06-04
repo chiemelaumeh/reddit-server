@@ -19,7 +19,8 @@ const PostFormModal = () => {
   const data = { title, body, chosenCommunity };
  
   const createPost = async () => {
-    if (title.length === 0 || body.length === 0) {
+    if (title.length === 0 || body.length === 0 || !chosenCommunity) {
+      alert("no chosen community")
       return;
     }
     try {

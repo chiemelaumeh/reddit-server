@@ -7,7 +7,7 @@ const PostContent = (props) => {
     <div>
       <h5>
         {" "}
-        Posted by u/{props.author}, <TimeAgo datetime={props.postedAt} />{" "}
+        Posted by {props.author}, in <p className="community-text">  r/{props.chosenCommunity}</p>  - <TimeAgo datetime={props.postedAt} />{" "}
       </h5>
       <h2>{props.title}</h2>
       <div>{props.body}</div>

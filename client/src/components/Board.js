@@ -9,9 +9,11 @@ const Board = () => {
   const {communityFromUrl} = useParams();
   const {chosenCommunity, setChosenCommunity} = useContext(CommunityContext);
   // console.log(communityFromUrl)
-  useEffect(() => {
-    setChosenCommunity(communityFromUrl);
-  }, []);
+  // useEffect(() => {
+    !communityFromUrl ? setChosenCommunity(null) :  setChosenCommunity(communityFromUrl);
+    // setChosenCommunity(communityFromUrl);
+    // console.log(chosenCommunity)
+  // }, []);
   return (
     <div>
       <Headerboard />

@@ -4,14 +4,15 @@ import axios from "axios";
 const CommunityContext = createContext();
 export const CommunityContextProvider = ({ children }) => {
   const [showCommunity, setShowCommunity] = useState(false);
-  const [chosenCommunity, setChosenCommunity] = useState(null);
+  const [chosenCommunity, setChosenCommunity] = useState(false);
   const [communityInfo, setCommunityInfo] = useState({});
 
   useEffect(() => {
-    if (!chosenCommunity) {
-      return ;
-    }
     const getFullCommunity = async () => {
+      if (!chosenCommunity) {
+        // setCommunityInfo({})
+        return ;
+      }
       try {
         const response = await axios.get(`/communities/${chosenCommunity}`);
         setCommunityInfo(response.data);

@@ -234,6 +234,10 @@ body {
 .hide-community-page {
  display: none;
 }
+.community-text{
+  color: #d94818;
+  display: inline;
+}
 
 
 @media screen and (max-width: 600px) {

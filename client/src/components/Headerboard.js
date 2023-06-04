@@ -6,7 +6,6 @@ const Headerboard = () => {
   const { chosenCommunity, ...communityInfo } = useContext(CommunityContext);
   // const cover = chosenCommunity.cover
   const { name, slogan, avatar, cover } = communityInfo;
-  console.log(chosenCommunity);
 
   if (!communityInfo.name) {
     return(

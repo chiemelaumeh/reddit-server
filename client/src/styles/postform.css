@@ -194,3 +194,11 @@ p {
   margin-bottom: 0;
 
 }
+.black {
+  background-color: #111;
+}
+body{
+  background-color:var(--reddit_dark)
+  /* height: 100%; */
+ 
+}
