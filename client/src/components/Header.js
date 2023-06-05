@@ -7,7 +7,9 @@ import ModalContext from "../context/ModalContext";
 import { CiUser } from "react-icons/ci";
 import { BsBell } from "react-icons/bs";
 import { BsChatDots } from "react-icons/bs";
+import { BsFillBrightnessHighFill} from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
+import { BsFillMoonFill } from "react-icons/bs";
 // import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 // import { FaUsers } from "react-icons/fa";
 import logo from "../images/logo.png";
@@ -26,11 +28,17 @@ const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden");
   const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] = useState("hidden");
   const [searchText, setSearchText] = useState("")
-  const { setModalVisibility, setPostFormModalVisibility } = useContext(AuthModalContext);
+  const { setModalVisibility, setPostFormModalVisibility, lightMode, setLightMode } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
   const { setShowCommunity } = useContext(CommunityContext);
+
+  const theLightMode = lightMode ? "header-light" : "header"
+  const theLightModeForm = lightMode ? "form-light" : "form"
+  const theLightModeIcon = lightMode ? "icon-light" : "icon"
+  const darkOrLight = lightMode ? "Dark Mode" : "Light Mode"
+  const darkOrLightIcon = lightMode ?  <BsFillMoonFill className=" login-icon" />  : <BsFillBrightnessHighFill className=" login-icon" /> 
 
   const handleLogin = () => {
     setModalVisibility(true);
@@ -69,13 +77,24 @@ const Header = () => {
     e.preventDefault();
     setRedirect("/search/" + encodeURIComponent(searchText));
   };
+
+  const changeLightMode = () => {
+
+    if(!lightMode) {
+      setLightMode(true)
+    } else {
+      setLightMode(false)
+
+    }
+  
+  }
   return (
-    <header className="header">
+    <header className={theLightMode}>
       <div className="sub-header">
         <Link to="/">
           <img className="logo" src={logo} alt="" />
         </Link>
-        <form className="form" onSubmit={doSearch}>
+        <form className={theLightModeForm} onSubmit={doSearch}>
           <CiSearch className="search-icon" />
 
           <input
@@ -93,13 +112,13 @@ const Header = () => {
           {user.username && (
             <>
               <button className="icon-btn">
-                <BsBell className="icon" />
+                <BsBell className={theLightModeIcon} />
               </button>
               <button className="icon-btn">
-                <BsChatDots className="icon" />
+                <BsChatDots className={theLightModeIcon} />
               </button>
               <button className="icon-btn" onClick={togglePlusDropDown}>
-                <HiOutlinePlus className="icon" />
+                <HiOutlinePlus className={theLightModeIcon} />
               </button>
 
               <div
@@ -185,10 +204,19 @@ const Header = () => {
                     : " show-box"
                 }
               >
-                <p>Welcome, {user.username}</p>
-                <button onClick={logout} href="" className="btn link-box">
-                  <SlLogout className=" login-icon" />
+                <p >Welcome, {user.username}</p>
+                
+                <button onClick={logout} href="" className=" link-box ">
+                  <SlLogout className=" login-icon " />
                   Logout
+                </button>
+               
+
+                <button onClick={changeLightMode} href="" className=" link-box border-top">
+                  {/* <BsFillBrightnessHighFill className=" login-icon" /> */}
+                  {darkOrLightIcon}
+                
+                  {darkOrLight}
                 </button>
               </div>
             </>

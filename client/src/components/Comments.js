@@ -5,8 +5,6 @@ import CommentReplies from "./CommentReplies";
 import { BsChatLeft } from "react-icons/bs";
 import Voting from "./Voting";
 
-
-
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
 const Comments = (props) => {
@@ -36,29 +34,26 @@ const Comments = (props) => {
               {singleComment.body}
 
               {/* {showReplyBox === null && ( */}
-                <div className="voting-reply-main">
-                  <div className="voting-reply">
-                   <Voting singleComment={singleComment} postComments={postComments}
-                />
-                   <div className="icon-reply-button"
+              <div className="voting-reply-main">
+                <div className="voting-reply">
+                  {/* <Voting singleComment={singleComment} postComments={postComments}
+                /> */}
+                  <div
+                    className="icon-reply-button"
                     onClick={() => setShowReplyBox(singleComment._id)}
-                    >
-                     
-                      <BsChatLeft className="reply-icon"/>
-                      <button
-                        className="comment-reply"
-                      >
-                        Reply
-                      </button>
-                   </div>
+                  >
+                    <BsChatLeft className="reply-icon" />
+                    <button className="comment-reply">Reply</button>
                   </div>
                 </div>
+              </div>
               {/* )} */}
 
               <div>
                 {singleComment._id === showReplyBox && (
                   <PostCommentForm
                     // title={props.title}
+                    chosenCommunity={props.chosenCommunity}
                     parentId={singleComment._id}
                     rootId={props.parentId}
                     title={singleComment.title}
@@ -75,6 +70,5 @@ const Comments = (props) => {
     </div>
   );
 };
-
 
 export default Comments;

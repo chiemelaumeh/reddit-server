@@ -54,7 +54,9 @@ const Postmodal = (props) => {
 
   function reset() {
     setPostModalVisibility(false);
+    
   }
+ 
   return (
     <div
       className={
@@ -70,6 +72,7 @@ const Postmodal = (props) => {
 
               <PostCommentForm
                 setPostComments={setPostComments}
+                chosenCommunity={modalComment.chosenCommunity}
                 title={modalComment.title}
                 rootId={modalComment._id}
                 parentId={modalComment._id}
@@ -80,6 +83,7 @@ const Postmodal = (props) => {
               <hr />
 
               <Comments
+                chosenCommunity={modalComment.chosenCommunity}
                 rootId={modalComment._id}
                 parentId={modalComment._id}
                 postComments={postComments}

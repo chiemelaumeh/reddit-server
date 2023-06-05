@@ -10,9 +10,9 @@ import jwt from "jsonwebtoken";
 import User from "./models/User.js";
 import Comment from "./models/Comments.js";
 import VotingRoutes from "./routes/VotingRoutes.js";
-import CommunityRoutes from "./routes/CommunityRoute.js"
+import CommunityRoutes from "./routes/CommunityRoute.js";
 import Community from "./models/Community.js";
-// import Vote from "./models/Votes.js";
+import Vote from "./models/Votes.js";
 
 const app = express();
 app.use(express.json());
@@ -30,7 +30,7 @@ const secret = process.env.SECRET_KEY;
 const connectionString = process.env.DATABASE_URL;
 
 app.use(VotingRoutes);
-app.use(CommunityRoutes)
+app.use(CommunityRoutes);
 
 export const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
@@ -60,32 +60,32 @@ app.post("/register", async (req, res) => {
     console.log("Username taken. Try again.");
   } else {
     const password = bcrypt.hashSync(req.body.password, 10);
-      const user = new User({
-        email,
-        username,
-        password,
-      });
-      try {
-        const info = await user.save();
-        res
-          .status(201)
-          .send(`profile created for ${username}, now please Log in!`);
-        console.log(`profile created for ${username}, now please Log in!`);
+    const user = new User({
+      email,
+      username,
+      password,
+    });
+    try {
+      const info = await user.save();
+      res
+        .status(201)
+        .send(`profile created for ${username}, now please Log in!`);
+      console.log(`profile created for ${username}, now please Log in!`);
 
-        // jwt.sign({ id: user._id }, secret, (err, token) => {
-        //   if (err) {
-        //     console.log(err);
-        //     res.status(500);
-        //   } else {
-        //     // console.log(token);
-        //     res.status(201).cookie("token", token).send();
-        //   }
-        // });
-      } catch (error) {
-        console.error(error.message);
+      // jwt.sign({ id: user._id }, secret, (err, token) => {
+      //   if (err) {
+      //     console.log(err);
+      //     res.status(500);
+      //   } else {
+      //     // console.log(token);
+      //     res.status(201).cookie("token", token).send();
+      //   }
+      // });
+    } catch (error) {
+      console.error(error.message);
 
-        res.status(500);
-      };
+      res.status(500);
+    }
   }
   // if (user.username === username && user.password === password) {
   // }
@@ -150,10 +150,20 @@ app.post("/login", (req, res) => {
 
 app.post("/comments", async (req, res) => {
   const token = req.cookies.token;
+
   try {
     const userInfo = await getUserFromToken(token);
     const { title, body, parentId, rootId, chosenCommunity } = req.body;
-    console.log(req.body)
+    console.log(req.body);
+    const communityExists = await Community.findOne({ name: chosenCommunity });
+    // console.log(communityExists)
+    // NEEDS MORE WORK
+    // NEEDS MORE WORK
+    // NEEDS MORE WORK
+    // NEEDS MORE WORK
+    if (!communityExists) {
+      return;
+    }
     const comment = new Comment({
       title,
       body,
@@ -171,14 +181,14 @@ app.post("/comments", async (req, res) => {
 });
 
 app.get("/comments", async (req, res) => {
-  const {search, chosenCommunity} = req.query
+  const { search, chosenCommunity } = req.query;
   const filter = search
     ? { title: { $regex: ".*" + search + ".*" } }
     : { rootId: null };
 
-    if (chosenCommunity) {
-      filter.chosenCommunity = chosenCommunity
-    }
+  if (chosenCommunity) {
+    filter.chosenCommunity = chosenCommunity;
+  }
 
   try {
     const comments = await Comment.find(filter).sort({ postedAt: -1 });
@@ -217,32 +227,32 @@ app.get("/comments/parent/:parentId", async (req, res) => {
   }
 });
 
-async function myFinder () {
+async function myFinder() {
   const showCommunities = await Comment.find({
-  community: {$exists: true}
-  })
-  console.log(showCommunities)
+    community: { $exists: true },
+  });
+  console.log(showCommunities);
 }
 
 // myFinder()
 
- async function deleteAll() {
+async function deleteAll() {
   await Comment.deleteMany({
     // body: { $exists: true },
-     $expr: { $lt: [ { $strLenCP: "$body" }, 20 ] },
+    $expr: { $lt: [{ $strLenCP: "$body" }, 20] },
   });
 
-//  Vote.deleteMany({
-//     direction: { $exists: true },
-//   });
-//  await Community.deleteMany({
-//   // name: { $exists: true}
-//       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
-//  })
+   await Vote.deleteMany({
+      direction: { $exists: true },
+    });
+  //  await Community.deleteMany({
+  //   // name: { $exists: true}
+  //       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
+  //  })
   console.log("Deleted All");
 }
 
-// deleteAll()
+// deleteAll();
 app.listen(4000, () => {
   console.log("Listening on Port 4000");
 });

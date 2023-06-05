@@ -40,8 +40,20 @@ body {
   text-decoration: none;
   color: var(--reddit_lightgrey);
 }
+.reddit-story-light {
+  display: block;
+  border: 1px solid var(--reddit_border);
+  background-color: var(--offwhite);
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--offBlack);
+}
 .reddit-story:hover {
   border: 1px solid var(--offwhite);
+}
+.reddit-story-light:hover {
+  border: 1px solid var(--offBlack);
 }
 
 .reddit-story h5 {
@@ -50,10 +62,23 @@ body {
   font-size: 1px;
   color: var(--reddit_lightgrey);
 }
+.reddit-story-light h5 {
+  margin-top: 0;
+  font-weight: 300;
+  font-size: 1px;
+  color: var(--offBlack);
+}
 .reddit-story p {
   line-height: 1.5rem;
 }
+.reddit-story-light p {
+  line-height: 1.5rem;
+}
 .reddit-story h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+.reddit-story-light h2 {
   font-size: 1.5rem;
   margin-bottom: 0;
 }
@@ -67,7 +92,12 @@ body {
 }
 
 .app-reddit-story {
-  background-color: var(--reddit_dark);
+  background-color:var(--reddit_dark);
+  height: 100%;
+}
+.app-reddit-story-light {
+  background-color:whitesmoke;
+  height: 100%;
 }
 
 .comment-main {
@@ -113,6 +143,9 @@ body {
 
 
 
+}
+.shift-right{
+ 
 }
 .icon-reply-button {
   cursor: pointer;
@@ -191,19 +224,20 @@ margin-left: 0.5rem
 
 .vote-icon{
   
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 
   opacity: .6;
   cursor: pointer;
+  /* padding-right: 1rem; */
 }
 .vote-icon:hover {
 }
 .vote-icon-number {
 
-  font-size: 0.75rem;
+  font-size: 0.2rem;
   color: orangered;
-  margin:0 0.15rem;
-  opacity: .6;
+  margin:0 0.1rem;
+  opacity: .7;
   padding: 0;
   
 
@@ -217,6 +251,8 @@ margin-left: 0.5rem
   align-items: center;
   width: 5rem;
   padding: 0;
+  margin-right: 0.5rem;
+  /* z-index: 5; */
   /* justify-content:space-evenly; */
   /* margin-left: 0.5rem; */
 }
@@ -224,9 +260,16 @@ margin-left: 0.5rem
 .voting-reply {
   display: flex;
   margin-top: 1rem;
+  padding: 0;
   
 }
+.vote-reply{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.5rem;
 
+}
 .voting-reply-main {
   margin-bottom: 3rem;
   display: flex;

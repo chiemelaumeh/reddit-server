@@ -35,7 +35,7 @@ const Routing = () => {
           <Header />
           <Routinglocation />
           <Authmodal />
-          <CommunityFormModal /> 
+          <CommunityFormModal />
           <PostFormModal />
         </>
       )}
