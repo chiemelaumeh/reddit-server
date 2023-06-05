@@ -18,7 +18,6 @@ const PostCommentForm = (props) => {
  
 
 
-console.log(props.chosenCommunity)
   const postComment = async (e) => {
   
     e.preventDefault();
@@ -53,7 +52,7 @@ console.log(props.chosenCommunity)
 
   return (
     <div>
-      {props.showAuthor && <div>Comment as {user.username}</div>}
+      {props.showAuthor && <div >Comment as u/<p className="my-comment">{user.username}</p></div>}
       <form className="comment-form" onSubmit={postComment}>
         <textarea
         

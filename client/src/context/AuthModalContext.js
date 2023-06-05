@@ -5,8 +5,9 @@ export const AuthModalProvider = ({ children }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [postModalVisibility, setPostModalVisibility] = useState(false)
   const [postFormModalVisibility, setPostFormModalVisibility] = useState(false)
+  const [lightMode, setLightMode] = useState(false)
   return (
-    <AuthModalContext.Provider value={{ modalVisibility, setModalVisibility,postModalVisibility, setPostModalVisibility, postFormModalVisibility, setPostFormModalVisibility}}>
+    <AuthModalContext.Provider value={{ modalVisibility, setModalVisibility,postModalVisibility, setPostModalVisibility, postFormModalVisibility, setPostFormModalVisibility, lightMode, setLightMode}}>
       {children}
     </AuthModalContext.Provider>
   );

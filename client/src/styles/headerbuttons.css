@@ -18,7 +18,7 @@ body {
   --reddit_border: #343536;
 }
 .btn {
-  border: none;
+  outline: none;
   cursor: pointer;
 }
 
@@ -35,7 +35,6 @@ body {
 .show-box p {
   padding: 10px 32px;
   background-color: var(--reddit_midgrey);
-  border-radius: 4px;
   margin-top: 0;
   margin-bottom: 0;
   color: #ff4500;
@@ -44,17 +43,7 @@ body {
   background-color: var(--offwhite);
   color: var(--offBlack);
 }
-.link-box {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 8px 32px;
 
-  /* justify-content: space-evenly; */
-  color: var(--offwhite);
-  border-radius: 4px;
-  width: inherit;
-  background-color: var(--reddit_midgrey);
-}
 .link-box:hover {
   background-color: var(--offwhite);
   color: var(--offBlack);

@@ -3,9 +3,10 @@ import { useContext } from "react";
 import AuthModalContext from "../context/AuthModalContext";
 import PostContent from "./postContent";
 
-const Redditmain = (props) => {
-  const { setPostModalVisibility } = useContext(AuthModalContext);
 
+const Redditmain = (props) => {
+  const { setPostModalVisibility,lightMode,setLightMode } = useContext(AuthModalContext);
+  const theLightMode = lightMode ? "reddit-story-light" : "reddit-story"
   return (
     <>
       <div className="main-story">
@@ -13,10 +14,10 @@ const Redditmain = (props) => {
 
         {/* {!props.open && */}
         <Link
-          to={"/comments/" + (props.rootId || props._id)}
-          state={{ commentId: props.rootId || props._id }}
-          className={props.open ? "reddit-story-closed" : "reddit-story"}
-          onClick={() => setPostModalVisibility(true)}
+          // to={"/comments/" + (props.rootId || props._id)}
+          // state={{ commentId: props.rootId || props._id }}
+          className= {theLightMode}
+          // onClick={() => setPostModalVisibility(true)}
         >
           <PostContent {...props} />
         </Link>

@@ -54,6 +54,7 @@ const Postmodal = (props) => {
 
   function reset() {
     setPostModalVisibility(false);
+    
   }
  
   return (

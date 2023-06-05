@@ -12,7 +12,7 @@ import Comment from "./models/Comments.js";
 import VotingRoutes from "./routes/VotingRoutes.js";
 import CommunityRoutes from "./routes/CommunityRoute.js";
 import Community from "./models/Community.js";
-// import Vote from "./models/Votes.js";
+import Vote from "./models/Votes.js";
 
 const app = express();
 app.use(express.json());
@@ -150,11 +150,11 @@ app.post("/login", (req, res) => {
 
 app.post("/comments", async (req, res) => {
   const token = req.cookies.token;
-  
+
   try {
     const userInfo = await getUserFromToken(token);
     const { title, body, parentId, rootId, chosenCommunity } = req.body;
-    console.log(req.body)
+    console.log(req.body);
     const communityExists = await Community.findOne({ name: chosenCommunity });
     // console.log(communityExists)
     // NEEDS MORE WORK
@@ -190,13 +190,6 @@ app.get("/comments", async (req, res) => {
     filter.chosenCommunity = chosenCommunity;
   }
 
-  // console.log("req.query.chosenCommunity");
-  // console.log(req.query.chosenCommunity);
-  // const comments = filter.chosenCommunity
-  //   ? await Comment.find(filter).sort({ postedAt: -1 })
-  //   : await Comment.find(filter).sort({ postedAt: -1 });
-  //  const comments = filter.chosenCommunity  ?  console.log("really undefined") : console.log("not undefined")
-  //  console.log(comments)
   try {
     const comments = await Comment.find(filter).sort({ postedAt: -1 });
     res.json(comments);
@@ -249,17 +242,17 @@ async function deleteAll() {
     $expr: { $lt: [{ $strLenCP: "$body" }, 20] },
   });
 
-  //  Vote.deleteMany({
-  //     direction: { $exists: true },
-  //   });
+   await Vote.deleteMany({
+      direction: { $exists: true },
+    });
   //  await Community.deleteMany({
   //   // name: { $exists: true}
   //       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
   //  })
-  // console.log("Deleted All");
+  console.log("Deleted All");
 }
 
-deleteAll()
+// deleteAll();
 app.listen(4000, () => {
   console.log("Listening on Port 4000");
 });

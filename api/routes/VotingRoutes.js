@@ -5,16 +5,23 @@ import { getUserFromToken } from "../server.js";
 
 router.get("/vote/:commentId/:direction/", (req, res) => {
   const token = req.cookies.token;
+  // console.log(req.params)
   const handleVoting = async () => {
+    
     try {
       const userInfo = await getUserFromToken(token);
+      const lastUser = await Vote.findOne({author: userInfo.username}).sort({_id:-1})
+      console.log(lastUser)
+      console.log(req.params)
+      if(lastUser.direction === req.params.direction && lastUser.commentId === req.params.commentId  ) {
+       return
+      }
 
       const vote = new Vote({
         author: userInfo.username,
         direction: req.params.direction === "up" ? 1 : -1,
         commentId: req.params.commentId,
       });
-
       const newvote = await vote.save();
 
       const commentVotes = await Vote.find({

@@ -3,11 +3,15 @@ import axios from "axios";
 import Redditmain from "./Post";
 import RerenderContext from "../context/RerenderContext";
 import CommunityContext from "../context/CommunityContext";
+import AuthModalContext from "../context/AuthModalContext";
 
 const Postlisting = () => {
   const [comments, setComments] = useState([]);
   const { newPosts } = useContext(RerenderContext);
   const { chosenCommunity } = useContext(CommunityContext);
+  const { lightMode, setLightMode} = useContext(AuthModalContext)
+
+  const theLightMode = lightMode ? "app-reddit-story-light" : "app-reddit-story "
 
 
   let url = chosenCommunity === null ? "/comments" : `/comments?chosenCommunity=${chosenCommunity}`;
@@ -25,7 +29,7 @@ const Postlisting = () => {
   }, [newPosts,chosenCommunity]);
 
   return (
-    <div className="app-reddit-story ">
+    <div className={theLightMode}>
       {comments.map((comment) => (
         <Redditmain {...comment} key={comment._id} />
       ))}
