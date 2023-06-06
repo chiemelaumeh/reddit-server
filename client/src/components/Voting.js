@@ -12,6 +12,7 @@ const Voting = ({ props }) => {
   const [downVotedState, setDownVotedState] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const { setModalVisibility } = useContext(AuthModalContext);
+
   useEffect(() => {
 
     const refreshVotes = async () => {
@@ -45,6 +46,7 @@ const Voting = ({ props }) => {
     }
     if (upVotedState === false) {
       sendVote("up");
+      
       setUpVotedState(true);
       setDownVotedState(false);
     }
@@ -61,13 +63,16 @@ const Voting = ({ props }) => {
       setUpVotedState(false);
     }
   };
-
+  // onClick={() => {
+  //   setShowCommunity(true);
+  //   setPlusDropDownVisibilityClass("hidden");
+  // }}
   return (
     <div className="voting-div">
-      <BiUpvote className="vote-icon" onClick={handleVoteUp} />
+      <BiUpvote id={props._id} className="vote-icon" onClick={handleVoteUp} />
 
       <span className="vote-icon-number">{voteState}</span>
-      <BiDownvote className="vote-icon" onClick={handleVoteDown} />
+      <BiDownvote id={props._id} className="vote-icon" onClick={handleVoteDown} />
     </div>
   );
 };

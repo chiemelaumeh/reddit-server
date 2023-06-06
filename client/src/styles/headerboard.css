@@ -251,11 +251,7 @@ body {
 .hide-community-page {
  display: none;
 }
-.community-text{
-  color: orangered;
-  display: inline;
-  
-}
+
 .my-comment{
   color: orangered;
   display: inline

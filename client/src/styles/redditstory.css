@@ -106,9 +106,25 @@ body {
   height: 100vh;
 }
 
+.text-dots{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
 
+}
 
+.dots {
+  font-size:1.5rem;
+  cursor: pointer;
 
+}
+.community-text{
+  color: orangered;
+  display: inline;
+  cursor: pointer;
+  
+}
 
 .comment-body-div {
   border-left:1px solid var(--reddit_border);
@@ -278,3 +294,4 @@ margin-left: 0.5rem
   
 
 }
+
