@@ -10,17 +10,17 @@ import CommunityContext from "../context/CommunityContext";
 // import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
-  const { postFormModalVisibility, setPostFormModalVisibility } =
+  const { postFormModalVisibility, setPostFormModalVisibility, allCommunities, setAllCommunities } =
     useContext(AuthModalContext);
-  const { chosenCommunity } = useContext(CommunityContext)
+  const { chosenCommunity } = useContext(CommunityContext);
   const { setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const data = { title, body, chosenCommunity };
- 
+
   const createPost = async () => {
     if (title.length === 0 || body.length === 0 || !chosenCommunity) {
-      alert("no chosen community")
+      alert("no chosen community");
       return;
     }
     try {
@@ -35,6 +35,7 @@ const PostFormModal = () => {
       console.error(error.message);
     }
   };
+  // console.log(allCommunities)
 
   function handleTwo() {
     createPost();
@@ -66,16 +67,25 @@ const PostFormModal = () => {
         <div>
           <ReactMarkdown remarkPlugins={[gfm]} children={""} />
         </div>
-        <div className="post-btns">
-          <button
-            onClick={() => setPostFormModalVisibility(false)}
-            className="post-form-btn-close "
+        <div className="dropdown-div">
+          <option
+          
+            className="dropdown "
           >
             Cancel
-          </button>
-          <button className="post-form-btn btn" onClick={handleTwo}>
-            POST
-          </button>
+          </option>
+         
+          <div className="post-btns">
+            <button
+              onClick={() => {setPostFormModalVisibility(false);setAllCommunities([])}}
+              className="post-form-btn-close "
+            >
+              Cancel
+            </button>
+            <button className="post-form-btn btn" onClick={handleTwo}>
+              POST
+            </button>
+          </div>
         </div>
       </div>
     </div>
