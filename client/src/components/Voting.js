@@ -13,6 +13,7 @@ const Voting = ({ props }) => {
   const { user, setUser } = useContext(UserContext);
   const { setModalVisibility } = useContext(AuthModalContext);
   useEffect(() => {
+
     const refreshVotes = async () => {
       const url = `http://localhost:4000/votes/${props._id}/`;
       try {

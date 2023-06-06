@@ -205,7 +205,7 @@ p {
 .dropdown {
   width: 50%;
   margin-left: 4%;
-  margin-right: 15vw;
+  margin-right: 12vw;
 }
 .post-comments {
   background-color: var(--offwhite);
@@ -215,7 +215,15 @@ p {
   margin-bottom:0.2rem;
 
 }
-
+.selector {
+  width: 60%;
+  height: 2rem;
+  padding: 0.25rem;
+  /* margin-left: 4%; */
+  margin-right: 15vw;
+  color: #fff;
+  background-color: var(--reddit_border);
+}
 .comment-div {
   margin-bottom: 1.75rem;
 

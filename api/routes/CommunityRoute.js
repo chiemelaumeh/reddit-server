@@ -48,7 +48,8 @@ router.get("/communities/:chosenCommunity", async (req, res) => {
 router.get("/communities/", async(req,res)=> {
   // console.log("erf")
   try {
-    const theCommunities = await Community.distinct('name')
+    // const theCommunities = await Community.distinct('name')
+    const theCommunities = await Community.find()
     res.status(200).json(theCommunities)
 
     

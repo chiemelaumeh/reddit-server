@@ -13,9 +13,8 @@ router.get("/vote/:commentId/:direction/", (req, res) => {
       const lastUser = await Vote.findOne({author: userInfo.username}).sort({_id:-1})
       console.log(lastUser)
       console.log(req.params)
-      if(lastUser.direction === req.params.direction && lastUser.commentId === req.params.commentId  ) {
-       return
-      }
+      console.log("newvote")
+    
 
       const vote = new Vote({
         author: userInfo.username,
