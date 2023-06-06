@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import AuthModalContext from "../context/AuthModalContext";
 import RerenderContext from "../context/RerenderContext";
+import RedirectContext from "../context/RedirectContext";
 import Input from "./Input";
 import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
@@ -10,17 +11,33 @@ import CommunityContext from "../context/CommunityContext";
 // import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
-  const { postFormModalVisibility, setPostFormModalVisibility } =
-    useContext(AuthModalContext);
-  const { chosenCommunity } = useContext(CommunityContext)
+ const {setRedirect} = useContext(RedirectContext)
+  const [selectedCommunity, setSelectedCommunity] = useState("");
+  const changeState = (e) => {
+
+    setSelectedCommunity(e.target.value)
+  };
+
+
+  const {
+    postFormModalVisibility,
+    setPostFormModalVisibility,
+    allCommunities,
+    setAllCommunities,
+  } = useContext(AuthModalContext);
+  const { chosenCommunity, setChosenCommunity } = useContext(CommunityContext);
   const { setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const data = { title, body, chosenCommunity };
- 
+  const data = { title, body, selectedCommunity };
+  // const mappedCommunites
+
+  
+
   const createPost = async () => {
-    if (title.length === 0 || body.length === 0 || !chosenCommunity) {
-      alert("no chosen community")
+    if (title.length === 0 || body.length === 0 ) {
+      alert("Post title and body required")
+
       return;
     }
     try {
@@ -36,11 +53,17 @@ const PostFormModal = () => {
     }
   };
 
+
   function handleTwo() {
     createPost();
+    if(selectedCommunity) {
+      setRedirect("/r/" + selectedCommunity)
+      setPostFormModalVisibility(false);
+    } else {
+      alert("Please choose a community")
+    }
     setTitle("");
     setBody("");
-    setPostFormModalVisibility(false);
   }
   return (
     <div
@@ -66,16 +89,45 @@ const PostFormModal = () => {
         <div>
           <ReactMarkdown remarkPlugins={[gfm]} children={""} />
         </div>
-        <div className="post-btns">
-          <button
-            onClick={() => setPostFormModalVisibility(false)}
-            className="post-form-btn-close "
-          >
-            Cancel
-          </button>
-          <button className="post-form-btn btn" onClick={handleTwo}>
-            POST
-          </button>
+        <div className="dropdown-div">
+          <div className="dropdown">
+            <select
+              className="selector"
+              onChange={
+                changeState
+
+                // (e) => { const c = allCommunities?.find((x) => x.id === e.target.value)
+                //   console.log(c)
+                // }
+              }
+            >
+              <option required value="default"> Please choose a community</option>
+              {allCommunities
+                ? allCommunities.map((oneCommunity) => {
+                    return (
+                      <option key={oneCommunity.name} value={oneCommunity.id}>
+                        {oneCommunity.name}
+                      </option>
+                    );
+                  })
+                : null}
+            </select>
+          </div>
+
+          <div className="post-btns">
+            <button
+              onClick={() => {
+                setPostFormModalVisibility(false);
+                setAllCommunities([]);
+              }}
+              className="post-form-btn-close "
+            >
+              Cancel
+            </button>
+            <button className="post-form-btn btn" onClick={handleTwo}>
+              POST
+            </button>
+          </div>
         </div>
       </div>
     </div>

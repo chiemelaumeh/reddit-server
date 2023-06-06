@@ -45,5 +45,17 @@ router.get("/communities/:chosenCommunity", async (req, res) => {
     console.log(error.message);
   }
 });
+router.get("/communities/", async(req,res)=> {
+  // console.log("erf")
+  try {
+    // const theCommunities = await Community.distinct('name')
+    const theCommunities = await Community.find()
+    res.status(200).json(theCommunities)
+
+    
+  } catch (error) {
+    console.log(error.message);
+  }
+})
 
 export default router;

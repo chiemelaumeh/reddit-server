@@ -91,7 +91,7 @@ const Header = () => {
   return (
     <header className={theLightMode}>
       <div className="sub-header">
-        <Link to="/">
+        <Link to="/" onClick={()=> {setRedirect("/")}}>
           <img className="logo" src={logo} alt="" />
         </Link>
         <form className={theLightModeForm} onSubmit={doSearch}>

@@ -184,14 +184,28 @@ p {
 
 }
 .post-btns {
-  display: flex;
+  /* display: flex;  */
   flex-direction: row;
   justify-content: flex-end;
-  /* padding: 0 rem; */
-  align-items: center;
-  max-width: 95%;
+  padding: 0 rem;
+  align-items: flex-end;
+  /* max-width: 95%;  */
 
 
+}
+.dropdown-div {
+  display: flex;
+  width: 100%;
+  display: flex; 
+  flex-direction: row;
+  /* justify-content: flex-end; */
+  /* align-items: flex-end; */
+
+}
+.dropdown {
+  width: 50%;
+  margin-left: 4%;
+  margin-right: 12vw;
 }
 .post-comments {
   background-color: var(--offwhite);
@@ -201,7 +215,15 @@ p {
   margin-bottom:0.2rem;
 
 }
-
+.selector {
+  width: 60%;
+  height: 2rem;
+  padding: 0.25rem;
+  /* margin-left: 4%; */
+  margin-right: 15vw;
+  color: #fff;
+  background-color: var(--reddit_border);
+}
 .comment-div {
   margin-bottom: 1.75rem;
 

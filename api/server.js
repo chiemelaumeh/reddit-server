@@ -153,7 +153,8 @@ app.post("/comments", async (req, res) => {
 
   try {
     const userInfo = await getUserFromToken(token);
-    const { title, body, parentId, rootId, chosenCommunity } = req.body;
+    const { title, body, parentId, rootId } = req.body;
+    const chosenCommunity = req.body.selectedCommunity
     console.log(req.body);
     const communityExists = await Community.findOne({ name: chosenCommunity });
     // console.log(communityExists)
@@ -161,9 +162,7 @@ app.post("/comments", async (req, res) => {
     // NEEDS MORE WORK
     // NEEDS MORE WORK
     // NEEDS MORE WORK
-    if (!communityExists) {
-      return;
-    }
+    
     const comment = new Comment({
       title,
       body,
