@@ -154,7 +154,7 @@ app.post("/comments", async (req, res) => {
   try {
     const userInfo = await getUserFromToken(token);
     const { title, body, parentId, rootId } = req.body;
-    const chosenCommunity = req.body.selectedCommunity
+    const chosenCommunity = req.body.selectedCommunity || req.body.chosenCommunity
     console.log(req.body);
     const communityExists = await Community.findOne({ name: chosenCommunity });
     // console.log(communityExists)
