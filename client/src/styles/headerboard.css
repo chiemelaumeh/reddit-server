@@ -215,6 +215,7 @@ body {
   margin: 8px auto;
   border: none;
 }
+
 .login-p-1 {
   margin-left: 2rem;
 }
@@ -225,10 +226,20 @@ body {
   background-color: var(--reddit_dark);
   color: #ff4500;
   width: 5rem;
+  border: 1px solid red;
+}
+
+.edit-delete-div {
+  display: flex;
+  justify-content: space-evenly;
+
+  margin-left: 40%;
+width: 20rem;
 }
 /* .auth-sub input:nth-child(2) {
   margin-bottom: 8px;
 } */
+
 .login-state {
   display: flex;
   /* align-items:center; */
@@ -248,6 +259,16 @@ body {
   align-items: center;
   position: fixed; 
 }
+.delete-post-btn {
+  border: 1px solid var(--reddit_border);
+  background-color: var(--reddit_lightgrey);
+  border-radius: 4rem;
+  padding: 6px 12px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  width: 1rem;
+}
 .hide-community-page {
  display: none;
 }
@@ -257,7 +278,9 @@ body {
   display: inline
 }
 
-
+.hide-delete-btn {
+  display: none;
+}
 @media screen and (max-width: 600px) {
   .login-div {
     display: block;

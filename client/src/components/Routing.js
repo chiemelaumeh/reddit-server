@@ -12,8 +12,8 @@ import RerenderContext from "../context/RerenderContext";
 
 const Routing = () => {
   const { redirect, setRedirect } = useContext(RedirectContext);
-  const { errorPage, setErrorPage } = useContext(RerenderContext);
-
+  const { errorPage, setErrorPage, allProps, setAllProps } = useContext(RerenderContext);
+  // console.log(allProps)
   useEffect(() => {
     if (errorPage) {
       setErrorPage(false);
@@ -38,7 +38,7 @@ const Routing = () => {
           <Authmodal />
           <CommunityFormModal />
           <PostFormModal />
-          <DeleteModal />
+          {/* <DeleteModal  /> */}
         </>
       )}
     </Router>
