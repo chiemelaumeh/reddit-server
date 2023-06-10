@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Headerbuttons from "./Headerbuttons";
 import OutsideClickHandler from "react-outside-click-handler";
 import AuthModalContext from "../context/AuthModalContext";
@@ -10,6 +10,8 @@ import { BsChatDots } from "react-icons/bs";
 import { BsFillBrightnessHighFill} from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
+// import { getAllCommunites} from "../components/Postform"
+import { yaya }from "../components/Postform";
 // import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 // import { FaUsers } from "react-icons/fa";
 import logo from "../images/logo.png";
@@ -28,7 +30,8 @@ const Header = () => {
   const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden");
   const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] = useState("hidden");
   const [searchText, setSearchText] = useState("")
-  const { setModalVisibility, setPostFormModalVisibility, lightMode, setLightMode } = useContext(AuthModalContext);
+  const { setModalVisibility, setPostFormModalVisibility, lightMode, setLightMode, allCommunities,
+    setAllCommunities, } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
@@ -39,6 +42,33 @@ const Header = () => {
   const theLightModeIcon = lightMode ? "icon-light" : "icon"
   const darkOrLight = lightMode ? "Dark Mode" : "Light Mode"
   const darkOrLightIcon = lightMode ?  <BsFillMoonFill className=" login-icon" />  : <BsFillBrightnessHighFill className=" login-icon" /> 
+
+
+// Postform.getAllCommunities()
+  useEffect(() => {
+    setLightMode(JSON.parse(window.localStorage.getItem('lightMode')));
+  }, []);
+  
+  // consorle.log((window.localStorage.getItem("lightMode")))
+  useEffect(() => {
+    window.localStorage.setItem('lightMode', lightMode
+    );
+  }, [lightMode]);
+
+  // yaya()
+
+  const getAllComunities = async () => {
+    try {
+      // console.log("response")
+      const response = await axios.get("http://localhost:4000/communities/")
+  
+      setAllCommunities(response.data)
+    } catch (error) {
+      
+    console.error(error.message)
+    }
+
+  } 
 
   const handleLogin = () => {
     setModalVisibility(true);
@@ -130,6 +160,7 @@ const Header = () => {
               >
                 <button
                   onClick={() => {
+                    getAllComunities()
                     setPostFormModalVisibility(true);
                     setPlusDropDownVisibilityClass("hidden");
                   }}

@@ -17,7 +17,7 @@ root.render(
         <AuthModalProvider>
           <UserProvider>
             <ModalProvider>
-              <App />
+              <App  />
             </ModalProvider>
           </UserProvider>
         </AuthModalProvider>

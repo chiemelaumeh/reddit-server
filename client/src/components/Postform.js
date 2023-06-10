@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, forwardRef, useImperativeHandle } from "react";
 import inputavatar from "../images/input-avatar.png";
 import AuthModalContext from "../context/AuthModalContext";
 import UserContext from "../context/UserContext";
 import axios from "axios"
 
+const yaya = () => {
+  console.log("THIS IS EXPORTED")
+}
 
 const Postform = () => {
   const {
@@ -15,7 +18,7 @@ const Postform = () => {
   
   const theLightMode = lightMode ? "reddit-main-light" : "reddit-main"
   const theLightModeInput = lightMode ? "first-input-light" : "first-input"
-  const getAllComunities = async() => {
+  const getAllComunities = async () => {
     try {
       // console.log("response")
       const response = await axios.get("http://localhost:4000/communities/")
@@ -62,5 +65,5 @@ const Postform = () => {
     </>
   );
 };
-
+export { yaya }
 export default Postform;

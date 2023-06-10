@@ -9,8 +9,8 @@ import UserContext from "../context/UserContext";
 
 const Authmodal = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("generaluser");
-  const [password, setPassword] = useState("password");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [matchingPass, setMatchingPass] = useState(true)
 

@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://reddit-app-nw97.onrender.com"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "DELETE"],
     credentials: true,
   })
 );
@@ -154,7 +154,7 @@ app.post("/comments", async (req, res) => {
   try {
     const userInfo = await getUserFromToken(token);
     const { title, body, parentId, rootId } = req.body;
-    const chosenCommunity = req.body.selectedCommunity
+    const chosenCommunity = req.body.selectedCommunity || req.body.chosenCommunity
     console.log(req.body);
     const communityExists = await Community.findOne({ name: chosenCommunity });
     // console.log(communityExists)
@@ -235,6 +235,19 @@ async function myFinder() {
 
 // myFinder()
 
+app.delete("/delete/:id", async(req, res) => {
+  const { id } = req.params
+  // console.log(id)
+  try {
+    const commentToDelete = await Comment.deleteOne({_id:id})
+    res.json(id)
+
+
+    
+  } catch (error) {
+    console.error(error.message)
+  }
+})
 async function deleteAll() {
   await Comment.deleteMany({
     // body: { $exists: true },
@@ -244,10 +257,10 @@ async function deleteAll() {
    await Vote.deleteMany({
       direction: { $exists: true },
     });
-  //  await Community.deleteMany({
-  //   // name: { $exists: true}
-  //       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
-  //  })
+   await Community.deleteMany({
+    // name: { $exists: true}
+        $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
+   })
   console.log("Deleted All");
 }
 

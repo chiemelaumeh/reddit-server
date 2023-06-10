@@ -104,6 +104,24 @@ body {
   margin-right: 1rem;
 
 }
+
+.new-comp{
+  width:8rem;
+  height: 8em;
+  /* color: red; */
+  border: 1px solid red;
+  /* z-index: 5;  */
+  /* position: absolute; */
+  right: 40px;
+  top: 140px;
+  color: var(--offwhite);
+  background-color: var(--reddit_midgrey);
+  border: 1px solid var(--offwhite);
+  /* z-index: 10; */
+  /* border-radius: 4px; */
+  display: flex;
+  flex-direction: column;
+}
 .show-box {
   position: absolute;
   right: 0px;
@@ -134,6 +152,23 @@ body {
   border: 1px solid var(--reddit_border);
   cursor: pointer;
 }
+/* .show-box p {
+  padding: 10px 32px;
+  background-color: var(--reddit_midgrey);
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #ff4500;
+}
+.show-box p:hover {
+  background-color: var(--offwhite);
+  color: var(--offBlack);
+}
+
+.link-box:hover {
+  background-color: var(--offwhite);
+  color: var(--offBlack);
+} */
+
 .hide-box {
   display: none;
 }

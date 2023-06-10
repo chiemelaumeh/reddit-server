@@ -7,10 +7,18 @@ export const AuthModalProvider = ({ children }) => {
   const [postFormModalVisibility, setPostFormModalVisibility] = useState(false)
   const [lightMode, setLightMode] = useState(false)
   const [allCommunities, setAllCommunities] = useState([])
+  const [showEditandDelete, setShowEditandDelete] = useState(false)
+  const [showOneBox, setShowOneBox] = useState(null)
+  const [deleteModalVisibility, setDeleteModalVisibility] = useState(false)
+  const [confirmDeleteVisibility, setConfirmDeleteVisibility] = useState(false)
   return (
-    <AuthModalContext.Provider value={{ modalVisibility, setModalVisibility,postModalVisibility, setPostModalVisibility, postFormModalVisibility, setPostFormModalVisibility, lightMode, setLightMode, allCommunities, setAllCommunities}}>
+    <AuthModalContext.Provider value={{ modalVisibility, setModalVisibility,postModalVisibility,
+     setPostModalVisibility, postFormModalVisibility, setPostFormModalVisibility, lightMode,
+      setLightMode, allCommunities, setAllCommunities,showEditandDelete, setShowEditandDelete,
+       showOneBox, setShowOneBox, deleteModalVisibility, setDeleteModalVisibility,confirmDeleteVisibility, setConfirmDeleteVisibility}}>
       {children}
     </AuthModalContext.Provider>
   );
+
 };
 export default AuthModalContext;

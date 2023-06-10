@@ -52,7 +52,7 @@ const CommunityPopUp = ({ closeModal }) => {
         <button onClick={closeModal} className="post-form-btn-close ">
           Cancel
         </button>
-        <button onClick={createCommunity} className="post-form-btn btn">Create subreditt!</button>
+        <button onClick={createCommunity} className="post-form-btn btn">Create subreddit!</button>
         {/* <button className="post-form-btn "> Create your Subreddit!</button> */}
       </div>
     </div>
