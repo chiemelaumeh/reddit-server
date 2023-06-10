@@ -236,14 +236,17 @@ async function myFinder() {
 // myFinder()
 
 app.delete("/delete/:id", async(req, res) => {
-  console.log("req.query.id")
-  // try {
-  //   const commentToDelete = await Comment.findById({_id: req.query.props.id})
-  //   console.log(commentToDelete)
+  const { id } = req.params
+  // console.log(id)
+  try {
+    const commentToDelete = await Comment.deleteOne({_id:id})
+    res.json(id)
+
+
     
-  // } catch (error) {
-    
-  // }
+  } catch (error) {
+    console.error(error.message)
+  }
 })
 async function deleteAll() {
   await Comment.deleteMany({
@@ -254,10 +257,10 @@ async function deleteAll() {
    await Vote.deleteMany({
       direction: { $exists: true },
     });
-  //  await Community.deleteMany({
-  //   // name: { $exists: true}
-  //       $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
-  //  })
+   await Community.deleteMany({
+    // name: { $exists: true}
+        $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
+   })
   console.log("Deleted All");
 }
 

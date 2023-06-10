@@ -7,7 +7,7 @@ import AuthModalContext from "../context/AuthModalContext";
 
 const Postlisting = () => {
   const [comments, setComments] = useState([]);
-  const { newPosts } = useContext(RerenderContext);
+  const { newPosts, deleted } = useContext(RerenderContext);
   const { chosenCommunity } = useContext(CommunityContext);
   const { lightMode, setLightMode} = useContext(AuthModalContext)
 
@@ -26,7 +26,7 @@ const Postlisting = () => {
       setComments(response.data);
     };
     getComments();
-  }, [newPosts,chosenCommunity]);
+  }, [deleted, newPosts,chosenCommunity ]);
 
   return (
     <div className={theLightMode}>

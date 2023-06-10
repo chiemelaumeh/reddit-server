@@ -5,10 +5,11 @@ export const RerenderContextProvider = ({ children }) => {
   const [newPosts, setNewPosts] = useState({});
   const [newComments, setNewComments] = useState({});
   const [errorPage, setErrorPage ] = useState(false);
+  const [deleted, setDeleted] = useState(null)
 
   return (
     <RerenderContext.Provider
-      value={{ newPosts, setNewPosts, newComments, setNewComments, errorPage, setErrorPage  }}
+      value={{ newPosts, setNewPosts, newComments, setNewComments, errorPage, setErrorPage, deleted, setDeleted  }}
     >
       {children}
     </RerenderContext.Provider>

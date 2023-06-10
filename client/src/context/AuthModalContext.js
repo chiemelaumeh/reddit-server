@@ -9,11 +9,12 @@ export const AuthModalProvider = ({ children }) => {
   const [allCommunities, setAllCommunities] = useState([])
   const [showEditandDelete, setShowEditandDelete] = useState(false)
   const [showOneBox, setShowOneBox] = useState(null)
+  const [deleteModalVisibility, setDeleteModalVisibility] = useState(false)
   return (
     <AuthModalContext.Provider value={{ modalVisibility, setModalVisibility,postModalVisibility,
      setPostModalVisibility, postFormModalVisibility, setPostFormModalVisibility, lightMode,
       setLightMode, allCommunities, setAllCommunities,showEditandDelete, setShowEditandDelete,
-       showOneBox, setShowOneBox}}>
+       showOneBox, setShowOneBox, deleteModalVisibility, setDeleteModalVisibility}}>
       {children}
     </AuthModalContext.Provider>
   );
