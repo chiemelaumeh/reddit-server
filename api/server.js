@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://reddit-app-nw97.onrender.com"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "DELETE"],
     credentials: true,
   })
 );
@@ -235,6 +235,16 @@ async function myFinder() {
 
 // myFinder()
 
+app.delete("/delete/:id", async(req, res) => {
+  console.log("req.query.id")
+  // try {
+  //   const commentToDelete = await Comment.findById({_id: req.query.props.id})
+  //   console.log(commentToDelete)
+    
+  // } catch (error) {
+    
+  // }
+})
 async function deleteAll() {
   await Comment.deleteMany({
     // body: { $exists: true },

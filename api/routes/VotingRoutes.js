@@ -3,52 +3,79 @@ const router = express.Router();
 import Vote from "../models/Votes.js";
 import { getUserFromToken } from "../server.js";
 
-router.get("/vote/:commentId/:direction/", (req, res) => {
-  const token = req.cookies.token;
-  // console.log(req.params)
-  const handleVoting = async () => {
-    
-    try {
-      const userInfo = await getUserFromToken(token);
-      const lastUser = await Vote.findOne({author: userInfo.username}).sort({_id:-1})
-      console.log(lastUser)
-      console.log(req.params)
-      console.log("newvote")
-    
+router.get(
+  "/vote/:commentId/:author/:direction/:hasVotedUp/:hasVotedDown",
+  (req, res) => {
+    const token = req.cookies.token;
+    const { commentId, author, direction, hasVotedUp, hasVotedDown } =
+      req.params;
+    const handleVoting = async () => {
+      try {
+        const userInfo = await getUserFromToken(token);
 
-      const vote = new Vote({
-        author: userInfo.username,
-        direction: req.params.direction === "up" ? 1 : -1,
-        commentId: req.params.commentId,
-      });
-      const newvote = await vote.save();
+        if (req.params.hasVotedUp === "true") {
+          const thisUserHasVotedUpForThisComment = await Vote.findOne({
+            author,
+            commentId,
+            hasVotedUp: true,
+          }).sort({ postedAt: -1 });
 
-      const commentVotes = await Vote.find({
-        commentId: req.params.commentId,
-      });
-      let total = 0;
-      commentVotes.forEach((vote) => {
-        total += vote.direction;
-      });
-      
-      res.json(total);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-  handleVoting();
-});
+          if (thisUserHasVotedUpForThisComment !== null) {
+            return;
+          }
+        } else {
+          const thisUserHasVotedDownForThisComment = await Vote.findOne({
+            author,
+            commentId,
+            hasVotedDown: true,
+          });
+
+          if (thisUserHasVotedDownForThisComment !== null) {
+            return;
+          }
+        }
+
+        const vote = new Vote({
+          author: userInfo.username,
+          direction: req.params.direction === "up" ? "up" : "down",
+          commentId: req.params.commentId,
+          hasVotedUp: req.params.hasVotedUp,
+          postedAt: Date.now(),
+        });
+        await Vote.deleteOne({
+          author,
+          commentId,
+        }).sort({ postedAt: -1 });
+        const newvote = await vote.save();
+
+        const commentVotes = await Vote.find({
+          commentId: req.params.commentId,
+        });
+
+        const allvotes = await Vote.find({
+          commentId,
+          direction: "up",
+        });
+        const total = allvotes.length;
+        res.json(total);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    handleVoting();
+  }
+);
 
 router.get("/votes/:commentId", (req, res) => {
-  // const {modalcommentsIds} = req.body
+  const { commentId } = req.params;
+
   const handleTotal = async () => {
     try {
-      const commentVotes = await Vote.find({ commentId: req.params.commentId });
-      let total = 0
-      commentVotes.forEach((vote) => {
-        total += vote.direction;
+      const allvotes = await Vote.find({
+        commentId,
+        direction: "up",
       });
-
+      const total = allvotes.length;
       res.json(total);
     } catch (error) {
       console.error(error.message);

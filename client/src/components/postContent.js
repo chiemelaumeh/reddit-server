@@ -11,7 +11,7 @@ import Voting from "./Voting";
 import AuthModalContext from "../context/AuthModalContext";
 import { Link } from "react-router-dom";
 import EditAndDelete from "./EditAndDelete";
-
+import axios from "axios"
 // var TimeAgo = require('timeago-react');
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
@@ -29,13 +29,22 @@ const PostContent = (props) => {
   const { setRedirect } = useContext(RedirectContext);
   const theLightMode = lightMode ? "post-icon-light" : "post-icon";
 
+
+
+   const deleteOnePost = async() => {
+    
+    try {
+      console.log("url")
+      const response = await axios.delete(`http://localhost:4000/delete/${props.id}`)
+      
+    } catch (error) {
+      console.error(error.message)
+    }
+   }
+
+
   const navigateToCommunity = () => {
     setRedirect(`/r/` + props.chosenCommunity);
-
-    // const chosen = (e) => {
-    //  const chosenId = e.target.id
-    //  console.log(chosenId)
-    // }
   };
 
   const handleShowDelete = () => {
@@ -53,6 +62,9 @@ const PostContent = (props) => {
       setPostModalVisibility(true);
     }
   };
+
+
+
   return (
     <div >
     
@@ -72,9 +84,13 @@ const PostContent = (props) => {
             </p>{" "}
             - <TimeAgo datetime={props.postedAt} />{" "}
           </h5>
-          {user.username &&
+          <div className="edit-delete-div">
+            <button className="edit-btn">Edit</button>
+            <button className="delete-btn" id={props.id} onClick={deleteOnePost}>Delete</button>
+          </div>
+          {/* {user.username && */}
           <BsThreeDotsVertical className="dots"  id={props.author} onClick={(e)=>{setShowOneBox(e.target.id);handleShowDelete()}} />
-          }
+          {/* } */}
         </div>
         <h2>{props.title}</h2>
         <div>{props.body}</div>

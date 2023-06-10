@@ -13,6 +13,17 @@ const Voting = ({ props }) => {
   const { user, setUser } = useContext(UserContext);
   const { setModalVisibility } = useContext(AuthModalContext);
 
+  const sendVote = async (direction, hasVotedUp,hasVotedDown) => {
+    const url = `http://localhost:4000/vote/${props._id}/${user.username}/${direction}/${hasVotedUp}/${hasVotedDown}`;
+    try {
+      const response = await axios.get(url, {
+        withCredentials: true,
+      });
+      setVoteState(response.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   useEffect(() => {
 
     const refreshVotes = async () => {
@@ -25,29 +36,17 @@ const Voting = ({ props }) => {
       }
     };
     refreshVotes();
-  }, [props._id]);
+  }, [voteState]);
 
-  const sendVote = async (direction) => {
-    const url = `http://localhost:4000/vote/${props._id}/${direction}`;
-    try {
-      const response = await axios.get(url, {
-        withCredentials: true,
-      });
-
-      setVoteState(response.data);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
 
   const handleVoteUp = () => {
     if (!user.username) {
       setModalVisibility(true);
     }
     if (upVotedState === false) {
-      sendVote("up");
-      
       setUpVotedState(true);
+      sendVote("up","true","false");
+      
       setDownVotedState(false);
     }
   };
@@ -58,15 +57,11 @@ const Voting = ({ props }) => {
 
     if (downVotedState === false) {
       if (voteState === 0) return;
-      sendVote("down");
+      sendVote("down", "false","true");
       setDownVotedState(true);
       setUpVotedState(false);
     }
   };
-  // onClick={() => {
-  //   setShowCommunity(true);
-  //   setPlusDropDownVisibilityClass("hidden");
-  // }}
   return (
     <div className="voting-div">
       <BiUpvote id={props._id} className="vote-icon" onClick={handleVoteUp} />

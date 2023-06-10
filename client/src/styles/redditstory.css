@@ -126,6 +126,31 @@ body {
   
 }
 
+.delete-btn {
+  border: none;
+  background-color: orangered;
+  border-radius: 2rem;
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+.edit-btn {
+  border: none;
+  background-color: var(--offBlack);
+  border-radius: 2rem;
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid var(--offwhite);
+}
+
+.edit-delete-div {
+  /* display: flex; */
+  justify-content: space-between;
+  width:9rem;
+
+}
+
 .comment-body-div {
   border-left:1px solid var(--reddit_border);
   padding: 0 1rem;
@@ -134,6 +159,7 @@ body {
   
  
 }
+
 
 .comment-body-div-reply {
 
