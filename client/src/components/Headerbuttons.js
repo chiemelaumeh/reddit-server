@@ -1,5 +1,4 @@
 const Headerbuttons = (props) => {
-// console.log(props)
 
   return (
     <>

@@ -1,10 +1,8 @@
-import TimeAgo from "timeago-react"; // var TimeAgo = require('timeago-react');
+import TimeAgo from "timeago-react";
 import PostCommentForm from "./PostCommentForm";
 import { useState } from "react";
 import CommentReplies from "./CommentReplies";
 import { BsChatLeft } from "react-icons/bs";
-import Voting from "./Voting";
-
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
 const Comments = (props) => {
@@ -12,14 +10,12 @@ const Comments = (props) => {
   const postComments = props.postComments.filter(
     (comment) => props.parentId === comment.parentId
   );
-
   return (
     <div>
       {postComments.map((singleComment, index) => {
         const replies = props.postComments.filter(
           (loopedComment) => loopedComment.parentId === singleComment._id
         );
-
         return (
           <div key={index} className="comment-div">
             <div className="post-comments"></div>
@@ -28,16 +24,11 @@ const Comments = (props) => {
             <p className="time-ago-div">
               <TimeAgo datetime={singleComment.postedAt} />
             </p>
-
-            {/* <div> */}
             <div className="comment-body-div">
               {singleComment.body}
 
-              {/* {showReplyBox === null && ( */}
               <div className="voting-reply-main">
                 <div className="voting-reply">
-                  {/* <Voting singleComment={singleComment} postComments={postComments}
-                /> */}
                   <div
                     className="icon-reply-button"
                     onClick={() => setShowReplyBox(singleComment._id)}
@@ -47,12 +38,9 @@ const Comments = (props) => {
                   </div>
                 </div>
               </div>
-              {/* )} */}
-
               <div>
                 {singleComment._id === showReplyBox && (
                   <PostCommentForm
-                    // title={props.title}
                     chosenCommunity={props.chosenCommunity}
                     parentId={singleComment._id}
                     rootId={props.parentId}

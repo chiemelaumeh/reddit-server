@@ -4,15 +4,8 @@ import Commentpage from "./Postpage";
 import Postmodal from "./Postmodal";
 import SearchPage from "./SearchPage";
 import ErrorPage from "./ErrorPage";
-import RedirectContext from "../context/RedirectContext";
-import RerenderContext from "../context/RerenderContext";
-
-import { useContext } from "react";
 
 const Routinglocation = () => {
-  // const { redirect, setRedirect } = useContext(RedirectContext);
-  // const { errorPage, setErrorPage } = useContext(RerenderContext);
-
   let location = useLocation();
   let commentId = null;
 
@@ -21,18 +14,11 @@ const Routinglocation = () => {
     commentId = location.state.commentId;
   }
 
-  // console.log(location)
-  //  {/* {redirect && (
-  //        <Navigate to={redirect} />
-  //     )}
-
-  //     {!redirect && ( */}
   return (
     <div>
       {commentId && (
         <div>
           <Postmodal id={commentId} open={true} />
-          {/* { commentId} */}
         </div>
       )}
       <Routes location={location}>

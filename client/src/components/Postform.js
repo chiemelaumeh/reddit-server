@@ -1,42 +1,34 @@
-import { useContext, forwardRef, useImperativeHandle } from "react";
+import { useContext } from "react";
 import inputavatar from "../images/input-avatar.png";
 import AuthModalContext from "../context/AuthModalContext";
 import UserContext from "../context/UserContext";
-import axios from "axios"
-
-const yaya = () => {
-  console.log("THIS IS EXPORTED")
-}
+import axios from "axios";
 
 const Postform = () => {
   const {
     setPostFormModalVisibility,
-    setModalVisibility, lightMode, setLightMode, allCommunities, setAllCommunities
+    setModalVisibility,
+    lightMode,
+    setAllCommunities,
   } = useContext(AuthModalContext);
-  const { user} = useContext(UserContext);
-  
-  
-  const theLightMode = lightMode ? "reddit-main-light" : "reddit-main"
-  const theLightModeInput = lightMode ? "first-input-light" : "first-input"
+  const { user } = useContext(UserContext);
+
+  const theLightMode = lightMode ? "reddit-main-light" : "reddit-main";
+  const theLightModeInput = lightMode ? "first-input-light" : "first-input";
   const getAllComunities = async () => {
     try {
-      // console.log("response")
-      const response = await axios.get("http://localhost:4000/communities/")
-      // console.log(response)
-      setAllCommunities(response.data)
+      const response = await axios.get("http://localhost:4000/communities/");
+      setAllCommunities(response.data);
     } catch (error) {
-      
-    console.error(error.message)
+      console.error(error.message);
     }
-
-  } 
-
+  };
 
   const popUpModal = () => {
     if (!user.username) {
       setModalVisibility(true);
     } else {
-  getAllComunities()
+      getAllComunities();
       setPostFormModalVisibility(true);
     }
   };
@@ -54,7 +46,6 @@ const Postform = () => {
               onClick={(e) => {
                 e.preventDefault();
                 popUpModal();
-            
               }}
               className="first-form"
               placeholder="New Post"
@@ -65,5 +56,4 @@ const Postform = () => {
     </>
   );
 };
-export { yaya }
 export default Postform;

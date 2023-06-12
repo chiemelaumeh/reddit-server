@@ -9,13 +9,15 @@ const Postlisting = () => {
   const [comments, setComments] = useState([]);
   const { newPosts, deleted } = useContext(RerenderContext);
   const { chosenCommunity } = useContext(CommunityContext);
-  const { lightMode, setLightMode} = useContext(AuthModalContext)
+  const { lightMode } = useContext(AuthModalContext);
 
-  const theLightMode = lightMode ? "app-reddit-story-light" : "app-reddit-story "
-
-
-  let url = chosenCommunity === null ? "/comments" : `/comments?chosenCommunity=${chosenCommunity}`;
-
+  const theLightMode = lightMode
+    ? "app-reddit-story-light"
+    : "app-reddit-story ";
+  let url =
+    chosenCommunity === null
+      ? "/comments"
+      : `/comments?chosenCommunity=${chosenCommunity}`;
 
   useEffect(() => {
     const getComments = async () => {
@@ -26,7 +28,7 @@ const Postlisting = () => {
       setComments(response.data);
     };
     getComments();
-  }, [deleted, newPosts,chosenCommunity ]);
+  }, [deleted, newPosts, chosenCommunity]);
 
   return (
     <div className={theLightMode}>

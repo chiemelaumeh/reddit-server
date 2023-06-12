@@ -8,11 +8,10 @@ const Commentpage = () => {
 
 
   const [comment, setComment] = useState(null);
-  // useEffect(() => {
+
     const getComment = async () => {
       try {
         const response = await axios.get(
-          // `https://redditt-api.onrender.com/comments/${id}`,
           `http://localhost:4000/comments/${id}`,
           {
             withCredentials: true,
@@ -25,7 +24,6 @@ const Commentpage = () => {
       }
     };
     getComment();
-  // });
 
   return (
     <div className="comment-main">
