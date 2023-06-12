@@ -8,16 +8,13 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import axios from "axios";
 import CommunityContext from "../context/CommunityContext";
-// import { Navigate } from "react-router-dom";
 
 const PostFormModal = () => {
- const {setRedirect} = useContext(RedirectContext)
+  const { setRedirect } = useContext(RedirectContext);
   const [selectedCommunity, setSelectedCommunity] = useState("");
   const changeState = (e) => {
-
-    setSelectedCommunity(e.target.value)
+    setSelectedCommunity(e.target.value);
   };
-
 
   const {
     postFormModalVisibility,
@@ -25,18 +22,15 @@ const PostFormModal = () => {
     allCommunities,
     setAllCommunities,
   } = useContext(AuthModalContext);
-  const { chosenCommunity, setChosenCommunity } = useContext(CommunityContext);
+
   const { setNewPosts } = useContext(RerenderContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const data = { title, body, selectedCommunity };
-  // const mappedCommunites
-
-  
 
   const createPost = async () => {
-    if (title.length === 0 || body.length === 0 ) {
-      alert("Post title and body required")
+    if (title.length === 0 || body.length === 0) {
+      alert("Post title and body required");
 
       return;
     }
@@ -53,14 +47,13 @@ const PostFormModal = () => {
     }
   };
 
-
   function handleTwo() {
     createPost();
-    if(selectedCommunity) {
-      setRedirect("/r/" + selectedCommunity)
+    if (selectedCommunity) {
+      setRedirect("/r/" + selectedCommunity);
       setPostFormModalVisibility(false);
     } else {
-      alert("Please choose a community")
+      alert("Please choose a community");
     }
     setTitle("");
     setBody("");
@@ -101,7 +94,10 @@ const PostFormModal = () => {
                 // }
               }
             >
-              <option required value="default"> Please choose a community</option>
+              <option required value="default">
+                {" "}
+                Please choose a community
+              </option>
               {allCommunities
                 ? allCommunities.map((oneCommunity) => {
                     return (

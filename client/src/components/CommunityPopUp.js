@@ -3,25 +3,23 @@ import Input from "./Input";
 import axios from "axios";
 import RedirectContext from "../context/RedirectContext";
 
-
 const CommunityPopUp = ({ closeModal }) => {
-
   const [name, setName] = useState("");
   const [slogan, setSlogan] = useState("");
   const [avatar, setAvatar] = useState("");
   const [cover, setCover] = useState("");
-  const { redirect, setRedirect} = useContext(RedirectContext)
+  const { setRedirect } = useContext(RedirectContext);
 
   const createCommunity = async () => {
-    closeModal()
+    closeModal();
     const data = { name, slogan, avatar, cover };
     try {
       const response = await axios.post("/communities", data, {
         withCredentials: true,
       });
-      setRedirect(`/r/` + name )
+      setRedirect(`/r/` + name);
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
   };
   return (
@@ -52,8 +50,9 @@ const CommunityPopUp = ({ closeModal }) => {
         <button onClick={closeModal} className="post-form-btn-close ">
           Cancel
         </button>
-        <button onClick={createCommunity} className="post-form-btn btn">Create subreddit!</button>
-        {/* <button className="post-form-btn "> Create your Subreddit!</button> */}
+        <button onClick={createCommunity} className="post-form-btn btn">
+          Create subreddit!
+        </button>
       </div>
     </div>
   );

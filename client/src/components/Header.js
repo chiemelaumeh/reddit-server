@@ -7,13 +7,9 @@ import ModalContext from "../context/ModalContext";
 import { CiUser } from "react-icons/ci";
 import { BsBell } from "react-icons/bs";
 import { BsChatDots } from "react-icons/bs";
-import { BsFillBrightnessHighFill} from "react-icons/bs";
+import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
-// import { getAllCommunites} from "../components/Postform"
-import { yaya }from "../components/Postform";
-// import { BsFillFileEarmarkPostFill } from "react-icons/bs";
-// import { FaUsers } from "react-icons/fa";
 import logo from "../images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsChevronDown } from "react-icons/bs";
@@ -27,48 +23,48 @@ import axios from "axios";
 import RedirectContext from "../context/RedirectContext";
 
 const Header = () => {
-  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] = useState("hidden");
-  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] = useState("hidden");
-  const [searchText, setSearchText] = useState("")
-  const { setModalVisibility, setPostFormModalVisibility, lightMode, setLightMode, allCommunities,
-    setAllCommunities, } = useContext(AuthModalContext);
+  const [userDropDownVisibilityClass, setUserDropDownVisibilityClass] =
+    useState("hidden");
+  const [plusDropDownVisibilityClass, setPlusDropDownVisibilityClass] =
+    useState("hidden");
+  const [searchText, setSearchText] = useState("");
+  const {
+    setModalVisibility,
+    setPostFormModalVisibility,
+    lightMode,
+    setLightMode,
+    setAllCommunities,
+  } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
   const { setShowCommunity } = useContext(CommunityContext);
 
-  const theLightMode = lightMode ? "header-light" : "header"
-  const theLightModeForm = lightMode ? "form-light" : "form"
-  const theLightModeIcon = lightMode ? "icon-light" : "icon"
-  const darkOrLight = lightMode ? "Dark Mode" : "Light Mode"
-  const darkOrLightIcon = lightMode ?  <BsFillMoonFill className=" login-icon" />  : <BsFillBrightnessHighFill className=" login-icon" /> 
-
-
-// Postform.getAllCommunities()
+  const theLightMode = lightMode ? "header-light" : "header";
+  const theLightModeForm = lightMode ? "form-light" : "form";
+  const theLightModeIcon = lightMode ? "icon-light" : "icon";
+  const darkOrLight = lightMode ? "Dark Mode" : "Light Mode";
+  const darkOrLightIcon = lightMode ? (
+    <BsFillMoonFill className=" login-icon" />
+  ) : (
+    <BsFillBrightnessHighFill className=" login-icon" />
+  );
   useEffect(() => {
-    setLightMode(JSON.parse(window.localStorage.getItem('lightMode')));
+    setLightMode(JSON.parse(window.localStorage.getItem("lightMode")));
   }, []);
-  
-  // consorle.log((window.localStorage.getItem("lightMode")))
   useEffect(() => {
-    window.localStorage.setItem('lightMode', lightMode
-    );
+    window.localStorage.setItem("lightMode", lightMode);
   }, [lightMode]);
-
-  // yaya()
 
   const getAllComunities = async () => {
     try {
-      // console.log("response")
-      const response = await axios.get("http://localhost:4000/communities/")
-  
-      setAllCommunities(response.data)
-    } catch (error) {
-      
-    console.error(error.message)
-    }
+      const response = await axios.get("http://localhost:4000/communities/");
 
-  } 
+      setAllCommunities(response.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   const handleLogin = () => {
     setModalVisibility(true);
@@ -109,19 +105,21 @@ const Header = () => {
   };
 
   const changeLightMode = () => {
-
-    if(!lightMode) {
-      setLightMode(true)
+    if (!lightMode) {
+      setLightMode(true);
     } else {
-      setLightMode(false)
-
+      setLightMode(false);
     }
-  
-  }
+  };
   return (
     <header className={theLightMode}>
       <div className="sub-header">
-        <Link to="/" onClick={()=> {setRedirect("/")}}>
+        <Link
+          to="/"
+          onClick={() => {
+            setRedirect("/");
+          }}
+        >
           <img className="logo" src={logo} alt="" />
         </Link>
         <form className={theLightModeForm} onSubmit={doSearch}>
@@ -160,15 +158,13 @@ const Header = () => {
               >
                 <button
                   onClick={() => {
-                    getAllComunities()
+                    getAllComunities();
                     setPostFormModalVisibility(true);
                     setPlusDropDownVisibilityClass("hidden");
                   }}
                   className="btn link-box"
                 >
                   Create new post
-                  {/* <BsFillFileEarmarkPostFill
-                  className=" icon" /> */}
                 </button>
 
                 <button
@@ -179,8 +175,6 @@ const Header = () => {
                   className="btn link-box"
                 >
                   Create new community
-                  {/* <FaUsers 
-                className=" icon" /> */}
                 </button>
               </div>
             </>
@@ -235,18 +229,20 @@ const Header = () => {
                     : " show-box"
                 }
               >
-                <p >Welcome, {user.username}</p>
-                
+                <p>Welcome, {user.username}</p>
+
                 <button onClick={logout} href="" className=" link-box ">
                   <SlLogout className=" login-icon " />
                   Logout
                 </button>
-               
 
-                <button onClick={changeLightMode} href="" className=" link-box border-top">
-                  {/* <BsFillBrightnessHighFill className=" login-icon" /> */}
+                <button
+                  onClick={changeLightMode}
+                  href=""
+                  className=" link-box border-top"
+                >
                   {darkOrLightIcon}
-                
+
                   {darkOrLight}
                 </button>
               </div>

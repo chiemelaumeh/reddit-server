@@ -30,7 +30,6 @@ const Authmodal = () => {
       setModalVisibility(false)
       try {
         const response = await axios.post(
-          // "https://redditt-api.onrender.com/register",
           "http://localhost:4000/register",
           data,
           {
@@ -44,11 +43,6 @@ const Authmodal = () => {
     }else {
       setMatchingPass(false)
     }
-      // if (matchingPass) {
-
-    
-    
-    
   }
 
   const login = async () => {
@@ -56,7 +50,6 @@ const Authmodal = () => {
     const data = { username, password };
     try {
       const response = await axios.post(
-        // "https://redditt-api.onrender.com/login",
         "/login",
         data,
         {
@@ -117,15 +110,9 @@ const Authmodal = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            {/* {password != confirmPassword && ( */}
               {matchingPass === false && (
               <p className="matching-Pass">Passwords Do Not Match</p>
               )}
-
-
-
-            {/* // )} */}
-          
           </label>
           
           }
@@ -134,7 +121,7 @@ const Authmodal = () => {
           )}
           {modalType === "register" && (
             <Headerbuttons 
-            // {modalType === "login" && <h1>Login</h1>}
+
             onClick={register}
             >Sign Up</Headerbuttons>
           )}

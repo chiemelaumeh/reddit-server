@@ -3,14 +3,14 @@ import { BiUpvote } from "react-icons/bi";
 import { BiDownvote } from "react-icons/bi";
 import axios from "axios";
 import { useState, useContext } from "react";
-import UserContext, { UserProvider } from "../context/UserContext";
+import UserContext from "../context/UserContext";
 import AuthModalContext from "../context/AuthModalContext";
 
 const Voting = ({ props }) => {
   const [voteState, setVoteState] = useState(0);
   const [upVotedState, setUpVotedState] = useState(false);
   const [downVotedState, setDownVotedState] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { setModalVisibility } = useContext(AuthModalContext);
 
   const sendVote = async (direction, hasVotedUp,hasVotedDown) => {

@@ -8,18 +8,13 @@ import OutsideClickHandler from "react-outside-click-handler";
 import Comments from "./Comments";
 import { useContext, useState, useEffect } from "react";
 
+
 const Postmodal = (props) => {
   const { postModalVisibility, setPostModalVisibility } =
     useContext(AuthModalContext);
   const [modalComment, setModalComment] = useState({});
   const [postComments, setPostComments] = useState([]);
   const { newComments } = useContext(RerenderContext);
-
-  // const refreshVotes = async() => {
-  //   const modalCommentsIds = [modalComment._id, ...modalComment.map(modalComment => modalComment._id)]
-  //   const response = await axios.post("http://localhost:4000/votes/totals", modalCommentsIds)
-  //   console.log)
-  // }
 
   useEffect(() => {
     const getModalComment = async () => {
@@ -54,9 +49,8 @@ const Postmodal = (props) => {
 
   function reset() {
     setPostModalVisibility(false);
-    
   }
- 
+
   return (
     <div
       className={
@@ -79,9 +73,7 @@ const Postmodal = (props) => {
                 showAuthor={true}
                 showButton={false}
               />
-
               <hr />
-
               <Comments
                 chosenCommunity={modalComment.chosenCommunity}
                 rootId={modalComment._id}

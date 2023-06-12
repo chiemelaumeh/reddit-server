@@ -1,4 +1,3 @@
-import UserContext from "../context/UserContext";
 import CommunityPopUp from "./CommunityPopUp";
 import OutsideClickHandler from "react-outside-click-handler";
 import CommunityContext from "../context/CommunityContext";
