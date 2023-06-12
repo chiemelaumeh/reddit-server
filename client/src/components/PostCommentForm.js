@@ -2,12 +2,14 @@ import React from "react";
 import { useContext, useState } from "react";
 import UserContext from "../context/UserContext";
 import RerenderContext from "../context/RerenderContext";
+import AuthModalContext from "../context/AuthModalContext";
 import axios from "axios";
 
 const PostCommentForm = (props) => {
   const [userComment, setUserComment] = useState("");
   const { user } = useContext(UserContext);
   const { setNewComments } = useContext(RerenderContext);
+  const { setPostModalVisibility } = useContext(AuthModalContext);
 
   const postComment = async (e) => {
     e.preventDefault();
@@ -19,7 +21,6 @@ const PostCommentForm = (props) => {
       parentId: props.parentId,
       rootId: props.rootId,
     };
-    console.log(data);
 
     try {
       const response = await axios.post(
@@ -67,9 +68,22 @@ const PostCommentForm = (props) => {
             </>
           )}
 
-          {props.showButton === false && (
-            <button className="btn comment-btn">Comment</button>
-          )}
+          
+          {
+            props.showButton === false &&
+
+            <>
+            <button className="comment-btn cancel-btn"
+            onClick={()=>setPostModalVisibility(false)}
+            // className="btn comment-btn"
+          >
+            Cancel
+          </button>
+
+          <button className="btn comment-btn">Comment</button>
+            </>
+          }
+         
         </div>
       </form>
     </div>

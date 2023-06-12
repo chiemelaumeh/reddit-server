@@ -29,10 +29,10 @@ body {
   padding: 4px;
 }
 .sub-header {
-  margin: 0 12px;
+  margin: 0 0px;
   display: flex;
   align-items: center;
-  position: relative;
+  /* position: relative; */
 }
 .logo {
   width: 2rem;
@@ -176,7 +176,7 @@ body {
   background-color: inherit;
   border: none;
   cursor: pointer;
-  padding: 0 8px;
+  padding: 0 2px;
 }
 .avatar {
   width: 3rem;

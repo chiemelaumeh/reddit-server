@@ -139,12 +139,12 @@ const Header = () => {
         >
           {user.username && (
             <>
-              <button className="icon-btn">
+              {/* <button className="icon-btn">
                 <BsBell className={theLightModeIcon} />
               </button>
               <button className="icon-btn">
                 <BsChatDots className={theLightModeIcon} />
-              </button>
+              </button> */}
               <button className="icon-btn" onClick={togglePlusDropDown}>
                 <HiOutlinePlus className={theLightModeIcon} />
               </button>
@@ -180,12 +180,7 @@ const Header = () => {
             </>
           )}
         </OutsideClickHandler>
-        {!user.username && (
-          <div className="login-div">
-            <Headerbuttons onClick={handleLogin}>Log In </Headerbuttons>
-            <Headerbuttons onClick={handleSignUp}>Sign Up </Headerbuttons>
-          </div>
-        )}
+       
 
         <OutsideClickHandler
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}

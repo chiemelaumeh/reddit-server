@@ -99,24 +99,21 @@ body {
   /* padding-top: 15rem; */
   height: 100vh;
   width: 100vw;
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.95);
   z-index: 20;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   overflow: scroll;
 }
 .post-sub {
-  background-color: var(--reddit_dark);
-  padding: 20px 20px;
+  background-color: var(--offBlack);
+  padding: 10px 10px;
   color: var(--offwhite);
   line-height: 1.5rem;
-  width: 50vw;
-  height: auto;
+  width: 90vw;
+  /* height: auto; */
   border: 1px solid var(--reddit_border);
   border-radius: 4px;
   align-items: center;
