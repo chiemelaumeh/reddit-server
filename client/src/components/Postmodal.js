@@ -40,6 +40,7 @@ const Postmodal = (props) => {
         );
 
         setPostComments(response.data);
+        
       } catch (error) {
         console.log(error.message);
       }

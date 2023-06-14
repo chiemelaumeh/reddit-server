@@ -7,7 +7,6 @@ router.get("/user", (req, res) => {
     const token = req.cookies.token;
     try {
       const user = await getUserFromToken(token);
-
       res.json({ username: user.username });
     } catch (err) {
       console.error(err.message);

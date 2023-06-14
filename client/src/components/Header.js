@@ -5,8 +5,6 @@ import OutsideClickHandler from "react-outside-click-handler";
 import AuthModalContext from "../context/AuthModalContext";
 import ModalContext from "../context/ModalContext";
 import { CiUser } from "react-icons/ci";
-import { BsBell } from "react-icons/bs";
-import { BsChatDots } from "react-icons/bs";
 import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
@@ -39,7 +37,8 @@ const Header = () => {
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
   const { setShowCommunity } = useContext(CommunityContext);
-
+  
+  const theLightModeSearchBox = lightMode ? "search-box-light" : "search-box"
   const theLightMode = lightMode ? "header-light" : "header";
   const theLightModeForm = lightMode ? "form-light" : "form";
   const theLightModeIcon = lightMode ? "icon-light" : "icon";
@@ -126,7 +125,7 @@ const Header = () => {
           <CiSearch className="search-icon" />
 
           <input
-            className="search-box"
+            className={theLightModeSearchBox}
             required
             type="text"
             placeholder="Search Reddit"

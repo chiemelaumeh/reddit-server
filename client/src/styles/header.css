@@ -67,6 +67,16 @@ body {
   color: var(--white); 
   flex-grow: 1;
 }
+.search-box-light {
+  height: 2rem;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  padding: 0 6px;
+  display: block;
+  color: var(--reddit_dark);
+  flex-grow: 1;
+}
 .search-icon {
   color: var(--reddit_lightgrey);
   width: 1.5rem;
@@ -219,8 +229,15 @@ overflow: hidden;
 }
 .matching-Pass {
   color: red;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 1rem;
-  padding-left: 4rem;
+  /* padding-left: 4rem; */
 
+}
+
+.error-message{
+  color: red;
+  font-weight: 400;
+  font-size: 1rem;
+  /* padding-left: 4rem; */
 }

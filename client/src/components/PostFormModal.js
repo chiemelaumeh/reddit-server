@@ -111,6 +111,9 @@ const PostFormModal = () => {
           </div>
 
           <div className="post-btns">
+          <button className="post-form-btn btn" onClick={handleTwo}>
+              POST
+            </button>
             <button
               onClick={() => {
                 setPostFormModalVisibility(false);
@@ -120,9 +123,7 @@ const PostFormModal = () => {
             >
               Cancel
             </button>
-            <button className="post-form-btn btn" onClick={handleTwo}>
-              POST
-            </button>
+          
           </div>
         </div>
       </div>
