@@ -8,6 +8,8 @@ import { CiUser } from "react-icons/ci";
 import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
+import { BsUpload } from "react-icons/bs";
+
 import logo from "../images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsChevronDown } from "react-icons/bs";
@@ -32,6 +34,8 @@ const Header = () => {
     lightMode,
     setLightMode,
     setAllCommunities,
+    openUpload,
+    setOpenUpload
   } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
@@ -238,6 +242,17 @@ const Header = () => {
                   {darkOrLightIcon}
 
                   {darkOrLight}
+                </button>
+
+                <button
+                  onClick={()=>{setOpenUpload(true);setUserDropDownVisibilityClass("hidden")}}
+                  href=""
+                  className=" link-box border-top"
+                >
+           
+                  <BsUpload className=" login-icon "/>
+
+                 Upload Image
                 </button>
               </div>
             </>

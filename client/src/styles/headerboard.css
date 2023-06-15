@@ -159,6 +159,69 @@ body {
   border-radius: 4px;
   padding-right: 34px;
 }
+
+.upload-page {
+  /* height: 100%;
+  width: 100%; */
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 20;
+  
+  /* justify-content: center;
+  align-items: center; */
+
+  height: 100%;
+  width:100vw;
+  top: 50%;
+  /* left: 10%; */
+  transform: translate(0, -50%);
+
+}
+.hide-upload-page{
+  display: none;
+}
+.upload-sub {
+  background-color: var(--reddit_dark);
+  padding: 10px 20px;
+  color: var(--offwhite);
+  position: absolute;
+  width: 80%;
+  left: 5%;
+  height: 60vh;
+  border: 1px solid var(--reddit_border);
+  margin-top: 25vh;
+  border-radius: 4px;
+  
+}
+.image-div{
+  /* border: 1px solid red; */
+  height: 80%;
+  width: 95%;
+  margin-left: 0.5rem;
+  
+
+}
+.image-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  /* border: 1px solid red; */
+  height: 7rem;
+  /* align-content: space-around; */
+  
+  align-items: flex-end;
+}
+
+
+.main-image {
+
+  height: 5rem;
+  width: 100%;
+  height: 80%;
+  border-radius: 5rem;
+}
 .community-sub {
   background-color: var(--reddit_dark);
   padding: 10px 20px;

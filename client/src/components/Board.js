@@ -8,8 +8,8 @@ import AuthModalContext from "../context/AuthModalContext";
 const Board = () => {
   const {communityFromUrl} = useParams();
   const {setChosenCommunity} = useContext(CommunityContext);
-  const {postModalVisibility, postFormModalVisibility} = useContext(AuthModalContext)
-  const fixedVisibilty = postModalVisibility || postFormModalVisibility? "main-reddit-div-fixed" : "main-reddit-div"
+  const {postModalVisibility, postFormModalVisibility, openUpload,} = useContext(AuthModalContext)
+  const fixedVisibilty = postModalVisibility || postFormModalVisibility || openUpload ? "main-reddit-div-fixed" : "main-reddit-div"
  
     !communityFromUrl ? setChosenCommunity(null) :  setChosenCommunity(communityFromUrl);
     
