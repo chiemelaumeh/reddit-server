@@ -3,16 +3,15 @@ dotenv.config();
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import mongoose from "mongoose";
 import cors from "cors";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import path from "path";
+import {fileURLToPath} from 'url';
 
 import User from "./models/User.js";
 import Community from "./models/Community.js";
 import Vote from "./models/Votes.js";
 import Comment from "./models/Comments.js";
-import cloudinary from "./cloudinary.js";
 
 import RegisterRoute from "./routes/RegisterRoute.js";
 import VotingRoutes from "./routes/VotingRoutes.js";
@@ -22,8 +21,11 @@ import LogoutRoute from "./routes/LogoutRoute.js";
 import PostCommentRoute from "./routes/PostCommentRoute.js";
 import GetCommentsRoute from "./routes/GetCommentsRoute.js";
 import DeleteCommentRoute from "./routes/DeleteCommentRoute.js";
-import { ReturnDocument } from "mongodb";
+import UploadRRoute from "./routes/UploadRoute.js";
+import ImageRoute from "./routes/ImageRoute.js";
+import LoginRoute from "./routes/LoginRoute.js"
 
+import { connectDb } from "./config/db.js";
 const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
@@ -36,124 +38,80 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(VotingRoutes);
-app.use(CommunityRoutes);
-app.use(RegisterRoute);
-app.use(UserRoute);
-app.use(LogoutRoute);
-app.use(PostCommentRoute);
-app.use(GetCommentsRoute);
-app.use(DeleteCommentRoute);
 
-const connectionString = process.env.DATABASE_URL;
-const secret = process.env.SECRET_KEY;
 
+app.use("/votes", VotingRoutes);
+app.use("/communities", CommunityRoutes);
+app.use("/register", RegisterRoute);
+app.use("/user", UserRoute);
+app.use("/logout", LogoutRoute);
+app.use("/comments", PostCommentRoute);
+app.use("/comments", GetCommentsRoute);
+app.use("/delete", DeleteCommentRoute);
+app.use("/upload", UploadRRoute);
+app.use("/image", ImageRoute);
+app.use("/login", LoginRoute)
+
+
+
+const __filename = fileURLToPath(import.meta.url);
+// console.log(__filename)
+
+// 👇️ "/home/borislav/Desktop/javascript"
+
+// console.log('directory-name 👉️', __dirname);
+// 👇️ "/home/borislav/Desktop/javascript/dist/index.html"
+// console.log(path.join(__dirname, '/dist', 'index.html'))
+
+
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+app.use(express.static(path.join(__dirname, '../client/build')))
+app.get('*', (req, res)=> {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"))
+
+})
+} else {
+  app.get("/", (req, res) => {
+    res.send("myReddit API is running")
+  })
+}
+
+connectDb();
+
+
+
+
+const secret = process.env.SECRET_KEY
 export const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
   return await User.findById(userInfo.id);
 };
 
-mongoose.set("strictQuery", false);
-await mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on("error", console.log);
 
-app.get("/", async (req, res) => {
-  const comment = await Comment.find({
-    rootId: { $exists: false },
-  });
-  res.status(200).json(comment);
-});
+// app.get("/", async (req, res) => {
+//   const comment = await Comment.find({
+//     rootId: { $exists: false },
+//   });
+//   res.status(200).json(comment);
+// });
 
-app.post("/upload", async (req, res) => {
-  const user = req.body.user.username;
 
-  const fileStr = req.body.base64EncodedImage;
+// async function deleteAll() {
+//   await Comment.deleteMany({
+//     $expr: { $lt: [{ $strLenCP: "$body" }, 20] },
+//   });
 
-  try {
-    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
-      upload_preset: "ml-default",
-      allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
-    });
-
-    const onePublicId = uploadedResponse.public_id;
-    const updatedPicture = await User.findOneAndUpdate(
-      { username: user },
-      { picture: onePublicId },
-      { returnDocument: "after" }
-    );
-    // console.log(updatedPicture)
-    res.json(onePublicId);
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-app.post("/image", async (req, res) => {
-  const getImage = async () => {
-    const token = req.cookies.token;
-
-    try {
-      const username = await getUserFromToken(token);
-      const user = username.username;
-      const chosenUser = await User.findOne({ username: user });
-      res.json(chosenUser.picture);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  getImage();
-});
-app.post("/login", (req, res) => {
-  const { username, password } = req.body;
-  const findUser = async () => {
-    try {
-      const user = await User.findOne({ username });
-      if (user && user.username === username) {
-        const passOk = bcrypt.compareSync(password, user.password);
-        if (passOk) {
-          jwt.sign({ id: user._id }, secret, (err, token) => {
-            try {
-              res.cookie("token", token).json();
-              console.log(token);
-            } catch (err) {
-              console.error(err.message);
-              res.status(500);
-            }
-          });
-        } else {
-          res.status(422).send("invalid password");
-          console.log("invalid password");
-        }
-      } else {
-        res.status(422).send("Invalid username");
-        console.log("invalid username");
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-  findUser();
-});
-
-async function deleteAll() {
-  await Comment.deleteMany({
-    $expr: { $lt: [{ $strLenCP: "$body" }, 20] },
-  });
-
-  await Vote.deleteMany({
-    direction: { $exists: true },
-  });
-  await Community.deleteMany({
-    $expr: { $lt: [{ $strLenCP: "$avatar" }, 10] },
-  });
-  console.log("Deleted All");
-}
-
+//   await Vote.deleteMany({
+//     direction: { $exists: true },
+//   });
+//   await Community.deleteMany({
+//     $expr: { $lt: [{ $strLenCP: "$avatar" }, 10] },
+//   });
+//   console.log("Deleted All");
+// }
+// 
 // deleteAll();
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

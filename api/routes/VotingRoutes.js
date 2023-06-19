@@ -4,7 +4,7 @@ import Vote from "../models/Votes.js";
 import { getUserFromToken } from "../server.js";
 
 router.get(
-  "/vote/:commentId/:author/:direction/:hasVotedUp/:hasVotedDown",
+  "/:commentId/:author/:direction/:hasVotedUp/:hasVotedDown",
   (req, res) => {
     const token = req.cookies.token;
     const { commentId, author, direction, hasVotedUp, hasVotedDown } =
@@ -66,7 +66,7 @@ router.get(
   }
 );
 
-router.get("/votes/:commentId", (req, res) => {
+router.get("/:commentId", (req, res) => {
   const { commentId } = req.params;
 
   const handleTotal = async () => {

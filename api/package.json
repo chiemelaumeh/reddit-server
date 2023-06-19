@@ -1,17 +1,17 @@
 {
-  "name": "api",
+  "name": "Reddit",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "server": "nodemon server.js",
-    "dev": "nodemon server.js"
-  },
+  "main": "server.js",
   "author": "",
   "license": "ISC",
   "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
@@ -22,5 +22,9 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^2.0.22"
   }
 }

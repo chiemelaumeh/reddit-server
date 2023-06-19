@@ -137,7 +137,7 @@ const Header = () => {
             className={theLightModeSearchBox}
             required
             type="text"
-            placeholder="Search Reddit"
+            placeholder="Search myReddit"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
@@ -241,20 +241,7 @@ const Header = () => {
               >
                 <p>Welcome, {user.username}</p>
 
-                <button onClick={logout} href="" className=" link-box ">
-                  <SlLogout className=" login-icon " />
-                  Logout
-                </button>
-
-                <button
-                  onClick={changeLightMode}
-                  href=""
-                  className=" link-box border-top"
-                >
-                  {darkOrLightIcon}
-
-                  {darkOrLight}
-                </button>
+                
                 <button
                   onClick={() => {
                     setOpenUpload(true);
@@ -266,6 +253,20 @@ const Header = () => {
                   <BsUpload className=" login-icon " />
                   Upload Image
                 </button>
+                <button
+                  onClick={changeLightMode}
+                  href=""
+                  className=" link-box border-top"
+                >
+                  {darkOrLightIcon}
+
+                  {darkOrLight}
+                </button>
+                <button onClick={logout} href="" className=" link-box ">
+                  <SlLogout className=" login-icon " />
+                  Logout
+                </button>
+
               </div>
             </>
           )}

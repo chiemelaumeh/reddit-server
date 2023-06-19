@@ -5,7 +5,7 @@ dotenv.config();
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
 
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
   const { email, username } = req.body;
   const findUser = await User.exists({ username });
   if (findUser) {
