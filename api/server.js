@@ -35,11 +35,17 @@ app.use(
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
   })
+  
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
+app.get("/", async (req, res) => {
+  const comment = await Comment.find({
+    rootId: { $exists: false },
+  });
+  res.status(200).json(comment);
+});
 app.use("/votes", VotingRoutes);
 app.use("/communities", CommunityRoutes);
 app.use("/register", RegisterRoute);
@@ -54,7 +60,7 @@ app.use("/login", LoginRoute)
 
 
 
-const __filename = fileURLToPath(import.meta.url);
+// const __filename = fileURLToPath(import.meta.url);
 // console.log(__filename)
 
 // 👇️ "/home/borislav/Desktop/javascript"
@@ -64,19 +70,19 @@ const __filename = fileURLToPath(import.meta.url);
 // console.log(path.join(__dirname, '/dist', 'index.html'))
 
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
-if (process.env.NODE_ENV === "production") {
-app.use(express.static(path.join(__dirname, '../client/build')))
-app.get('*', (req, res)=> {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"))
+// if (process.env.NODE_ENV === "production") {
+// app.use(express.static(path.join(__dirname, '../client/build')))
+// app.get('*', (req, res)=> {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"))
 
-})
-} else {
-  app.get("/", (req, res) => {
-    res.send("myReddit API is running")
-  })
-}
+// })
+// } else {
+//   app.get("/", (req, res) => {
+//     res.send("myReddit API is running")
+//   })
+// }
 
 connectDb();
 
@@ -90,12 +96,12 @@ export const getUserFromToken = async (token) => {
 };
 
 
-// app.get("/", async (req, res) => {
-//   const comment = await Comment.find({
-//     rootId: { $exists: false },
-//   });
-//   res.status(200).json(comment);
-// });
+app.get("/", async (req, res) => {
+  const comment = await Comment.find({
+    rootId: { $exists: false },
+  });
+  res.status(200).json(comment);
+});
 
 
 // async function deleteAll() {
