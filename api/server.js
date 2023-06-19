@@ -5,6 +5,8 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import jwt from "jsonwebtoken";
+import path from "path";
+import {fileURLToPath} from 'url';
 
 import User from "./models/User.js";
 import Community from "./models/Community.js";
@@ -36,12 +38,7 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.get("/", async (req, res) => {
-  const comment = await Comment.find({
-    rootId: { $exists: false },
-  });
-  res.status(200).json(comment);
-});
+
 
 app.use("/votes", VotingRoutes);
 app.use("/communities", CommunityRoutes);
@@ -55,8 +52,35 @@ app.use("/upload", UploadRRoute);
 app.use("/image", ImageRoute);
 app.use("/login", LoginRoute)
 
-// __dirname=path.resolve()
+
+
+const __filename = fileURLToPath(import.meta.url);
+// console.log(__filename)
+
+// 👇️ "/home/borislav/Desktop/javascript"
+
+// console.log('directory-name 👉️', __dirname);
+// 👇️ "/home/borislav/Desktop/javascript/dist/index.html"
+// console.log(path.join(__dirname, '/dist', 'index.html'))
+
+
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+app.use(express.static(path.join(__dirname, '../client/build')))
+app.get('*', (req, res)=> {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"))
+
+})
+} else {
+  app.get("/", (req, res) => {
+    res.send("myReddit API is running")
+  })
+}
+
 connectDb();
+
+
 
 
 const secret = process.env.SECRET_KEY
@@ -65,6 +89,13 @@ export const getUserFromToken = async (token) => {
   return await User.findById(userInfo.id);
 };
 
+
+// app.get("/", async (req, res) => {
+//   const comment = await Comment.find({
+//     rootId: { $exists: false },
+//   });
+//   res.status(200).json(comment);
+// });
 
 
 // async function deleteAll() {
