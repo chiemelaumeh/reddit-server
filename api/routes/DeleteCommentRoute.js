@@ -2,7 +2,7 @@ import express from "express"
 const router = express.Router()
 import Comment from "../models/Comments.js"
 
-router.delete("/delete/:id", async(req, res) => {
+router.delete("/:id", async(req, res) => {
   const { id } = req.params
 
   try {

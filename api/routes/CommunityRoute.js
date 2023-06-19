@@ -3,7 +3,7 @@ const router = express.Router();
 import Community from "../models/Community.js";
 import { getUserFromToken } from "../server.js";
 
-router.post("/communities", async (req, res) => {
+router.post("/", async (req, res) => {
   const token = req.cookies.token;
   const { name, slogan, avatar, cover } = req.body;
 
@@ -34,7 +34,7 @@ router.post("/communities", async (req, res) => {
 // const { email, username } = req.body;
 // const findUser = await User.exists({ username });
 
-router.get("/communities/:chosenCommunity", async (req, res) => {
+router.get("/:chosenCommunity", async (req, res) => {
   const { chosenCommunity } = req.params;
   // console.log(chosenCommunity)
   try {
@@ -45,7 +45,7 @@ router.get("/communities/:chosenCommunity", async (req, res) => {
     console.log(error.message);
   }
 });
-router.get("/communities/", async(req,res)=> {
+router.get("/", async(req,res)=> {
   // console.log("erf")
   try {
     // const theCommunities = await Community.distinct('name')

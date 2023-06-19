@@ -3,7 +3,7 @@ const router = express.Router()
 import Comment from "../models/Comments.js";
 
 
-router.get("/comments", async (req, res) => {
+router.get("/", async (req, res) => {
   const { search, chosenCommunity } = req.query;
   const filter = search
     ? { title: { $regex: ".*" + search + ".*" } }
@@ -21,7 +21,7 @@ router.get("/comments", async (req, res) => {
   }
 });
 
-router.get("/comments/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     res.json(comment);
@@ -31,7 +31,7 @@ router.get("/comments/:id", async (req, res) => {
   }
 });
 
-router.get("/comments/root/:rootId", async (req, res) => {
+router.get("/root/:rootId", async (req, res) => {
   try {
     const comments = await Comment.find({ rootId: req.params.rootId }).sort({
       postedAt: -1,
@@ -43,7 +43,7 @@ router.get("/comments/root/:rootId", async (req, res) => {
   }
 });
 
-router.get("/comments/parent/:parentId", async (req, res) => {
+router.get("/parent/:parentId", async (req, res) => {
   try {
     const comments = await Comment.find({ parentId: req.params.parentId });
     res.json(comments);

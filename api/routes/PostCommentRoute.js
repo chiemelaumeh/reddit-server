@@ -5,7 +5,7 @@ import Comment from "../models/Comments.js";
 
 import { getUserFromToken } from "../server.js";
 
-router.post("/comments", async (req, res) => {
+router.post("/", async (req, res) => {
   const token = req.cookies.token;
 
   try {
