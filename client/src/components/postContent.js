@@ -34,7 +34,7 @@ const PostContent = (props) => {
   const deleteOnePost = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/delete/${props.id}`
+        `/delete/${props.id}`
       );
       setDeleted(response.data);
     } catch (error) {

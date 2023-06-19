@@ -37,7 +37,7 @@ const PostFormModal = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:4000/comments/",
+        "/comments/",
         data,
         { withCredentials: true }
       );

@@ -17,7 +17,7 @@ const Postform = () => {
   const theLightModeInput = lightMode ? "first-input-light" : "first-input";
   const getAllComunities = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/communities/");
+      const response = await axios.get("/communities/");
       setAllCommunities(response.data);
     } catch (error) {
       console.error(error.message);

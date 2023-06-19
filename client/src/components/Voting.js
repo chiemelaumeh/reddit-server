@@ -14,7 +14,7 @@ const Voting = ({ props }) => {
   const { setModalVisibility } = useContext(AuthModalContext);
 
   const sendVote = async (direction, hasVotedUp,hasVotedDown) => {
-    const url = `http://localhost:4000/votes/${props._id}/${user.username}/${direction}/${hasVotedUp}/${hasVotedDown}`;
+    const url = `/votes/${props._id}/${user.username}/${direction}/${hasVotedUp}/${hasVotedDown}`;
     try {
       const response = await axios.get(url, {
         withCredentials: true,
@@ -27,7 +27,7 @@ const Voting = ({ props }) => {
   useEffect(() => {
 
     const refreshVotes = async () => {
-      const url = `http://localhost:4000/votes/${props._id}/`;
+      const url = `/votes/${props._id}/`;
       try {
         const response = await axios.get(url);
         setVoteState(response.data);

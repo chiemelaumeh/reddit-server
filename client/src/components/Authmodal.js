@@ -30,7 +30,7 @@ const Authmodal = () => {
       // setUsername("");
       try {
         const response = await axios.post(
-          "http://localhost:4000/register",
+          "/register",
           data,
           {
             withCredentials: true,

@@ -66,7 +66,7 @@ const Header = () => {
 
   const getAllComunities = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/communities/");
+      const response = await axios.get("/communities/");
 
       setAllCommunities(response.data);
     } catch (error) {
@@ -101,7 +101,7 @@ const Header = () => {
   };
 
   const logout = async () => {
-    await axios.get("http://localhost:4000/logout", {
+    await axios.get("/logout", {
       withCredentials: true,
     });
     setUser({});

@@ -28,7 +28,7 @@ const UploadModal = () => {
     const showImage = async () => {
       try {
         const data = { user };
-        const response = await axios.post("http://localhost:4000/image/", data, {withCredentials: true});
+        const response = await axios.post("/image/", data, {withCredentials: true});
         setUploadedImage(response.data);
         // console.log(response)
       } catch (error) {
@@ -64,7 +64,7 @@ const UploadModal = () => {
     const data = { base64EncodedImage, user };
     // console.log(data)
     try {
-      const response = await axios.post("http://localhost:4000/upload/", data);
+      const response = await axios.post("/upload/", data);
       setUploadedImage(response.data);
       // console.log(response)
     } catch (error) {

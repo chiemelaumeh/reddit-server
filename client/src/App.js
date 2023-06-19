@@ -9,15 +9,14 @@ import UserContext from "./context/UserContext";
 import axios from "axios";
 import Routing from "./components/Routing";
 
-axios.defaults.baseURL =  "http://localhost:4000/";
+axios.defaults.baseURL =  "https://redditt-api.onrender.com/user/";
 
 function App() {
   const {setUser} = useContext(UserContext);
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get(
-        // "https://redditt-api.onrender.com/user",
-        "http://localhost:4000/user",
+        "/user",
         {
           withCredentials: true,
         }
