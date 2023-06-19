@@ -10,6 +10,8 @@ import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
 import { BsUpload } from "react-icons/bs";
 
+import ImageComponent from "./ImageComponent";
+
 import logo from "../images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsChevronDown } from "react-icons/bs";
@@ -17,7 +19,7 @@ import { SlLogin } from "react-icons/sl";
 import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
 import CommunityContext from "../context/CommunityContext";
-import avatar from "../images/IMG_9146.jpg";
+import avatar from "../images/user.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import RedirectContext from "../context/RedirectContext";
@@ -35,14 +37,17 @@ const Header = () => {
     setLightMode,
     setAllCommunities,
     openUpload,
-    setOpenUpload
+    setOpenUpload,
+    previewSource,
+    setPreviewsource,
+    uploadedImage,
   } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
   const { setShowCommunity } = useContext(CommunityContext);
-  
-  const theLightModeSearchBox = lightMode ? "search-box-light" : "search-box"
+
+  const theLightModeSearchBox = lightMode ? "search-box-light" : "search-box";
   const theLightMode = lightMode ? "header-light" : "header";
   const theLightModeForm = lightMode ? "form-light" : "form";
   const theLightModeIcon = lightMode ? "icon-light" : "icon";
@@ -183,7 +188,6 @@ const Header = () => {
             </>
           )}
         </OutsideClickHandler>
-       
 
         <OutsideClickHandler
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
@@ -215,10 +219,18 @@ const Header = () => {
 
           {user.username && (
             <>
-              <button className="avatar-btn" onClick={toggleDropDown}>
-                <img src={avatar} alt="" className="avatar" />
+              <div className="avatar-btn" onClick={toggleDropDown}>
+                {/* <div className="avatar"> */}
+                {uploadedImage ? (
+                  <ImageComponent />
+                ) : (
+                  <img src={avatar} alt="" className="avatar" />
+                )}
+
+                {/* </div> */}
+
                 <BsChevronDown className="chevron" />
-              </button>
+              </div>
 
               <div
                 className={
@@ -243,16 +255,16 @@ const Header = () => {
 
                   {darkOrLight}
                 </button>
-
                 <button
-                  onClick={()=>{setOpenUpload(true);setUserDropDownVisibilityClass("hidden")}}
+                  onClick={() => {
+                    setOpenUpload(true);
+                    setUserDropDownVisibilityClass("hidden");
+                  }}
                   href=""
                   className=" link-box border-top"
                 >
-           
-                  <BsUpload className=" login-icon "/>
-
-                 Upload Image
+                  <BsUpload className=" login-icon " />
+                  Upload Image
                 </button>
               </div>
             </>

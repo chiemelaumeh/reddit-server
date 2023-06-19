@@ -17,6 +17,7 @@ router.post("/register", async (req, res) => {
       email,
       username,
       password,
+      picture:"",
     });
     try {
       const info = await user.save();

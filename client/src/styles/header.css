@@ -188,13 +188,7 @@ body {
   cursor: pointer;
   padding: 0 2px;
 }
-.avatar {
-  width: 3rem;
-  height: 2.3rem;
-  background-color: var(--offBlack);
-  margin-left: -0.4rem;
 
-}
 .default-icon {
   width: 4rem;
   height: 4rem;
@@ -204,13 +198,42 @@ body {
 .avatar-btn {
 overflow: hidden;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
   border: 1px solid var(--reddit_border);
   background-color: inherit;
-  width: 4.4rem;
+  width: 4.3rem;
   height: 2.25rem;
   border-radius: 4px;
   cursor: pointer;
+  /* border: 1px solid yellow; */
+}
+.avatar {
+  width: 2.6rem;
+  height: 2.1.2rem;
+  background-color: var(--offBlack);
+  margin-left: -0.4rem;
+  /* border: 1px solid red; */
+
+}
+.avatar-image {
+  width: 2.5rem;
+  height: 2rem;
+  background-color: var(--offBlack);
+  margin-left: -0.4rem;
+  border: 1px solid red;
+
+}
+.chevron {
+
+  width: 1rem;
+  height: 1rem;
+  color: #d6d6d6;
+  margin: 0 6px;
+  /* border: 1px solid forestgreen; */
+
+  /* margin-left: 0; */
 }
 .default-chevron{
   width: 3.5rem;
@@ -218,14 +241,6 @@ overflow: hidden;
   color: #d6d6d6;
   /* margin: 0 1px; */
   margin-right: 0.5rem
-}
-.chevron {
-  width: 2rem;
-  height: 1.5rem;
-  color: #d6d6d6;
-  margin: 0 6px;
-
-  /* margin-left: 0; */
 }
 .matching-Pass {
   color: red;

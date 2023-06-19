@@ -26,7 +26,6 @@ const PostContent = (props) => {
     setDeleteModalVisibility,
     confirmDeleteVisibility,
     setConfirmDeleteVisibility,
-    
   } = useContext(AuthModalContext);
   const { user } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);

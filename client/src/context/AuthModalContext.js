@@ -12,6 +12,9 @@ export const AuthModalProvider = ({ children }) => {
   const [deleteModalVisibility, setDeleteModalVisibility] = useState(false);
   const [confirmDeleteVisibility, setConfirmDeleteVisibility] = useState(false);
   const [openUpload, setOpenUpload] = useState(false)
+  const [previewSource, setPreviewsource] = useState()
+  const [uploadedImage, setUploadedImage] = useState("")
+  
 
   return (
     <AuthModalContext.Provider
@@ -35,7 +38,11 @@ export const AuthModalProvider = ({ children }) => {
         confirmDeleteVisibility,
         setConfirmDeleteVisibility,
         openUpload,
-        setOpenUpload
+        setOpenUpload,
+       previewSource,
+       setPreviewsource,
+       uploadedImage,
+        setUploadedImage
       }}
     >
       {children}

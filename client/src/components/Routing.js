@@ -33,6 +33,7 @@ const Routing = () => {
 
       {!redirect && (
         <>
+        
           <Header />
           <UploadModal />
           <Routinglocation />

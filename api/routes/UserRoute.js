@@ -1,4 +1,5 @@
 import express from "express";
+import User from "../models/User.js";
 const router = express.Router();
 import { getUserFromToken } from "../server.js";
 
@@ -7,6 +8,7 @@ router.get("/user", (req, res) => {
     const token = req.cookies.token;
     try {
       const user = await getUserFromToken(token);
+
       res.json({ username: user.username });
     } catch (err) {
       console.error(err.message);

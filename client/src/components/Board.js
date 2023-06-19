@@ -5,6 +5,7 @@ import Postlisting from "./Postlisting";
 import { useContext } from "react";
 import CommunityContext from "../context/CommunityContext";
 import AuthModalContext from "../context/AuthModalContext";
+import ImageComponent from "./ImageComponent";
 const Board = () => {
   const {communityFromUrl} = useParams();
   const {setChosenCommunity} = useContext(CommunityContext);
@@ -19,6 +20,7 @@ const Board = () => {
       <Headerboard />
       <Postform />
       <Postlisting />
+  
     </div>
   );
 };
