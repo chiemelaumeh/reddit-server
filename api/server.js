@@ -8,25 +8,25 @@ import cors from "cors";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-
 import User from "./models/User.js";
 import Community from "./models/Community.js";
 import Vote from "./models/Votes.js";
 import Comment from "./models/Comments.js";
+import cloudinary from "./cloudinary.js";
 
-
-import RegisterRoute from "./routes/RegisterRoute.js"
+import RegisterRoute from "./routes/RegisterRoute.js";
 import VotingRoutes from "./routes/VotingRoutes.js";
 import CommunityRoutes from "./routes/CommunityRoute.js";
-import UserRoute from "./routes/UserRoute.js"
-import LogoutRoute from "./routes/LogoutRoute.js"
-import PostCommentRoute from "./routes/PostCommentRoute.js"
-import GetCommentsRoute from "./routes/GetCommentsRoute.js"
-import DeleteCommentRoute from "./routes/DeleteCommentRoute.js"
-
+import UserRoute from "./routes/UserRoute.js";
+import LogoutRoute from "./routes/LogoutRoute.js";
+import PostCommentRoute from "./routes/PostCommentRoute.js";
+import GetCommentsRoute from "./routes/GetCommentsRoute.js";
+import DeleteCommentRoute from "./routes/DeleteCommentRoute.js";
+import { ReturnDocument } from "mongodb";
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://reddit-app-nw97.onrender.com"],
@@ -38,19 +38,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(VotingRoutes);
 app.use(CommunityRoutes);
-app.use(RegisterRoute)
-app.use(UserRoute)
-app.use(LogoutRoute)
-app.use(PostCommentRoute)
-app.use(GetCommentsRoute)
-app.use(DeleteCommentRoute)
-
-
-
+app.use(RegisterRoute);
+app.use(UserRoute);
+app.use(LogoutRoute);
+app.use(PostCommentRoute);
+app.use(GetCommentsRoute);
+app.use(DeleteCommentRoute);
 
 const connectionString = process.env.DATABASE_URL;
 const secret = process.env.SECRET_KEY;
-
 
 export const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
@@ -72,7 +68,46 @@ app.get("/", async (req, res) => {
   res.status(200).json(comment);
 });
 
+app.post("/upload", async (req, res) => {
+  const user = req.body.user.username;
 
+  const fileStr = req.body.base64EncodedImage;
+
+  try {
+    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: "ml-default",
+      allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "jfif", "webp"],
+    });
+
+    const onePublicId = uploadedResponse.public_id;
+    const updatedPicture = await User.findOneAndUpdate(
+      { username: user },
+      { picture: onePublicId },
+      { returnDocument: "after" }
+    );
+    // console.log(updatedPicture)
+    res.json(onePublicId);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.post("/image", async (req, res) => {
+  const getImage = async () => {
+    const token = req.cookies.token;
+
+    try {
+      const username = await getUserFromToken(token);
+      const user = username.username;
+      const chosenUser = await User.findOne({ username: user });
+      res.json(chosenUser.picture);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getImage();
+});
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const findUser = async () => {
@@ -105,25 +140,22 @@ app.post("/login", (req, res) => {
   findUser();
 });
 
-
-
 async function deleteAll() {
   await Comment.deleteMany({
-
     $expr: { $lt: [{ $strLenCP: "$body" }, 20] },
   });
 
-   await Vote.deleteMany({
-      direction: { $exists: true },
-    });
-   await Community.deleteMany({
-
-        $expr: { $lt: [ { $strLenCP: "$avatar" }, 10 ] },
-   })
+  await Vote.deleteMany({
+    direction: { $exists: true },
+  });
+  await Community.deleteMany({
+    $expr: { $lt: [{ $strLenCP: "$avatar" }, 10] },
+  });
   console.log("Deleted All");
 }
 
 // deleteAll();
-app.listen(4000, () => {
-  console.log("Listening on Port 4000");
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Listening on Port ${PORT}`);
 });

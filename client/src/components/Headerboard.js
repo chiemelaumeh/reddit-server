@@ -1,19 +1,20 @@
 import { useContext } from "react";
 import CommunityContext from "../context/CommunityContext";
+import banner from "../images/banner.png"
 const Headerboard = () => {
   const { chosenCommunity, ...communityInfo } = useContext(CommunityContext);
   const { name, slogan, avatar, cover } = communityInfo;
-  console.log(chosenCommunity);
 
   if (!communityInfo.name) {
     return (
       <div
-        className="below-header"
-        style={{
-          backgroundImage: `url("https://w0.peakpx.com/wallpaper/100/43/HD-wallpaper-day-landscape-digital-art-artist-artwork-digital-art-deviantart.jpg")`,
-        }}
+        // className="below-header"
+        
+        // style={{
+        //   backgroundImage: `url("https://w0.peakpx.com/wallpaper/100/43/HD-wallpaper-day-landscape-digital-art-artist-artwork-digital-art-deviantart.jpg")`,
+        // }}
       >
-        {" "}
+        
       </div>
     );
   }

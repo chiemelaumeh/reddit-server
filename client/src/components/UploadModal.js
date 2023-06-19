@@ -1,0 +1,115 @@
+import React from "react";
+
+import { useContext, useState, useEffect } from "react";
+import ImageComponent from "./ImageComponent";
+import UserContext from "../context/UserContext";
+import axios from "axios";
+import userImage from "../images/user.jpg";
+import AuthModalContext from "../context/AuthModalContext";
+import OutsideClickHandler from "react-outside-click-handler";
+const UploadModal = () => {
+  const {
+    openUpload,
+    setOpenUpload,
+    previewSource,
+    setPreviewsource,
+    uploadedImage,
+    setUploadedImage,
+  } = useContext(AuthModalContext);
+  const { user } = useContext(UserContext);
+  // console.log(user)
+
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+
+
+
+  useEffect(() => {
+    const showImage = async () => {
+      try {
+        const data = { user };
+        const response = await axios.post("http://localhost:4000/image/", data, {withCredentials: true});
+        setUploadedImage(response.data);
+        // console.log(response)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    showImage();
+  }, []);
+
+  const handlefileInputState = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewsource(reader.result);
+    };
+  };
+
+  const handleSubmitFile = (e) => {
+    // console.log("ssubsf")
+    e.preventDefault();
+    if (!previewSource) return;
+
+    uploadImage(previewSource);
+  };
+
+
+  const uploadImage = async (base64EncodedImage) => {
+    const data = { base64EncodedImage, user };
+    // console.log(data)
+    try {
+      const response = await axios.post("http://localhost:4000/upload/", data);
+      setUploadedImage(response.data);
+      // console.log(response)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <div className={openUpload ? "upload-page" : "hide-upload-page"}>
+      <OutsideClickHandler onOutsideClick={() => setOpenUpload(false)}>
+        <div className="upload-sub">
+          <div className="image-div">
+            {/* {
+              previewSource && ( */}
+            <img
+              className="main-image"
+              src={previewSource ? previewSource : userImage}
+              alt="chosen"
+            />
+
+            {/* )
+            } */}
+          </div>
+
+          <form action="" onSubmit={handleSubmitFile} className="image-form">
+            <input
+              type="file"
+              name="image"
+              onChange={handlefileInputState}
+              value={fileInputState}
+            />
+            <button
+              className="btn"
+              type="submit"
+              onClick={() => {
+                setOpenUpload(false);
+              }}
+            >
+              upload
+            </button>
+          </form>
+        </div>
+      </OutsideClickHandler>
+    </div>
+  );
+};
+
+export default UploadModal;

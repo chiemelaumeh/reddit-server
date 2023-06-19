@@ -11,6 +11,7 @@ import CommunityContext from "../context/CommunityContext";
 
 const PostFormModal = () => {
   const { setRedirect } = useContext(RedirectContext);
+  const { setShowCommunity } = useContext(CommunityContext)
   const [selectedCommunity, setSelectedCommunity] = useState("");
   const changeState = (e) => {
     setSelectedCommunity(e.target.value);
@@ -84,16 +85,7 @@ const PostFormModal = () => {
         </div>
         <div className="dropdown-div">
           <div className="dropdown">
-            <select
-              className="selector"
-              onChange={
-                changeState
-
-                // (e) => { const c = allCommunities?.find((x) => x.id === e.target.value)
-                //   console.log(c)
-                // }
-              }
-            >
+            <select className="selector" onChange={changeState}>
               <option required value="default">
                 {" "}
                 Please choose a community
@@ -109,8 +101,12 @@ const PostFormModal = () => {
                 : null}
             </select>
           </div>
+         
 
           <div className="post-btns">
+            <button className="post-form-btn btn" onClick={handleTwo}>
+              POST
+            </button>
             <button
               onClick={() => {
                 setPostFormModalVisibility(false);
@@ -120,11 +116,9 @@ const PostFormModal = () => {
             >
               Cancel
             </button>
-            <button className="post-form-btn btn" onClick={handleTwo}>
-              POST
-            </button>
           </div>
         </div>
+            <button onClick={()=>{setPostFormModalVisibility(false);setShowCommunity(true)}} className=" create-btn" >Create Community</button>
       </div>
     </div>
   );

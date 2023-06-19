@@ -5,11 +5,13 @@ import OutsideClickHandler from "react-outside-click-handler";
 import AuthModalContext from "../context/AuthModalContext";
 import ModalContext from "../context/ModalContext";
 import { CiUser } from "react-icons/ci";
-import { BsBell } from "react-icons/bs";
-import { BsChatDots } from "react-icons/bs";
 import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
+import { BsUpload } from "react-icons/bs";
+
+import ImageComponent from "./ImageComponent";
+
 import logo from "../images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsChevronDown } from "react-icons/bs";
@@ -17,7 +19,7 @@ import { SlLogin } from "react-icons/sl";
 import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
 import CommunityContext from "../context/CommunityContext";
-import avatar from "../images/IMG_9146.jpg";
+import avatar from "../images/user.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import RedirectContext from "../context/RedirectContext";
@@ -34,12 +36,18 @@ const Header = () => {
     lightMode,
     setLightMode,
     setAllCommunities,
+    openUpload,
+    setOpenUpload,
+    previewSource,
+    setPreviewsource,
+    uploadedImage,
   } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
   const { setRedirect } = useContext(RedirectContext);
   const { setShowCommunity } = useContext(CommunityContext);
 
+  const theLightModeSearchBox = lightMode ? "search-box-light" : "search-box";
   const theLightMode = lightMode ? "header-light" : "header";
   const theLightModeForm = lightMode ? "form-light" : "form";
   const theLightModeIcon = lightMode ? "icon-light" : "icon";
@@ -126,7 +134,7 @@ const Header = () => {
           <CiSearch className="search-icon" />
 
           <input
-            className="search-box"
+            className={theLightModeSearchBox}
             required
             type="text"
             placeholder="Search Reddit"
@@ -139,12 +147,12 @@ const Header = () => {
         >
           {user.username && (
             <>
-              <button className="icon-btn">
+              {/* <button className="icon-btn">
                 <BsBell className={theLightModeIcon} />
               </button>
               <button className="icon-btn">
                 <BsChatDots className={theLightModeIcon} />
-              </button>
+              </button> */}
               <button className="icon-btn" onClick={togglePlusDropDown}>
                 <HiOutlinePlus className={theLightModeIcon} />
               </button>
@@ -180,12 +188,6 @@ const Header = () => {
             </>
           )}
         </OutsideClickHandler>
-        {!user.username && (
-          <div className="login-div">
-            <Headerbuttons onClick={handleLogin}>Log In </Headerbuttons>
-            <Headerbuttons onClick={handleSignUp}>Sign Up </Headerbuttons>
-          </div>
-        )}
 
         <OutsideClickHandler
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
@@ -217,10 +219,18 @@ const Header = () => {
 
           {user.username && (
             <>
-              <button className="avatar-btn" onClick={toggleDropDown}>
-                <img src={avatar} alt="" className="avatar" />
+              <div className="avatar-btn" onClick={toggleDropDown}>
+                {/* <div className="avatar"> */}
+                {uploadedImage ? (
+                  <ImageComponent />
+                ) : (
+                  <img src={avatar} alt="" className="avatar" />
+                )}
+
+                {/* </div> */}
+
                 <BsChevronDown className="chevron" />
-              </button>
+              </div>
 
               <div
                 className={
@@ -244,6 +254,17 @@ const Header = () => {
                   {darkOrLightIcon}
 
                   {darkOrLight}
+                </button>
+                <button
+                  onClick={() => {
+                    setOpenUpload(true);
+                    setUserDropDownVisibilityClass("hidden");
+                  }}
+                  href=""
+                  className=" link-box border-top"
+                >
+                  <BsUpload className=" login-icon " />
+                  Upload Image
                 </button>
               </div>
             </>

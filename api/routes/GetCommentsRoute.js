@@ -25,6 +25,7 @@ router.get("/comments/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     res.json(comment);
+
   } catch (err) {
     console.error(err.message);
   }
@@ -36,6 +37,7 @@ router.get("/comments/root/:rootId", async (req, res) => {
       postedAt: -1,
     });
     res.json(comments);
+
   } catch (err) {
     console.error(err.message);
   }

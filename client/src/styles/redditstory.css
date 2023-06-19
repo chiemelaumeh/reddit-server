@@ -105,7 +105,9 @@ body {
   padding: 1rem 0;
   height: 100vh;
 }
-
+.posted-by-div{
+  /* width: 5rem; */
+}
 .text-dots{
   display: flex;
   flex-direction: row;
@@ -115,6 +117,7 @@ body {
 }
 
 .dots {
+  width: 1.5rem;
   font-size:1.5rem;
   cursor: pointer;
 
@@ -132,7 +135,20 @@ body {
   border-radius: 2rem;
   padding: 0.2rem 0.7rem;
   cursor: pointer;
-  margin-left: 1rem;
+  width: 5rem;
+  height: 2rem;
+}
+
+.confirm-delete-btn  { border: none;
+  background-color: orangered;
+  border-radius: 2rem;
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+  width: 8rem;
+  height: 2rem;
+  margin-left: -2rem;
+
+
 }
 .edit-btn {
   border: none;
@@ -142,12 +158,19 @@ body {
   cursor: pointer;
   color: #fff;
   border: 1px solid var(--offwhite);
+  height: 2rem;
+  width: 5rem;
 }
 
 .edit-delete-div {
-  /* display: flex; */
-  justify-content: space-between;
-  width:9rem;
+  padding-top: 1.5rem;
+   display: flex; 
+   flex-direction: column;
+  margin-top: -2rem;
+  margin-right: 4rem;
+   width: 2rem; 
+   height: 6rem;
+   align-content: space-evenly;
 
 }
 
@@ -320,4 +343,20 @@ margin-left: 0.5rem
   
 
 }
+.main-reddit-div-fixed {
+/* background-color: red;
+color: aqua; */
+position: fixed;
+
+}
+/* .main-reddit-div {
+background-color: red;
+color: aqua; 
+
+
+
+
+} */
+
+
 

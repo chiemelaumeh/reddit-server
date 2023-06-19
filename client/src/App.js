@@ -23,7 +23,7 @@ function App() {
         }
         );
         setUser(response.data);
-        // console.log(response.data)
+   
 
       };
       getUser();
@@ -31,9 +31,9 @@ function App() {
 
 
   return (
-    <> 
+    <div > 
       <Routing  />
-    </>
+    </div>
   );
 }
 

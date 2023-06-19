@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "./Header";
 import Authmodal from "./Authmodal";
+import UploadModal from "./UploadModal";
 import PostFormModal from "./PostFormModal";
 import CommunityFormModal from "./CommunityFormModal";
 import { BrowserRouter as Router, Navigate } from "react-router-dom";
@@ -32,7 +33,9 @@ const Routing = () => {
 
       {!redirect && (
         <>
+        
           <Header />
+          <UploadModal />
           <Routinglocation />
           <Authmodal />
           <CommunityFormModal />

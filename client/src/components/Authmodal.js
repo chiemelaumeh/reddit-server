@@ -20,14 +20,14 @@ const Authmodal = () => {
 
   async function register(e) {
     e.preventDefault();
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("")
-    setUsername("");
     const data = { email, username, password };
     if(password === confirmPassword) {
       setMatchingPass(true)
       setModalVisibility(false)
+      // setEmail("");
+      // setPassword("");
+      // setConfirmPassword("")
+      // setUsername("");
       try {
         const response = await axios.post(
           "http://localhost:4000/register",
@@ -97,7 +97,7 @@ const Authmodal = () => {
              required
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {setPassword(e.target.value);setMatchingPass(true)}}
             />
           </label>
           {modalType === "register" && 
@@ -108,7 +108,7 @@ const Authmodal = () => {
             required
               type="password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => {setConfirmPassword(e.target.value);setMatchingPass(true)}}
             />
               {matchingPass === false && (
               <p className="matching-Pass">Passwords Do Not Match</p>
