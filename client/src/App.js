@@ -9,7 +9,8 @@ import UserContext from "./context/UserContext";
 import axios from "axios";
 import Routing from "./components/Routing";
 
-axios.defaults.baseURL =  "https://redditt-api.onrender.com/user/";
+axios.defaults.baseURL =  "https://redditt-api.onrender.com/";
+
 
 function App() {
   const {setUser} = useContext(UserContext);
