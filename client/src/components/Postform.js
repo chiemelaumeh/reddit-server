@@ -47,7 +47,9 @@ const Postform = () => {
               popUpModal();
             }}
           >
-            <input type="text" disabled className="first-form" placeholder="New Post" />
+            <span type="text" disabled className="first-form-input" placeholder="New Post" >
+              <p className="create-text">Create post</p>
+              </span>
           </form>
         </div>
       </div>

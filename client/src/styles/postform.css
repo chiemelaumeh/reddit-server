@@ -148,7 +148,22 @@ p {
   align-items: center;
 
 }
+.first-form-input{
+  border: 1px solid var(--reddit_border);
+  width: 90%;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
 
+}
+.create-text{
+  margin-left: 1rem;
+  color: var(--offwhite);
+  opacity: 0.5;
+  font-weight: 400;
+  font-size: 0.75rem;
+  
+
+}
 .create-comm {
   width: 5rem;
   border-radius: 15px;
