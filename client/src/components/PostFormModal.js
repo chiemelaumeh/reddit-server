@@ -67,10 +67,12 @@ const PostFormModal = () => {
     >
       <div className="post-modal-sub">
         <h3>Create a Post</h3>
-        <Input
+        <input
+          autoFocus
           required
           placeholder={"Title"}
           value={title}
+          className="input input-box"
           onChange={(e) => setTitle(e.target.value)}
         />
 
@@ -104,8 +106,8 @@ const PostFormModal = () => {
          
 
           <div className="post-btns">
-            <button className="post-form-btn btn" onClick={handleTwo}>
-              POST
+            <button className="post-form-btn btn" onClick={()=>{setPostFormModalVisibility(false);setShowCommunity(true)}}>
+              Create
             </button>
             <button
               onClick={() => {
@@ -118,7 +120,7 @@ const PostFormModal = () => {
             </button>
           </div>
         </div>
-            <button onClick={()=>{setPostFormModalVisibility(false);setShowCommunity(true)}} className=" create-btn" >Create Community</button>
+            <button onClick={handleTwo} className=" create-btn" >Post</button>
       </div>
     </div>
   );

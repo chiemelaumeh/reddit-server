@@ -40,16 +40,14 @@ const Postform = () => {
           <div className="input-avatar">
             <img src={inputavatar} alt="" />
           </div>
-          <form action="">
-            <input
-              type="text"
-              onClick={(e) => {
-                e.preventDefault();
-                popUpModal();
-              }}
-              className="first-form"
-              placeholder="New Post"
-            />
+          <form
+            action=""
+            onClick={(e) => {
+              e.preventDefault();
+              popUpModal();
+            }}
+          >
+            <input type="text" className="first-form" placeholder="New Post" />
           </form>
         </div>
       </div>

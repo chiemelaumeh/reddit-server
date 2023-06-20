@@ -60,7 +60,7 @@ const PostContent = (props) => {
         return (
           <div key={index}>
             <div className="text-dots">
-              <h5 className="posted-by-div">
+              <div className="posted-by-h5">
                 {" "}
                 Posted by {props.author}, in{" "}
                 <p onClick={navigateToCommunity} className="community-text">
@@ -68,7 +68,7 @@ const PostContent = (props) => {
                   r/{props.chosenCommunity}
                 </p>{" "}
                 - <TimeAgo datetime={props.postedAt} />{" "}
-              </h5>
+              </div>
 
               {singleComment._id === showEditandDelete && (
                 <div id={props._id} className="edit-delete-div">
