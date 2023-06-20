@@ -144,7 +144,7 @@ const PostContent = (props) => {
       <div className="vote-reply">
         <Voting props={props} />
         <Link
-          to={"/comments/" + (props.rootId || props._id)}
+          // to={"/comments/" + (props.rootId || props._id)}
           state={{ commentId: props.rootId || props._id }}
         >
           <FaRegCommentDots onClick={popUpModal} className={theLightMode} />
