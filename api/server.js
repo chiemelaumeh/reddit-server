@@ -38,7 +38,7 @@ app.use(
     origin: [
       // "http://localhost:3000",
       // "http://10.0.0.189:3000",
-      // "https://myreddit-megq.onrender.com/"
+      "https://myreddit-megq.onrender.com/"
       ],
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
