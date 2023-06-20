@@ -13,7 +13,7 @@ const Voting = ({ props }) => {
   const { user } = useContext(UserContext);
   const { setModalVisibility } = useContext(AuthModalContext);
 
-  const sendVote = async (direction, hasVotedUp,hasVotedDown) => {
+  const sendVote = async (direction, hasVotedUp, hasVotedDown) => {
     const url = `/votes/${props._id}/${user.username}/${direction}/${hasVotedUp}/${hasVotedDown}`;
     try {
       const response = await axios.get(url, {
