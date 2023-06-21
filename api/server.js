@@ -32,19 +32,30 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
+// app.use(cors())
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.use(
   cors({
     origin: [
       // "http://localhost:3000",
       // "http://10.0.0.189:3000",
-      "https://myreddit-megq.onrender.com/"
+      // "http://franklyn.local:3000"
+      "https://myreddit-megq.onrender.com"
       ],
-    methods: ["GET", "POST", "DELETE"],
+    methods: ["GET", "POST", "DELETE"],  
     credentials: true,
-  })
-);
-
+  })  
+);  
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
