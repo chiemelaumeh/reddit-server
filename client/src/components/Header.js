@@ -193,33 +193,17 @@ const Header = () => {
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
         >
           {!user.username && (
-            <button className="avatar-btn" onClick={toggleDropDown}>
-              <>
-                <CiUser className="icon default-icon" />
-                <BsChevronDown className="default-chevron" />
-              </>
+            <button className="avatar-btn" 
+             onClick={() => setModalVisibility(true)}>
+             LOGIN
             </button>
           )}
 
-          {!user.username && (
-            <div
-              onClick={() => setModalVisibility(true)}
-              className={
-                userDropDownVisibilityClass === "hidden"
-                  ? "hide-box"
-                  : " show-box"
-              }
-            >
-              <button href="" className="btn link-box">
-                <SlLogin className=" login-icon" />
-                Log In / Sign UP
-              </button>
-            </div>
-          )}
+      
 
           {user.username && (
             <>
-              <div className="avatar-btn" onClick={toggleDropDown}>
+              <div className="avatar-btn-on" onClick={toggleDropDown}>
                 {/* <div className="avatar"> */}
                 {uploadedImage ? (
                   <ImageComponent />

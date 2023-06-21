@@ -127,7 +127,7 @@ const Authmodal = () => {
           )}
           {modalType === "login" && (
             <div className="login-state">
-              <p className="login-p-1">New to Reddit?</p>
+              <p className="login-p-1">New to this space ?</p>
               <button className="btn" 
               onClick={() => setModalType("register")}>
                 SIGN UP

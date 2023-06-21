@@ -196,19 +196,33 @@ body {
   /* margin-left: -0.4rem; */
 }
 .avatar-btn {
-overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
+
   border: 1px solid var(--reddit_border);
   background-color: inherit;
   width: 4.3rem;
   height: 2.25rem;
   border-radius: 4px;
   cursor: pointer;
+  color: orangered;
+  opacity: 0.8;
   /* border: 1px solid yellow; */
 }
+.avatar-btn-on {
+  overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid var(--reddit_border);
+    background-color: inherit;
+    width: 4.3rem;
+    height: 2.25rem;
+    border-radius: 4px;
+    cursor: pointer;
+    color: orangered;
+    opacity: 0.8;
+    /* border: 1px solid yellow; */
+  }
 .avatar {
   width: 2.6rem;
   height: 2.1.2rem;
