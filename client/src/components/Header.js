@@ -1,10 +1,8 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
-import Headerbuttons from "./Headerbuttons";
 import OutsideClickHandler from "react-outside-click-handler";
 import AuthModalContext from "../context/AuthModalContext";
 import ModalContext from "../context/ModalContext";
-import { CiUser } from "react-icons/ci";
 import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
@@ -15,7 +13,6 @@ import ImageComponent from "./ImageComponent";
 import logo from "../images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { BsChevronDown } from "react-icons/bs";
-import { SlLogin } from "react-icons/sl";
 import { SlLogout } from "react-icons/sl";
 import UserContext from "../context/UserContext";
 import CommunityContext from "../context/CommunityContext";
@@ -36,10 +33,7 @@ const Header = () => {
     lightMode,
     setLightMode,
     setAllCommunities,
-    openUpload,
     setOpenUpload,
-    previewSource,
-    setPreviewsource,
     uploadedImage,
   } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
@@ -193,13 +187,13 @@ const Header = () => {
           onOutsideClick={() => setUserDropDownVisibilityClass("hidden")}
         >
           {!user.username && (
-            <button className="avatar-btn" 
-             onClick={() => setModalVisibility(true)}>
-             LOGIN
+            <button
+              className="avatar-btn"
+              onClick={() => setModalVisibility(true)}
+            >
+              LOGIN
             </button>
           )}
-
-      
 
           {user.username && (
             <>
@@ -225,7 +219,6 @@ const Header = () => {
               >
                 <p>Welcome, {user.username}</p>
 
-                
                 <button
                   onClick={() => {
                     setOpenUpload(true);
@@ -250,7 +243,6 @@ const Header = () => {
                   <SlLogout className=" login-icon " />
                   Logout
                 </button>
-
               </div>
             </>
           )}

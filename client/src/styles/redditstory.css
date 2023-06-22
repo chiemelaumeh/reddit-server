@@ -39,7 +39,6 @@ body {
   border-radius: 4px;
   text-decoration: none;
   color: var(--reddit_lightgrey);
-  
 }
 .reddit-story-light {
   display: block;
@@ -93,11 +92,11 @@ body {
 }
 
 .app-reddit-story {
-  background-color:var(--reddit_dark);
+  background-color: var(--reddit_dark);
   height: 120%;
 }
 .app-reddit-story-light {
-  background-color:whitesmoke;
+  background-color: whitesmoke;
   height: 100%;
 }
 
@@ -106,31 +105,25 @@ body {
   padding: 1rem 0;
   height: 100vh;
 }
-.posted-by-div{
 
-}
 .posted-by-h5 {
-  font-size:0.8rem ;
+  font-size: 0.8rem;
 }
-.text-dots{
+.text-dots {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
-
 }
 
 .dots {
   width: 1.5rem;
-  font-size:1.5rem;
+  font-size: 1.5rem;
   cursor: pointer;
-
 }
-.community-text{
+.community-text {
   color: orangered;
   display: inline;
   cursor: pointer;
-  
 }
 
 .delete-btn {
@@ -143,7 +136,8 @@ body {
   height: 2rem;
 }
 
-.confirm-delete-btn  { border: none;
+.confirm-delete-btn {
+  border: none;
   background-color: orangered;
   border-radius: 2rem;
   padding: 0.2rem 0.7rem;
@@ -151,8 +145,6 @@ body {
   width: 8rem;
   height: 2rem;
   margin-left: -2rem;
-
-
 }
 .edit-btn {
   border: none;
@@ -168,30 +160,22 @@ body {
 
 .edit-delete-div {
   padding-top: 1.5rem;
-   display: flex; 
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
   margin-top: -2rem;
   margin-right: 4rem;
-   width: 2rem; 
-   height: 6rem;
-   align-content: space-evenly;
-
+  width: 2rem;
+  height: 6rem;
+  align-content: space-evenly;
 }
 
 .comment-body-div {
-  border-left:1px solid var(--reddit_border);
+  border-left: 1px solid var(--reddit_border);
   padding: 0 1rem;
   margin-left: 1rem;
   margin-bottom: 1rem;
-  
- 
 }
 
-
-.comment-body-div-reply {
-
- 
-}
 .comment-reply {
   color: var(--reddit_border);
   background-color: var(--reddit_dark);
@@ -201,21 +185,13 @@ body {
 
   /* margin-left: 1rem; */
   /* margin-bottom: 1rem; */
- 
 }
 .reply-icon {
   color: var(--reddit_border);
   font-weight: 600;
   font-size: 1.25rem;
-  
-
-
-
-
 }
-.shift-right{
- 
-}
+
 .icon-reply-button {
   cursor: pointer;
   display: flex;
@@ -225,19 +201,15 @@ body {
 
   margin-bottom: 2rem;
   margin-top: 1rem;
-
-  
 }
-.single-reply-div{
+.single-reply-div {
   /* border: 1px solid red; */
-  border-left:1px solid var(--reddit_border);
+  border-left: 1px solid var(--reddit_border);
   padding: 0.5rem 1rem;
   margin-left: 1.3rem;
   margin-bottom: 1rem;
-  
+
   /* margin: 6 0rem; */
-
-
 }
 textarea::placeholder {
   font-weight: 400;
@@ -248,11 +220,9 @@ textarea::placeholder {
   /* display: flex; */
   /* flex-direction: row; */
   /* justify-content: space-around; */
- 
 }
-.reply-main-div p{
-margin-left: 0.5rem
-
+.reply-main-div p {
+  margin-left: 0.5rem;
 }
 /* .reply-main-div {
   border: 1px solid red;
@@ -273,7 +243,7 @@ margin-left: 0.5rem
 }
 
 .comment-btn {
-  padding:0.5rem 1rem;
+  padding: 0.5rem 1rem;
   margin-left: 1rem;
 }
 .cancel-btn {
@@ -289,30 +259,23 @@ margin-left: 0.5rem
   color: var(--reddit_border);
 }
 
-
-
-.vote-icon{
-  
+.vote-icon {
   font-size: 1.5rem;
 
-  opacity: .6;
+  opacity: 0.6;
   cursor: pointer;
   /* padding-right: 1rem; */
 }
-.vote-icon:hover {
-}
-.vote-icon-number {
 
+.vote-icon-number {
   font-size: 1rem;
   color: orangered;
-  margin:0 0.1rem;
-  opacity: .7;
+  margin: 0 0.1rem;
+  opacity: 0.7;
   padding: 0;
-  
-
 }
 
-.voting-div{
+.voting-div {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
@@ -321,37 +284,29 @@ margin-left: 0.5rem
   width: 5rem;
   padding: 0;
   margin-right: 0.5rem;
-  /* z-index: 5; */
-  /* justify-content:space-evenly; */
-  /* margin-left: 0.5rem; */
 }
 
 .voting-reply {
   display: flex;
   margin-top: 1rem;
   padding: 0;
-  
 }
-.vote-reply{
+.vote-reply {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 9.5rem;
-
 }
 .voting-reply-main {
   margin-bottom: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  
-
 }
 .main-reddit-div-fixed {
-/* background-color: red;
+  /* background-color: red;
 color: aqua; */
-position: fixed;
-
+  position: fixed;
 }
 /* .main-reddit-div {
 background-color: red;
@@ -362,14 +317,12 @@ color: aqua;
 
 } */
 
-
 .post-icon {
   color: var(--offwhite);
   width: 1.5rem;
   height: 1.5rem;
   margin: 0 8px;
   margin-right: 1rem;
-
 }
 .post-icon-light {
   color: var(--offBlack);
@@ -377,6 +330,4 @@ color: aqua;
   height: 1.5rem;
   margin: 0 8px;
   margin-right: 1rem;
-
 }
-

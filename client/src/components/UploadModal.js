@@ -13,22 +13,21 @@ const UploadModal = () => {
     setOpenUpload,
     previewSource,
     setPreviewsource,
-    uploadedImage,
     setUploadedImage,
   } = useContext(AuthModalContext);
   const { user } = useContext(UserContext);
   // console.log(user)
 
   const [fileInputState, setFileInputState] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
-
 
 
   useEffect(() => {
     const showImage = async () => {
       try {
         const data = { user };
-        const response = await axios.post("/image/", data, {withCredentials: true});
+        const response = await axios.post("/image/", data, {
+          withCredentials: true,
+        });
         setUploadedImage(response.data);
         // console.log(response)
       } catch (error) {
@@ -58,7 +57,6 @@ const UploadModal = () => {
 
     uploadImage(previewSource);
   };
-
 
   const uploadImage = async (base64EncodedImage) => {
     const data = { base64EncodedImage, user };
