@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const userSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
   author: {type: String, required: true},
   title: {type: String, required: true}, 
   postedAt: {type: Date},
@@ -12,6 +12,6 @@ const userSchema = new mongoose.Schema({
 })
 
 
-const Comment = mongoose.model("Comment", userSchema)
+const Comment = mongoose.model("Comment", commentSchema)
 
 export default Comment

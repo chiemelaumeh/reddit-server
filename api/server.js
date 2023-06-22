@@ -24,11 +24,12 @@ import DeleteCommentRoute from "./routes/DeleteCommentRoute.js";
 import UploadRRoute from "./routes/UploadRoute.js";
 import ImageRoute from "./routes/ImageRoute.js";
 import LoginRoute from "./routes/LoginRoute.js";
+import EmailTokenRoute from "./routes/EmailTokenRoute.js"
+import Token from "./models/Token.js";
 
 import { connectDb } from "./config/db.js";
 
-
-const app = express(); 
+const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
@@ -47,20 +48,19 @@ app.use((req, res, next) => {
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
-      "http://10.0.0.189:3000",
-      "http://franklyn.local:3000"
-      // "https://myreddit-megq.onrender.com"
-      ],
-    methods: ["GET", "POST", "DELETE"],  
+      // "http://localhost:3000",
+      // "http://10.0.0.189:3000",
+      // "http://franklyn.local:3000",
+      "https://myreddit-megq.onrender.com"
+    ],
+    methods: ["GET", "POST", "DELETE"],
     credentials: true,
-  })  
-);  
-
+  })
+);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 app.use("/votes", VotingRoutes);
 app.use("/communities", CommunityRoutes);
 app.use("/register", RegisterRoute);
@@ -72,8 +72,10 @@ app.use("/delete", DeleteCommentRoute);
 app.use("/upload", UploadRRoute);
 app.use("/image", ImageRoute);
 app.use("/login", LoginRoute);
+app.use("/", EmailTokenRoute)
 
-
+// import express from "express"
+// const router = express.Router()
 
 
 connectDb();
@@ -83,7 +85,6 @@ export const getUserFromToken = async (token) => {
   const userInfo = await jwt.verify(token, secret);
   return await User.findById(userInfo.id);
 };
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.resolve();
@@ -98,8 +99,6 @@ if (process.env.NODE_ENV === "production") {
     res.send("myReddit API is running");
   });
 }
-
-
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
