@@ -36,7 +36,8 @@ const Authmodal = () => {
             withCredentials: true,
           }
         );
-        alert(response.data)    
+        alert(response.data) 
+        console.log(response.data)   
       } catch (err) {
         console.error(err.message);
       }

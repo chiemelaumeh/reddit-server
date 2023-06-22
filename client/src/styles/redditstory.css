@@ -363,4 +363,20 @@ color: aqua;
 } */
 
 
+.post-icon {
+  color: var(--offwhite);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 8px;
+  margin-right: 1rem;
+
+}
+.post-icon-light {
+  color: var(--offBlack);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 8px;
+  margin-right: 1rem;
+
+}
 
