@@ -24,7 +24,7 @@ router.get("/users/:id/verify/:token", async (req, res) => {
     console.log(updated);
     console.log(removedToken);
 
-    res.status(200).send("Email verified successfully");
+    res.status(200).send("Email verified successfully server");
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }

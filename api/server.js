@@ -52,6 +52,7 @@ app.use(
       // "http://10.0.0.189:3000",
       // "http://franklyn.local:3000",
       "https://myreddit-megq.onrender.com"
+        //  "http://localhost:4000"
     ],
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
@@ -99,6 +100,22 @@ if (process.env.NODE_ENV === "production") {
     res.send("myReddit API is running");
   });
 }
+
+
+// app.get("/f", (req, res) => {
+//   res.send("myReddit we API is running");
+// });
+
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../client/public")));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../client/public/index.html"));
+//   });
+// } else {
+//   app.get("/", (req, res) => {
+//     res.send("myReddit API is running");
+//   });
+// }
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

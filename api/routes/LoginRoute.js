@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
         if (passOk) {
           jwt.sign({ id: user._id }, secret, (err, token) => {
             try {
-              res.cookie("token", token).json();
+              res.cookie("token", token).json("logged in");
               console.log(token);
             } catch (err) {
               console.error(err.message);
