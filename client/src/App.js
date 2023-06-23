@@ -20,7 +20,7 @@ function App() {
       const response = await axios.get("/user", {
         withCredentials: true,
       });
-      setUser(response.data);
+      setUser(response.data.username);
     };
     getUser();
   }, []);

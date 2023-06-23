@@ -31,12 +31,22 @@ body {
   cursor: auto;
 }
 
+.post-text{
+  font-size: 1rem;
+  font-weight: 200;
+  margin-top: 0.7rem;
+  line-height: 20px;
+  word-spacing: 1px;
+}
 .reddit-story {
   display: block;
   border: 1px solid var(--reddit_border);
   background-color: var(--reddit_midgrey);
   padding: 8px;
   border-radius: 4px;
+  border: 1px solid rgba(255, 68, 0, 0.202); 
+
+
   text-decoration: none;
   color: var(--reddit_lightgrey);
 }
@@ -86,7 +96,7 @@ body {
   padding-bottom: 1rem;
 
   /* width: 80vw; */
-
+ /* background-color: aqua; */
   /* padding-bottom: 1rem; */
   color: var(--reddit_text);
 }
@@ -108,6 +118,7 @@ body {
 
 .posted-by-h5 {
   font-size: 0.8rem;
+  font-weight: 300;
 }
 .text-dots {
   display: flex;

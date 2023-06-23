@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import inputavatar from "../images/input-avatar.png";
+import inputavatar from "../images/IMG_7758.PNG";
 import AuthModalContext from "../context/AuthModalContext";
 import UserContext from "../context/UserContext";
 import axios from "axios";
@@ -12,7 +12,8 @@ const Postform = () => {
     setAllCommunities,
   } = useContext(AuthModalContext);
   const { user } = useContext(UserContext);
-
+  console.log(user)
+  
   const theLightMode = lightMode ? "reddit-main-light" : "reddit-main";
   const theLightModeInput = lightMode ? "first-input-light" : "first-input";
   const getAllComunities = async () => {
@@ -37,9 +38,13 @@ const Postform = () => {
     <>
       <div className={theLightMode}>
         <div className={theLightModeInput}>
+          { user.username &&
+
           <div className="input-avatar">
             <img src={inputavatar} alt="" />
+          
           </div>
+          }
           <form
             action=""
             onClick={(e) => {

@@ -33,9 +33,7 @@ const PostContent = (props) => {
   const theLightMode = lightMode ? "post-icon-light" : "post-icon";
   const deleteOnePost = async () => {
     try {
-      const response = await axios.delete(
-        `/delete/${props.id}`
-      );
+      const response = await axios.delete(`/delete/${props.id}`);
       setDeleted(response.data);
     } catch (error) {
       console.error(error.message);
@@ -137,7 +135,7 @@ const PostContent = (props) => {
               )}
             </div>
             <h2>{singleComment.title}</h2>
-            <div>{props.body}</div>
+            <div className="post-text">{props.body}</div>
           </div>
         );
       })}
