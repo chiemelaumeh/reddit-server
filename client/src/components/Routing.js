@@ -4,6 +4,7 @@ import Authmodal from "./Authmodal";
 import UploadModal from "./UploadModal";
 import PostFormModal from "./PostFormModal";
 import CommunityFormModal from "./CommunityFormModal";
+
 import { BrowserRouter as Router, Navigate } from "react-router-dom";
 import Routinglocation from "./Routinglocation";
 import { useContext } from "react";
@@ -26,18 +27,18 @@ const Routing = () => {
       setRedirect(false);
     }
   }, [redirect]);
-  useEffect(() => {
-    if (tokenExist) {
-      setTokenExists(false);
-    }
-  }, [tokenExist]);
+  // useEffect(() => {
+  //   if (tokenExist) {
+  //     setTokenExists(false);
+  //   }
+  // }, [tokenExist]);
   return (
     <Router>
       {!!errorPage && <Navigate to={errorPage} />}
 
       {!!redirect && <Navigate to={redirect} />}
 
-      {!!tokenExist && <Navigate to={tokenExist} />}
+      {/* {!!tokenExist && <Navigate to={tokenExist} />} */}
 
       {!redirect && (
         <>

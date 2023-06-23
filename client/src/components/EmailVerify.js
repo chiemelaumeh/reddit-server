@@ -7,11 +7,11 @@ import RerenderContext from "../context/RerenderContext";
 // import { Fragment } from "react/cjs/react.production.min";
 
 const EmailVerify = () => {
-  const [setTokenExists] = useContext(RerenderContext)
-	const [validUrl, setValidUrl] = useState(true);
+  // const [tokenExist, setTokenExists] = useContext(RerenderContext)
+	// const [validUrl, setValidUrl] = useState(true);
 	const param = useParams();
-  setTokenExists(`/users/${param.id}/verify/${param.token}`)
-
+  // setTokenExists(`/users/${param.id}/verify/${param.token}`)
+  //  console.log(tokenExist)
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
@@ -19,28 +19,30 @@ const EmailVerify = () => {
 				const response = await axios.get(url);
 				console.log(response.data);
         console.log("data")
-				setValidUrl(true);
+				// setValidUrl(true);
 			} catch (error) {
 				console.log(error.message);
-				setValidUrl(false);
+				// setValidUrl(false);
 			}
 		};
 		verifyEmailUrl();
-	}, [param]);
+	}, []);
 
 	return (
 		<>
-			{validUrl ? (
+			{/* {validUrl ? ( */}
+
 				<div className="">
-					<img src="" alt="success_img" className="" />
+					{/* <img src="" alt="success_img" className="" /> */}
 					<h1>Email verified successfully frontend</h1>
 					<Link to="/">
 						<button className="">Login</button>
 					</Link>
 				</div>
-			) : (
+
+			{/* ) : (
 				<h1>404 Not Found</h1>
-			)}
+			)} */}
 		</>
 	);
 };
