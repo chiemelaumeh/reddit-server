@@ -23,18 +23,14 @@ router.get("/:id/verify/:token", async(req, res) => {
         { returnDocument: "after" }
       );
       const removedToken = await token.remove();
-      
-      // console.log(updated);
-      // console.log(removedToken);
+     
 
       res.status(300).redirect("https://myreddit-api.onrender.com/");
     } catch (error) {
       res.status(500).send("Internal Server Error");
     }
   
-  // verifyAndDelete();
-  
-  // res.send("Email verified successfully server");
+
 });
 
 

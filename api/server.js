@@ -48,9 +48,9 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
-      "http://10.0.0.189:3000",
-      "http://franklyn.local:3000",
+      // "http://localhost:3000",
+      // "http://10.0.0.189:3000",
+      // "http://franklyn.local:3000",
       "https://myreddit-megq.onrender.com" 
         //  "http://localhost:4000"
     ],

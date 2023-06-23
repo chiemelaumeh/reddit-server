@@ -14,7 +14,7 @@ export const sendEmail = async (email, subject, text) => {
       secureConnection: false,
       auth: {
         user: "engineerfranklyn@gmail.com",
-        pass: "rstzslrpsmctqejs"
+        pass: process.env.PASS
       },
       tls: {
         rejectUnauthorized: true

@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
 
         const url = `${process.env.BASE_URL}users/${newUser._id}/verify/${emailToken.token}`;
         await sendEmail(newUser.email, "Verify Email", url);
-        res.status(201).send("An email sent to your account, please verify");
+        res.status(201).send("Verification link sent to your email");
         // console.log(`profile created for ${username}, now please Log in!`);
       } catch (error) {
         console.error(error.message);
@@ -48,20 +48,20 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/:id/verify/:token", async (req, res) => {
-  try {
-    const user = await User.findOne({ _id: req.params.id });
-    if (!user) return res.status(400).send("Invalid link");
-    const token = await Token.findOne({
-      userId: user._id,
-      token: req.params.token,
-    });
-    if (!token) return res.status(400).send("Invalid link");
-    await User.updateOne({ _id: user_id, verified: true });
-    await token.remove();
-    res.status(200).send("Email verified successfully");
-  } catch (error) {
-    res.status(500).send("Internal Server ErroZZZ");
-  }
-});
+// router.get("/:id/verify/:token", async (req, res) => {
+//   try {
+//     const user = await User.findOne({ _id: req.params.id });
+//     if (!user) return res.status(400).send("Invalid link");
+//     const token = await Token.findOne({
+//       userId: user._id,
+//       token: req.params.token,
+//     });
+//     if (!token) return res.status(400).send("Invalid link");
+//     await User.updateOne({ _id: user_id, verified: true });
+//     await token.remove();
+//     res.status(200).send("Email verified successfully");
+//   } catch (error) {
+//     res.status(500).send("Internal Server ErroZZZ");
+//   }
+// });
 export default router;

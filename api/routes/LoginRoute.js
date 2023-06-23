@@ -37,19 +37,19 @@ router.post("/", (req, res) => {
               }).save();
               const url = `${process.env.BASE_URL}users/${user._id}/verify/${emailToken.token}`;
 
-              const emailRes = await sendEmail(user.email, "Verify Email", url);
-              console.log(emailRes, "here");
+             await sendEmail(user.email, "Verify Email", url);
+              
             }
             res
-              .status(400)
-              .send("An email sent to your account, please verify");
+              
+              .send("logged in! Verification link sent to your email");
           }
         } else {
-          res.status(422).send("invalid password");
+          res.json("invalid password");
           console.log("invalid password");
         }
       } else {
-        res.status(422).send("Invalid username");
+        res.json("Invalid username");
         console.log("invalid username");
       }
     } catch (error) {
