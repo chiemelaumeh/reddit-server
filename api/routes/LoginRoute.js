@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
               const emailRes = await sendEmail(user.email, "Verify Email", url);
               console.log(emailRes, "here");
             }
-            return res
+            res
               .status(400)
               .send("An email sent to your account, please verify");
           }

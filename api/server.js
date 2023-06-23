@@ -35,23 +35,23 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // app.use(cors())
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 app.use(
   cors({
     origin: [
-      // "http://localhost:3000",
-      // "http://10.0.0.189:3000",
-      // "http://franklyn.local:3000",
-      "https://myreddit-megq.onrender.com"
+      "http://localhost:3000",
+      "http://10.0.0.189:3000",
+      "http://franklyn.local:3000",
+      "https://myreddit-megq.onrender.com" 
         //  "http://localhost:4000"
     ],
     methods: ["GET", "POST", "DELETE"],
@@ -61,7 +61,7 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 app.use("/votes", VotingRoutes);
 app.use("/communities", CommunityRoutes);
 app.use("/register", RegisterRoute);
@@ -73,7 +73,7 @@ app.use("/delete", DeleteCommentRoute);
 app.use("/upload", UploadRRoute);
 app.use("/image", ImageRoute);
 app.use("/login", LoginRoute);
-app.use("/", EmailTokenRoute)
+app.use("/users", EmailTokenRoute)
 
 // import express from "express"
 // const router = express.Router()
