@@ -26,8 +26,8 @@ router.get("/:id/verify/:token", async(req, res) => {
       
       // console.log(updated);
       // console.log(removedToken);
-      const __dirname = path.resolve();
-      res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+
+      res.status(300).redirect("https://myreddit-api.onrender.com/");
     } catch (error) {
       res.status(500).send("Internal Server Error");
     }
