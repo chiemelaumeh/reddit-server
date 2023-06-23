@@ -2,9 +2,10 @@ import express from "express";
 const router = express.Router();
 import User from "../models/User.js";
 import Token from "../models/Token.js";
+import path from "path";
 
-router.get("/:id/verify/:token", (req, res) => {
-  const verifyAndDelete = async () => {
+router.get("/:id/verify/:token", async(req, res) => {
+  // const verifyAndDelete = async () => {
     try {
       const user = await User.findOne({ _id: req.params.id });
 
@@ -22,18 +23,22 @@ router.get("/:id/verify/:token", (req, res) => {
         { returnDocument: "after" }
       );
       const removedToken = await token.remove();
+      
       // console.log(updated);
       // console.log(removedToken);
       const __dirname = path.resolve();
-      router.get(`/users/${user._id}/verify/${token}`, (req, res) => {
-        res.sendFile(path.join(__dirname, "../../client/build/index.html"));
-      });
-      res.send("Email verified successfully server");
+      res.sendFile(path.join(__dirname, "../../client/build/index.html"));
     } catch (error) {
       res.status(500).send("Internal Server Error");
     }
-  };
-  verifyAndDelete();
+  
+  // verifyAndDelete();
+  
+  // res.send("Email verified successfully server");
 });
+
+
+
+
 
 export default router;
