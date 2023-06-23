@@ -11,7 +11,7 @@ const EmailVerify = () => {
 	// const [validUrl, setValidUrl] = useState(true);
 	const param = useParams();
   // setTokenExists(`/users/${param.id}/verify/${param.token}`)
-  //  console.log(tokenExist)
+  
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
