@@ -42,7 +42,7 @@ router.post("/", (req, res) => {
             }
             res
               
-              .send("logged in! Verification link sent to your email");
+              .status(201).send("logged in! Verification link sent to your email");
           }
         } else {
           res.status(401).json("invalid password");
