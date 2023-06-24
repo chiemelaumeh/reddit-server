@@ -12,7 +12,7 @@ const Postform = () => {
     setAllCommunities,
   } = useContext(AuthModalContext);
   const { user } = useContext(UserContext);
-  console.log(user)
+  // console.log(user)
   
   const theLightMode = lightMode ? "reddit-main-light" : "reddit-main";
   const theLightModeInput = lightMode ? "first-input-light" : "first-input";
