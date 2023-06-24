@@ -45,11 +45,11 @@ router.post("/", (req, res) => {
               .send("logged in! Verification link sent to your email");
           }
         } else {
-          res.json("invalid password");
+          res.status(401).json("invalid password");
           console.log("invalid password");
         }
       } else {
-        res.json("Invalid username");
+        res.status(401).json("Invalid username");
         console.log("invalid username");
       }
     } catch (error) {
