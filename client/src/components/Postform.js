@@ -12,7 +12,7 @@ const Postform = () => {
     setAllCommunities,
   } = useContext(AuthModalContext);
   const { user } = useContext(UserContext);
-  console.log(user)
+
   
   const theLightMode = lightMode ? "reddit-main-light" : "reddit-main";
   const theLightModeInput = lightMode ? "first-input-light" : "first-input";
@@ -38,7 +38,7 @@ const Postform = () => {
     <>
       <div className={theLightMode}>
         <div className={theLightModeInput}>
-          { user.username &&
+          { !user  &&
 
           <div className="input-avatar">
             <img src={inputavatar} alt="" />

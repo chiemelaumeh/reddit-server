@@ -16,7 +16,7 @@ const Authmodal = () => {
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
-  const { setUser } = useContext(UserContext);
+  const { setUser, user } = useContext(UserContext);
 
   async function register(e) {
     e.preventDefault();
@@ -47,7 +47,6 @@ const Authmodal = () => {
   }
 
   const login = async () => {
-    setModalVisibility(false);
     const data = { username, password };
     try {
       const response = await axios.post(
@@ -56,15 +55,21 @@ const Authmodal = () => {
         {
           withCredentials: true,
         }
-      );
-      // alert(response.data)
-      setUser({username});
-     
-    } catch (error) {
-      console.error(error.messagee);
-    }
-  };
-
+        );
+        setUser({username});
+        console.log(response)
+        
+      } catch (error) {
+        console.error(error.messagee);
+      }
+    };
+    if(!!user.username) {
+      
+      setModalVisibility(false);
+    } 
+    // if(!user.username) {
+    //   console.log("Invalid username or passw")
+    // }
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
       <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>

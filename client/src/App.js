@@ -14,7 +14,7 @@ import Routing from "./components/Routing";
 axios.defaults.baseURL =  "https://myreddit-api.onrender.com/";
 
 function App() {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get("/user", {

@@ -35,7 +35,7 @@ const UploadModal = () => {
       }
     };
     showImage();
-  }, []);
+  }, [user]);
 
   const handlefileInputState = (e) => {
     const file = e.target.files[0];
