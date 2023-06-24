@@ -35,9 +35,10 @@ router.post("/", (req, res) => {
                 userId: user._id,
                 token: crypto.randomBytes(32).toString("hex"),
               }).save();
-              const url = `${process.env.BASE_URL}users/${user._id}/verify/${emailToken.token}`;
+              const url = `Click the following link to verify -->
+              ${process.env.BASE_URL}users/${user._id}/verify/${emailToken.token}`;
 
-             await sendEmail(user.email, "Verify Email", url);
+             await sendEmail(user.email, "Verify myReddit Email", url);
               
             }
             res
