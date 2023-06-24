@@ -198,14 +198,14 @@ const Header = () => {
           {user.username && (
             <>
               <div className="avatar-btn-on" onClick={toggleDropDown}>
-                {/* <div className="avatar"> */}
+           
                 {uploadedImage ? (
                   <ImageComponent />
                 ) : (
                   <img src={avatar} alt="" className="avatar" />
                 )}
 
-                {/* </div> */}
+       
 
                 <BsChevronDown className="chevron" />
               </div>
