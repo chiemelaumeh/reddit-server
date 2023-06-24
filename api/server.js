@@ -52,7 +52,7 @@ app.use(
       // "http://10.0.0.189:3000",
       // "http://franklyn.local:3000",
       "https://myreddit-megq.onrender.com",
-      "https://myreddit-api.onrender.com"
+      // "https://myreddit-api.onrender.com"
         //  "http://localhost:4000"
     ],
     methods: ["GET", "POST", "DELETE"],
