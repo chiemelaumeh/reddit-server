@@ -98,6 +98,7 @@ body {
   justify-content: center;
   align-items: center;
   position: fixed;
+  /* margin-top: 5em; */
 }
 
 .comment-btn {
@@ -153,7 +154,8 @@ body {
   color: var(--offwhite);
   width: 70vw;
   border: 1px solid var(--reddit_border);
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-top: -15rem;
   border-radius: 12px;
   padding-right: 34px;
 }
@@ -234,12 +236,12 @@ body {
 .auth-sub span {
   color: var(--reddit_lightgrey);
 }
-.auth-sub button {
+/* .auth-sub button {
   width: 105%;
   border-radius: 4px;
   margin: 8px auto;
   border: none;
-}
+} */
 
 .login-p-1 {
   margin-left: 2rem;

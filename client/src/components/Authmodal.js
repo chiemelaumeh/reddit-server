@@ -12,64 +12,73 @@ const Authmodal = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [matchingPass, setMatchingPass] = useState(true)
+  const [matchingPass, setMatchingPass] = useState(true);
+  // const [wrongPassState, setWrongPassState] = useState(false)
 
   const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
   const { modalType, setModalType } = useContext(ModalContext);
-  const { setUser, user } = useContext(UserContext);
+  const { setUser, user, wrongPassState, setWrongPassState } =
+    useContext(UserContext);
 
   async function register(e) {
     e.preventDefault();
     const data = { email, username, password };
-    if(password === confirmPassword) {
-      setMatchingPass(true)
-      setModalVisibility(false)
+    if (password === confirmPassword) {
+      setMatchingPass(true);
+      setModalVisibility(false);
       // setEmail("");
+      // setUsername("fw");
       // setPassword("");
       // setConfirmPassword("")
-      // setUsername("");
       try {
-        const response = await axios.post(
-          "/register",
-          data,
-          {
-            withCredentials: true,
-          }
-        );
-        alert(response.data) 
-        console.log(response.data)   
+        const response = await axios.post("/register", data, {
+          withCredentials: true,
+        });
+        alert(response.data);
+        console.log(response.data);
       } catch (err) {
         console.error(err.message);
       }
-    }else {
-      setMatchingPass(false)
+      setEmail("");
+      setPassword("");
+    } else {
+      setMatchingPass(false);
     }
   }
 
   const login = async () => {
+    setUsername("");
+    setPassword("");
     const data = { username, password };
     try {
-      const response = await axios.post(
-        "/login",
-        data,
-        {
-          withCredentials: true,
-        }
-        );
-        setUser({username});
-        console.log(response)
-        
-      } catch (error) {
-        console.error(error.messagee);
-      }
-    };
-    if(!!user.username) {
-      
-      setModalVisibility(false);
-    } 
-    // if(!user.username) {
-    //   console.log("Invalid username or passw")
-    // }
+      const response = await axios.post("/login", data, {
+        withCredentials: true,
+      });
+      setUser({ username });
+      // setWrongPassState(false)
+
+      console.log(response);
+    } catch (error) {
+      console.error(error.messagee);
+    }
+    loginFollow();
+  };
+
+  function loginFollow() {
+    if (modalVisibility && username && password) {
+      setWrongPassState(true);
+    }
+    if (modalVisibility && (username === "" || password === "")) {
+      setWrongPassState(true);
+    }
+  }
+  if (user.username || modalType === "register") {
+    setWrongPassState(false);
+  }
+  if (user.username) {
+    setModalVisibility(false);
+  }
+
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
       <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
@@ -88,56 +97,66 @@ const Authmodal = () => {
             </label>
           )}
           <label required>
-            <span>Username: </span>
+            <span className="credentials">Username: </span>
             <Input
-            required
+              required
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
           <label required>
-            <span>Password: </span>
+            <span className="credentials">Password: </span>
 
             <Input
-             required
+              required
               type="password"
               value={password}
-              onChange={(e) => {setPassword(e.target.value);setMatchingPass(true)}}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setMatchingPass(true);
+              }}
             />
           </label>
-          {modalType === "register" && 
-          <label required>
-            <span>Confirm Password: </span>
+          {modalType === "register" && (
+            <label required>
+              <span>Confirm Password: </span>
 
-            <Input
-            required
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => {setConfirmPassword(e.target.value);setMatchingPass(true)}}
-            />
+              <Input
+                required
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  setMatchingPass(true);
+                }}
+              />
               {matchingPass === false && (
-              <p className="matching-Pass">Passwords Do Not Match</p>
+                <p className="matching-Pass">Passwords Do Not Match</p>
               )}
-          </label>
-          
-          }
+            </label>
+          )}
           {modalType === "login" && (
             <Headerbuttons onClick={login}>Log In</Headerbuttons>
           )}
           {modalType === "register" && (
-            <Headerbuttons 
-
-            onClick={register}
-            >Sign Up</Headerbuttons>
+            <Headerbuttons onClick={register}>Sign Up</Headerbuttons>
+          )}
+          {wrongPassState && modalType === "login" && (
+            <p className="invalid-credentials">Invalid Username or Password</p>
           )}
           {modalType === "login" && (
-            <div className="login-state">
-              <p className="login-p-1">New to this space ?</p>
-              <button className="btn" 
-              onClick={() => setModalType("register")}>
-                SIGN UP
-              </button>
+            <div>
+              <div className="login-state">
+                <p className="login-p-1">New to this space ?</p>
+                <button
+                  className="btn"
+                  onClick={() => setModalType("register")}
+                >
+                  SIGN UP
+                </button>
+              </div>
+              <p className="forgot-password">Forgot password?</p>
             </div>
           )}
           {modalType === "register" && (

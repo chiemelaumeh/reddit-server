@@ -22,16 +22,25 @@ body {
   cursor: pointer;
 }
 
+.auth-sub button {
+  width: 105%;
+  border-radius: 4px;
+  margin: 8px auto;
+  border: none;
+} 
+
 .header-buttons {
   border: 1px solid var(--reddit_border);
   background-color: var(--reddit_lightgrey);
-  border-radius: 1rem;
-  padding: 6px 12px;
+  border-radius: 4px;
+  width: 1rem;
+  padding: 14px 6px;
   font-weight: 600;
-  margin: 0 8px;
+  margin: 8px 3rem; 
+  width:20%;
+
+ 
 }
-
-
 .show-box p {
   padding: 10px 32px;
   background-color: var(--reddit_midgrey);
@@ -53,4 +62,22 @@ body {
   width: 1.25rem;
   height: 1.25rem;
   margin-right: 10px;
+}
+
+
+.invalid-credentials{
+  color: red;
+  opacity: 0.85;
+  font-size: 1rem;
+  margin-left: 2rem;
+}
+
+.forgot-password{
+  font-size: 1rem;
+  margin-left: 4.5rem;
+  text-decoration: underline;
+
+}
+.credentials{
+  font-size: 1rem;
 }

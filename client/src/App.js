@@ -15,11 +15,12 @@ axios.defaults.baseURL =  "https://myreddit-api.onrender.com/";
 function App() {
   const { user, setUser } = useContext(UserContext);
   useEffect(() => {
+
     const getUser = async () => {
       const response = await axios.get("/user", {
         withCredentials: true,
       });
-      setUser(response.data.username);
+      setUser(response.data.user);
     };
     getUser();
   }, []);
