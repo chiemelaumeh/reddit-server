@@ -25,6 +25,7 @@ import UploadRRoute from "./routes/UploadRoute.js";
 import ImageRoute from "./routes/ImageRoute.js";
 import LoginRoute from "./routes/LoginRoute.js";
 import EmailTokenRoute from "./routes/EmailTokenRoute.js"
+import CheckRecoveryEmailRoute from  "./routes/CheckRecoveryEmailRoute.js"
 import Token from "./models/Token.js";
 
 import { connectDb } from "./config/db.js";
@@ -48,10 +49,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
     origin: [
-      // "http://localhost:3000",
+      "http://localhost:3000",
       // "http://10.0.0.189:3000",
       // "http://franklyn.local:3000",
-      "https://myreddit-megq.onrender.com",
+      // "https://myreddit-megq.onrender.com",
       // "https://myreddit-api.onrender.com"
         //  "http://localhost:4000"
     ],
@@ -75,6 +76,7 @@ app.use("/upload", UploadRRoute);
 app.use("/image", ImageRoute);
 app.use("/login", LoginRoute);
 app.use("/users", EmailTokenRoute)
+app.use("/send_recovery_email", CheckRecoveryEmailRoute)
 
 // import express from "express"
 // const router = express.Router()

@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 dotenv.config();
 
-export const sendEmail = async (email, subject, url) => {
+export const sendOtp = async (email, subject, otp) => {
   try {
     const transporter = nodemailer.createTransport({
       // host: process.env.HOST,
@@ -21,7 +21,7 @@ export const sendEmail = async (email, subject, url) => {
       }
     });
     
-     await transporter.sendMail({
+     await transporter.sendOtp({
       from: process.env.USER,
       to: email,
       subject: subject,
@@ -41,8 +41,8 @@ export const sendEmail = async (email, subject, url) => {
             <a href="" style="font-size:1.4em;color: orangered;text-decoration:none;font-weight:600">myReddit</a>
           </div>
           <p style="font-size:2em">Hi,</p>
-          <p style="font-size:1.2em">Thank you for choosing myreddit. Use the following link to complete your E-mail verification. Link is valid for 1 hour. Click the link below to verify.</p>
-          <p style="background: rgb(226, 161, 161);text-decoration:none; margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${url}</p>
+          <p style="font-size:1.2em">Thank you for choosing myreddit. Use the following OTP to complete your Password Recovery Procedure. OTP is valid for 5 minutes</p>
+          <p style="background: rgb(226, 161, 161);text-decoration:none; margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${otp}</p>
           <p style="font-size:0.9em;">Regards,<br />myReddit</p>
           <hr style="border:none;border-top:1px solid #eee" />
           <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
@@ -57,9 +57,9 @@ export const sendEmail = async (email, subject, url) => {
     });
     
 
-    console.log("Email sent successfully");
+    console.log("OTP send successfully");
   } catch (error) {
-    console.log("Email not sent");
+    console.log("OTP not sent");
     console.log(error);
   }
 };

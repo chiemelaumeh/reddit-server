@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
           token: crypto.randomBytes(32).toString("hex"),
         }).save();
 
-        const url = `Click the following link to verify -->
+        const url = `
         ${process.env.BASE_URL}users/${newUser._id}/verify/${emailToken.token}`;
         await sendEmail(newUser.email, "Verify Email", url);
         res.status(201).send("Verification link sent to your email");
