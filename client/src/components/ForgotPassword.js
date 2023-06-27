@@ -2,7 +2,8 @@ import { useState, useContext, useEffect } from "react";
 import ModalContext from "../context/ModalContext";
 import Otp from "./Otp";
 import Input from "./Input";
-import { AiOutlineInfoCircle } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
+import OutsideClickHandler from "react-outside-click-handler";
 import axios from "axios";
 // import { BsFillBrightnessHighFill } from "react-icons/bs";
 const ForgotPassword = () => {
@@ -36,11 +37,15 @@ const ForgotPassword = () => {
 
   return (
     <div className={forgotStage ? "forgot-page" : "hide-auth-page"}>
-      <div className="forgot-sub">
-        {/* <p onClick={()=> {setForgotStage("otp")}}>ForgotPassword</p> */}
-        <form className="forgot-form" onSubmit={sendOtp}>
+        {/* <OutsideClickHandler onOutsideClick={()=> setForgotStage("")}> */}
+        <div className="forgot-sub">
 
-            <p className="enter-email">Enter your E-mail: </p>
+          {/* <p onClick={()=> {setForgotStage("otp")}}>ForgotPassword</p> */}
+          <div className="header-icon">
+              <p className="enter-email">Enter your E-mail: </p>
+                <AiOutlineClose className="icon" onClickCapture={()=>{setForgotStage("")}}/>
+            </div>
+          <form className="forgot-form" onSubmit={sendOtp}>
             <div className="text-and-div">
               <input
                 // required
@@ -52,23 +57,22 @@ const ForgotPassword = () => {
                   setResetMessage("");
                 }}
               />
-              
-                     
-                        <button type="submit" className="verify-otp">
-              {" "}
-              Send OTP
-                        </button>
-            </div>
 
-        </form>
-        {resetMessage && (
-          <div>
-            {/* <AiOutlineInfoCircle />  */}
-            <p className="reset-message">{resetMessage}</p>
-          </div>
-        )}
+              <button type="submit" className="verify-otp">
+                {" "}
+                Send OTP
+              </button>
+            </div>
+          </form>
+          {resetMessage && (
+            <div>
+              {/* <AiOutlineInfoCircle />  */}
+              <p className="reset-message">{resetMessage}</p>
+            </div>
+          )}
+        </div>
+    {/* </OutsideClickHandler> */}
       </div>
-    </div>
   );
 };
 

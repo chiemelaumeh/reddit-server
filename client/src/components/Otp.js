@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import ModalContext from "../context/ModalContext";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Otp = () => {
   const { forgotStage, setForgotStage, otp, setOtp } = useContext(ModalContext);
@@ -21,7 +22,10 @@ const Otp = () => {
       <div className="forgot-sub">
         <div className="verification-h3">
           
-          <p> We have sent a code to your email</p>
+          <div className="header-icon">
+            <p> We have sent a code to your email</p>
+            <AiOutlineClose className="icon" onClickCapture={()=>{setForgotStage("")}}/>
+          </div>
         </div>
         <div className="otp-boxes">
           <input value={otpInput[0]} maxLength={1} onChange={(e)=>{setOtpInput([e.target.value, otpInput[1], otpInput[2],otpInput[3]])}} type="text" className="otp-box" />

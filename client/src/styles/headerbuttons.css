@@ -76,6 +76,7 @@ body {
   font-size: 1rem;
   margin-left: 4.5rem;
   text-decoration: underline;
+  color: orangered;
 
 }
 .credentials{
@@ -218,12 +219,18 @@ color: black;
 
 }
 .verification-h3{
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .verification-h3,p{
   margin-bottom: 1rem;
   font-weight: 200;
   font-size: 1rem;
+}
+
+.header-icon{
+display: flex;
+justify-content: space-between;
+align-items: center;
 }

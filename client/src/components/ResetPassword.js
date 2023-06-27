@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import ModalContext from "../context/ModalContext";
+import { AiOutlineClose } from "react-icons/ai";
 import axios from "axios"
 
 const ResetPassword = () => {
@@ -37,7 +38,10 @@ const ResetPassword = () => {
       <div className="auth-sub">
         <form className="forgot-form" onSubmit={changePass}>
           <label required>
-            <p className="new-pass">New Password: </p>
+            <div className="header-icon">
+              <p className="new-pass">New Password: </p>
+              <AiOutlineClose className="icon" onClickCapture={()=>{setForgotStage("")}}/>
+            </div>
             <input
               // required
               className="input input-box margin-left"
