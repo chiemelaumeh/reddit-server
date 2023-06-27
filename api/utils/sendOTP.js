@@ -21,7 +21,7 @@ export const sendOtp = async (email, subject, otp) => {
       }
     });
     
-     await transporter.sendOtp({
+     await transporter.sendMail({
       from: process.env.USER,
       to: email,
       subject: subject,

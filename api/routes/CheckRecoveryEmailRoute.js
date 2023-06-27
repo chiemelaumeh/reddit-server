@@ -36,6 +36,10 @@ router.post("/", (req, res) => {
           "Please verify your e-mail before you can reset password. We have sent a verification link to your email"
         );
       } else {
+        await sendOtp(user.email," myReddit OTP", otp)
+        res.json(
+          true
+        );
 
       }
       console.log(user);
