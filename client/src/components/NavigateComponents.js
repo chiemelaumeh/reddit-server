@@ -15,12 +15,7 @@ import UserContext from "../context/UserContext";
 const NavigateComponents = () => {
   const { forgotStage, setForgotStage } = useContext(ModalContext);
 
-  // function navigate() {
-  // if (forgotStage === "forgot") return <ForgotPassword />;
-  // if (forgotStage === "otp") return <Otp />;
-  // if (forgotStage === "reset") return <ResetPassword />;
-  //   return <Recovered />;
-  // }
+  
 
   return (
     <div>
