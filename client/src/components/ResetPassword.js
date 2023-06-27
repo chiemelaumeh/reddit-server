@@ -1,18 +1,83 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ModalContext from "../context/ModalContext";
+import axios from "axios"
 
+const ResetPassword = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const { forgotStage, setForgotStage, userEmail, setUserEmail } = useContext(ModalContext);
+  const [newPass, setNewPass] = useState("");
+  const [confirmNewPass, setconfimNewPass] = useState("");
 
+  const changePass = async(e) => {
 
+    e.preventDefault();
 
-const Otp = () => {
-  const { forgotStage, setForgotStage } = useContext(ModalContext);
+    if (newPass !== confirmNewPass) {
+      setErrorMessage("Passwords do not match. Try again");
+      return;
+    }
+    // setUserEmail("engineerfranklyn@gmail.com")
+    const data = {newPass, userEmail}
+    
+    try {
+      const response = await axios.post("/change_password", data)
+   
+      if(response.data.passUpdated === true) {
+        setForgotStage("recovered");
+      }
+    } catch (error) {
+      console.error(error.message)
+    }
+
+  };
+  // console.log(errorMessage)
+
   return (
     <div className={forgotStage ? "auth-page" : "hide-auth-page"}>
       <div className="auth-sub">
-        <p onClick={()=> {setForgotStage("recovered")}}>Reset Password</p>
+        <form className="forgot-form" onSubmit={changePass}>
+          <label required>
+            <p className="new-pass">New Password: </p>
+            <input
+              // required
+              className="input input-box margin-left"
+              type="password"
+              value={newPass}
+              onChange={(e) => {
+                {
+                  setNewPass(e.target.value);
+                  setErrorMessage("");
+                }
+              }}
+            />
+          </label>
+          <label required>
+            <p className="new-pass">Confirm Password: </p>
+            <input
+              // required
+              className="input input-box margin-left"
+              type="password"
+              value={confirmNewPass}
+              onChange={(e) => {
+                {
+                  setconfimNewPass(e.target.value);
+                  setErrorMessage("");
+                }
+              }}
+            />
+          </label>
+
+          <div className="otp-div">
+            <button type="submit" className="send-otp-btn">
+              {" "}
+              Change Password
+            </button>
+          </div>
+        </form>
+        {errorMessage && <p className="reset-message">{errorMessage}</p>}
       </div>
     </div>
   );
 };
 
-export default Otp;
+export default ResetPassword;
