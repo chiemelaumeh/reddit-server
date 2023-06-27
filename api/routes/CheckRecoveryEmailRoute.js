@@ -11,7 +11,7 @@ import crypto from "crypto";
 const secret = process.env.SECRET_KEY;
 
 router.post("/", (req, res) => {
-  const { email, otp } = req.body;
+  const { email, randomCode } = req.body;
   const getRecoveryEmail = async () => {
     try {
       const user = await User.findOne({ email });
@@ -36,9 +36,12 @@ router.post("/", (req, res) => {
           "Please verify your e-mail before you can reset password. We have sent a verification link to your email"
         );
       } else {
-        await sendOtp(user.email," myReddit OTP", otp)
-        res.json(
-          true
+
+        console.log(randomCode)
+        await sendOtp(user.email," myReddit OTP", randomCode)
+        res.status(200).json(
+          {randomCode: randomCode, otpVerified:true, email:user.email}
+         
         );
 
       }

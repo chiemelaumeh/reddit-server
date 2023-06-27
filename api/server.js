@@ -26,6 +26,7 @@ import ImageRoute from "./routes/ImageRoute.js";
 import LoginRoute from "./routes/LoginRoute.js";
 import EmailTokenRoute from "./routes/EmailTokenRoute.js"
 import CheckRecoveryEmailRoute from  "./routes/CheckRecoveryEmailRoute.js"
+import ChangePasswordRoute from "./routes/ChangePasswordRoute.js"
 import Token from "./models/Token.js";
 
 import { connectDb } from "./config/db.js";
@@ -77,6 +78,7 @@ app.use("/image", ImageRoute);
 app.use("/login", LoginRoute);
 app.use("/users", EmailTokenRoute)
 app.use("/send_recovery_email", CheckRecoveryEmailRoute)
+app.use("/change_password", ChangePasswordRoute)
 
 // import express from "express"
 // const router = express.Router()
