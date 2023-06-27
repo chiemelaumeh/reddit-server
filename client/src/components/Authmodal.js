@@ -15,8 +15,8 @@ const Authmodal = () => {
   const [matchingPass, setMatchingPass] = useState(true);
   // const [wrongPassState, setWrongPassState] = useState(false)
 
-  const { modalVisibility, setModalVisibility } = useContext(AuthModalContext);
-  const { modalType, setModalType } = useContext(ModalContext);
+  const { modalVisibility, setModalVisibility, forgotModalVisibility, setForgotModalVisibility } = useContext(AuthModalContext);
+  const { modalType, setModalType, forgotStage, setForgotStage } = useContext(ModalContext);
   const { setUser, user, wrongPassState, setWrongPassState } =
     useContext(UserContext);
 
@@ -81,7 +81,7 @@ const Authmodal = () => {
 
   return (
     <div className={modalVisibility ? "auth-page" : "hide-auth-page"}>
-      <OutsideClickHandler onOutsideClick={() => setModalVisibility(false)}>
+      <OutsideClickHandler onOutsideClick={() => {setModalVisibility(false); setModalType("login")}}>
         <div className="auth-sub">
           {modalType === "login" && <h1>Login</h1>}
           {modalType === "register" && <h1>Register</h1>}
@@ -156,7 +156,7 @@ const Authmodal = () => {
                   SIGN UP
                 </button>
               </div>
-              <p className="forgot-password">Forgot password?</p>
+              <p onClick={()=>{setForgotStage("forgot");setModalVisibility(false)}} className="forgot-password">Forgot password?</p>
             </div>
           )}
           {modalType === "register" && (

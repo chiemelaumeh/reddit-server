@@ -14,6 +14,7 @@ export const AuthModalProvider = ({ children }) => {
   const [openUpload, setOpenUpload] = useState(false)
   const [previewSource, setPreviewsource] = useState()
   const [uploadedImage, setUploadedImage] = useState("")
+  const [forgotModalVisibility, setForgotModalVisibility] = useState(false)
   
 
   return (
@@ -42,7 +43,9 @@ export const AuthModalProvider = ({ children }) => {
        previewSource,
        setPreviewsource,
        uploadedImage,
-        setUploadedImage
+        setUploadedImage,
+        forgotModalVisibility,
+         setForgotModalVisibility
       }}
     >
       {children}

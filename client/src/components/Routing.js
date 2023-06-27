@@ -4,6 +4,7 @@ import Authmodal from "./Authmodal";
 import UploadModal from "./UploadModal";
 import PostFormModal from "./PostFormModal";
 import CommunityFormModal from "./CommunityFormModal";
+import NavigateComponents from "./NavigateComponents";
 
 import { BrowserRouter as Router, Navigate } from "react-router-dom";
 import Routinglocation from "./Routinglocation";
@@ -48,6 +49,7 @@ const Routing = () => {
           <Authmodal />
           <CommunityFormModal />
           <PostFormModal />
+          <NavigateComponents />
         </>
       )}
     </Router>
