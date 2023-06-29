@@ -88,21 +88,23 @@ const UploadModal = () => {
           </div>
 
           <form action="" onSubmit={handleSubmitFile} className="image-form">
-            <input
-              type="file"
-              name="image"
-              onChange={handlefileInputState}
-              value={fileInputState}
-            />
-            <button
-              className="btn"
-              type="submit"
-              onClick={() => {
-                setOpenUpload(false);
-              }}
-            >
-              upload
-            </button>
+            <div>
+              <input
+              className="image-file"
+                type="file"
+                onChange={handlefileInputState}
+                value={fileInputState}
+              />
+              <button
+                className="image-btn"
+                type="submit"
+                onClick={() => {
+                  setOpenUpload(false);
+                }}
+              >
+                upload
+              </button>
+            </div>
           </form>
         </div>
       </OutsideClickHandler>

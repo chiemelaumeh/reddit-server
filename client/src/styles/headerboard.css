@@ -172,9 +172,9 @@ body {
   /* justify-content: center;
   align-items: center; */
 
-  height: 100%;
+  height: 120%;
   width: 100vw;
-  top: 50%;
+  top: 40%;
   /* left: 10%; */
   transform: translate(0, -50%);
 }
@@ -188,7 +188,7 @@ body {
   position: absolute;
   width: 80%;
   left: 5%;
-  height: 60vh;
+  height:60vh;
   border: 1px solid var(--reddit_border);
   margin-top: 25vh;
   border-radius: 4px;
@@ -216,7 +216,16 @@ body {
   height: 80%;
   border-radius: 5rem;
 }
+.image-btn{
+  height: 2rem;
+  width: 5rem;
+  margin-top: 1rem;
+}
 
+.image-file{
+  height: 2rem;
+  /* width: 5rem; */
+}
 .auth-sub h1 {
   margin: 0;
   margin-bottom: 20px;

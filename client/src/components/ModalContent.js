@@ -5,13 +5,13 @@ const ModalContent = (props) => {
 
   return (
     <div>
-      <h5>
+      <p>
         {" "}
         Posted by u/{props.author}, posted at: {props.postedAt}{" "}
-      </h5>
+      </p>
     
-      <h2>{props.title}</h2>
-      <div>{props.body}</div>
+      <h1>{props.title}</h1>
+      <p>{props.body}</p>
     </div>
   );
 };
