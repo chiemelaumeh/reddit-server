@@ -120,7 +120,7 @@ const PostFormModal = () => {
             </button>
           </div>
         </div>
-            <button onClick={handleTwo} className=" create-btn" >Post</button>
+            <button onClick={handleTwo} className=" create-btn" >Create Post</button>
       </div>
     </div>
   );
