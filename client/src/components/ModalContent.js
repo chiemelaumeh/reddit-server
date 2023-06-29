@@ -11,7 +11,7 @@ const ModalContent = (props) => {
       </p>
     
       <h1>{props.title}</h1>
-      <p>{props.body}</p>
+      <p className="comments-p">{props.body}</p>
     </div>
   );
 };

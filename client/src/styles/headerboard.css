@@ -221,7 +221,9 @@ body {
   width: 5rem;
   margin-top: 1rem;
 }
-
+.comments-p{
+  font-size: 1rem;
+}
 .image-file{
   height: 2rem;
   /* width: 5rem; */

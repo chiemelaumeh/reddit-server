@@ -9,8 +9,8 @@ import axios from "axios";
 import Routing from "./components/Routing";
 
 // axios.defaults.baseURL =  "http://localhost:4000/";
-axios.defaults.baseURL =  "http://franklyn.local:4000/";
-// axios.defaults.baseURL =  "https://myreddit-api.onrender.com/";
+// axios.defaults.baseURL =  "http://franklyn.local:4000/";
+axios.defaults.baseURL =  "https://myreddit-api.onrender.com/";
 
 function App() {
   const { user, setUser } = useContext(UserContext);

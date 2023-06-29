@@ -27,7 +27,7 @@ const Comments = (props) => {
             <div className="comment-body-div">
               {singleComment.body}
 
-              <div className="voting-reply-main">
+              <div >
                 <div className="voting-reply">
                   <div
                     className="icon-reply-button"
