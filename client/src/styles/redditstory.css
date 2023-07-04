@@ -342,3 +342,40 @@ color: aqua;
   margin: 0 8px;
   margin-right: 1rem;
 }
+ .error-page{
+  background-color: var(--reddit_dark);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+
+  
+ }
+ .error-text{
+  margin-bottom: 15%;
+  color: #fff;
+ }
+ .error-back{
+
+  border: 2px solid rgb(255, 68, 0);
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--reddit_dark);
+  margin-top: 5rem;
+
+
+  
+ }
+ .error-icon{
+  color: orangered;
+  font-size: 20rem;
+ }
+html,
+body {
+
+ background-color: var(--reddit_dark);
+}

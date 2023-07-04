@@ -127,6 +127,7 @@ body {
   /* border-radius: 4px; */
   display: flex;
   flex-direction: column;
+
   /* overflow: hidden; */
   /* display: none; */
 }
@@ -253,4 +254,13 @@ body {
   font-weight: 400;
   font-size: 1rem;
   /* padding-left: 4rem; */
+}
+
+.plus-btn{
+  background-color: var(--reddit_border);
+  padding: 0.75rem;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--reddit_dark);
 }

@@ -107,7 +107,7 @@ const PostFormModal = () => {
 
           <div className="post-btns">
             <button className="post-form-btn btn" onClick={()=>{setPostFormModalVisibility(false);setShowCommunity(true)}}>
-              Create
+              Forums
             </button>
             <button
               onClick={() => {
@@ -120,7 +120,7 @@ const PostFormModal = () => {
             </button>
           </div>
         </div>
-            <button onClick={handleTwo} className=" create-btn" >Create Post</button>
+            <button onClick={handleTwo} className=" create-btn" >Share your post!</button>
       </div>
     </div>
   );

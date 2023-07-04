@@ -16,6 +16,7 @@ const Routing = () => {
   const { redirect, setRedirect } = useContext(RedirectContext);
   const { errorPage, setErrorPage } = useContext(RerenderContext);
   const { tokenExist, setTokenExists } = useContext(RerenderContext);
+  console.log(redirect)
 
   useEffect(() => {
     if (errorPage) {

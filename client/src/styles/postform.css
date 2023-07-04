@@ -25,7 +25,7 @@ body {
 }
 .reddit-main-light {
   background-color: whitesmoke;
-  padding: 16px 24px;
+  padding: 16px 0px;
 }
 .reddit-main,
 p {
@@ -45,6 +45,7 @@ p {
   border-radius: 4px;
   padding: 8px;
   background-color:whitesmoke;
+  
 
 }
 
@@ -160,7 +161,7 @@ p {
 }
 .create-text{
   margin-left: 1rem;
-  color: var(--offwhite);
+  color: var(--reddit_border);
   opacity: 0.5;
   font-weight: 400;
   font-size: 0.75rem;
@@ -225,7 +226,7 @@ p {
   border: 1px solid var(--reddit_border);
   margin: 0 auto;
   border-radius: 4px;
-  height: 95vw;
+  height: 30vh;
   margin-top: 25vh;
   /* padding-right: 34px; */
 }

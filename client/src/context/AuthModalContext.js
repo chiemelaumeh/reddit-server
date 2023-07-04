@@ -11,11 +11,12 @@ export const AuthModalProvider = ({ children }) => {
   const [showOneBox, setShowOneBox] = useState(null);
   const [deleteModalVisibility, setDeleteModalVisibility] = useState(false);
   const [confirmDeleteVisibility, setConfirmDeleteVisibility] = useState(false);
-  const [openUpload, setOpenUpload] = useState(false)
-  const [previewSource, setPreviewsource] = useState()
-  const [uploadedImage, setUploadedImage] = useState("")
-  const [forgotModalVisibility, setForgotModalVisibility] = useState(false)
-  
+  const [openUpload, setOpenUpload] = useState(false);
+  const [previewSource, setPreviewsource] = useState();
+  const [uploadedImage, setUploadedImage] = useState("");
+  const [avatarString, setAvatarString] = useState("");
+  const [coverString, setCoverString] = useState("");
+  const [forgotModalVisibility, setForgotModalVisibility] = useState(false);
 
   return (
     <AuthModalContext.Provider
@@ -40,12 +41,16 @@ export const AuthModalProvider = ({ children }) => {
         setConfirmDeleteVisibility,
         openUpload,
         setOpenUpload,
-       previewSource,
-       setPreviewsource,
-       uploadedImage,
+        previewSource,
+        setPreviewsource,
+        uploadedImage,
         setUploadedImage,
         forgotModalVisibility,
-         setForgotModalVisibility
+        setForgotModalVisibility,
+        avatarString,
+        setAvatarString,
+        coverString,
+        setCoverString,
       }}
     >
       {children}

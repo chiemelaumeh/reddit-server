@@ -10,18 +10,28 @@ const CommunityPopUp = ({ closeModal }) => {
   const [slogan, setSlogan] = useState("");
   const [avatar, setAvatar] = useState("");
   const [cover, setCover] = useState("");
-  const { setRedirect } = useContext(RedirectContext);
-  const { setPostFormModalVisibility } = useContext(AuthModalContext);
+  const { setRedirect, setShowHeader } = useContext(RedirectContext);
+  const {
+    setPostFormModalVisibility,
+    avatarString,
+    setAvatarString,
+    coverString,
+    setCoverString,
+  } = useContext(AuthModalContext);
   const { setShowCommunity } = useContext(CommunityContext);
 
+  
+
   const createCommunity = async () => {
+
     closeModal();
-    const data = { name, slogan, avatar, cover };
+    const data = { name, slogan };
     try {
       const response = await axios.post("/communities", data, {
         withCredentials: true,
       });
       setRedirect(`/r/` + name);
+      setShowHeader(true)
     } catch (error) {
       console.error(error.message);
     }
@@ -31,7 +41,13 @@ const CommunityPopUp = ({ closeModal }) => {
       <div className="community-sub">
         <h1>Create a Subreddit </h1>
 
-        <form action="" onSubmit={createCommunity}>
+        <form
+          action=""
+          onSubmit={() => {
+            createCommunity();
+    
+          }}
+        >
           <input
             required
             onChange={(e) => setName(e.target.value)}
@@ -50,11 +66,16 @@ const CommunityPopUp = ({ closeModal }) => {
             className="input input-box"
           />
 
-          <input type="file" className="avatar-img" />
+          {/* <input
+            type="file"
+            onChange={handlefileInputState}
+            value={fileInputState}
+            className="avatar-img"
+          />
 
-          <input type="file" className="avatar-img" />
+          <input type="file" className="avatar-img" /> */}
           <div className="cancel-create">
-            <button
+            {/* <button
               onClick={() => {
                 setShowCommunity(false);
                 setPostFormModalVisibility(true);
@@ -62,12 +83,12 @@ const CommunityPopUp = ({ closeModal }) => {
               className="post-comm "
             >
               Create Post
-            </button>
+            </button> */}
             <button onClick={closeModal} className="cancel-comm ">
               Cancel
             </button>
             <button type="submit" className="create-comm">
-              Create
+              Create 
             </button>
           </div>
         </form>

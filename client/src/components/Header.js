@@ -38,7 +38,7 @@ const Header = () => {
   } = useContext(AuthModalContext);
   const { setModalType } = useContext(ModalContext);
   const { user, setUser } = useContext(UserContext);
-  const { setRedirect } = useContext(RedirectContext);
+  const { setRedirect, showHeader, setShowHeader } = useContext(RedirectContext);
   const { setShowCommunity } = useContext(CommunityContext);
 
   const theLightModeSearchBox = lightMode ? "search-box-light" : "search-box";
@@ -120,6 +120,8 @@ const Header = () => {
           to="/"
           onClick={() => {
             setRedirect("/");
+            setShowHeader(false)
+
           }}
         >
           <img className="logo" src={logo} alt="" />
@@ -164,7 +166,7 @@ const Header = () => {
                     setPostFormModalVisibility(true);
                     setPlusDropDownVisibilityClass("hidden");
                   }}
-                  className="btn link-box"
+                  className="plus-btn "
                 >
                   Create new post
                 </button>
@@ -174,7 +176,7 @@ const Header = () => {
                     setShowCommunity(true);
                     setPlusDropDownVisibilityClass("hidden");
                   }}
-                  className="btn link-box"
+                  className="plus-btn"
                 >
                   Create new community
                 </button>

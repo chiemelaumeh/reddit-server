@@ -28,8 +28,10 @@ const PostContent = (props) => {
     setConfirmDeleteVisibility,
   } = useContext(AuthModalContext);
   const { user } = useContext(UserContext);
-  const { setRedirect } = useContext(RedirectContext);
+  const { setRedirect, showHeader, setShowHeader } = useContext(RedirectContext);
   const { setDeleted } = useContext(RerenderContext);
+
+
   const theLightMode = lightMode ? "post-icon-light" : "post-icon";
   const deleteOnePost = async () => {
     try {
@@ -42,6 +44,7 @@ const PostContent = (props) => {
 
   const navigateToCommunity = () => {
     setRedirect(`/r/` + props.chosenCommunity);
+    setShowHeader(true)
   };
 
   const popUpModal = () => {

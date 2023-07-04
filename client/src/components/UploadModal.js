@@ -20,7 +20,6 @@ const UploadModal = () => {
 
   const [fileInputState, setFileInputState] = useState("");
 
-
   useEffect(() => {
     const showImage = async () => {
       try {
@@ -29,7 +28,7 @@ const UploadModal = () => {
           withCredentials: true,
         });
         setUploadedImage(response.data);
-        // console.log(response)
+
       } catch (error) {
         console.error(error);
       }
@@ -37,11 +36,12 @@ const UploadModal = () => {
     showImage();
   }, [user]);
 
+  
   const handlefileInputState = (e) => {
     const file = e.target.files[0];
     previewFile(file);
   };
-
+  
   const previewFile = (file) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
