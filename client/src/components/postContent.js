@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TimeAgo from "timeago-react";
 import { useContext } from "react";
 import { FaShare } from "react-icons/fa";
@@ -10,11 +10,38 @@ import RerenderContext from "../context/RerenderContext";
 import Voting from "./Voting";
 import AuthModalContext from "../context/AuthModalContext";
 import { Link } from "react-router-dom";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  HatenaShareButton,
+  InstapaperShareButton,
+  LineShareButton,
+  LinkedinShareButton,
+  LivejournalShareButton,
+  MailruShareButton,
+  OKShareButton,
+  PinterestShareButton,
+  PocketShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TumblrShareButton,
+  TwitterShareButton,
+  ViberShareButton,
+  VKShareButton,
+  WhatsappShareButton,
+  WorkplaceShareButton
+} from "react-share";
+
+import {
+  FacebookIcon, WhatsappIcon
+}
+from "react-share"
 import axios from "axios";
 <TimeAgo datetime={"2016-08-08 08:08:08"} locale="zh_CN" />;
 
 const PostContent = (props) => {
   const postComments = [props];
+  const [shareBox, setSharebox] = useState("")
 
   const {
     setPostModalVisibility,
@@ -145,12 +172,27 @@ const PostContent = (props) => {
       <div className="vote-reply">
         <Voting props={props} />
         <Link
-          // to={"/comments/" + (props.rootId || props._id)}
+          to={"/comments/" + (props.rootId || props._id)}
           state={{ commentId: props.rootId || props._id }}
         >
           <FaRegCommentDots onClick={popUpModal} className={theLightMode} />
         </Link>
-        <FaShare className={theLightMode} />
+        {
+          shareBox   &&(
+
+          <div className="share-box">
+      
+            <FacebookShareButton
+              url={`http://myreddit-api.onrender.com/comments/${props._id}`}
+            >
+              
+              <FacebookIcon></FacebookIcon>
+            </FacebookShareButton>
+          </div>
+          )
+
+        }
+        <FaShare onClick={()=>{setSharebox(!shareBox)}} className={theLightMode} />
       </div>
     </div>
   );

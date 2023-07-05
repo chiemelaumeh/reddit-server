@@ -81,6 +81,14 @@ p {
 
   flex-grow: 1;
 }
+.share-box{
+  border: 1px solid orangered;
+  position: absolute;
+  left:180px;
+  width: max-content;
+  padding: 0.75rem;
+  border-radius: 1rem;
+}
 .first-input input {
   background-color: var(--reddit_grey);
   outline: none;

@@ -4,6 +4,7 @@ import UserContext from "../context/UserContext";
 import RerenderContext from "../context/RerenderContext";
 import AuthModalContext from "../context/AuthModalContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const PostCommentForm = (props) => {
   const [userComment, setUserComment] = useState("");
@@ -73,12 +74,23 @@ const PostCommentForm = (props) => {
             props.showButton === false &&
 
             <>
+{/* 
+<Link
+          to={"/comments/" + (props.rootId || props._id)}
+          state={{ commentId: props.rootId || props._id }}
+        >
+          <FaRegCommentDots onClick={popUpModal} className={theLightMode} />
+        </Link> */}
+        <Link
+               to="/"
+        >
             <button className="comment-btn cancel-btn"
             onClick={()=>setPostModalVisibility(false)}
             // className="btn comment-btn"
           >
             Cancel
           </button>
+          </Link>
 
           <button className="btn comment-btn">Comment</button>
             </>
