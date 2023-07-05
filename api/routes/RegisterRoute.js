@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
         const url = `
         ${process.env.BASE_URL}users/${newUser._id}/verify/${emailToken.token}`;
         await sendEmail(newUser.email, "Verify Email", url);
-        res.status(201).send("Verification link sent to your email");
+        res.status(201).send(`Profile successfully created for ${username}. Email verification sent.`);
         // console.log(`profile created for ${username}, now please Log in!`);
       } catch (error) {
         console.error(error.message);
