@@ -25,7 +25,7 @@ router.get("/:id/verify/:token", async(req, res) => {
       const removedToken = await token.remove();
      
 
-      res.status(300).redirect("https://myreddit-api.onrender.com/");
+      res.status(300).redirect("https://myreddit-api.onrender.com/emailverified");
     } catch (error) {
       res.status(500).send("Internal Server Error");
     }
