@@ -3,7 +3,7 @@ import { useState, createContext } from "react";
 const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
   const [modalType, setModalType] = useState("login");
-  const [forgotStage, setForgotStage] = useState("otp");
+  const [forgotStage, setForgotStage] = useState("");
   const [otp, setOtp] = useState(null)
   const [userEmail, setUserEmail] = useState("")
 
