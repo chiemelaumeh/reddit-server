@@ -329,6 +329,7 @@ body {
   .login-div {
     display: block;
   }
+
 }
 @media screen and (min-width: 400px) {
   .auth-sub {
@@ -344,31 +345,13 @@ body {
   .auth-sub {
     width: 90%;
   }
+
+
 }
 @media screen and (min-width: 2100px) {
   .auth-sub {
     width: 10%;
   }
+
 }
-/* 
- @media screen and (min-width: 380px) {
-  .post-sub {
-    margin: auto;
-    width: 80%;
-  }
-} 
-@media screen and (min-width: 1024px) {
-  .post-sub {
-    width: 55%;
-  }
-} 
- @media screen and (min-width: 1400px) {
-  .post-sub {
-    width: 45%;
-  }
-} 
- @media screen and (min-width: 1900px) {
-  .post-sub {
-    width: 40%;
-  }
-}  */
+

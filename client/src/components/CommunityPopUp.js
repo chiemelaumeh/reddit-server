@@ -39,7 +39,7 @@ const CommunityPopUp = ({ closeModal }) => {
   return (
     <div className="post-modal-page">
       <div className="community-sub">
-        <h1>Create a Subreddit </h1>
+        <h1>Create a community </h1>
 
         <form
           action=""

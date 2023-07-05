@@ -145,11 +145,15 @@ body {
   cursor: pointer;
   width: 5rem;
   height: 2rem;
+  color: black;
+  font-weight: 600;
 }
 
 .confirm-delete-btn {
   border: none;
   background-color: orangered;
+  color: black;
+  font-weight: 600;
   border-radius: 2rem;
   padding: 0.2rem 0.7rem;
   cursor: pointer;

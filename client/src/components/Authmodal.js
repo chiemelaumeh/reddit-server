@@ -57,7 +57,7 @@ const Authmodal = () => {
       setUser({ username });
       // setWrongPassState(false)
 
-      console.log(response);
+
     } catch (error) {
       console.error(error.messagee);
     }
@@ -98,8 +98,10 @@ const Authmodal = () => {
           )}
           <label required>
             <span className="credentials">Username: </span>
-            <Input
+            <input
+              placeholder="case sensitive"
               required
+              className="main-input"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}

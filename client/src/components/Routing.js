@@ -16,7 +16,7 @@ const Routing = () => {
   const { redirect, setRedirect } = useContext(RedirectContext);
   const { errorPage, setErrorPage } = useContext(RerenderContext);
   const { tokenExist, setTokenExists } = useContext(RerenderContext);
-  console.log(redirect)
+
 
   useEffect(() => {
     if (errorPage) {
@@ -29,11 +29,7 @@ const Routing = () => {
       setRedirect(false);
     }
   }, [redirect]);
-  // useEffect(() => {
-  //   if (tokenExist) {
-  //     setTokenExists(false);
-  //   }
-  // }, [tokenExist]);
+  
   return (
     <Router>
       {!!errorPage && <Navigate to={errorPage} />}

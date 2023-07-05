@@ -49,7 +49,7 @@ const ForgotPassword = () => {
             <div className="text-and-div">
               <input
                 // required
-                className="input input-box margin-left"
+                className="forgot-sub-input margin-left"
                 type="email"
                 value={email}
                 onChange={(e) => {

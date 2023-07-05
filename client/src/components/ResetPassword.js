@@ -34,8 +34,8 @@ const ResetPassword = () => {
   // console.log(errorMessage)
 
   return (
-    <div className={forgotStage ? "auth-page" : "hide-auth-page"}>
-      <div className="auth-sub">
+    <div className={forgotStage ? "forgot-page" : "hide-auth-page"}>
+      <div className="forgot-sub">
         <form className="forgot-form" onSubmit={changePass}>
           <label required>
             <div className="header-icon">
@@ -44,7 +44,7 @@ const ResetPassword = () => {
             </div>
             <input
               // required
-              className="input input-box margin-left"
+              className="forgot-sub-input"
               type="password"
               value={newPass}
               onChange={(e) => {
@@ -59,7 +59,7 @@ const ResetPassword = () => {
             <p className="new-pass">Confirm Password: </p>
             <input
               // required
-              className="input input-box margin-left"
+              className="forgot-sub-input"
               type="password"
               value={confirmNewPass}
               onChange={(e) => {
@@ -72,7 +72,7 @@ const ResetPassword = () => {
           </label>
 
           <div className="otp-div">
-            <button type="submit" className="send-otp-btn">
+            <button type="submit" className="verify-otp">
               {" "}
               Change Password
             </button>

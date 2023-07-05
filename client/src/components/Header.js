@@ -7,6 +7,8 @@ import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { HiOutlinePlus } from "react-icons/hi";
 import { BsFillMoonFill } from "react-icons/bs";
 import { BsUpload } from "react-icons/bs";
+import { FaRegUser } from "react-icons/fa";
+
 
 import ImageComponent from "./ImageComponent";
 
@@ -46,6 +48,8 @@ const Header = () => {
   const theLightModeForm = lightMode ? "form-light" : "form";
   const theLightModeIcon = lightMode ? "icon-light" : "icon";
   const darkOrLight = lightMode ? "Dark Mode" : "Light Mode";
+  const openDiv = lightMode ? "plus-btn-icon-light" : "plus-btn-icon"
+  const openDivCreate = lightMode ? "plus-btn-light" : "plus-btn"
   const darkOrLightIcon = lightMode ? (
     <BsFillMoonFill className=" login-icon" />
   ) : (
@@ -166,7 +170,7 @@ const Header = () => {
                     setPostFormModalVisibility(true);
                     setPlusDropDownVisibilityClass("hidden");
                   }}
-                  className="plus-btn "
+                  className={openDivCreate}
                 >
                   Create new post
                 </button>
@@ -176,9 +180,9 @@ const Header = () => {
                     setShowCommunity(true);
                     setPlusDropDownVisibilityClass("hidden");
                   }}
-                  className="plus-btn"
+                  className={openDivCreate}
                 >
-                  Create new community
+                  Create community
                 </button>
               </div>
             </>
@@ -219,7 +223,14 @@ const Header = () => {
                     : " show-box"
                 }
               >
-                <p>Welcome, {user.username}</p>
+                <button   className={openDiv}  >
+                <FaRegUser className=" login-icon " />
+              
+                  {user.username}
+                
+
+                
+                  </button>
 
                 <button
                   onClick={() => {
@@ -227,21 +238,21 @@ const Header = () => {
                     setUserDropDownVisibilityClass("hidden");
                   }}
                   href=""
-                  className=" link-box border-top"
+                  className={openDiv}
                 >
                   <BsUpload className=" login-icon " />
-                  Upload Image
+                  Upload 
                 </button>
                 <button
                   onClick={changeLightMode}
                   href=""
-                  className=" link-box border-top"
+                  className={openDiv}
                 >
                   {darkOrLightIcon}
 
                   {darkOrLight}
                 </button>
-                <button onClick={logout} href="" className=" link-box ">
+                <button onClick={logout} href=""   className={openDiv}>
                   <SlLogout className=" login-icon " />
                   Logout
                 </button>

@@ -119,17 +119,46 @@ body {
 .show-box {
   position: absolute;
   right: 0px;
-  top: 40px;
+  top: 50px;
   color: var(--offwhite);
-  background-color: var(--reddit_midgrey);
+  /* background-color:var(--offwhite); */
   border: 1px solid var(--offwhite);
   /* z-index: 10; */
   /* border-radius: 4px; */
   display: flex;
   flex-direction: column;
+  width: 10rem;
 
   /* overflow: hidden; */
   /* display: none; */
+}
+
+
+.plus-btn{
+  background-color: var(--reddit_border);
+  padding: 0.75rem;
+  color: #fff;
+  border: none;
+  outline: none;
+  width: 10rem;
+  height: 2.75rem;
+  /* border-radius: 4px; */
+  border-bottom: 1px solid var(--reddit_dark);
+  cursor: pointer;
+
+}
+.plus-btn-light{
+  background-color: #fff;
+  padding: 0.75rem;
+  color: var(--reddit_dark);
+  border: none;
+  outline: none;
+  width: 10rem;
+  height: 2.75rem;
+  /* border-radius: 4px; */
+  border-bottom: 1px solid var(--reddit_dark);
+  cursor: pointer;
+
 }
 .border-buttom {
   border-bottom: 1px solid var(--offwhite);
@@ -139,6 +168,54 @@ body {
   border-bottom: 1px solid var(--offwhite);
   
 }
+.login-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+
+}
+.orangered{
+  color: orangered;
+}
+
+.plus-btn-icon{
+  cursor: pointer;
+
+  text-align: left;
+  /* display: flex; */
+  justify-content: space-around;
+  background-color: var(--reddit_border);
+  padding: 0.75rem;
+  color: #fff;
+  border: none;
+  outline: none;
+  width: 10rem;
+  height: 2.75rem;
+  /* border-radius: px; */
+  border-bottom: 1px solid var(--reddit_dark);
+}
+.plus-btn-icon-light{
+  cursor: pointer;
+
+  text-align: left;
+  /* display: flex; */
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 0.75rem;
+  color: var(--reddit_dark);
+  border: none;
+  outline: none;
+  width: 10rem;
+  height: 2.75rem;
+  /* border-radius: 4px; */
+  border-bottom: 1px solid var(--reddit_dark);
+}
+.margin-right{
+  margin-right: 3rem;
+}
+
 .link-box {
   display: flex;
   padding: 8px 32px;
@@ -146,6 +223,9 @@ body {
   background-color: var(--reddit_midgrey);
   border: 1px solid var(--reddit_border);
   cursor: pointer;
+}
+.nav-icon{
+  margin-left: 1rem;
 }
 /* .show-box p {
   padding: 10px 32px;
@@ -254,13 +334,4 @@ body {
   font-weight: 400;
   font-size: 1rem;
   /* padding-left: 4rem; */
-}
-
-.plus-btn{
-  background-color: var(--reddit_border);
-  padding: 0.75rem;
-  color: #fff;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid var(--reddit_dark);
 }

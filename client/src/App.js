@@ -10,6 +10,7 @@ import Routing from "./components/Routing";
 
 // axios.defaults.baseURL =  "http://localhost:4000/";
 // axios.defaults.baseURL =  "http://franklyn.local:4000/";
+// axios.defaults.baseURL =   "http://10.0.0.189:4000/";
 axios.defaults.baseURL =  "https://myreddit-api.onrender.com/";
 
 function App() {
