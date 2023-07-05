@@ -5,6 +5,7 @@ import Postmodal from "./Postmodal";
 import SearchPage from "./SearchPage";
 import ErrorPage from "./ErrorPage";
 import EmailVerify from "./EmailVerify";
+import EmailVerified from "./EmailVerified";
 
 const Routinglocation = () => {
   let location = useLocation();
@@ -29,6 +30,9 @@ const Routinglocation = () => {
         <Route exact path="/search/:text" element={<SearchPage />} />
         <Route exact path="/error/404" element={<ErrorPage />} />
         <Route exact path="/users/:id/verify/:token" element={<EmailVerify />}/>
+        <Route exact path="/emailverified" element={<EmailVerified />}/>
+        <Route exact path="/*" element={<ErrorPage />}/>
+
       </Routes>
     </div>
   );
