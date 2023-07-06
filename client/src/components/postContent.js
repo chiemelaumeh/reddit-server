@@ -177,7 +177,7 @@ const PostContent = (props) => {
         >
           <FaRegCommentDots onClick={popUpModal} className={theLightMode} />
         </Link>
-        {
+        {/* {
           shareBox   &&(
 
           <div className="share-box">
@@ -192,7 +192,7 @@ const PostContent = (props) => {
           )
 
         }
-        <FaShare onClick={()=>{setSharebox(!shareBox)}} className={theLightMode} />
+        <FaShare onClick={()=>{setSharebox(!shareBox)}} className={theLightMode} /> */}
       </div>
     </div>
   );

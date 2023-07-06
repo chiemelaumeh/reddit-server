@@ -260,6 +260,7 @@ textarea::placeholder {
 .comment-btn {
   padding: 0.5rem 1rem;
   margin-left: 1rem;
+  border: none;
 }
 .cancel-btn {
   background-color: var(--reddit_dark);
