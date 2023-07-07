@@ -11,6 +11,7 @@ import Routinglocation from "./Routinglocation";
 import { useContext } from "react";
 import RedirectContext from "../context/RedirectContext";
 import RerenderContext from "../context/RerenderContext";
+import ErrorModal from "./ErrorModal";
 
 const Routing = () => {
   const { redirect, setRedirect } = useContext(RedirectContext);
@@ -47,6 +48,7 @@ const Routing = () => {
           <CommunityFormModal />
           <PostFormModal />
           <NavigateComponents />
+          <ErrorModal />
         </>
       )}
     </Router>

@@ -13,10 +13,11 @@ const Authmodal = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [matchingPass, setMatchingPass] = useState(true);
+
   // const [wrongPassState, setWrongPassState] = useState(false)
 
   const { modalVisibility, setModalVisibility, forgotModalVisibility, setForgotModalVisibility } = useContext(AuthModalContext);
-  const { modalType, setModalType, forgotStage, setForgotStage } = useContext(ModalContext);
+  const { modalType, setModalType, forgotStage, setForgotStage, errorStatus, setErrorStatus, authReg, setAuthReg } = useContext(ModalContext);
   const { setUser, user, wrongPassState, setWrongPassState } =
     useContext(UserContext);
 
@@ -34,8 +35,14 @@ const Authmodal = () => {
         const response = await axios.post("/register", data, {
           withCredentials: true,
         });
-        alert(response.data);
-        console.log(response.data);
+        if(response.data.errorStatus){
+          setErrorStatus(response.data.message)
+        }
+        if(response.data.authReg){
+          setAuthReg(response.data.authReg)
+        }
+        // alert(response.data);
+        // console.log(response);
       } catch (err) {
         console.error(err.message);
       }
@@ -147,6 +154,13 @@ const Authmodal = () => {
           {wrongPassState && modalType === "login" && (
             <p className="invalid-credentials">Invalid Username or Password</p>
           )}
+
+          {
+            errorStatus && (
+              <p className="invalid-credentials">{errorStatus}</p>
+            )
+
+          }
           {modalType === "login" && (
             <div>
               <div className="login-state">
