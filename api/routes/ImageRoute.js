@@ -9,9 +9,14 @@ router.post("/", async (req, res) => {
     const token = req.cookies.token;
 
     try {
-      const username = await getUserFromToken(token);
-      const user = username.username;
-      const chosenUser = await User.findOne({ username: user });
+      if(!token)
+      
+      return
+
+      // await getUserFromToken(token);
+      // console.log(getUserFromToken)
+      const user = await getUserFromToken(token);
+      const chosenUser = await User.findOne({ username: user.username });
       res.json(chosenUser.picture);
     } catch (error) {
       console.error(error);
