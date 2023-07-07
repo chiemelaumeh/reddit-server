@@ -41,8 +41,7 @@ const Authmodal = () => {
         if(response.data.authReg){
           setAuthReg(response.data.authReg)
         }
-        // alert(response.data);
-        // console.log(response);
+       
       } catch (err) {
         console.error(err.message);
       }

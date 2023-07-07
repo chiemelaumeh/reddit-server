@@ -163,7 +163,7 @@ body {
 .upload-page {
   /* height: 100%;
   width: 100%; */
-  position: absolute;
+  /* position: absolute; */
   /* top: 0;
   left: 0; */
   background-color: rgba(0, 0, 0, 0.9);
@@ -171,10 +171,12 @@ body {
 
   /* justify-content: center;
   align-items: center; */
-
-  height: 120%;
+display: flex;
+justify-content: center;
+align-items: center;
+  height: 100vh;
   width: 100vw;
-  top: 40%;
+  
   /* left: 10%; */
   transform: translate(0, -50%);
 }
@@ -185,12 +187,12 @@ body {
   background-color: var(--reddit_dark);
   padding: 10px 20px;
   color: var(--offwhite);
-  position: absolute;
-  width: 80%;
-  left: 5%;
-  height:60vh;
+  /* position: absolute; */
+  width: max-content;
+
+  height:70vh;
   border: 1px solid var(--reddit_border);
-  margin-top: 25vh;
+  margin-top: 145%;
   border-radius: 4px;
 }
 .image-div {
@@ -214,7 +216,7 @@ body {
   height: 5rem;
   width: 100%;
   height: 80%;
-  border-radius: 5rem;
+  border-radius: 2rem;
 }
 .image-btn{
   height: 2rem;
