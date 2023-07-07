@@ -53,7 +53,7 @@ body {
 .reddit-story-light {
   display: block;
   border: 1px solid var(--reddit_border);
-  background-color: var(--offwhite);
+  /* background-color: var(--offwhite); */
   padding: 8px;
   border-radius: 4px;
   text-decoration: none;
