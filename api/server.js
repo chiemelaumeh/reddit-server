@@ -21,7 +21,7 @@ import LogoutRoute from "./routes/LogoutRoute.js";
 import PostCommentRoute from "./routes/PostCommentRoute.js";
 import GetCommentsRoute from "./routes/GetCommentsRoute.js";
 import DeleteCommentRoute from "./routes/DeleteCommentRoute.js";
-import UploadRRoute from "./routes/UploadRoute.js";
+import UploadRoute from "./routes/UploadRoute.js";
 import ImageRoute from "./routes/ImageRoute.js";
 import LoginRoute from "./routes/LoginRoute.js";
 import EmailTokenRoute from "./routes/EmailTokenRoute.js"
@@ -53,7 +53,7 @@ app.use(
       // "http://localhost:3000",
       // "http://10.0.0.189:3000",
       // "http://franklyn.local:3000",
-      "https://myreddit-megq.onrender.com",
+      // "https://myreddit-megq.onrender.com",
       // "https://myreddit-api.onrender.com"
         //  "http://localhost:4000"
     ],
@@ -73,7 +73,7 @@ app.use("/logout", LogoutRoute);
 app.use("/comments", PostCommentRoute);
 app.use("/comments", GetCommentsRoute);
 app.use("/delete", DeleteCommentRoute);
-app.use("/upload", UploadRRoute);
+app.use("/upload", UploadRoute);
 app.use("/image", ImageRoute);
 app.use("/login", LoginRoute);
 app.use("/users", EmailTokenRoute)
