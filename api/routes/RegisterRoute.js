@@ -24,15 +24,15 @@ router.post("/", async (req, res) => {
         });
         const newUser = await user.save();
         // console.log(info)
-        const emailToken = await new Token({
-          userId: newUser._id,
-          token: crypto.randomBytes(32).toString("hex"),
-        }).save();
+        // const emailToken = await new Token({
+        //   userId: newUser._id,
+        //   token: crypto.randomBytes(32).toString("hex"),
+        // }).save();
 
-        const url = `
-        ${process.env.BASE_URL}users/${newUser._id}/verify/${emailToken.token}`;
-        await sendEmail(newUser.email, "Verify Email", url);
-        res.status(201).send(`Profile successfully created for ${username}. Email verification sent.`);
+        // const url = `
+        // ${process.env.BASE_URL}users/${newUser._id}/verify/${emailToken.token}`;
+        // await sendEmail(newUser.email, "Verify Email", url);
+        res.status(201).send({authReg:`Profile successfully created for ${username}`});
         // console.log(`profile created for ${username}, now please Log in!`);
       } catch (error) {
         console.error(error.message);
@@ -40,11 +40,11 @@ router.post("/", async (req, res) => {
         res.status(500);
       }
     } else {
-      res.send("Email taken. Try again.");
+      res.json({message: "Email taken. Try again.", errorStatus:true});
       console.log("Email taken. Try again.");
     }
   } else {
-    res.send("Username taken. Try again.");
+    res.send({message: "Username taken. Try again.", errorStatus:true});
     console.log("Username taken. Try again.");
   }
 });
