@@ -188,7 +188,7 @@ align-items: center;
   padding: 10px 20px;
   color: var(--offwhite);
   /* position: absolute; */
-  width: max-content;
+  /* width: max-content; */
 
   height:70vh;
   border: 1px solid var(--reddit_border);
