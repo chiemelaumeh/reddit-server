@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sonar": "npm install sonar-scanner && npm run scanner",
-    "sonar": "npm install sonar-scanner \"npm run scanner\""
+    "sonar": "npm install sonar-scanner"
+    
 
    
     
