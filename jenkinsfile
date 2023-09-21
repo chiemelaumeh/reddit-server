@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+               checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/production']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/chiemelaumeh/reddit']])
+            }
+        }
+        
+        stage("Code Coverage") {
+            steps {
+            jacoco()
+            }
+        }
+    
+        stage('Install dependencies') {
+        steps {
+        sh 'npm install'
+      }
+    }
+
+  stage("SonarQube analysis") {
+    steps {
+            withSonarQubeEnv('SonarQube') {
+                sh "npm install sonar-scanner"
+                sh "npm run sonar"
+            }
+        
+    }
+  }
+    
+ }
+    
+}
