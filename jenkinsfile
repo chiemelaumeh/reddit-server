@@ -36,7 +36,7 @@ pipeline {
  stage ('DEV Notify')  {
 steps {
 
-       slackSend(channel:'automatedjob1-build', message: "Job is successful, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+       slackSend(channel:'myredditpipeline', message: "Job is successful, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
    }
 }
 
