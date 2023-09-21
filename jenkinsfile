@@ -14,21 +14,6 @@ pipeline {
         }
 
 
-    stage ('DEV Deploy') {
-steps {
-
-     echo "deploying to DEV Env "
-     deploy adapters: [tomcat9(credentialsId: 'aa2723f2-7bcf-46ad-9ebc-cec503e19b5d', path: '', url: 'http://ec2-18-224-60-156.us-east-2.compute.amazonaws.com:8080/')], contextPath: null, war: '**/*.war'
-   }
-   
-
-}
-
-
-
-
-
-
 
         stage('Install dependencies') {
         steps {
@@ -45,6 +30,14 @@ steps {
         
     }
   }
+
+ stage ('DEV Notify')  {
+steps {
+
+       slackSend(channel:'automatedjob1-build', message: "Job is successful, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+   }
+}
+
     
  }   
 }
