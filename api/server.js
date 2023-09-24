@@ -50,13 +50,9 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
     origin: [
-      // "http://localhost:3000",
+
       "https://chiemela-postboard.netlify.app"
-      // "http://10.0.0.189:3000",
-      // "http://franklyn.local:3000",
-      // "https://myreddit-megq.onrender.com",
-      // "https://myreddit-api.onrender.com"
-        //  "http://localhost:4000"
+    
     ],
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
@@ -104,11 +100,9 @@ export const getUserFromToken = async (token) => {
 // } else {
 
   app.get("/", (req, res) => {
-    res.send("myReddit API is running");
+    res.send("postBoard API is running");
   });
 // }
-
-
 
 
 // app.get("/f", (req, res) => {
