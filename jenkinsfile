@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/production']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/chiemelaumeh/reddit']])
+               checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/production']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/chiemelaumeh/reddit-server']])
             }
         }
         
