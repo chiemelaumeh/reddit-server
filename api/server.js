@@ -119,7 +119,6 @@ export const getUserFromToken = async (token) => {
 //     res.send("myReddit API is running");
 //   });
 // }
-
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}`);
