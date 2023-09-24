@@ -1,7 +1,6 @@
 {
-  "name": "Reddit",
+  "name": "reddit",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "author": "",
   "license": "ISC",
@@ -14,7 +13,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.2",
     "cloudinary": "^1.37.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -27,5 +26,6 @@
   "devDependencies": {
     "concurrently": "^8.2.0",
     "nodemon": "^2.0.22"
-  }
+  },
+  "description": ""
 }

@@ -13,6 +13,7 @@ const secret = process.env.SECRET_KEY;
 
 router.post("/", (req, res) => {
   const { username, password } = req.body;
+  console.log({username})
   const findUser = async () => {
     try {
       const user = await User.findOne({ username });
