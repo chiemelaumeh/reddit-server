@@ -100,7 +100,7 @@ export const getUserFromToken = async (token) => {
 // } else {
 
   app.get("/", (req, res) => {
-    res.send("postBoard API is running");
+    res.send("postBoard API is running!");
   });
 // }
 
