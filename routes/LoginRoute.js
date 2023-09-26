@@ -21,11 +21,16 @@ router.post("/", (req, res) => {
         const passOk = bcrypt.compareSync(password, user.password);
         if (passOk) {
           jwt.sign({ id: user._id }, secret, (err, token) => {
+            const {password, picture, ...otherDetails} = user._doc
             try {
-              res.cookie("token", token).json("logged in");
-              console.log(token);
+              res.cookie("token", token, {
+                httpOnly: true
+
+              
+              }).status(201).json({...otherDetails});
+              // console.log(user);
             } catch (err) {
-              console.error(err.message);
+              // console.error(err.message);
               res.status(500);
             }
           });
