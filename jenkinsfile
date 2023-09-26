@@ -42,7 +42,7 @@ pipeline {
  stage ('DEV Notify')  {
 steps {
 
-       slackSend(channel:'myredditpipeline', message: "Job is successful, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+       slackSend(channel:'postboard-server-pipeline', message: "Job is successful, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
    }
 }
 
@@ -72,6 +72,12 @@ steps {
 
 
   
+ stage ('DEV Notify')  {
+steps {
+
+       slackSend(channel:'postboard-server-pipeline', message: "Docker Image Built-  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+   }
+}
 
      stage('Pushing to ECR') {
      steps{  
@@ -86,10 +92,21 @@ steps {
            // Stopping Docker containers for cleaner Docker run
     //  stage('stop previous containers') {
     //      steps {
-    //         sh 'docker ps -f name=mypythonContainer -q | xargs --no-run-if-empty docker container stop'
+    //         sh 'docker ps -f name=postboard-container -q | xargs --no-run-if-empty docker container stop'
     //         sh 'docker container ls -a -fname=mypythonContainer -q | xargs -r docker container rm'
     //      }
     //    }
+
+
+
+ stage ('DEV Notify')  {
+steps {
+
+       slackSend(channel:'postboard-server-pipeline', message: "Docker Image Pushed to ECR, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+   }
+}
+
+
 
     stage('Docker Run') {
      steps{
@@ -98,6 +115,14 @@ steps {
             }
       }
     }
+
+
+ stage ('DEV Notify')  {
+steps {
+
+       slackSend(channel:'postboard-server-pipeline', message: "Docker container ran, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+   }
+}
    
  }   
 }
