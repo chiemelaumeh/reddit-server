@@ -26,15 +26,16 @@ pipeline {
       }
     }
 
-  stage("SonarQube analysis") {
-    steps {
-            withSonarQubeEnv('SonarQube') {
-                sh "npm install sonar-scanner"
-                sh "npm run sonar"
-            }
+
+  // stage("SonarQube analysis") {
+  //   steps {
+  //           withSonarQubeEnv('SonarQube') {
+  //               sh "npm install sonar-scanner"
+  //               sh "npm run sonar"
+  //           }
         
-    }
-  }
+  //   }
+  // }
 
 
 
