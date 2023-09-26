@@ -72,7 +72,7 @@ steps {
 
 
   
- stage ('DEV Notify')  {
+ stage ('QA Notify')  {
 steps {
 
        slackSend(channel:'postboard-server-pipeline', message: "Docker Image Built-  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
@@ -99,7 +99,7 @@ steps {
 
 
 
- stage ('DEV Notify')  {
+ stage ('PROD Notify')  {
 steps {
 
        slackSend(channel:'postboard-server-pipeline', message: "Docker Image Pushed to ECR, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
@@ -117,7 +117,7 @@ steps {
     }
 
 
- stage ('DEV Notify')  {
+ stage ('UAT Notify')  {
 steps {
 
        slackSend(channel:'postboard-server-pipeline', message: "Docker container ran, here is the info -  Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
