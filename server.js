@@ -51,7 +51,9 @@ app.use(
   cors({
     origin: [
 
-      "https://chiemela-postboard.netlify.app"
+      "https://chiemela-postboard.netlify.app",
+      // "http://localhost:3000"
+    
     
     ],
     methods: ["GET", "POST", "DELETE"],
@@ -100,7 +102,7 @@ export const getUserFromToken = async (token) => {
 // } else {
 
   app.get("/", (req, res) => {
-    res.send("postBoard API is running!");
+    res.send('<h1> myReddit App has moved here ---> <a href="https://chiemela-postboard.netlify.app/">myRedditApp</a></h1>\n');
   });
 // }
 
@@ -121,5 +123,5 @@ export const getUserFromToken = async (token) => {
 // }
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Listening on Port ${PORT}`);
+  console.log(`Listening on Port ${PORT}...`);
 });
