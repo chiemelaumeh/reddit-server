@@ -6,10 +6,10 @@ import Comment from "../models/Comments.js";
 import { getUserFromToken } from "../server.js";
 
 router.post("/", async (req, res) => {
-  const token = req.cookies.token;
+  // const token = req.cookies.token;
 
   try {
-    const userInfo = await getUserFromToken(token);
+    // const userInfo = await getUserFromToken(token);
     const { title, body, parentId, rootId } = req.body;
     const chosenCommunity =
       req.body.selectedCommunity || req.body.chosenCommunity;
@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
       title,
       body,
       chosenCommunity,
-      author: userInfo.username,
+      author: "Random User",
       postedAt: Date.now(),
       parentId,
       rootId,
