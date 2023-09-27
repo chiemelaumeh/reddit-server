@@ -6,26 +6,26 @@ import { getUserFromToken } from "../server.js";
 router.get(
   "/:commentId/:author/:direction/:hasVotedUp/:hasVotedDown",
   (req, res) => {
-    const token = req.cookies.token;
-    const { commentId, author, direction, hasVotedUp, hasVotedDown } =
+    // const token = req.cookies.token;
+    const { commentId,  direction, hasVotedUp, hasVotedDown } =
       req.params;
     const handleVoting = async () => {
       try {
-        const userInfo = await getUserFromToken(token);
+        // const userInfo = await getUserFromToken(token);
 
         if (req.params.hasVotedUp === "true") {
           const thisUserHasVotedUpForThisComment = await Vote.findOne({
-            author,
+            author:"General user",
             commentId,
             hasVotedUp: true,
           }).sort({ postedAt: -1 });
 
-          if (thisUserHasVotedUpForThisComment !== null) {
-            return;
-          }
+          // if (thisUserHasVotedUpForThisComment !== null) {
+          //   return;
+          // }
         } else {
           const thisUserHasVotedDownForThisComment = await Vote.findOne({
-            author,
+            author: "General User",
             commentId,
             hasVotedDown: true,
           });
@@ -36,14 +36,14 @@ router.get(
         }
 
         const vote = new Vote({
-          author: userInfo.username,
+          author: "General user",
           direction: req.params.direction === "up" ? "up" : "down",
           commentId: req.params.commentId,
           hasVotedUp: req.params.hasVotedUp,
           postedAt: Date.now(),
         });
         await Vote.deleteOne({
-          author,
+          author:"Generel User",
           commentId,
         }).sort({ postedAt: -1 });
         const newvote = await vote.save();

@@ -52,7 +52,7 @@ app.use(
     origin: [
 
       "https://chiemela-postboard.netlify.app",
-      "http://localhost:3000"
+      // "http://localhost:3000"
     
     
     ],
