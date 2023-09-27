@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
 
               
               }).status(201).json({...otherDetails});
-              // console.log(user);
+              console.log(user, token);
             } catch (err) {
               // console.error(err.message);
               res.status(500);
