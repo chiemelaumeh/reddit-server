@@ -53,6 +53,7 @@ app.use(
 
       "https://chiemela-postboard.netlify.app",
       // "http://localhost:3000"
+      "http://ec2-18-226-159-208.us-east-2.compute.amazonaws.com:8091"
     
     
     ],
