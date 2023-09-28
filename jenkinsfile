@@ -4,7 +4,7 @@ pipeline {
     agent any 
 
        environment {
-        registry = "756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server"
+        registry = "756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server-repo"
     }
     stages {
         stage('Checkout') {
@@ -83,7 +83,7 @@ steps {
      steps{  
          script {
                 sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 756519817970.dkr.ecr.us-east-2.amazonaws.com'
-                sh 'docker push 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server:latest'
+                sh 'docker push 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server-repo:latest'
          }
         }
       }
@@ -111,7 +111,7 @@ steps {
     stage('Docker Run') {
      steps{
          script {
-                sh 'docker run -d -p 8096:4000 --rm --name postboard-container 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server:latest'
+                sh 'docker run -d -p 8096:4000 --rm --name postboard-server 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server-repo:latest'
             }
       }
     }
