@@ -111,7 +111,7 @@ steps {
     stage('Docker Run') {
      steps{
          script {
-                sh 'docker run -d -p 8096:8000 --rm --name postboard-container 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server:latest'
+                sh 'docker run -d -p 8096:4000 --rm --name postboard-container 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server:latest'
             }
       }
     }
