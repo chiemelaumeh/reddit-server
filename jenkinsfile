@@ -117,8 +117,8 @@ steps {
            // Stopping Docker containers for cleaner Docker run
     //  stage('stop previous containers') {
     //      steps {
-    //         sh 'docker ps -f name=postboard-container -q | xargs --no-run-if-empty docker container stop'
-    //         sh 'docker container ls -a -fname=mypythonContainer -q | xargs -r docker container rm'
+    //         sh 'docker ps -f name=postboard-server-container -q | xargs --no-run-if-empty docker container stop'
+    //         sh 'docker container ls -a -fname=postboard-server-container -q | xargs -r docker container rm'
     //      }
     //    }
 
@@ -136,7 +136,7 @@ steps {
     stage('Docker Run') {
      steps{
          script {
-                sh 'docker run -d -p 8096:4000 --rm --name postboard-server 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server-repo:latest'
+                sh 'docker run -d -p 8096:4000 --rm --name postboard-server-container 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server-repo:latest'
             }
       }
     }
