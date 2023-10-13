@@ -2,6 +2,9 @@
   "name": "reddit",
   "version": "1.0.0",
   "main": "server.js",
+  "publishConfig": {
+    "registry":"http://ec2-13-58-177-100.us-east-2.compute.amazonaws.com:8081/repository/postboard-server/"
+  },
   "author": "",
   "license": "ISC",
   "type": "module",
