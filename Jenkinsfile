@@ -21,7 +21,7 @@ pipeline {
        
         stage("Build &Upload") {
             steps {
-                sh "npm install"
+                // sh "npm install"
                 // sh "npm run build"
                 sh "set +x && echo \"//ec2-18-222-132-112.us-east-2.compute.amazonaws.com:8081/repository/postboard-server/:_authToken=NpmToken.e16aff1c-2ce9-3004-ac4e-b66093f87b7d\" >> .npmrc"
                 sh "npm publish"
