@@ -115,7 +115,7 @@ pipeline {
 // stage('Docker Run') {
 //      steps{
 //          script {
-//                 sh 'docker run -d -p 8091:3000 --rm --name postboard-server-container 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server-repo:latest'
+//                 sh 'docker run -d -p 8091:4000 --rm --name postboard-server-container 756519817970.dkr.ecr.us-east-2.amazonaws.com/postboard-server-repo:latest'
 //             }
 //       }
 //     }
