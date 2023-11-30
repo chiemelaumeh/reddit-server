@@ -5,6 +5,7 @@ import Comment from "../models/Comments.js";
 
 router.get("/", async (req, res) => {
   const { search, chosenCommunity } = req.query;
+
   const filter = search
     ? { title: { $regex: ".*" + search + ".*" } }
     : { rootId: null };
@@ -20,6 +21,29 @@ router.get("/", async (req, res) => {
     console.error(err.message);
   }
 });
+
+router.get("/find", async (req, res) => {
+  const { search } = req.query;
+  console.log(req.query)
+  // {search}
+    // ? { title: { $regex: ".*" + search + ".*" } }
+    // : { rootId: null };
+// console.log(filter)
+
+    // filter.chosenCommunity = chosenCommunity;
+  
+
+  try {
+  const filter = { body: { $regex: new RegExp(search, "i") } }
+
+    const comments = await Comment.find(filter) ;
+    console.log(comments)
+    res.json(comments);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 router.get("/:id", async (req, res) => {
   try {
