@@ -101,7 +101,7 @@ export const getUserFromToken = async (token) => {
 // } else {
 
   app.get("/", (req, res) => {
-    res.send('<h1> myReddit App has moved here ---> <a href="https://chiemela-postboard.netlify.app/">myRedditApp</a></h1>\n');
+    res.send('<h1> Hello, world!');
   });
 // }
 
