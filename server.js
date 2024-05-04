@@ -51,7 +51,7 @@ app.use(
   cors({
     origin: [
 
-      "https://chiemela-postboard.netlify.app",
+      "https://chiemelapostboard.netlify.app",
       "http://localhost:3000"
 
     ],
